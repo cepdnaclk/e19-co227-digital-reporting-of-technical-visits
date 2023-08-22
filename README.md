@@ -12,7 +12,7 @@ Title: VisitLog
 ---
 
 
-![Logo](./images/logo.jpg)
+![Logo](/images/logo.jpg)
  
 
 ## Team
