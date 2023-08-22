@@ -13,6 +13,8 @@ Title: VisitLog
 
 
 ![Logo](/docs/images/logo.jpg)
+
+Welcome to the GitHub repository for our innovative project aimed at enhancing accountability and transparency in technical service interactions. Our project focuses on developing a user-friendly, efficient, and robust software application that streamlines the process of documenting technical service visits, including repairs, troubleshooting, and maintenance activities.
  
 
 ## Team
