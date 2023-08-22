@@ -14,9 +14,7 @@ title:
 ---
 
 
-
-![Sample Image](./images/logo.jpg)
-Logo
+![Logo](./images/logo.jpg)
  
 
 ## Team
