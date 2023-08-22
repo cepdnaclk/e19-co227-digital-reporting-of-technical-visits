@@ -21,8 +21,10 @@ Welcome to the GitHub repository for our innovative project aimed at enhancing a
 1. [Introduction](#introduction)
 2. [Objective](#objective)
 3. [Key Features](#key-features)
-4. [Why use our software](#whay-use-our-software)
-5. [Links](#links)
+4. [Why Use Our Software](#why-use-our-software)
+5. [Getting Started](#getting-started)
+6. [Contact](#contact)
+7. [Links](#links)
 
 ---
 
