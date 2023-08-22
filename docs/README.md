@@ -13,12 +13,9 @@ title:
 
 ---
 
-<!-- 
-This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
 
-![Sample Image](./images/logo.jpg)
-Logo
- -->
+![Logo](./images/logo.jpg)
+ 
 
 ## Team
 -  E/19/008, Adhikari R.A.J.C., [email](mailto:e19008@eng.pdn.ac.lk)
