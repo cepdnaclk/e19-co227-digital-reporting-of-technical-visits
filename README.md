@@ -19,8 +19,10 @@ Welcome to the GitHub repository for our innovative project aimed at enhancing a
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Other Sub Topics](#other-sub-topics)
-3. [Links](#links)
+2. [Objective](#objective)
+3. [Key Features](#key-features)
+4. [Why use our software](#whay-use-our-software)
+5. [Links](#links)
 
 ---
 
