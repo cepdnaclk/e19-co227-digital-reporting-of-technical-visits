@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
+repository-name: e19-co227-digital-reporting-of-technical-visits
 title:
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# VisitLog
 
 ---
 
@@ -20,9 +20,10 @@ This is a sample image, to show how to add images to your page. To learn more op
  -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/008, Adhikari R.A.J.C., [email](mailto:e19008@eng.pdn.ac.lk)
+-  E/19/009, Adhikari A.M.K.M., [email](mailto:e19009@eng.pdn.ac.lk)
+-  E/19/063, Dassanayake D.M.G.S., [email](mailto:e19063@eng.pdn.ac.lk)
+-  E/19/324, Rathnayake R.M.B.D.K., [email](mailto:e19324@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -33,7 +34,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
- description of the real world problem and solution, impact
+When Engineers or Technicians visit sites to provide technical services (such as repairs, troubleshooting, maintenance), a report should be filled by the visiting service provider and checked off by the service receiver to maintain accountability and transparency. The expectation of this project is to develop a simple, easy to use, robust software application for the above purpose. 
 
 ## Other Sub Topics
 
