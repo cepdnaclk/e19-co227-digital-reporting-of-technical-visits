@@ -1,13 +1,11 @@
-<!-- ---
-layout: home
-permalink: index.html
-
+---
 # Please update this with your repository name and title
-repository-name: e19-co227-digital-reporting-of-technical-visits
-title:
+Project: CO227 Digital Reporting of Technical Visits project
+Title: VisitLog
 ---
 
-[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"-->
+[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
+
 
 # VisitLog
 
