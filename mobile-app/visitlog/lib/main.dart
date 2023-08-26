@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
-import 'screens/login_page.dart';
 
+import 'Screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
 
 // ------ Uncomment when using device Preview ---------
 // void main() => runApp(
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'VisiLog',
+      title: 'VisitLog',
       useInheritedMediaQuery: true,
       debugShowCheckedModeBanner: false,
       //  ------ Uncomment when using device Preview ---------
@@ -36,14 +35,12 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blueGrey,
       ),
       initialRoute: LoginScreen.id,
       routes: {
-        LoginScreen.id: (context) => LoginScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
       },
     );
   }
 }
-
-
