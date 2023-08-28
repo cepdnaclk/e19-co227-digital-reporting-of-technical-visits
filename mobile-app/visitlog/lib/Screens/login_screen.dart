@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visitlog/services/auth_service.dart';
 import 'second_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,12 +17,13 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 10,
+            width: double.infinity,
           ),
           SizedBox(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height / 4,
+            height: MediaQuery.of(context).size.height / 4.5,
             child: Image.asset('assets/images/214939.jpg'),
           ),
           Expanded(
@@ -35,7 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height / 20,
+                    horizontal: MediaQuery.of(context).size.width / 15),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(18),
                           color: Colors.black87,
                         ),
                         child: const Padding(
@@ -71,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 15),
+                      SizedBox(height: MediaQuery.of(context).size.height / 45),
                       const Text(
                         'Password',
                         style: TextStyle(
@@ -83,12 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(18),
                           color: Colors.black87,
                         ),
                         child: const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8),
                           child: TextField(
+                            obscureText: true,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -103,14 +108,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 35),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
+                      SizedBox(height: MediaQuery.of(context).size.height / 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => SecondScreen()));
+                              SecondScreen.id);
                         },
+                        style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder()),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
@@ -145,46 +151,89 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          GestureDetector(
-                            onTap: () {
+                          FloatingActionButton.extended(
+                            onPressed: () async{
+                              await AuthService().signInWithGoogle();
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SecondScreen()));
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SecondScreen()));
                             },
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: Colors.white38,
+                            label: const Text('Continue with Google', style: TextStyle(color: Colors.black45), textScaleFactor: 1.05,),
+                            icon: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Image.asset(
+                                'assets/images/google.png',
+                                height: 35,
+                                width: 35,
                               ),
-                              child: Image.asset('assets/images/google.png'),
                             ),
+                            backgroundColor: const Color.fromARGB(255, 227, 240, 248),
                           ),
-                          const SizedBox(width: 50),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SecondScreen()));
-                            },
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: Colors.white38,
-                              ),
-                              child: Image.asset('assets/images/facebook.png'),
-                            ),
-                          ),
+
+                          // GestureDetector(
+                          //   onTap: () {
+                          //     AuthService().signInWithGoogle();
+                          //  },
+                          //   child: Container(
+                          //     width: 60,
+                          //     height: 60,
+                          //     padding: const EdgeInsets.all(5),
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(15),
+                          //       color: Colors.white38,
+                          //     ),
+                          //     child: Image.asset('assets/images/google.png'),
+                          //   ),
+                          // ),
+                          // const SizedBox(width: 12),
+                          // GestureDetector(
+                          //     onTap: () {
+                          //       Navigator.push(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //               builder: (context) =>
+                          //                   const SecondScreen()));
+                          //     },
+                          //     child: Container(
+                          //       height: 60,
+                          //       alignment: Alignment.center,
+                          //       decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.circular(15),
+                          //         color: Colors.white38,
+                          //       ),
+                          //       child: const Text(
+                          //         'Google',
+                          //         style: TextStyle(
+                          //           color: Colors.black45,
+                          //           fontSize: 25,
+                          //           // fontWeight: FontWeight.w500,
+                          //         ),
+                          //       ),
+                          //     ))
+                          // GestureDetector(
+                          //   onTap: () {
+                          //     Navigator.push(
+                          //         context,
+                          //         MaterialPageRoute(
+                          //             builder: (context) =>
+                          //                 const SecondScreen()));
+                          //   },
+                          //   child: Container(
+                          //     width: 60,
+                          //     height: 60,
+                          //     padding: const EdgeInsets.all(5),
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(15),
+                          //       color: Colors.white38,
+                          //     ),
+                          //     child: Image.asset('assets/images/facebook.png'),
+                          //   ),
+                          // ),
                         ],
                       )
                     ],

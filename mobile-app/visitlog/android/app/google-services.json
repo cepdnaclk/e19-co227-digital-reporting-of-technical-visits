@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "296031466051",
+    "project_id": "visitlog00",
+    "storage_bucket": "visitlog00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296031466051:android:2f896b4ec912b10a76daf6",
+        "android_client_info": {
+          "package_name": "com.example.visitlog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296031466051-f33qjbgaft3pbim0l039def1kssgppd0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5IVwqAhCZgKo1kB4kUv-ToTZjOWQOyQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296031466051-f33qjbgaft3pbim0l039def1kssgppd0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "296031466051-904qmvontf3g840mnend7n8hc41u45ni.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.visitlog"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
