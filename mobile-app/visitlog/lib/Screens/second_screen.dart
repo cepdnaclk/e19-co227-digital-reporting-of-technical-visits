@@ -19,6 +19,60 @@ class SecondScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
+        appBar: AppBar(
+          leading: Column(
+            children: [
+              const SizedBox(height: 8),
+              IconButton(
+                icon: Icon(Icons.arrow_back_ios_new_rounded),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+          actions: [
+            Column(
+              children: [
+                const SizedBox(height: 15),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: Image.network(
+                          userImage ?? '',
+                          height: 65,
+                          width: 65,
+                        ).image,
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            UserName ?? '',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                          Text(
+                            UserEmail ?? '',
+                            style: TextStyle(fontSize: 10),
+                          )
+                        ],
+                      )
+                    ]),
+              ],
+            ),
+            const SizedBox(width: 15),
+            Column(
+              children: [
+                const SizedBox(height: 8),
+                IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+              ],
+            )
+          ],
+        ),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text(
@@ -48,29 +102,6 @@ class SecondScreen extends StatelessWidget {
                     ),
                   ),
                 )),
-            // ListView(scrollDirection: Axis.vertical, 
-            // children: <Widget>[
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: Image.network(
-                    userImage ?? '',
-                    height: 35,
-                    width: 35,
-                  ).image,
-                ),
-                title: Text(UserName ?? ''),
-                subtitle: Text(UserEmail ?? ''),
-                trailing: const Icon(Icons.more_vert),
-                onTap: () {},
-              ),
-            //   const Divider(),
-            // ]
-            // ),
-            CircleAvatar(
-              backgroundImage: Image.network(userImage?? '',height: 65,width: 65,).image,
-            ),
-            Text(UserName?? ''),
-            Text(UserEmail?? '')
           ]),
         ),
       ),
