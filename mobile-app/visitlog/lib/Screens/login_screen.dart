@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visitlog/Widgets/button_loading_widget.dart';
 import 'package:visitlog/services/auth_service.dart';
-import 'second_screen.dart';
+import 'task_screen.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _isLoadingG = false;
+
   @override
   void initState() {
     super.initState();
@@ -87,6 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               email = value;
                             },
                             decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 18),
                               filled: true,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18)),
@@ -147,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: IconButton(
                                   icon: Icon(passwordVisible
                                       ? Icons.visibility
-                                      : Icons.visibility_off),
+                                      : Icons.visibility_off,color: Colors.white60,),
                                   onPressed: () {
                                     setState(
                                       () {
@@ -178,18 +181,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     _isLoading = false;
                                   });
-                                  Navigator.pushNamed(context, SecondScreen.id);
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => TaskScreen()));
                                 }
                               } catch (e) {
                                 print("Error in firebase authentication \n $e");
                                 setState(() {
-                                      _isLoading = false;
-                                    });
+                                  _isLoading = false;
+                                });
                               }
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                              shape: const StadiumBorder()),
+                              shape: const StadiumBorder(),
+                              backgroundColor: Colors.blueGrey),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -197,15 +205,18 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: _isLoading ? const ButtonLoadingWidget() : const Text(
-                                  ' Log In',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                child: _isLoading
+                                    ? const ButtonLoadingWidget()
+                                    : const Text(
+                                        ' Log In',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
                               ),
                             ),
                           ),
@@ -258,30 +269,38 @@ class _LoginScreenState extends State<LoginScreen> {
                                     setState(() {
                                       _isLoadingG = false;
                                     });
-                                    Navigator.pushNamed(
-                                        context, SecondScreen.id);
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                TaskScreen()));
                                   }
                                 } catch (e) {
                                   print("Error in google authentication \n $e");
                                   setState(() {
-                                      _isLoadingG = false;
-                                    });
+                                    _isLoadingG = false;
+                                  });
                                 }
 
                                 // ignore: use_build_context_synchronously
                               },
-                              label: _isLoadingG ? const ButtonLoadingWidget() : const Text(
-                                'Sign-In with Google',
-                                style: TextStyle(color: Colors.black54),
-                                textScaleFactor: 1.05,
-                              ),
+                              label: _isLoadingG
+                                  ? const ButtonLoadingWidget()
+                                  : const Text(
+                                      'Sign-In with Google',
+                                      style: TextStyle(color: Colors.black54),
+                                      textScaleFactor: 1.05,
+                                    ),
                               icon: Padding(
                                 padding: const EdgeInsets.all(2),
-                                child: _isLoadingG ? null : Image.asset(
-                                  'assets/images/google.png',
-                                  height: 30,
-                                  width: 30,
-                                ),
+                                child: _isLoadingG
+                                    ? null
+                                    : Image.asset(
+                                        'assets/images/google.png',
+                                        height: 30,
+                                        width: 30,
+                                      ),
                               ),
                               backgroundColor:
                                   Color.fromARGB(255, 213, 233, 245),

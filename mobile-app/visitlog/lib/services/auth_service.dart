@@ -4,6 +4,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  // ignore: prefer_typing_uninitialized_variables
+  
+  
 
   //Google Sign In
   signInWithGoogle() async {
@@ -32,7 +35,7 @@ class AuthService {
       //      print("Signed in with ${user.uid}");
       return user;
     } catch (e) {
-      print("Erroe with sign in $e") ;
+      print("Erroe with sign in $e");
     }
   }
 
