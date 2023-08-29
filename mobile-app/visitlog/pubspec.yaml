@@ -41,6 +41,7 @@ dependencies:
   firebase_core: ^2.15.1
   # cloud_firestore: ^4.9.0
   google_sign_in: ^6.1.4
+  form_field_validator: ^1.1.0
   # validators: ^3.0.0
   # loading_overlay: ^0.3.0
   # rflutter_alert: ^2.0.7

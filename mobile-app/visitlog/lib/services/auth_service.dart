@@ -22,7 +22,18 @@ class AuthService {
     // finally, lets sign in
     final authResult = await _auth.signInWithCredential(credential);
 
-    return authResult.user;
+    return authResult;
+  }
+
+  signInwithEmail(String email, String password) async {
+    try {
+      final user = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      //      print("Signed in with ${user.uid}");
+      return user;
+    } catch (e) {
+      print("Erroe with sign in $e") ;
+    }
   }
 
   signOutGoogle() async {
