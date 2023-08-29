@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'screens/second_screen.dart';
 // import 'package:device_preview/device_preview.dart';
 // import 'package:flutter/foundation.dart';
 import 'firebase_options.dart';
@@ -35,18 +34,16 @@ class MyApp extends StatelessWidget {
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
       theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.blueGrey,
-      ),
-      darkTheme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blueGrey,
       ),
-      initialRoute: LoginScreen.id,
-      routes: {
-        LoginScreen.id: (context) => LoginScreen(),
-        SecondScreen.id:(context) => SecondScreen(),
-      },
+      darkTheme: ThemeData(
+         brightness: Brightness.dark,
+        primarySwatch: Colors.blueGrey,
+      ),
+      themeMode: ThemeMode.dark,
+      home: LoginScreen(),
+      
     );
   }
 }
