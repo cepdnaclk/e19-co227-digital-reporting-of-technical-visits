@@ -88,11 +88,11 @@ class DrawerWidget extends StatelessWidget {
         break;
       case 1:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const JobCard()));
+            context, MaterialPageRoute(builder: (context) => JobCard()));
         break;
       case 2:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Profile()));
+            context, MaterialPageRoute(builder: (context) => Profile()));
         break;
       case 3:
         await AuthService().signOutGoogle();

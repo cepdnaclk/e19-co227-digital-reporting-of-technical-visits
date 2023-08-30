@@ -14,7 +14,7 @@ class ButtonLoadingWidget extends StatelessWidget {
           child: CircularProgressIndicator( color: Colors.white,), //TODO: add progress indicator
         ),
         SizedBox(width: 15,),
-        Text("Loading",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black87),)
+        Text("Loading",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),)
       ],
     );
   }
