@@ -43,6 +43,8 @@ dependencies:
   google_sign_in: ^6.1.4
   form_field_validator: ^1.1.0
   hidden_drawer_menu: ^3.0.1
+  animate_do: ^3.0.2
+  responsive_sizer: ^3.1.1
   # validators: ^3.0.0
   # loading_overlay: ^0.3.0
   # rflutter_alert: ^2.0.7
@@ -79,6 +81,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/
     - assets/images/214939.jpg
     - assets/images/214940.png
     - assets/images/google.png

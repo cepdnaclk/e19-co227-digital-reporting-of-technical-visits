@@ -13,7 +13,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Map userData = {};
   bool passwordVisible = false;
   late String email;
   late String password;
@@ -148,9 +147,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 padding: const EdgeInsetsDirectional.only(
                                     start: 20, end: 20),
                                 child: IconButton(
-                                  icon: Icon(passwordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,color: Colors.white60,),
+                                  icon: Icon(
+                                    passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.white60,
+                                  ),
                                   onPressed: () {
                                     setState(
                                       () {
@@ -239,7 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     style: TextStyle(
                                       color: Colors.black54,
                                       fontSize: 20,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.w700,
                                     ),
                                   ),
                                 ),
@@ -289,8 +291,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ? const ButtonLoadingWidget()
                                   : const Text(
                                       'Sign-In with Google',
-                                      style: TextStyle(color: Colors.black54),
-                                      textScaleFactor: 1.05,
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      textScaleFactor: 1.1,
                                     ),
                               icon: Padding(
                                 padding: const EdgeInsets.all(2),
