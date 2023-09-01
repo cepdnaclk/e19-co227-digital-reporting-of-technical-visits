@@ -23,13 +23,13 @@ If they are not installed, follow the official installation guide: [Flutter Inst
 1. Clone the repository to your local machine:
 
    ```shell
-   git clone https://github.com/your-username/your-flutter-project.git
+   git clone https://github.com/cepdnaclk/e19-co227-digital-reporting-of-technical-visits.git
    ```
 
 2. Navigate to the project folder:
 
    ```shell
-   cd your-flutter-project
+   cd mobile-app/visitlog
    ```
 
 3. Install the project dependencies:
