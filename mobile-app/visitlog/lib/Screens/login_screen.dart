@@ -199,11 +199,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           style: ElevatedButton.styleFrom(
                               shape: const StadiumBorder(),
-                              backgroundColor: Colors.blueGrey),
+                              backgroundColor: Color.fromARGB(255, 76, 98, 109)),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.blueGrey,
+                              color: const Color.fromARGB(255, 76, 98, 109),
                             ),
                             child: Center(
                               child: Padding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:visitlog/Components/profile_button.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class UpperWidgetBar extends StatelessWidget {
   const UpperWidgetBar({
@@ -14,7 +15,7 @@ class UpperWidgetBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       SizedBox(
-        width: 15,
+        width: 6.0.w,
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -28,7 +29,7 @@ class UpperWidgetBar extends StatelessWidget {
             },
             child: Image.asset(
               'assets/images/Logo1.png',
-              height: MediaQuery.of(context).size.height / 14.5,
+              height: MediaQuery.of(context).size.width / 6.5,
             ),
           ),
         ),

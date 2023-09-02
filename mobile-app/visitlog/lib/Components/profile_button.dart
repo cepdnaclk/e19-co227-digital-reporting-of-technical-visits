@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:visitlog/Screens/hidden_drawer.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/services/auth_service.dart';
 
 // ignore: must_be_immutable
 class ProfileButton extends StatefulWidget {
-  ProfileButton({
+  const ProfileButton({
     super.key,
   });
 
@@ -84,7 +84,7 @@ class _ProfileButtonState extends State<ProfileButton> {
                                 Text(
                                   UserEmail ?? '',
                                   style: const TextStyle(
-                                      fontSize: 10, color: Colors.black87),
+                                      fontSize: 10, color: Colors.black54),
                                 ),
                               ],
                             );
@@ -106,7 +106,7 @@ class _ProfileButtonState extends State<ProfileButton> {
             ),
           ),
         ),
-        const SizedBox(width: 20),
+        SizedBox(width: 6.0.w),
       ],
     );
   }
