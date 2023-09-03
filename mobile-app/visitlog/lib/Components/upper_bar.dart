@@ -22,7 +22,7 @@ class UpperWidgetBar extends StatelessWidget {
         child: FadeInLeft(
           delay: const Duration(seconds: 1),
           from: 100,
-          duration: Duration(milliseconds: 500),
+          duration: Duration(milliseconds: 300),
           child: GestureDetector(
             onTap: () {
               _globalKey.currentState?.openDrawer();
@@ -40,7 +40,7 @@ class UpperWidgetBar extends StatelessWidget {
         child: FadeInRight(
             from: 100,
             delay: Duration(seconds: 1),
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 300),
             child: ProfileButton()),
       ),
     ]);

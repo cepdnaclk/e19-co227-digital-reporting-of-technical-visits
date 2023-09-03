@@ -19,7 +19,7 @@ class JobCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 5.0.h,
+              height: 6.0.h,
             ),
             UpperWidgetBar(globalKey: _globalKey),
             SizedBox(

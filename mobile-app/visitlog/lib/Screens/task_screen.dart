@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
-// import 'package:visitlog/Components/task_list.dart';
 import 'package:visitlog/Components/upper_bar.dart';
+import 'package:visitlog/Data/tasks.dart';
+import 'package:visitlog/Widgets/list_items.dart';
 
 class TaskScreen extends StatefulWidget {
   TaskScreen({super.key});
@@ -15,27 +16,11 @@ class TaskScreen extends StatefulWidget {
 class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
-  final List<Map<String, String>> items = [
-    {
-      'name': 'Lanka Builders',
-      'subTopic': 'Construction Site inspection',
-      'description': 'Description for Item 1',
-    },
-    {
-      'name': 'CoolAir Solutions',
-      'subTopic': 'Air Conditioning Repair',
-      'description': 'Description for Item 2',
-    },
-    {
-      'name': 'MedTech Lanka',
-      'subTopic': 'Medical Device Calibration',
-      'description': 'Description for Item 3',
-    },
-  ];
+  final List<Map<String, String>> items = TaskList().items;
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 2, vsync: this);
+    TabController tabController = TabController(length: 2, vsync: this);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -45,7 +30,7 @@ class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 5.0.h,
+              height: 6.0.h,
             ),
             UpperWidgetBar(globalKey: _globalKey),
             SizedBox(
@@ -77,7 +62,7 @@ class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TabBar(
-                      controller: _tabController,
+                      controller: tabController,
                       isScrollable: true,
                       labelPadding: const EdgeInsets.only(left: 20, right: 20),
                       labelColor: const Color.fromARGB(255, 17, 84, 139),
@@ -108,137 +93,35 @@ class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
                 ),
               ],
             ),
-            SizedBox(
-              height: 1.0.h,
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              height: 70,
-              width: double.maxFinite,
+            Expanded(
               child: TabBarView(
-                controller: _tabController,
+                controller: tabController,
                 children: [
-                 SizedBox(
-                    height: 32,
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        elevation: 3, // Adjust elevation as needed
-                        margin: EdgeInsets.all(4.0), // Add margin for spacing
-                        child: ListTile(
-                          visualDensity:
-                              VisualDensity(horizontal: 0, vertical: -4),
-                          title: Text('Lanka Builders'),
-                          subtitle: Text('Construction Site inspection'),
-                          trailing: IconButton(
-                            icon: Icon(Icons.arrow_forward),
-                            onPressed: () {
-                              _showDescriptionDialog(
-                                  context, 'Description for Item 1');
-                            },
-                          ),
-                          onTap: () {
-                            _showDescriptionDialog(
-                                context, 'Description for Item 1');
-                          },
-                        )),
+                  ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return BuildItem(
+                        index: index,
+                      );
+                    },
                   ),
-                  SizedBox(
-                    height: 32,
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        elevation: 3, // Adjust elevation as needed
-                        margin: EdgeInsets.all(4.0), // Add margin for spacing
-                        child: ListTile(
-                          visualDensity:
-                              VisualDensity(horizontal: 0, vertical: -4),
-                          title: Text('Lanka Builders'),
-                          subtitle: Text('Construction Site inspection'),
-                          trailing: IconButton(
-                            icon: Icon(Icons.arrow_forward),
-                            onPressed: () {
-                              _showDescriptionDialog(
-                                  context, 'Description for Item 1');
-                            },
-                          ),
-                          onTap: () {
-                            _showDescriptionDialog(
-                                context, 'Description for Item 1');
-                          },
-                        )),
+                  ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return BuildItem(
+                        index: index,
+                      );
+                    },
                   )
                 ],
               ),
+            ),
+            SizedBox(
+              height: 6.0.h,
             )
           ],
         ),
       ),
-    );
-  }
-
-  // Widget buildList() {
-  //   return ListView.builder(
-  //     scrollDirection: Axis.horizontal,
-  //     itemCount: items.length,
-  //     itemBuilder: (context, index) {
-  //       return Card(
-  //         shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(10.0),
-  //         ),
-  //         elevation: 3, // Adjust elevation as needed
-  //         margin: EdgeInsets.all(4.0), // Add margin for spacing
-  //         child: ListTile(
-  //           title: Text(items[index]['name'] ?? ''),
-  //           subtitle: Text(items[index]['subTopic'] ?? ''),
-  //           trailing: IconButton(
-  //             icon: Icon(Icons.arrow_forward),
-  //             onPressed: () {
-  //               _showDescriptionDialog(
-  //                   context, items[index]['description'] ?? '');
-  //             },
-  //           ),
-  //           onTap: () {
-  //             _showDescriptionDialog(context, items[index]['description']!);
-  //           },
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
-
-  void _showDescriptionDialog(BuildContext context, String description) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Description',
-            style: TextStyle(color: Colors.black54),
-          ),
-          content: Text(
-            description,
-            style: TextStyle(color: Colors.black54),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Close',
-                style: TextStyle(color: Colors.black45),
-              ),
-            ),
-          ],
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-        );
-      },
     );
   }
 }
