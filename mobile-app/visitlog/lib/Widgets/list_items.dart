@@ -79,7 +79,7 @@ class BuildItem extends StatelessWidget {
               //   child: _TopPortion(topic: topic, subTopic: subTopic),
               // ),
               Container(
-                height: 250,
+                height: 280,
                 child: Column(
                   children: [
                     SizedBox(
