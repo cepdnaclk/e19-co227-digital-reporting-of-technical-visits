@@ -70,7 +70,6 @@ class BuildItem extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          
           child: Padding(
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
@@ -83,24 +82,24 @@ class BuildItem extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 100,
-                      child: _TopPortion(topic: topic, subTopic: subTopic)),
+                        height: 100,
+                        child: _TopPortion(topic: topic, subTopic: subTopic)),
                     Padding(
-                      padding: const EdgeInsets.only(left:20.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
-                        leading: Icon(Icons.location_city),
+                        leading: const Icon(Icons.location_city),
                         title: Text(topic),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:20.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
-                        leading: Icon(Icons.location_on),
+                        leading: const Icon(Icons.location_on),
                         title: Text(topic),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:20.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
                         leading: Icon(Icons.lock_clock),
                         title: Text(topic),
@@ -168,7 +167,7 @@ class _TopPortion extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.only(left:8.0),
+            padding: const EdgeInsets.only(left: 8.0),
             child: ListTile(
               leading: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -176,7 +175,10 @@ class _TopPortion extends StatelessWidget {
                   Icon(Icons.work, color: Colors.white),
                 ],
               ),
-              title: Text(subTopic, style: TextStyle(color: Colors.white),),
+              title: Text(
+                subTopic,
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
         )
