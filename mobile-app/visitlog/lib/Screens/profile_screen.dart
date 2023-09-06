@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:visitlog/Components/drawer.dart';
+import 'package:visitlog/Widgets/bottom_navigation.dart';
 import 'package:visitlog/services/auth_service.dart';
 
 // ignore: must_be_immutable
@@ -22,6 +24,7 @@ class Profile extends StatelessWidget {
       home: Scaffold(
         key: _globalKey,
         drawer: DrawerWidget(id: id),
+        bottomNavigationBar: NavBar(id: id, indexNum: 2,),
         body: Column(
           children: [
             Expanded(flex: 2, child: _TopPortion(globalKey: _globalKey)),
