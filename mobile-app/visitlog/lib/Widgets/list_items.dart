@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Data/tasks.dart';
 
 class BuildItem extends StatelessWidget {
@@ -12,7 +13,7 @@ class BuildItem extends StatelessWidget {
       child: SizedBox(
         height: 75,
         child: Card(
-          color: const Color.fromARGB(220, 34, 39, 41),
+          color: Color.fromARGB(255, 55, 55, 55),
           shadowColor: const Color.fromARGB(220, 50, 152, 192),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -30,7 +31,7 @@ class BuildItem extends StatelessWidget {
               ),
               title: Text(
                 items[index]['name'] ?? '',
-                style: const TextStyle(color: Colors.white70),
+                style: const TextStyle(color: Colors.white),
               ),
               subtitle: Text(
                 items[index]['subTopic'] ?? '',
@@ -44,18 +45,24 @@ class BuildItem extends StatelessWidget {
                 ),
                 onPressed: () {
                   _showDescriptionDialog(
-                      context,
-                      items[index]['description'] ?? '',
-                      items[index]['name'] ?? '',
-                      items[index]['subTopic'] ?? '');
+                    context,
+                    items[index]['description'] ?? '',
+                    items[index]['name'] ?? '',
+                    items[index]['subTopic'] ?? '',
+                    items[index]['location'] ?? '',
+                    items[index]['time'] ?? '',
+                  );
                 },
               ),
               onTap: () {
                 _showDescriptionDialog(
-                    context,
-                    items[index]['description'] ?? '',
-                    items[index]['name'] ?? '',
-                    items[index]['subTopic'] ?? '');
+                  context,
+                  items[index]['description'] ?? '',
+                  items[index]['name'] ?? '',
+                  items[index]['subTopic'] ?? '',
+                  items[index]['location'] ?? '',
+                  items[index]['time'] ?? '',
+                );
               },
             ),
           ),
@@ -64,12 +71,16 @@ class BuildItem extends StatelessWidget {
     );
   }
 
-  void _showDescriptionDialog(
-      BuildContext context, String description, String topic, String subTopic) {
+  void _showDescriptionDialog(BuildContext context, String description,
+      String topic, String subTopic, String location, String time) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return Dialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
@@ -78,7 +89,7 @@ class BuildItem extends StatelessWidget {
               //   child: _TopPortion(topic: topic, subTopic: subTopic),
               // ),
               Container(
-                height: 280,
+                height: 320,
                 child: Column(
                   children: [
                     SizedBox(
@@ -88,46 +99,72 @@ class BuildItem extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
                         leading: const Icon(Icons.location_city),
-                        title: Text(topic),
+                        title: Text(
+                          topic,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
                         leading: const Icon(Icons.location_on),
-                        title: Text(topic),
+                        title: Text(
+                          location,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
-                        leading: Icon(Icons.lock_clock),
-                        title: Text(topic),
+                        leading: const Icon(Icons.lock_clock),
+                        title: Text(
+                          time,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
                       ),
-                    )
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                shape: const StadiumBorder(),
+                                backgroundColor: Colors.blueGrey,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    'Get in to the JOB',
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                  SizedBox(width: 1.0.w),
+                                  const Icon(Icons.arrow_forward)
+                                ],
+                              ),
+                            ),
+                          ],
+                        ))
                   ],
                 ),
               )
             ]),
-          ),
-          // content: Text(
-          //   description,
-          //   style: const TextStyle(color: Colors.black54),
-          // ),
-          // actions: [
-          //   TextButton(
-          //     onPressed: () {
-          //       Navigator.of(context).pop();
-          //     },
-          //     child: const Text(
-          //       'Close',
-          //       style: TextStyle(color: Colors.black45),
-          //     ),
-          //   ),
-          // ],
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
           ),
         );
       },
@@ -177,7 +214,10 @@ class _TopPortion extends StatelessWidget {
               ),
               title: Text(
                 subTopic,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16),
               ),
             ),
           ),
