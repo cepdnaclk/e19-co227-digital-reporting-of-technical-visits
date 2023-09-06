@@ -89,11 +89,11 @@ class BuildItem extends StatelessWidget {
               //   child: _TopPortion(topic: topic, subTopic: subTopic),
               // ),
               Container(
-                height: 320,
+                height: 330,
                 child: Column(
                   children: [
                     SizedBox(
-                        height: 100,
+                        height: 92,
                         child: _TopPortion(topic: topic, subTopic: subTopic)),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
@@ -135,7 +135,11 @@ class BuildItem extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.only(
+                          left: 20.0,
+                          right: 20.0,
+                          bottom: 20.0,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.center,
