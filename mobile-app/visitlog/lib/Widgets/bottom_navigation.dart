@@ -22,10 +22,10 @@ class NavBar extends StatelessWidget {
       onTap: (index) {
         selectedItem(context, index);
       },
-      items: [
-        Icon(Icons.task),
-        Icon(Icons.book),
-        Icon(Icons.account_circle),
+      items: const [
+        Icon(Icons.task,size: 30,),
+        Icon(Icons.book,size: 30,),
+        Icon(Icons.account_circle,size: 30,),
       ],
     );
   }
