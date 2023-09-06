@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
 import 'package:visitlog/Components/upper_bar.dart';
 import 'package:visitlog/Data/tasks.dart';
+import 'package:visitlog/Widgets/bottom_navigation.dart';
 import 'package:visitlog/Widgets/list_items.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -15,7 +17,7 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-
+  static String id = 'task_screen';
   final List<Map<String, String>> items = TaskList().items;
 
   @override
@@ -26,6 +28,7 @@ class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
       home: Scaffold(
         key: _globalKey,
         drawer: DrawerWidget(id: TaskScreen.id),
+        bottomNavigationBar: NavBar(id: id, indexNum: 0,),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

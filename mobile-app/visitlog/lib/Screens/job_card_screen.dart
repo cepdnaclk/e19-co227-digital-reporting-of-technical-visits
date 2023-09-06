@@ -1,7 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
 import 'package:visitlog/Components/upper_bar.dart';
+
+import '../Widgets/bottom_navigation.dart';
 
 class JobCard extends StatelessWidget {
   JobCard({super.key});
@@ -15,6 +18,7 @@ class JobCard extends StatelessWidget {
       home: Scaffold(
         key: _globalKey,
         drawer: DrawerWidget(id: id),
+        bottomNavigationBar: NavBar(id: id, indexNum: 1,),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

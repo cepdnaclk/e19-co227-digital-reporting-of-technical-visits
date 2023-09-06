@@ -14,8 +14,8 @@ Future main() async {
   runApp(const MyApp());
 }
 
-// // ------ Uncomment when using device Preview ---------
-// void main() async {
+// ------ Uncomment when using device Preview ---------
+// Future main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
 //   await Firebase.initializeApp(
 //     options: DefaultFirebaseOptions.currentPlatform,
