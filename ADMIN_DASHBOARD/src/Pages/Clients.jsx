@@ -4,7 +4,7 @@ export const Clients = () =>{
 
     return(
         <div>
-            <p>Client Page</p>
+            <p>Client's Page</p>
             <Navigation/>
             
         </div>
