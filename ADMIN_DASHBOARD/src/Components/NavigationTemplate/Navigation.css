@@ -1,7 +1,7 @@
 .navigation {
-  position: sticky;
+  position: relative;
   top: 0;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   width: 20%;
   min-height: 100vh;
