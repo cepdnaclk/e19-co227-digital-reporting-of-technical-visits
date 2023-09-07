@@ -1,19 +1,22 @@
 import React from "react";
-import "./Login.css";
+import "../Styles/Login.css";
 import { auth, googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword,signInWithPopup,signOut } from "firebase/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+export const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   
   const signIn = async (e) => {
     e.preventDefault();
     try{
         await signInWithEmailAndPassword(auth,email,password);
-        console.log(auth?.currentUser?.displayName || "Joghn 000e");
+        
+        navigate("/n")
     }
     catch(err){
         console.log(err);
@@ -24,6 +27,7 @@ const Login = () => {
     try{
         await signInWithPopup(auth,googleProvider);
         console.log(auth?.currentUser?.displayName || "Joghn 000e");
+        navigate("/n")
     }
     catch(err){
         console.log(err);
@@ -79,4 +83,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+

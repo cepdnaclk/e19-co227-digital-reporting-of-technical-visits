@@ -1,15 +1,32 @@
 import "./App.css";
-import Login from "./Login/Login";
-import Navigation from "./components/NavigationTemplate/Navigation";
+import {Login} from "./Pages/Login";
+import {Navigation} from "./components/NavigationTemplate/Navigation";
+import { Routes,Route } from "react-router-dom";
+import { Clients } from "./Pages/Clients";
+import { Dashboard } from "./Pages/Dashboard";
+import { Tasks } from "./Pages/Tasks";
+import { TechnicianAssign } from "./Pages/TechnicianAssign";
+import { Technician } from "./Pages/Technicians";
 
 function App() {
   return (
     <div className="App">
-      {/*<Navigation />*/}
+    <Routes>
+    
+      <Route path="/n" element={<Navigation />}/>
 
       {/*Main />*/}
-      <Login />
+      <Route path="/" element={<Login />} />
+      <Route path="/clients" element={<Clients />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/tasks" element={<Tasks />} />
+      <Route path="/techassign" element={<TechnicianAssign/>} />
+      <Route path="/tech" element={<Technician />} />
+    
+
+    </Routes>
     </div>
+    
   );
 }
 
