@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import Nav from "../NaviconTemplate/Nav";
 import { auth } from "../../config/firebase";
-import "./Navigation.css";
+
 import { useNavigate } from "react-router-dom";
+
+import "./Navigation.scss";
+
 
 export const Navigation = () => {
   const navigate = useNavigate();

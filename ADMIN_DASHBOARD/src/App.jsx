@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import {Login} from "./Pages/Login";
 import {Navigation} from "./components/NavigationTemplate/Navigation";
 import { Routes,Route } from "react-router-dom";
