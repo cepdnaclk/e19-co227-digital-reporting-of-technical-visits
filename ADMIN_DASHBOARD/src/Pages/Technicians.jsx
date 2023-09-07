@@ -1,4 +1,4 @@
-import {Navigation} from "../components/NavigationTemplate/Navigation";
+import {Navigation} from "../Components/NavigationTemplate/Navigation";
 import { db } from "../config/firebase";
 import { useState,useEffect } from "react";
 import { collection,doc, getDoc } from "firebase/firestore";

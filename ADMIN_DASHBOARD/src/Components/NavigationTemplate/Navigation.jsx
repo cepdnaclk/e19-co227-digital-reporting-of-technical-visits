@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Nav from "../NaviconTemplate/Nav";
+import Nav from "../NavIconTemplate/Nav";
 import { auth } from "../../config/firebase";
 
 import { useNavigate } from "react-router-dom";
