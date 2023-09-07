@@ -1,12 +1,10 @@
-import {Navigation} from "../Components/NavigationTemplate/Navigation";
+import { Navigation } from "../Components/NavigationTemplate/Navigation";
 
-export const Clients = () =>{
-
-    return(
-        <div>
-            <p>Client Main Page</p>
-            <Navigation/>
-            
-        </div>
-    )
-}
+export const Clients = () => {
+  return (
+    <div>
+      <p>Client Main Page</p>
+      <Navigation />
+    </div>
+  );
+};
