@@ -3,11 +3,13 @@ import Nav from "../NavIconTemplate/Nav";
 import { auth } from "../../config/firebase";
 
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import "./Navigation.scss";
 
-
 export const Navigation = () => {
+
+  const location = useLocation();
   const navigate = useNavigate();
   const handleItemClick = (path) => {
     navigate(path);
@@ -19,45 +21,52 @@ export const Navigation = () => {
   }, []);
   return (
     <div className="navigation">
-      <header>
+      <div className="header">
         <div className="profile">
           <img src="/logo.jpg" alt="user-img" className="profile-img" />
         </div>
-        
-        <span></span>
-      </header>
-      <ul >
-          <li
-            
-            onClick={() => handleItemClick("/dashboard")}
-          >
-            Dashboard<span></span>
+      </div>
+
+      <span></span>
+
+      <ul className="item-list">
+        <li 
+        className={location.pathname === "/dashboard" ? "active" : ""}
+        onClick={() => handleItemClick("/dashboard")}>
+          Dashboard<span></span>
+        </li>
+        <li 
+        className={location.pathname === "/clients" ? "active" : ""}
+        onClick={() => handleItemClick("/clients")}>
+          Clients<span></span>
+        </li>
+        <li 
+        className={location.pathname === "/tech" ? "active" : ""}
+        onClick={() => handleItemClick("/tech")}>
+          Technicians<span></span>
+        </li>
+        <li 
+        className={location.pathname === "/tasks" ? "active" : ""}
+        onClick={() => handleItemClick("/tasks")}>
+          Tasks<span></span>
+        </li>
+      </ul>
+      <hr />
+      <div>
+        <ul className="item-list">
+          <li 
+          className={location.pathname === "/techassign" ? "active" : ""}
+          onClick={() => handleItemClick("/techassign")}>
+            Technician Assign<span></span>
           </li>
-          <li
-            
-            onClick={() => handleItemClick("/clients")}
-          >
-            Clients<span></span>
-          </li>
-          <li
-            
-            onClick={() => handleItemClick("/tech")}
-          >
-            Technicians<span></span>
-          </li>
-          <li
-            
-            onClick={() => handleItemClick("/tasks")}
-          >
-            Tasks<span></span>
-          </li>
-          <li
-            
-            onClick={() => handleItemClick("/techassign")}
-          >
-           Technician Assign<span></span>
+          <li 
+          className={location.pathname === "/settings" ? "active" : ""}
+          onClick={() => handleItemClick("/settings")}>
+            Settings<span></span>
           </li>
         </ul>
+      </div>
+
       <Nav />
     </div>
   );
