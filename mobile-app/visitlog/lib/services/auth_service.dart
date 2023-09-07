@@ -35,6 +35,7 @@ class AuthService {
       //      print("Signed in with ${user.uid}");
       return user;
     } catch (e) {
+      // ignore: avoid_print
       print("Erroe with sign in $e");
     }
   }
