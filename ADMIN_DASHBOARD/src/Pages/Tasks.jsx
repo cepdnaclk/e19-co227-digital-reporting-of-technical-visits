@@ -1,4 +1,4 @@
-import {Navigation} from "../components/NavigationTemplate/Navigation";
+import {Navigation} from "../Components/NavigationTemplate/Navigation";
 
 export const Tasks = () =>{
 
