@@ -1,7 +1,41 @@
 import React from "react";
 import "./Login.css";
+import { auth, googleProvider } from "../config/firebase";
+import { createUserWithEmailAndPassword,signInWithPopup,signOut } from "firebase/auth";
+import { useState } from "react";
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const signIn = async () => {
+    try{
+        await createUserWithEmailAndPassword(auth,email,password);
+    }
+    catch(err){
+        console.log(err);
+    }
+    
+  };
+  const signInWithGoogle = async () => {
+    try{
+        await signInWithPopup(auth,googleProvider);
+    }
+    catch(err){
+        console.log(err);
+    }
+    
+  };
+  const logout = async () => {
+    try{
+        await signOut(auth);
+    }
+    catch(err){
+        console.log(err);
+    }
+    
+  };
   return (
     <div className="login-container">
       <div className="login-left">
