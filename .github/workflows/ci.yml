@@ -28,6 +28,8 @@ jobs:
 
       - name: Build and test
         run: |
-          cd ADMIN_DASHBOARD        
+          cd ADMIN_DASHBOARD
+          echo "Current directory: $(pwd)"
+          echo "Node.js version: $(node --version)"
           npm run build
           
