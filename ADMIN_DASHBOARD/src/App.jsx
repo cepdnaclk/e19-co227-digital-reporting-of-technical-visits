@@ -1,6 +1,6 @@
 import "./App.scss";
-import {Login} from "./Pages/Login";
-import {Navigation} from "./components/NavigationTemplate/Navigation";
+import { Login } from "./Pages/Login";
+import { Navigation } from "./Components/NavigationTemplate/Navigation";
 import { Routes,Route } from "react-router-dom";
 import { Clients } from "./Pages/Clients";
 import { Dashboard } from "./Pages/Dashboard";
