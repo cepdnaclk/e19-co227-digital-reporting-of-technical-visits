@@ -8,7 +8,7 @@ import 'package:visitlog/Widgets/bottom_navigation.dart';
 import 'package:visitlog/Widgets/list_items.dart';
 
 class TaskScreen extends StatefulWidget {
-  TaskScreen({super.key});
+  const TaskScreen({super.key});
   static String id = 'task_screen';
 
   @override
