@@ -8,6 +8,7 @@
   color: darkgrey; /* Dark grey text color */
   background-color: white; /* White background */
   padding: 5px 10px;
+  align-items: center;
   
 }
 
@@ -55,11 +56,13 @@
 .item-list {
   font-size: 16px;
   padding-top: 20px;
+  justify-content: center;
+  list-style-type: none;
 }
 
 .navigation li.active {
   font-size: 25px;
-  color:blue;
+  color:rgb(25,74,119);
 	// box-shadow:
 	//   0 2.3px 2.7px rgba(0, 0, 0, 0.084),
 	//   0 6.3px 7.5px rgba(0, 0, 0, 0.12),
