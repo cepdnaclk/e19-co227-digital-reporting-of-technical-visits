@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { auth, googleProvider } from "../config/firebase";
-import { createUserWithEmailAndPassword,signInWithPopup,signOut } from "firebase/auth";
+import { signInWithEmailAndPassword,signInWithPopup,signOut } from "firebase/auth";
 import { useState } from "react";
 
 const Login = () => {
@@ -9,9 +9,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
-  const signIn = async () => {
+  const signIn = async (e) => {
+    e.preventDefault();
     try{
-        await createUserWithEmailAndPassword(auth,email,password);
+        await signInWithEmailAndPassword(auth,email,password);
+        console.log(auth?.currentUser?.displayName || "Joghn 000e");
     }
     catch(err){
         console.log(err);
@@ -21,6 +23,7 @@ const Login = () => {
   const signInWithGoogle = async () => {
     try{
         await signInWithPopup(auth,googleProvider);
+        console.log(auth?.currentUser?.displayName || "Joghn 000e");
     }
     catch(err){
         console.log(err);
@@ -42,12 +45,12 @@ const Login = () => {
         <div className="login-left">
           <img src="./logo.jpg" alt="Logo" className="logo" />
         </div>
-        <div className="login-right">
+        <form className="login-right" onSubmit={signIn}>
           <h2>Welcome, Please login to your account.</h2>
-          <div className="google-signin">
+          <button className="google-signin" onClick={signInWithGoogle}>
             <img src="src\assets\google.png" alt="" className="google-logo"></img>
-            <p>Sign in with Google</p>
-          </div>
+            <p >Sign in with Google</p>
+          </button>
           <span>LOGIN WITH YOUR CREDENTIALS</span>
           <div className="input-container">
             <label htmlFor="username">Username or Email</label>
@@ -55,6 +58,7 @@ const Login = () => {
               type="text"
               id="username"
               placeholder="Enter your username or email"
+              onChange={(input)=>{setEmail(input.target.value)}}
             />
           </div>
           <div className="input-container">
@@ -63,12 +67,13 @@ const Login = () => {
               type="password"
               id="password"
               placeholder="Enter your password"
+              onChange={(input)=>{setPassword(input.target.value)}}
             />
           </div>
           <div className="login-button">
-            <button>Login</button>
+            <button type="submit">Login</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
