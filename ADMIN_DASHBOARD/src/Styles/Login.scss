@@ -48,6 +48,9 @@ html {
 .login-right {
   flex: 1;
   padding: 80px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
   max-width: 600px;
   background-color: white;
   border-radius: 10px;
@@ -61,14 +64,23 @@ html {
   }
 }
 
+.google-signin-container{
+  justify-content: center;
+  justify-items: center;
+}
+
 .google-signin {
   flex-direction: row;
   gap: 20px;
   justify-content: center;
+  text-align: center;
+  align-content: center;
   background-color: #cfdff7ea;
   color: rgb(90, 89, 89);
   padding: 10px;
   padding-left: 2rem;
+  width: 30vw;
+  padding-right: 2rem;
   font-size: 1.15em;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 20px;
@@ -76,16 +88,17 @@ html {
   cursor: pointer;
   display: flex;
   align-items: center;
+  .google-logo {
+    width: 25px;
+    z-index: 4;
+  }
+
+  :hover {
+    background-color: #999;
+  }
 }
 
-.google-signin > .google-logo {
-  width: 25px;
-  z-index: 4;
-}
 
-.google-signin:hover {
-  background-color: #999;
-}
 
 .google-icon {
   font-size: 20px;
