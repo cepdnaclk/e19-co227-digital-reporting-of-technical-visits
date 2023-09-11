@@ -1,35 +1,48 @@
 .navigation {
-  position: sticky;
-  top: 20;
+  position: fixed;
+  top: 50%;
+  transform: translate(0%, -50%);
   display: flex;
   flex-direction: column;
-  width: 20%;
-  min-height: 100vh;
+  width: 15%;
+  min-width: 220px;
+  min-height: 90vh;
   color: darkgrey; /* Dark grey text color */
+  background-color: rgb(177, 209, 252); /* White background */
   background-color: white; /* White background */
   padding: 5px 10px;
   align-items: center;
-}
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 
-.navigation header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 25px 0 15px;
-  border-radius: 14px;
-  margin-bottom: 10px;
-}
+  .header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 25px 15px;
+    border-radius: 14px;
+    margin-top: 1rem;
+    margin-bottom: 10px;
 
-.navigation header::after {
-  position: absolute;
-  content: "";
-  height: 1px;
-  width: 80%;
-  background-color: rgba(0, 0, 0, 0.1); /* Dark grey line color */
-  bottom: 0;
+    &::after {
+      position: absolute;
+      content: "";
+      height: 1.5px;
+      width: 80%;
+      background-color: rgba(37, 37, 37, 0.2); /* Dark grey line color */
+      bottom: 0;
+    }
+  }
+
+  .line {
+    width: 80%;
+    border: none;
+    border-top: 1px solid #ccc; /* Change the color and style as needed */
+    margin: 20px 0; /* Adjust the margin spacing as needed */
+  }
 }
 
 .navigation header .profile {
@@ -52,15 +65,25 @@
 }
 
 .item-list {
-  font-size: 16px;
+  font-size: 17px;
   padding-top: 20px;
   justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.item-list-2 {
+  font-size: 28px;
+  padding-top: 20px;
+  padding-left: 10px;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
 }
 
 .navigation li.active {
-  font-size: 25px;
-  color: rgb(25, 74, 119);
+  color: rgb(22, 109, 190);
+  scale: 1.18;
   // box-shadow:
   //   0 2.3px 2.7px rgba(0, 0, 0, 0.084),
   //   0 6.3px 7.5px rgba(0, 0, 0, 0.12),

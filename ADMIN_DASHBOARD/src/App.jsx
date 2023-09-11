@@ -7,6 +7,7 @@ import { Dashboard } from "./Pages/Dashboard";
 import { Tasks } from "./Pages/Tasks";
 import { TechnicianAssign } from "./Pages/TechnicianAssign";
 import { Technician } from "./Pages/Technicians";
+import { Settings } from "./Pages/Settings";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/techassign" element={<TechnicianAssign />} />
         <Route path="/tech" element={<Technician />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </div>
   );
