@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import "./Navigation.scss";
-import { FaBuromobelexperte } from "react-icons/fa";
+import { FcSettings, FcOvertime,FcOrgUnit} from "react-icons/fc";
+import { FaTasks, FaUsers, FaCity} from "react-icons/fa";
 export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,46 +34,46 @@ export const Navigation = () => {
           className={location.pathname === "/dashboard" ? "active" : ""}
           onClick={() => handleItemClick("/dashboard")}
         >
-          <span>
-            <Nav title="Dashboard" Icon={FaBuromobelexperte} />
-          </span>
+          <Nav title="Dashboard" Icon={FcOrgUnit} />
         </li>
         <li
           className={location.pathname === "/clients" ? "active" : ""}
           onClick={() => handleItemClick("/clients")}
         >
-          Clients<span></span>
+          <Nav title="Clients" Icon={FaCity} />
         </li>
         <li
           className={location.pathname === "/tech" ? "active" : ""}
           onClick={() => handleItemClick("/tech")}
         >
-          Technicians<span></span>
+          <Nav title="Technicians" Icon={FaUsers} />
         </li>
         <li
           className={location.pathname === "/tasks" ? "active" : ""}
           onClick={() => handleItemClick("/tasks")}
         >
-          Tasks<span></span>
+          <Nav title="Tasks" Icon={FaTasks} />
+        </li>
+        </ul>
+        <hr className="line" />
+        <ul className="item-list-2">
+        <li
+          className={location.pathname === "/techassign" ? "active" : ""}
+          onClick={() => handleItemClick("/techassign")}
+        >
+          <Nav title="Technician Assign" Icon={FcOvertime} />
+        </li>
+        <li
+          className={location.pathname === "/settings" ? "active" : ""}
+          onClick={() => handleItemClick("/settings")}
+        >
+          <Nav title="Settings" Icon={FcSettings} />
         </li>
       </ul>
-      <hr />
-      <div>
-        <ul className="item-list">
-          <li
-            className={location.pathname === "/techassign" ? "active" : ""}
-            onClick={() => handleItemClick("/techassign")}
-          >
-            Technician Assign<span></span>
-          </li>
-          <li
-            className={location.pathname === "/settings" ? "active" : ""}
-            onClick={() => handleItemClick("/settings")}
-          >
-            Settings<span></span>
-          </li>
-        </ul>
-      </div>
+
+      <ul className="item-list">
+        
+      </ul>
     </div>
   );
 };

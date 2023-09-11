@@ -1,15 +1,15 @@
 import { Navigation } from "../Components/NavigationTemplate/Navigation";
 import UserCard from "../Components/UserCard";
-import "../Styles/Clients.scss";
+import "../Styles/Dashboard.scss";
 
-export const Clients = () => {
+export const Settings = () => {
   return (
     <div>
       <div className="container">
         <Navigation />
         <UserCard />
         <div className="name">
-          <p>Clients Page</p>
+          <p>Settings Page</p>
         </div>
       </div>
     </div>

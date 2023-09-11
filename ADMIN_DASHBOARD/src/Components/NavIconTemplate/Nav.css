@@ -1,6 +1,6 @@
 .nav {
   position: relative;
-  /* display: flex; */
+  display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 20px;
@@ -8,16 +8,16 @@
   overflow: hidden;
   cursor: pointer;
   transition: background-color 0.2s ease;
-}
 
-.nav:hover {
-  background-color: rgba(255, 255, 255, 0.158);
+  &:hover {
+    scale: 1.03;
+    background-color: rgba(255, 255, 255, 0.158);
+  }
 }
 
 h2 {
-  font-size: 15px;
-  font-family: raleway;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .icon {
