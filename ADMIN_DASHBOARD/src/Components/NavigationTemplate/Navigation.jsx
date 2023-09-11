@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import "./Navigation.scss";
-
+import { FaBuromobelexperte } from "react-icons/fa";
 export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,7 +33,9 @@ export const Navigation = () => {
           className={location.pathname === "/dashboard" ? "active" : ""}
           onClick={() => handleItemClick("/dashboard")}
         >
-          Dashboard<span></span>
+          <span>
+            <Nav title="Dashboard" Icon={FaBuromobelexperte} />
+          </span>
         </li>
         <li
           className={location.pathname === "/clients" ? "active" : ""}
@@ -71,8 +73,6 @@ export const Navigation = () => {
           </li>
         </ul>
       </div>
-
-      <Nav />
     </div>
   );
 };
