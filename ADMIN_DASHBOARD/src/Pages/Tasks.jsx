@@ -1,12 +1,11 @@
-import {Navigation} from "../components/NavigationTemplate/Navigation";
+import { Navigation } from "../Components/NavigationTemplate/Navigation";
 
-export const Tasks = () =>{
+export const Tasks = () => {
+  return (
+    <div>
+      <p>Tasks Page</p>
 
-    return(
-        <div>
-            <p>Tasks Page</p>
-            
-            <Navigation/>
-        </div>
-    )
-}
+      <Navigation />
+    </div>
+  );
+};

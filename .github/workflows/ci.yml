@@ -1,0 +1,35 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Clean npm cache
+        run: npm cache clean --force
+
+
+      - name: Install dependencies
+        run: |
+          cd ADMIN_DASHBOARD
+          npm ci
+
+      - name: Build and test
+        run: |
+          cd ADMIN_DASHBOARD
+          echo "Current directory: $(pwd)"
+          echo "Node.js version: $(node --version)"
+          npm run build
+          
