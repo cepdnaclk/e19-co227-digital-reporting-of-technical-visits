@@ -51,10 +51,12 @@ export const Login = () => {
         </div>
         <form className="login-right" onSubmit={signIn}>
           <h2>Welcome, Please login to your account.</h2>
-          <button className="google-signin" onClick={signInWithGoogle}>
-            <img src="src\assets\google.png" alt="" className="google-logo"></img>
-            <p >Sign in with Google</p>
-          </button>
+          <div className="google-signin-container">
+            <button className="google-signin" onClick={signInWithGoogle}>
+              <img src="src\assets\google.png" alt="" className="google-logo"></img>
+              <p >Sign in with Google</p>
+            </button>
+          </div>
           <span>LOGIN WITH YOUR CREDENTIALS</span>
           <div className="input-container">
             <label htmlFor="username">Username or Email</label>
