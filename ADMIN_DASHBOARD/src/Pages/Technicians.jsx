@@ -45,7 +45,10 @@ export const Technician = () => {
           </div>
           <div>
             {!showForm && (
-              <button onClick={() => setShowForm(true)}>
+              <button
+                className="add-technician-button"
+                onClick={() => setShowForm(true)}
+              >
                 Add New Technician
               </button>
             )}
