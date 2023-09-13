@@ -13,7 +13,7 @@ export const Dashboard = () => {
           {/* <div className="name">
             <p>Dashboard Page</p>
           </div> */}
-            <Calendar/>
+          <Calendar />
         </div>
       </div>
     </div>
