@@ -1,4 +1,4 @@
-import "./TechniciansTable.scss"
+import "../../Styles/Technicians/TechniciansTable.scss"
 import { useState } from "react";
 export const TechniciansTable = ({ technicians }) => {
 
@@ -34,7 +34,7 @@ export const TechniciansTable = ({ technicians }) => {
       });
       
   return (
-<div>
+<div className="table-container-2">
     <input
         type="text"
         placeholder="Search by name..."

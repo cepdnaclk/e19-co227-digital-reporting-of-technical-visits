@@ -1,4 +1,4 @@
-import { Navigation } from "../Components/NavigationTemplate/Navigation";
+import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import "../Styles/Clients.scss";
 
@@ -8,8 +8,10 @@ export const Clients = () => {
       <div className="container">
         <Navigation />
         <UserCard />
-        <div className="name">
-          <p>Clients Page</p>
+        <div className="component-container">
+          <div className="name">
+            <p>Clients Log</p>
+          </div>
         </div>
       </div>
     </div>
