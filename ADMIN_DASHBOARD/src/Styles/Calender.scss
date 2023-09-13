@@ -1,0 +1,174 @@
+.calender-container {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  width: 420px;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  background-color: white;
+  margin-left: 5em;
+  margin-top: 1em;
+  border-radius: 1em;
+  box-shadow: 0px 6px 25px -7px rgba(0, 0, 0, 0.1);
+
+  .calender-boarder {
+    width: 24rem; //96px
+    height: 24rem; //96px
+    padding: 1.5em;
+    margin-top: 1.5em;
+    padding-bottom: 0rem;
+
+    .inside-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5em;
+
+      .calender-header-1 {
+        user-select: none;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .calender-header-2 {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .move-back {
+          width: 1.25rem;
+          height: 1.25rem;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.05);
+            transition: all 0.3s; /* You can adjust the transition duration as needed */
+          }
+        }
+
+        .today-button {
+          cursor: pointer;
+          font-size: 1rem;
+          &:hover {
+            transform: scale(1.05);
+            transition: all 0.3s; /* You can adjust the transition duration as needed */
+          }
+        }
+
+        .move-forward {
+          width: 1.25rem;
+          height: 1.25rem;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.05);
+            transition: all 0.3s; /* You can adjust the transition duration as needed */
+          }
+        }
+      }
+    }
+
+    .week-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+
+      .day-text {
+        font-size: 0.875rem;
+        text-align: center;
+        height: 3rem;
+        width: 3rem;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        color: #636363;
+        user-select: none;
+
+        &:nth-child(1) {
+          color: #adadad;
+        }
+
+        &:nth-child(7) {
+          color: #e03838;
+        }
+      }
+    }
+
+    .month-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+
+      .day-text-row {
+        padding: 0.2rem;
+        text-align: center;
+        height: 2.8rem;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        font-size: 0.875rem;
+        border-top: 1px solid #e2e8f0;
+
+        .current-month {
+          color: #cbd5e0;
+        }
+
+        .select-date {
+          background-color: black;
+          color: #fff;
+        }
+        
+        .today {
+          background-color: #e53e3e;
+          color: #fff;
+        }
+
+
+        .normal-day {
+          height: 2.1rem;
+          font-size: 0.875rem;
+          width: 2.1rem;
+          border-radius: 50%;
+          display: grid;
+          justify-content: center;
+          align-content: center;
+          transition: all 0.3s; /* You can adjust the transition duration as needed */
+          cursor: pointer;
+          user-select: none;
+          &:hover {
+            background-color: #8a9eb8; /* Black background color on hover */
+            color: #fff; /* White text color on hover */
+          }
+        }
+      }
+    }
+  }
+
+  .shedule-boarder {
+    height: auto;
+    width: 24rem;
+    text-align: left;
+    margin-bottom: 2.5em;
+
+    @media (min-width: 640px) {
+      padding-left: 1.25rem; // Equivalent to sm:px-5
+      padding-right: 1.25rem; // Equivalent to sm:px-5
+    }
+
+    .shedule-header {
+      font-weight: 600; // Equivalent to font-semibold
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .meetings {
+      color: #9bb9da;
+      font-size: 0.885rem;
+    }
+  }
+  //   @media (width > 1080px) {
+  //     flex-direction: row;
+  //     justify-content: space-between;
+  //     width: 80%;
+  //     min-width: 400px;
+  //   }
+}

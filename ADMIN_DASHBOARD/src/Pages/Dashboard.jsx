@@ -1,3 +1,4 @@
+import Calendar from "../Components/Calender";
 import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import "../Styles/Dashboard.scss";
@@ -9,9 +10,10 @@ export const Dashboard = () => {
         <Navigation />
         <UserCard />
         <div className="component-container">
-          <div className="name">
+          {/* <div className="name">
             <p>Dashboard Page</p>
-          </div>
+          </div> */}
+            <Calendar/>
         </div>
       </div>
     </div>

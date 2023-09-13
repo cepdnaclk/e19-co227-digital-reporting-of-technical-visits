@@ -12,7 +12,11 @@
   align-content: center;
 
   .component-container {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
     margin-left: 220px;
+
     margin-top: 0;
     height: 100%;
     width: calc(95% - 220px);
@@ -68,5 +72,6 @@
 
   &:hover {
     background-color: #0056b3;
+
   }
 }
