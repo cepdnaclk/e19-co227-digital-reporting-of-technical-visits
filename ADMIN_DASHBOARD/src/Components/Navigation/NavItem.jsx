@@ -1,6 +1,6 @@
-import "./Nav.css";
+import "../../Styles/Navigation/NavItem.scss";
 
-const Nav = ({ Icon, title }) => {
+const NavItem = ({ Icon, title }) => {
   return (
     <div className="nav">
       {Icon && <Icon classname="icon" />}
@@ -9,4 +9,4 @@ const Nav = ({ Icon, title }) => {
   );
 };
 
-export default Nav;
+export default NavItem;

@@ -1,6 +1,6 @@
-import { Navigation } from "../Components/NavigationTemplate/Navigation";
+import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
-import "../Styles/Clients.scss";
+import "../Styles/Tasks.scss";
 
 export const Tasks = () => {
   return (
@@ -8,8 +8,10 @@ export const Tasks = () => {
       <div className="container">
         <Navigation />
         <UserCard />
-        <div className="name">
-          <p>Tasks Page</p>
+        <div className="component-container">
+          <div className="name">
+            <p>Tasks Log</p>
+          </div>
         </div>
       </div>
     </div>

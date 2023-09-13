@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import Nav from "../NavIconTemplate/Nav";
+import NavItem from "./NavItem";
 import { auth } from "../../config/firebase";
 import UserCard from "../UserCard";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-import "./Navigation.scss";
+import "../../Styles/Navigation/Navigation.scss";
 import { FcSettings, FcOvertime,FcOrgUnit} from "react-icons/fc";
 import { FaTasks, FaUsers, FaCity} from "react-icons/fa";
 export const Navigation = () => {
@@ -34,25 +34,25 @@ export const Navigation = () => {
           className={location.pathname === "/dashboard" ? "active" : ""}
           onClick={() => handleItemClick("/dashboard")}
         >
-          <Nav title="Dashboard" Icon={FcOrgUnit} />
+          <NavItem title="Dashboard" Icon={FcOrgUnit} />
         </li>
         <li
           className={location.pathname === "/clients" ? "active" : ""}
           onClick={() => handleItemClick("/clients")}
         >
-          <Nav title="Clients" Icon={FaCity} />
+          <NavItem title="Clients" Icon={FaCity} />
         </li>
         <li
           className={location.pathname === "/tech" ? "active" : ""}
           onClick={() => handleItemClick("/tech")}
         >
-          <Nav title="Technicians" Icon={FaUsers} />
+          <NavItem title="Technicians" Icon={FaUsers} />
         </li>
         <li
           className={location.pathname === "/tasks" ? "active" : ""}
           onClick={() => handleItemClick("/tasks")}
         >
-          <Nav title="Tasks" Icon={FaTasks} />
+          <NavItem title="Tasks" Icon={FaTasks} />
         </li>
         </ul>
         <hr className="line" />
@@ -61,13 +61,13 @@ export const Navigation = () => {
           className={location.pathname === "/techassign" ? "active" : ""}
           onClick={() => handleItemClick("/techassign")}
         >
-          <Nav title="Technician Assign" Icon={FcOvertime} />
+          <NavItem title="Technician Assign" Icon={FcOvertime} />
         </li>
         <li
           className={location.pathname === "/settings" ? "active" : ""}
           onClick={() => handleItemClick("/settings")}
         >
-          <Nav title="Settings" Icon={FcSettings} />
+          <NavItem title="Settings" Icon={FcSettings} />
         </li>
       </ul>
 
