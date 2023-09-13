@@ -14,9 +14,9 @@
     font-weight: bolder;
     position: fixed;
     top: 20%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    color: #555555;
+    color: black;
   }
 
   .table-container {
@@ -50,21 +50,15 @@
 
     table td {
       padding: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     table td:nth-child(1) {
     }
 
     table td:nth-child(2) {
-    }
-
-    table td:nth-child(3) {
-    }
-
-    table td:nth-child(4) {
-    }
-
-    table td:nth-child(5) {
     }
   }
 }
