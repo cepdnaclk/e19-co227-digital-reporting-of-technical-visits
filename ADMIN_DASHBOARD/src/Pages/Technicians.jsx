@@ -1,59 +1,85 @@
-import { Navigation } from "../Components/Navigation/Navigation";
+
 import { db } from "../config/firebase";
 import { useState, useEffect } from "react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs ,onSnapshot} from "firebase/firestore";
+import { Navigation } from "../Components/Navigation/Navigation";
+
 import UserCard from "../Components/UserCard";
-import "../Styles/Technicians.scss";
 import { TechniciansTable } from "../Components/Technicians/TechniciansTable";
+import { TechnicianForm } from "../Components/Technicians/TechnicianForm";
+import "../Styles/Technicians.scss"; // Import your SCSS stylesheet
 
 export const Technician = () => {
-  const [technicians, setData] = useState([]);
+  const [technicians, setTechnicians] = useState([]);
+  const [showForm,setShowForm] = useState(false);
+  
 
-  const technicianCollectionRef = collection(db, "Technicians");
-
-  useEffect(() => {
-    const getTechnicians = async () => {
-      const data = await getDocs(technicianCollectionRef);
-      setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getTechnicians();
-  }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const citiesRef = collection(db, "Technicians");
-      console.log(citiesRef);
-      // const docSnap = await getDoc(docRef);
+     // Create a reference to the Firestore collection
+  const technicianCollectionRef = collection(db, 'Technicians');
+    
 
-      // if (docSnap.exists()) {
-      //   console.log("Document data:", docSnap.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
+    // Set up a Firestore listener for real-time updates
+    const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
+      const updatedTechnicians = [];
+      snapshot.forEach((doc) => {
+        updatedTechnicians.push({ ...doc.data(), id: doc.id });
+      });
+      setTechnicians(updatedTechnicians);
+    });
+
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      unsubscribe();
+
     };
+  }, []); // The empty dependency array ensures this effect runs only once
 
-    fetchData();
-  }, []);
+    const createTechnician = async () =>{
+
+    }
+
+    const closeForm = ()=>{
+      setShowForm(false);
+    }
+
+  
 
   return (
     <div>
       <div className="container">
         <Navigation />
         <UserCard />
+        
         <div className="component-container">
+
           <div className="title">
             <p>Technician Log</p>
           </div>
+          <div>
+            {!showForm && <button onClick={()=>setShowForm(true)}>Add New Technician</button>}
+
+          {showForm && <TechnicianForm onClosing={closeForm}/>}
+        </div>
           <div className="table-container">
+            <input
+              type="text"
+              placeholder="Search Technicians..."
+              className="search-input"
+            />
+            <button className="search-button">Search</button>
             {technicians.length > 0 ? (
               <TechniciansTable technicians={technicians} />
             ) : (
               <p>Loading technicians...</p>
             )}
           </div>
+
+          
         </div>
+        
       </div>
     </div>
   );
