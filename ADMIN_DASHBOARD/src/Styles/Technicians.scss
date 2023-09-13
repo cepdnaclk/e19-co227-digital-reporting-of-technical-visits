@@ -28,7 +28,7 @@
   .title {
     font-size: xx-large;
     font-weight: bolder;
-    padding-top: 18vh;
+    padding-top: 5vh;
     padding-bottom: 5vh;
     color: black;
   }
@@ -103,13 +103,14 @@
   background-color: lightgray;
   color: black;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-size: 17px;
   font-weight: bold;
 
   &:hover {
+    color: white;
     background-color: #0056b3;
   }
 }

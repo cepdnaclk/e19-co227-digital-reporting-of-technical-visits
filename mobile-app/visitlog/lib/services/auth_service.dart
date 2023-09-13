@@ -36,7 +36,7 @@ class AuthService {
       return user;
     } catch (e) {
       // ignore: avoid_print
-      print("Erroe with sign in $e");
+      print("Error with sign in $e");
     }
   }
 

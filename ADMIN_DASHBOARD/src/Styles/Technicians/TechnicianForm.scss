@@ -6,79 +6,167 @@
   z-index: 9996;
   width: 480px;
   background-color: #fff;
-  border-radius: 15px;
+  border-radius: 4rem;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
   max-height: calc(100vh - 40px);
   padding: 2rem;
   text-align: center;
-
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   align-items: center;
-}
+  justify-content: center;
 
-.card button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
+  .close-button {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-color: rgb(235, 169, 169);
+    border-color: rgb(116, 1, 1);
+    height: 30px;
+    width: 30px;
+    align-content: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #333;
+    &:hover {
+      color: #f00;
+      background-color: rgb(247, 239, 239);
+    }
+  }
 
-.card button:hover {
-  color: #f00;
-}
+  .topic{
+    font-size: 25px;
+    font-weight: 700;
+    color: #90baf1;
+  }
 
-.card input[type="text"],
-.card input[type="email"] {
-  width: 100%;
-  padding: 0.8rem;
-  margin: 0.4rem 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
+  input[type="text"]{
+    width: 100%;
+    padding: 0.2rem 0.6rem;
+    margin: 0.2rem 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    
+    font-size: 14px;
+    &:focus{
+      border: none;
+      border-bottom: 1px solid #023b7c;
+    }
+  }
 
-.card label {
-  font-weight: bold;
-  font-size: 18px;
-}
+  input[type="email"] {
+    width: 100%;
+    padding: 0.2rem 0.6rem;
+    margin: 0.2rem 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    
+    font-size: 14px;
+  }
 
-.card .mobile-inputs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  input[type="number"] {
+    width: 140%;
+    padding: 0.2rem 0.6rem;
+    margin: 0.2rem 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    
+    font-size: 14px;
+  }
 
-.card button[type="button"] {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  font-size: 16px;
-  margin-top: 0.5rem;
-  cursor: pointer;
-}
+  label {
+    font-weight: bold;
+    font-size: 14px;
+    width: 10rem;
+  }
 
-.card button[type="button"]:hover {
-  background-color: #0056b3;
-}
+  .mobile-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.card button[type="submit"] {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 0.8rem 1.5rem;
-  font-size: 18px;
-  margin-top: 0.5rem;
-  cursor: pointer;
-}
+  button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
 
-.card button[type="submit"]:hover {
-  background-color: #1a8c38;
+  button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem 9.5rem;
+    font-size: 18px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #1a8c38;
+  }
+
+  .first-name {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+  .last-name {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+  .e-mail {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .address {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .phone-number {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      margin-left: -3em;
+      font-size: 30px;
+    }
+  }
 }
