@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import "../../Styles/Technicians/TechnicianForm.scss"
-export const TechnicianForm = ({onClosing}) => {
+import "../../Styles/Technicians/TechnicianForm.scss";
+
+export const TechnicianForm = ({ onClosing }) => {
   const technicianCollectionRef = collection(db, "Technicians");
 
   const [formData, setFormData] = useState({
@@ -10,17 +11,15 @@ export const TechnicianForm = ({onClosing}) => {
     lastName: "",
     email: "",
     address: "",
-    mobile: [""], // Initialize as an empty array
+    mobile: [""],
   });
 
   const handleChange = (e, index) => {
-    
     const { name, value } = e.target;
-    console.log(name)
     if (name === "mobile") {
       const updatedMobile = [...formData.mobile];
       updatedMobile[index] = value;
-  
+
       setFormData({
         ...formData,
         mobile: updatedMobile,
@@ -32,7 +31,7 @@ export const TechnicianForm = ({onClosing}) => {
       });
     }
   };
-  
+
   const handleAddMobile = () => {
     setFormData({
       ...formData,
@@ -52,21 +51,17 @@ export const TechnicianForm = ({onClosing}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can perform validation here if needed
 
-    // Call the onSubmit callback with the form data
     await onSubmit(formData);
     onClosing();
 
-    // Reset the form
     setFormData({
       firstName: "",
       lastName: "",
       email: "",
       address: "",
-      mobile: [""], // Reset to an empty array
+      mobile: [""],
     });
-    
   };
 
   const onSubmit = async (data) => {
@@ -75,9 +70,8 @@ export const TechnicianForm = ({onClosing}) => {
   };
 
   return (
-
     <form onSubmit={handleSubmit} className="card">
-        <button onClick={()=>onClosing()}>X</button>
+      <button onClick={() => onClosing()}>X</button>
       <div>
         <label htmlFor="firstName">First Name:</label>
         <input
@@ -145,6 +139,7 @@ export const TechnicianForm = ({onClosing}) => {
           Add Mobile Number
         </button>
       </div>
+
       <div>
         <button type="submit">Submit</button>
       </div>
