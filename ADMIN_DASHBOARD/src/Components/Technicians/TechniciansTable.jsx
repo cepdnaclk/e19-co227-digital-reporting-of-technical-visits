@@ -42,6 +42,7 @@ export const TechniciansTable = ({ technicians }) => {
       <table className="tech-table">
         <thead>
           <tr>
+        
             <th>
               Technician Name <button onClick={() => handleSort("firstName")}>^</button>
             </th>
@@ -57,7 +58,7 @@ export const TechniciansTable = ({ technicians }) => {
         <tbody>
           {filteredTechnicians.map((technician) => (
             <tr key={technician.id}>
-            
+              
               <td>
                 {technician.firstName} {technician.lastName}{" "}
               </td>
