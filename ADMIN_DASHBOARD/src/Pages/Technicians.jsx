@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
-
 import { useState, useEffect } from "react";
 import { collection, doc, getDoc, getDocs ,onSnapshot} from "firebase/firestore";
-
 import { Navigation } from "../Components/Navigation/Navigation";
 
 import UserCard from "../Components/UserCard";
@@ -13,8 +10,8 @@ import { TechnicianForm } from "../Components/Technicians/TechnicianForm";
 import "../Styles/Technicians.scss"; // Import your SCSS stylesheet
 
 export const Technician = () => {
-  const [technicians, setData] = useState([]);
-  const technicianCollectionRef = collection(db, "Technicians");
+  const [technicians, setTechnicians] = useState([]);
+  
 
 
   useEffect(() => {
