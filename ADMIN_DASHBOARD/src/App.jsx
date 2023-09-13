@@ -1,6 +1,5 @@
 import "./App.scss";
 import { Login } from "./Pages/Login";
-import { Navigation } from "./Components/NavigationTemplate/Navigation";
 import { Routes, Route } from "react-router-dom";
 import { Clients } from "./Pages/Clients";
 import { Dashboard } from "./Pages/Dashboard";
@@ -13,8 +12,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/n" element={<Navigation />} />
-
         {/*Main />*/}
         <Route path="/" element={<Login />} />
         <Route path="/clients" element={<Clients />} />
