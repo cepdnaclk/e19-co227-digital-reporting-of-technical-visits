@@ -1,14 +1,13 @@
-import { Navigation } from "../Components/Navigation/Navigation";
+import React, { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { useState, useEffect } from "react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
-import "../Styles/Technicians.scss";
 import { TechniciansTable } from "../Components/Technicians/TechniciansTable";
+import "../Styles/Technicians.scss"; // Import your SCSS stylesheet
 
 export const Technician = () => {
   const [technicians, setData] = useState([]);
-
   const technicianCollectionRef = collection(db, "Technicians");
 
   useEffect(() => {
@@ -24,14 +23,6 @@ export const Technician = () => {
     const fetchData = async () => {
       const citiesRef = collection(db, "Technicians");
       console.log(citiesRef);
-      // const docSnap = await getDoc(docRef);
-
-      // if (docSnap.exists()) {
-      //   console.log("Document data:", docSnap.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
     };
 
     fetchData();
@@ -47,6 +38,12 @@ export const Technician = () => {
             <p>Technician Log</p>
           </div>
           <div className="table-container">
+            <input
+              type="text"
+              placeholder="Search Technicians..."
+              className="search-input"
+            />
+            <button className="search-button">Search</button>
             {technicians.length > 0 ? (
               <TechniciansTable technicians={technicians} />
             ) : (

@@ -1,5 +1,6 @@
-import "../../Styles/Technicians/TechniciansTable.scss";
-import { useState } from "react";
+import React, { useState } from "react";
+import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
+
 export const TechniciansTable = ({ technicians }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
@@ -33,21 +34,16 @@ export const TechniciansTable = ({ technicians }) => {
 
   return (
     <div className="table-container-2">
-      <input
-        type="text"
-        placeholder="Search by name..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
       <table className="tech-table">
         <thead>
           <tr>
-        
             <th>
-              Technician Name <button onClick={() => handleSort("firstName")}>^</button>
+              Technician Name{" "}
+              <button onClick={() => handleSort("firstName")}>^</button>
             </th>
             <th>
-              Email Address <button onClick={() => handleSort("email")}>^</button>
+              Email Address{" "}
+              <button onClick={() => handleSort("email")}>^</button>
             </th>
             <th>
               Address <button onClick={() => handleSort("address")}>^</button>
@@ -58,9 +54,8 @@ export const TechniciansTable = ({ technicians }) => {
         <tbody>
           {filteredTechnicians.map((technician) => (
             <tr key={technician.id}>
-              
               <td>
-                {technician.firstName} {technician.lastName}{" "}
+                {technician.firstName} {technician.lastName}
               </td>
               <td>{technician.email}</td>
               <td>{technician.address}</td>
