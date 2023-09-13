@@ -38,24 +38,25 @@
     }
   }
 
-  .topic{
+  .topic {
     font-size: 25px;
     font-weight: 700;
     color: #90baf1;
   }
 
-  input[type="text"]{
+  input[type="text"] {
     width: 100%;
     padding: 0.2rem 0.6rem;
     margin: 0.2rem 0;
     border: none;
     border-bottom: 1px solid #ccc;
-    
+    transition: 0.3s;
     font-size: 14px;
-    &:focus{
-      border: none;
-      border-bottom: 1px solid #023b7c;
-    }
+  }
+
+  input:focus {
+    border: none;
+    border-bottom: 1px solid #ccc;
   }
 
   input[type="email"] {
@@ -64,7 +65,7 @@
     margin: 0.2rem 0;
     border: none;
     border-bottom: 1px solid #ccc;
-    
+
     font-size: 14px;
   }
 
@@ -74,7 +75,7 @@
     margin: 0.2rem 0;
     border: none;
     border-bottom: 1px solid #ccc;
-    
+
     font-size: 14px;
   }
 
