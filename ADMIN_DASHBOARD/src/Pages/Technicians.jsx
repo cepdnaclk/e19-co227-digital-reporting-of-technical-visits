@@ -1,12 +1,34 @@
 import { Navigation } from "../Components/NavigationTemplate/Navigation";
 import { db } from "../config/firebase";
 import { useState, useEffect } from "react";
-import { collection, doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import UserCard from "../Components/UserCard";
-import "../Styles/Clients.scss";
+import "../Styles/Technicians.scss";
+import { TechniciansTable } from "../Components/Technicians/TechniciansTable";
 
 export const Technician = () => {
-  const [data, setData] = useState([]);
+  const [technicians, setData] = useState([]);
+
+  const technicianCollectionRef = collection(db,"Technicians")
+
+  useEffect(()=>{
+
+
+    const getTechnicians = async () =>{
+        const data =  await getDocs(technicianCollectionRef);
+        setData(data.docs.map((doc)=>({...doc.data(),id:doc.id})))
+    }
+
+    getTechnicians();
+
+
+
+
+  },[])
+
+ 
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,8 +52,16 @@ export const Technician = () => {
       <div className="container">
         <Navigation />
         <UserCard />
-        <div className="name">
-          <p>Technicians Page</p>
+        <div className="title">
+          <p>Technician Log</p>
+        </div>
+        
+        <div className="table-container">
+        {technicians.length > 0 ? (
+      <TechniciansTable technicians={technicians} />
+    ) : (
+      <p>Loading technicians...</p>
+    )}
         </div>
       </div>
     </div>
