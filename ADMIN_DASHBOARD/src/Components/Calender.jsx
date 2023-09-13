@@ -91,7 +91,7 @@ export default function Calendar() {
 				<h1 className="shedule-header">
 					Schedules for {selectDate.toDate().toDateString()}
 				</h1>
-				<p className="meetings">No meetings for today.</p>
+				<p className="meetings">No Sheduled Jobs for today.</p>
 			</div>
 		</div>
 	);

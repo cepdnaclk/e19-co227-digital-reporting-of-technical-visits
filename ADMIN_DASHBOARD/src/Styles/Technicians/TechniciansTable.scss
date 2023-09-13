@@ -1,5 +1,6 @@
 .table-container-2 {
   border-radius: 1.5em;
+  width: 100%;
   text-align: left;
 
   td {
@@ -41,11 +42,16 @@
       padding: 10px;
     }
 
-    td:nth-child(1) {
-    }
+    // td:nth-child(1) {
+    // }
 
-    td:nth-child(2) {
-    }
+    // td:nth-child(2) {
+    // }
+  }
+
+  .tech-table {
+    border-radius: 1.5em;
+    width: 100%;
   }
 }
 
