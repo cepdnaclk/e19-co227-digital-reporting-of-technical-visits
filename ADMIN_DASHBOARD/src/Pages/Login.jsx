@@ -28,7 +28,7 @@ export const Login = () => {
     try {
       await signInWithPopup(auth, googleProvider);
       console.log(auth?.currentUser?.displayName || "Joghn 000e");
-      navigate("/n");
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }
