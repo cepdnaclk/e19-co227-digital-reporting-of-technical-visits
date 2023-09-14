@@ -8,59 +8,95 @@
   border-radius: 20px;
   background-color: rgb(232, 233, 239);
   box-shadow: 0px 6px 35px -7px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  align-content: center;
 
   .component-container {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
     margin-left: 220px;
     margin-top: 0;
-    height: 100%;
-    width: 95% -220px;
+    height: 90%;
+    width: calc(100% - 220px);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    // background-color: aqua;
+
     text-align: center;
-    .name {
-      padding-top: 5vh;
-      font-size: xx-large;
-      font-weight: bolder;
-      color: black;
-      padding-bottom: 5vh;
-    }
 
     .table-container {
-      width: 50%;
       position: relative;
+      width: 80%;
       left: 50%;
       transform: translate(-50%, 0);
       display: flex;
       flex-direction: column;
       margin-top: 40px;
       margin-bottom: 20px;
-      justify-content: center;
-      justify-items: center;
+
+
+      .search-bar{
+        display:flex;
+        align-content: center;
+        align-items: center;
+        padding:3px;
+        gap: 1em;
+        vertical-align: center;
+        select{
+          width:15%;
+          border-radius: 30px;
+          padding:10px;
+          margin:2px;
+          border-color: transparent;
+          justify-content: space-evenly;
+
+          &:focus {
+            border-color: #bedaf8;
+          }
+
+
+          
+        }
+
+        .search-input {
+          padding: 10px;
+          width: 40%;
+          border-color: transparent;
+          box-shadow: 0px 6px 35px -7px rgba(0, 0, 0, 0.15);
+          border-radius: 20px;
+          outline: none;
+          transition: border-color 0.3s ease;
+          overflow: hidden;
+          text-overflow: ellipsis;
+  
+  
+          &:focus {
+            border-color: #bedaf8;
+          }
+  
+          &::placeholder {
+            opacity: 0.7;
+            transition: all ease-in-out 0.2s;
+            outline: none;
+            background: transparent;
+            font-weight: 400;
+            color: #00000098;
+          }
+        }
+
+        
+      
+      }
+
+      
     }
 
-    .search-input {
-      padding: 10px;
-      width: 40%;
-      margin-bottom: 10px;
-      border-color: transparent;
-      box-shadow: 0px 6px 35px -7px rgba(0, 0, 0, 0.1);
-      border-radius: 20px;
-      outline: none;
-      transition: border-color 0.3s ease;
-
-      &:focus {
-        border-color: #bedaf8;
-      }
-
-      &::placeholder {
-        opacity: 0.7;
-        transition: all ease-in-out 0.2s;
-        outline: none;
-        background: transparent;
-        font-weight: 400;
-        color: #00000098;
-      }
+    .title {
+      font-size: xx-large;
+      font-weight: bolder;
+      padding-top: 5vh;
+      padding-bottom: 5vh;
+      color: black;
     }
   }
 }
