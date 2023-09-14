@@ -1,15 +1,14 @@
 import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
-import { collection,onSnapshot,getDoc } from "firebase/firestore";
+import { collection, onSnapshot, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../Styles/Tasks.scss";
 import { TasksTable } from "../Components/Tasks/TasksTable";
 
 export const Tasks = () => {
-
   const [jobs, setJobs] = useState([]);
-  const [searchTerm,setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // Create a reference to the "Jobs" collection in Firestore
@@ -22,7 +21,7 @@ export const Tasks = () => {
       // Iterate over the jobs
       for (const docRef of snapshot.docs) {
         const jobData = docRef.data();
-        console.log(jobData)
+        console.log(jobData);
         const technicianRef = jobData.technician; // Assuming "technician" is the reference field
 
         // Fetch the associated technician document
@@ -31,7 +30,10 @@ export const Tasks = () => {
         if (technicianDoc.exists()) {
           console.log(technicianDoc.data());
           // Extract the technician's name
-          const technicianName = technicianDoc.data().firstName +" " + technicianDoc.data().lastName;
+          const technicianName =
+            technicianDoc.data().firstName +
+            " " +
+            technicianDoc.data().lastName;
 
           // Combine job data with technician name
           const jobWithTechnician = {
@@ -44,7 +46,7 @@ export const Tasks = () => {
       }
 
       setJobs(updatedJobs);
-      console.log(jobs)
+      console.log(jobs);
     });
 
     // Clean up the listener when the component unmounts
@@ -62,13 +64,16 @@ export const Tasks = () => {
             <p>Tasks Log</p>
           </div>
           <div>
-          <input
-        type="text"
-        placeholder="Search by name..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-            <TasksTable tasks={jobs} searchTerm={searchTerm} />
+            <input
+              type="text"
+              placeholder="Search by name..."
+              className="search-input"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <div className="table-container">
+              <TasksTable tasks={jobs} searchTerm={searchTerm} />
+            </div>
           </div>
         </div>
       </div>
