@@ -44,19 +44,31 @@ export const TasksTable = ({ tasks,searchTerm }) => {
               <button onClick={() => handleSort("company")}>^</button>
             </th>
             <th>
+              Address <button onClick={() => handleSort("address")}>^</button>
+            </th>
+            <th>
+              Verification Status
+            </th>
+            <th>
+              Arrival Status
+            </th>
+            <th>
               Technician Name{" "}
               <button onClick={() => handleSort("technicianName")}>^</button>
             </th>
-            {/* Add more table headers for other task properties */}
+            
           </tr>
         </thead>
         <tbody>
           {filteredTasks.map((task) => (
             <tr key={task.id}>
-                <td>{task.visitType}</td>
+              <td>{task.visitType}</td>
               <td>{task.company}</td>
+              <td>{task.address}</td>
+              <td>{task.isArrived && <p>Arrived</p>}{!task.isArrived && <p>Not Arrived</p>}</td>
+              <td>{task.isverified && <p>Verified</p>}{!task.isverified && <p>Not Verified</p>}</td>
               <td>{task.technicianName}</td>
-              {/* Add more table cells for other task properties */}
+              
             </tr>
           ))}
         </tbody>
