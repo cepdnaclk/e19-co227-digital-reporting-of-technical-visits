@@ -10,6 +10,7 @@ export const Tasks = () => {
 
   const [jobs, setJobs] = useState([]);
   const [searchTerm,setSearchTerm] = useState("");
+  const [searchColumn,setSearchColumn] = useState("Name");
 
   useEffect(() => {
     // Create a reference to the "Jobs" collection in Firestore
@@ -68,7 +69,7 @@ export const Tasks = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-            <TasksTable tasks={jobs} searchTerm={searchTerm} />
+            <TasksTable tasks={jobs} searchTerm={searchTerm}  />
           </div>
         </div>
       </div>
