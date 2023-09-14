@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
+import { BsSortAlphaDown,  BsSortAlphaDownAlt} from "react-icons/bs";
 
 
 export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
@@ -57,14 +58,14 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
           <tr>
             <th>
               Technician Name{" "}
-              <button onClick={() => handleSort("firstName")}>^</button>
+              <button onClick={() => handleSort("firstName")}>{sortDirection === "asc" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
             </th>
             <th>
               Email Address{" "}
-              <button onClick={() => handleSort("email")}>^</button>
+              <button onClick={() => handleSort("email")}>{sortDirection === "asc" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
             </th>
             <th>
-              Address <button onClick={() => handleSort("address")}>^</button>
+              Address <button onClick={() => handleSort("address")}>{sortDirection === "asc" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
             </th>
             <th>Telephone Number </th>
           </tr>

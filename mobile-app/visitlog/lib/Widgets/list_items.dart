@@ -142,7 +142,7 @@ class BuildItem extends StatelessWidget {
                           bottom: 20.0,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ElevatedButton(
@@ -156,17 +156,20 @@ class BuildItem extends StatelessWidget {
                                 shape: const StadiumBorder(),
                                 backgroundColor: Colors.blueGrey,
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'Get in to the JOB',
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  SizedBox(width: 1.0.w),
-                                  const Icon(Icons.arrow_forward)
-                                ],
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'Get in to the JOB',
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                    SizedBox(width: 1.0.w),
+                                    const Icon(Icons.arrow_forward)
+                                  ],
+                                ),
                               ),
                             ),
                           ],
