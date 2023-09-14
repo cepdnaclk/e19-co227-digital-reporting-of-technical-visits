@@ -9,6 +9,7 @@ const UserCard = () => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setUser(authUser);
+        console.log(user.photoURL)
       } else {
         setUser(null);
       }
@@ -25,6 +26,7 @@ const UserCard = () => {
           <div className="user-details">
             <p>{user.displayName}</p>
             <p>{user.email}</p>
+            
           </div>
         </div>
       ) : (

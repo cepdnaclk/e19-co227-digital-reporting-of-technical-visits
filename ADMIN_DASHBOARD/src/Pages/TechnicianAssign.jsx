@@ -1,6 +1,7 @@
 import { Navigation } from "../Components/Navigation/Navigation";
+import LabSlots from "../Components/TechnicianAssign/LabSlots/LabSlots";
 import UserCard from "../Components/UserCard";
-import "../Styles/Clients.scss";
+import "../Styles/TechniciansAssign.scss";
 
 export const TechnicianAssign = () => {
   return (
@@ -12,6 +13,7 @@ export const TechnicianAssign = () => {
           <div className="name">
             <p>Technician Assign</p>
           </div>
+          
         </div>
       </div>
     </div>

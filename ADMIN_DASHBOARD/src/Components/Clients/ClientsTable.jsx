@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
+// import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
 
-
-export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
-
-  const [sortBy, setSortBy] = useState("firstName");
+export const ClientsTable = ({ clients,searchTerm,searchColumn}) => {
+  const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
-  //   const [searchTerm, setSearchTerm] = useState("");
+//   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSort = (field) => {
     if (field === sortBy) {
@@ -17,7 +15,7 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
     }
   };
 
-  const sortedTechnicians = [...technicians].sort((a, b) => {
+  const sortedClients = [...clients].sort((a, b) => {
     const aValue = sortBy ? a[sortBy] : a.name;
     const bValue = sortBy ? b[sortBy] : b.name;
 
@@ -28,22 +26,22 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
     }
   });
 
-  const filteredTechnicians = sortedTechnicians.filter((technician) => {
-    if (searchColumn ==="Name"){
+  const filteredClients = sortedClients.filter((client) => {
+    if (searchColumn ==="companyName"){
       const fullName =
-      `${technician.firstName} ${technician.lastName}`.toLowerCase();
+      `${client.firstName} ${client.lastName}`.toLowerCase();
     return fullName.includes(searchTerm.toLowerCase());
     }
     else if (searchColumn ==="Email"){
       
-    return technician.email.includes(searchTerm.toLowerCase());
+    return client.email.includes(searchTerm.toLowerCase());
     }
     else if (searchColumn ==="Address"){
-    return technician.address.includes(searchTerm.toLowerCase());
+    return client.address.includes(searchTerm.toLowerCase());
     }
    
     else if (searchColumn ==="TP"){
-    return technician.mobile[0].includes(searchTerm.toLowerCase());
+    return client.mobile[0].includes(searchTerm.toLowerCase());
     }
    
 
@@ -52,12 +50,14 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
 
   return (
     <div className="table-container-2">
+      
+      
       <table className="tech-table">
         <thead>
           <tr>
             <th>
-              Technician Name{" "}
-              <button onClick={() => handleSort("firstName")}>^</button>
+              Company Name{" "}
+              <button onClick={() => handleSort("companyName")}>^</button>
             </th>
             <th>
               Email Address{" "}
@@ -70,14 +70,14 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
           </tr>
         </thead>
         <tbody>
-          {filteredTechnicians.map((technician) => (
-            <tr key={technician.id}>
+          {filteredClients.map((client) => (
+            <tr key={client.id}>
               <td>
-                {technician.firstName} {technician.lastName}
+                {client.companyName} 
               </td>
-              <td>{technician.email}</td>
-              <td>{technician.address}</td>
-              <td>{technician.mobile[0]}</td>
+              <td>{client.email}</td>
+              <td>{client.address}</td>
+              <td>{client.mobile[0]}</td>
             </tr>
           ))}
         </tbody>

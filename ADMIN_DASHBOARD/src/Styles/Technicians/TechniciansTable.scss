@@ -2,12 +2,13 @@
   border-radius: 1.5em;
   width: 100%;
   text-align: left;
+  z-index: 1;
 
-  td {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  // td {
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
 
   input {
     position: relative;
