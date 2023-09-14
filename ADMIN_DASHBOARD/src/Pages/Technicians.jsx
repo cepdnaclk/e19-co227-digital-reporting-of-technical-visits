@@ -1,25 +1,22 @@
-
+import React, { useState, useEffect } from "react";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { useState, useEffect } from "react";
-import { collection, doc, getDoc, getDocs ,onSnapshot} from "firebase/firestore";
 import { Navigation } from "../Components/Navigation/Navigation";
-
 import UserCard from "../Components/UserCard";
 import { TechniciansTable } from "../Components/Technicians/TechniciansTable";
 import { TechnicianForm } from "../Components/Technicians/TechnicianForm";
-import "../Styles/Technicians.scss"; // Import your SCSS stylesheet
+import "../Styles/Technicians.scss";
 
 export const Technician = () => {
   const [technicians, setTechnicians] = useState([]);
+
   const [showForm,setShowForm] = useState(false);
   const [searchTerm,setSearchTerm] = useState("");
 
-  useEffect(() => {
-     // Create a reference to the Firestore collection
-  const technicianCollectionRef = collection(db, 'Technicians');
-    
 
-    // Set up a Firestore listener for real-time updates
+  useEffect(() => {
+    const technicianCollectionRef = collection(db, "Technicians");
+
     const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
       const updatedTechnicians = [];
       snapshot.forEach((doc) => {
@@ -28,40 +25,39 @@ export const Technician = () => {
       setTechnicians(updatedTechnicians);
     });
 
-
-    // Clean up the listener when the component unmounts
     return () => {
       unsubscribe();
-
     };
-  }, []); // The empty dependency array ensures this effect runs only once
+  }, []);
 
-    const createTechnician = async () =>{
+  const createTechnician = async () => {};
 
-    }
-
-    const closeForm = ()=>{
-      setShowForm(false);
-    }
-
-  
+  const closeForm = () => {
+    setShowForm(false);
+  };
 
   return (
     <div>
       <div className="container">
         <Navigation />
         <UserCard />
-        
-        <div className="component-container">
 
+        <div className="component-container">
           <div className="title">
             <p>Technician Log</p>
           </div>
           <div>
-            {!showForm && <button onClick={()=>setShowForm(true)}>Add New Technician</button>}
+            {!showForm && (
+              <button
+                className="add-technician-button"
+                onClick={() => setShowForm(true)}
+              >
+                Add New Technician
+              </button>
+            )}
 
-          {showForm && <TechnicianForm onClosing={closeForm}/>}
-        </div>
+            {showForm && <TechnicianForm onClosing={closeForm} />}
+          </div>
           <div className="table-container">
             
             <input
@@ -78,10 +74,7 @@ export const Technician = () => {
               <p>Loading technicians...</p>
             )}
           </div>
-
-          
         </div>
-        
       </div>
     </div>
   );

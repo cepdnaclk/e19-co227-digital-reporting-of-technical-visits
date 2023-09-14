@@ -6,27 +6,27 @@ import 'package:flutter/foundation.dart';
 import 'firebase_options.dart';
 import 'Screens/login_screen.dart';
 
-// Future main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform,
-//   );
-//   runApp(const MyApp());
-// }
-
-// ------ Uncomment when using device Preview ---------
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
-  );
+  runApp(const MyApp());
 }
+
+// ------ Uncomment when using device Preview ---------
+// Future main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp(
+//     options: DefaultFirebaseOptions.currentPlatform,
+//   );
+//   runApp(
+//     DevicePreview(
+//       enabled: !kReleaseMode,
+//       builder: (context) => const MyApp(), // Wrap your app
+//     ),
+//   );
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
         title: 'VisitLog',
         debugShowCheckedModeBanner: false,
         //  ------ Uncomment when using device Preview ---------
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
+        // locale: DevicePreview.locale(context),
+        // builder: DevicePreview.appBuilder,
         theme: ThemeData(
           brightness: Brightness.dark,
           primarySwatch: Colors.blueGrey,
