@@ -1,4 +1,6 @@
 .table-container-2 {
+  border-radius: 1.5em;
+  width: 100%;
   text-align: left;
 
   td {
@@ -14,8 +16,10 @@
   }
 
   table {
+    border-radius: 1.5em;
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
 
     th {
       background-color: black;
@@ -38,14 +42,35 @@
       padding: 10px;
     }
 
-    td:nth-child(1) {
-    }
+    // td:nth-child(1) {
+    // }
 
-    td:nth-child(2) {
-    }
+    // td:nth-child(2) {
+    // }
+  }
+
+  .tech-table {
+    border-radius: 1.5em;
+    width: 100%;
   }
 }
 
-.table-container-2 table {
-  margin: 0;
+.tech-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 1.5em;
+  overflow: hidden;
+  box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
+}
+
+.tech-table th,
+.tech-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.table-container-2 {
+  border-radius: 1.5em;
+  text-align: left;
 }
