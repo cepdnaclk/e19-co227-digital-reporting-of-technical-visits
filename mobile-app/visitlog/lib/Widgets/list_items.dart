@@ -71,7 +71,7 @@ class BuildItem extends StatelessWidget {
       ),
     );
   }
-
+ 
   void _showDescriptionDialog(BuildContext context, String description,
       String topic, String subTopic, String location, String time) {
     showDialog(
