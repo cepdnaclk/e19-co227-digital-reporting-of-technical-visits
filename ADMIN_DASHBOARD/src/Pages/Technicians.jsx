@@ -13,6 +13,10 @@ export const Technician = () => {
   const [showForm, setShowForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+
+  const [searchColumn, setSearchColumn] = useState("Name");
+
+
   useEffect(() => {
     const technicianCollectionRef = collection(db, "Technicians");
 
@@ -58,18 +62,35 @@ export const Technician = () => {
             {showForm && <TechnicianForm onClosing={closeForm} />}
           </div>
           <div className="table-container">
-            <input
-              type="text"
-              placeholder="Search Technicians..."
-              className="search-input"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Search Technicians..."
+                className="search-input"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <select
+                className="search-column-select"
+                value={searchColumn}
+                onChange={(e) => setSearchColumn(e.target.value)}
+              >
+                <option value="Name">Name</option>
+                <option value="Email">Email Address</option>
+                <option value="Address">Address</option>
+                <option value="TP">Telephone</option>
+              </select>
+            </div>
+
 
             {technicians.length > 0 ? (
               <TechniciansTable
                 technicians={technicians}
                 searchTerm={searchTerm}
+
+                searchColumn={searchColumn}
+
               />
             ) : (
               <p>Loading technicians...</p>

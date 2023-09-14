@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
 import { BsSortAlphaDown,  BsSortAlphaDownAlt} from "react-icons/bs";
 
-export const TechniciansTable = ({ technicians, searchTerm }) => {
+
+export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
+
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
   //   const [searchTerm, setSearchTerm] = useState("");
@@ -28,9 +30,25 @@ export const TechniciansTable = ({ technicians, searchTerm }) => {
   });
 
   const filteredTechnicians = sortedTechnicians.filter((technician) => {
-    const fullName =
+    if (searchColumn ==="Name"){
+      const fullName =
       `${technician.firstName} ${technician.lastName}`.toLowerCase();
     return fullName.includes(searchTerm.toLowerCase());
+    }
+    else if (searchColumn ==="Email"){
+      
+    return technician.email.includes(searchTerm.toLowerCase());
+    }
+    else if (searchColumn ==="Address"){
+    return technician.address.includes(searchTerm.toLowerCase());
+    }
+   
+    else if (searchColumn ==="TP"){
+    return technician.mobile[0].includes(searchTerm.toLowerCase());
+    }
+   
+
+    
   });
 
   return (
