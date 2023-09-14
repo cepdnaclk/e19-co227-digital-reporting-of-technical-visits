@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Data/tasks.dart';
+import 'package:visitlog/Screens/report_screen.dart';
 
 class BuildItem extends StatelessWidget {
   BuildItem({super.key, required this.index});
@@ -145,7 +146,12 @@ class BuildItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ReportScreen(topic: topic, subTopic: subTopic, location: location, description: description))
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 shape: const StadiumBorder(),
                                 backgroundColor: Colors.blueGrey,
