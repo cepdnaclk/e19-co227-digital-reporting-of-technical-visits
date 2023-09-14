@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
 
-export const TechniciansTable = ({ technicians }) => {
+export const TechniciansTable = ({ technicians,searchTerm}) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
-  const [searchTerm, setSearchTerm] = useState("");
+//   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSort = (field) => {
     if (field === sortBy) {
@@ -34,6 +34,8 @@ export const TechniciansTable = ({ technicians }) => {
 
   return (
     <div className="table-container-2">
+      
+      
       <table className="tech-table">
         <thead>
           <tr>

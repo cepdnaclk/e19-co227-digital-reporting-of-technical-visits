@@ -9,7 +9,10 @@ import "../Styles/Technicians.scss";
 
 export const Technician = () => {
   const [technicians, setTechnicians] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+
+  const [showForm,setShowForm] = useState(false);
+  const [searchTerm,setSearchTerm] = useState("");
+
 
   useEffect(() => {
     const technicianCollectionRef = collection(db, "Technicians");
@@ -56,14 +59,17 @@ export const Technician = () => {
             {showForm && <TechnicianForm onClosing={closeForm} />}
           </div>
           <div className="table-container">
+            
             <input
-              type="text"
-              placeholder="Search Technicians..."
-              className="search-input"
-            />
+        type="text"
+        placeholder="Search Technicians..."
+        className="search-input"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
             <button className="search-button">Search</button>
             {technicians.length > 0 ? (
-              <TechniciansTable technicians={technicians} />
+              <TechniciansTable technicians={technicians} searchTerm={searchTerm}/>
             ) : (
               <p>Loading technicians...</p>
             )}
