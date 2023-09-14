@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../Styles/Tasks/TasksTable.scss"; // Import your SCSS stylesheet
 
-export const TasksTable = ({ tasks,searchTerm }) => {
+export const TasksTable = ({ tasks,searchTerm,searchColumn }) => {
   const [sortBy, setSortBy] = useState("company");
   const [sortDirection, setSortDirection] = useState("asc");
   
@@ -27,7 +27,18 @@ export const TasksTable = ({ tasks,searchTerm }) => {
   });
 
   const filteredTasks = sortedTasks.filter((task) => {
+
+    if(searchColumn==="Task Name")
+    return task.visitType.toLowerCase().includes(searchTerm.toLowerCase());
+    else if(searchColumn==="Company")
     return task.company.toLowerCase().includes(searchTerm.toLowerCase());
+    else if(searchColumn==="Address")
+    return task.address.toLowerCase().includes(searchTerm.toLowerCase());
+    else if(searchColumn==="Technician Name")
+    return task.technicianName.toLowerCase().includes(searchTerm.toLowerCase());
+    
+
+
   });
 
   return (

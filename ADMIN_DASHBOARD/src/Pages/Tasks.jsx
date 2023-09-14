@@ -10,7 +10,7 @@ export const Tasks = () => {
 
   const [jobs, setJobs] = useState([]);
   const [searchTerm,setSearchTerm] = useState("");
-  const [searchColumn,setSearchColumn] = useState("Name");
+  const [searchColumn,setSearchColumn] = useState("Task Name");
 
   useEffect(() => {
     // Create a reference to the "Jobs" collection in Firestore
@@ -70,7 +70,18 @@ export const Tasks = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-            <TasksTable tasks={jobs} searchTerm={searchTerm}  />
+
+<select
+                className="search-column-select"
+                value={searchColumn}
+                onChange={(e) => setSearchColumn(e.target.value)}
+              >
+                <option value="Task Name">Task Name</option>
+                <option value="Company">Company</option>
+                <option value="Address">Address</option>
+                <option value="Technician Name">Technician Name</option>
+              </select>
+            <TasksTable tasks={jobs} searchTerm={searchTerm}  searchColumn={searchColumn}/>
           </div>
         </div>
       </div>
