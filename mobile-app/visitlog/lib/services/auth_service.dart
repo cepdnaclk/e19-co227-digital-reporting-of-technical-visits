@@ -5,8 +5,6 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   // ignore: prefer_typing_uninitialized_variables
-  
-  
 
   //Google Sign In
   signInWithGoogle() async {
@@ -32,7 +30,7 @@ class AuthService {
     try {
       final user = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      //      print("Signed in with ${user.uid}");
+
       return user;
     } catch (e) {
       // ignore: avoid_print
@@ -43,6 +41,10 @@ class AuthService {
   signOutGoogle() async {
     await _googleSignIn.signOut();
     await _auth.signOut();
+  }
+
+  getFirebaseUser(){
+    return  _auth.currentUser!;
   }
 
   String? getUserImage() {
