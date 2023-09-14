@@ -65,6 +65,7 @@ export const Tasks = () => {
           <input
         type="text"
         placeholder="Search by name..."
+        className="search-input"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

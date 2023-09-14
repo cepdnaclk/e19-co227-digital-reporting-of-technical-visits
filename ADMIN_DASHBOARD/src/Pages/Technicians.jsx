@@ -67,7 +67,7 @@ export const Technician = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-            <button className="search-button">Search</button>
+           
             {technicians.length > 0 ? (
               <TechniciansTable technicians={technicians} searchTerm={searchTerm}/>
             ) : (
