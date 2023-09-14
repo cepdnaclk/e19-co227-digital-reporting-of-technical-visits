@@ -5,6 +5,7 @@ import { db } from "../config/firebase";
 import { useState,useEffect } from "react";
 import "../Styles/Tasks.scss";
 import { TasksTable } from "../Components/Tasks/TasksTable";
+import { TaskForm } from "../Components/Tasks/TaskForm";
 
 export const Tasks = () => {
 
@@ -25,19 +26,26 @@ export const Tasks = () => {
         const jobData = docRef.data();
         console.log(jobData)
         const technicianRef = jobData.technician; // Assuming "technician" is the reference field
+        const companyRef = jobData.company
 
         // Fetch the associated technician document
         const technicianDoc = await getDoc(technicianRef);
+        const companyDoc = await getDoc(companyRef)
 
-        if (technicianDoc.exists()) {
+        if (technicianDoc.exists() && companyDoc.exists()) {
           console.log(technicianDoc.data());
           // Extract the technician's name
           const technicianName = technicianDoc.data().firstName +" " + technicianDoc.data().lastName;
+          const companyName = companyDoc.data().companyName
+          const companyAddress = companyDoc.data().address
 
           // Combine job data with technician name
           const jobWithTechnician = {
             ...jobData,
             technicianName,
+            companyName,
+            companyAddress,
+            
           };
 
           updatedJobs.push(jobWithTechnician);
@@ -59,6 +67,7 @@ export const Tasks = () => {
         <Navigation />
         <UserCard />
         <div className="component-container">
+        <TaskForm/>
           <div className="name">
             <p>Tasks Log</p>
           </div>
@@ -71,7 +80,7 @@ export const Tasks = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-<select
+          <select
                 className="search-column-select"
                 value={searchColumn}
                 onChange={(e) => setSearchColumn(e.target.value)}
@@ -82,6 +91,7 @@ export const Tasks = () => {
                 <option value="Technician Name">Technician Name</option>
               </select>
             <TasksTable tasks={jobs} searchTerm={searchTerm}  searchColumn={searchColumn}/>
+            
           </div>
         </div>
       </div>
