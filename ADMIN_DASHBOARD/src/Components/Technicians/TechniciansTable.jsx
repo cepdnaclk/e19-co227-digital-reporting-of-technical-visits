@@ -1,21 +1,38 @@
 import React, { useState } from "react";
+
 import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
-import { BsSortAlphaDown,  BsSortAlphaDownAlt} from "react-icons/bs";
+import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import { TechnicianEditForm } from "./TechnicianEditForm"; // Import the TechnicianEditForm component
 
 export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
+
   const [selectedTechnician, setSelectedTechnician] = useState(null); // State to store the selected technician
   const [isEditFormVisible, setIsEditFormVisible] = useState(false); // State to control the visibility of the edit form
 
+  const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
+
   const handleSort = (field) => {
+    setShowTechnicianDetails(false);
+    setSelectedTechnician(null);
+
     if (field === sortBy) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
     } else {
       setSortBy(field);
       setSortDirection("asc");
     }
+  };
+
+  const handleTechnicianClick = (technician) => {
+    setShowTechnicianDetails(true);
+    setSelectedTechnician(technician);
+  };
+
+  const closeTechnicianDetails = () => {
+    setShowTechnicianDetails(false);
+    setSelectedTechnician(null);
   };
 
   const sortedTechnicians = [...technicians].sort((a, b) => {
@@ -57,28 +74,55 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
 
   return (
     <div className="table-container-2">
+      <div
+        className={`table-overlay ${
+          showTechnicianDetails ? "show-details" : ""
+        }`}
+        onClick={closeTechnicianDetails}
+      ></div>
       <table className="tech-table">
-      <thead>
+        <thead>
           <tr>
             <th>
               Technician Name{" "}
-              <button onClick={() => handleSort("firstName")}>{sortDirection === "desc" && sortBy === "firstName" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              <button onClick={() => handleSort("firstName")}>
+                {sortDirection === "asc" && searchColumn === "Name" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
             <th>
               Email Address{" "}
-              <button onClick={() => handleSort("email")}>{sortDirection === "desc" && sortBy === "email" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              <button onClick={() => handleSort("email")}>
+                {sortDirection === "asc" && searchColumn === "Email" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
             <th>
-              Address <button onClick={() => handleSort("address")}>{sortDirection === "desc" && sortBy === "address" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              Address{" "}
+              <button onClick={() => handleSort("address")}>
+                {sortDirection === "asc" && searchColumn === "Address" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
-            <th>Telephone Number </th>
+            <th>Telephone Number</th>
           </tr>
         </thead>
         <tbody>
           {filteredTechnicians.map((technician) => (
             <tr key={technician.id}>
               <td>
-                {technician.firstName} {technician.lastName}
+                <button onClick={() => handleTechnicianClick(technician)}>
+                  {technician.firstName} {technician.lastName}
+                </button>
               </td>
               <td>{technician.email}</td>
               <td>{technician.address}</td>
@@ -104,6 +148,17 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
               onClosing={closeEditForm}
             />
           </div>
+        </div>
+      )}
+      {showTechnicianDetails && selectedTechnician && (
+        <div className="technician-details">
+          <h2>Technician Details</h2>
+          <p>
+            Name: {selectedTechnician.firstName} {selectedTechnician.lastName}
+          </p>
+          <p>Email: {selectedTechnician.email}</p>
+          <p>Address: {selectedTechnician.address}</p>
+          <p>Telephone Number: {selectedTechnician.mobile[0]}</p>
         </div>
       )}
     </div>
