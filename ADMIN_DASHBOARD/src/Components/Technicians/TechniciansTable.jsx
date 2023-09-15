@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
+import "../../Styles/Technicians/TechniciansTable.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 
 export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
@@ -23,6 +23,11 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
   const handleTechnicianClick = (technician) => {
     setShowTechnicianDetails(true);
     setSelectedTechnician(technician);
+  };
+
+  const closeTechnicianDetails = () => {
+    setShowTechnicianDetails(false);
+    setSelectedTechnician(null);
   };
 
   const sortedTechnicians = [...technicians].sort((a, b) => {
@@ -52,6 +57,12 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
 
   return (
     <div className="table-container-2">
+      <div
+        className={`table-overlay ${
+          showTechnicianDetails ? "show-details" : ""
+        }`}
+        onClick={closeTechnicianDetails}
+      ></div>
       <table className="tech-table">
         <thead>
           <tr>
