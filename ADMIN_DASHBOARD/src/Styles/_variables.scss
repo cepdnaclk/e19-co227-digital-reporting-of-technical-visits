@@ -1,0 +1,20 @@
+$font-stack: "Raleway", sans-serif;
+$primary-yellow: rgb(235, 168, 1);
+$bgcolor: #ebedee;
+$disabledTextColor: rgb(175, 175, 175);
+$waitingColor: rgb(224, 195, 139);
+$confirmedColor: rgb(106, 187, 160);
+$editColor: rgb(76, 120, 156);
+$cancelColor: rgb(227, 104, 104);
+$accentColor:  rgb(54, 54, 54);
+$bodyTextColor: hsl(0, 0%, 20%);
+$pendingColor: rgb(83, 83, 83);
+$testColor: #fff6f1;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
