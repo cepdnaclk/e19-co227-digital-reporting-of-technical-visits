@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../Styles/Tasks/TasksTable.scss"; // Import your SCSS stylesheet
+import { BsSortAlphaDown,BsSortAlphaDownAlt } from "react-icons/bs";
 
 export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("companyName");
@@ -17,7 +18,6 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
   const sortedTasks = [...tasks].sort((a, b) => {
     const aValue = sortBy ? a[sortBy] : a.name;
     const bValue = sortBy ? b[sortBy] : b.name;
-    
 
     if (sortDirection === "asc") {
       return aValue.localeCompare(bValue);
@@ -45,15 +45,30 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
         <thead>
           <tr>
             <th>
-              Task Name <button onClick={() => handleSort("title")}>^</button>
+              Task Name
+              <button onClick={() => handleSort("title")}>
+                {sortDirection === "asc" && sortBy === "title" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
             <th>
               Company{" "}
-              <button onClick={() => handleSort("companyName")}>^</button>
+              <button onClick={() => handleSort("companyName")}>{sortDirection === "asc" && sortBy === "companyName" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}</button>
             </th>
             <th>
               Task Address{" "}
-              <button onClick={() => handleSort("address")}>^</button>
+              <button onClick={() => handleSort("address")}>{sortDirection === "asc" && sortBy === "address" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}</button>
             </th>
             <th>Company Address</th>
             <th>Verification Status</th>
@@ -61,6 +76,9 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
             <th>
               Technician Name{" "}
               {/* <button onClick={() => handleSort("technicianName")}>^</button> */}
+            </th>
+            <th>
+              Date
             </th>
           </tr>
         </thead>
@@ -74,6 +92,8 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
               <td>{task.isArrived ? <p>Arrived</p> : <p>Not Arrived</p>}</td>
               <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
               <td>{task.technicianName || "No Technician"}</td>
+              <td>{task.startDate ? task.startDate.toDate().toLocaleDateString() : ""}</td>
+
             </tr>
           ))}
         </tbody>
