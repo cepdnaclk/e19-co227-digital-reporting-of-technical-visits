@@ -1,3 +1,13 @@
+// //{-------------ChatGPT Styling--------------}
+// /* TechniciansTable.scss */
+
+// .table-container-2 {
+
+
+
+
+
+
 .table-container-2 {
   display: flex;
   align-items: center;
@@ -113,80 +123,3 @@
   }
 }
 
-/*-------------------previous styling----------------------*/
-// .table-container-2 {
-//   border-radius: 1.5em;
-//   width: 100%;
-//   text-align: left;
-
-//   td {
-//     white-space: nowrap;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//   }
-
-//   input {
-//     position: relative;
-//     left: 2vw;
-//     margin-bottom: 2vh;
-//   }
-
-//   table {
-//     border-radius: 1.5em;
-//     width: 100%;
-//     border-collapse: collapse;
-//     box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
-
-//     th {
-//       background-color: black;
-//       color: white;
-//       padding: 10px;
-//       text-align: left;
-//     }
-
-//     tr {
-//       &:nth-child(odd) {
-//         background-color: white;
-//       }
-
-//       &:nth-child(even) {
-//         background-color: #f5f5f5;
-//       }
-//     }
-
-//     td {
-//       padding: 10px;
-//     }
-
-//     // td:nth-child(1) {
-//     // }
-
-//     // td:nth-child(2) {
-//     // }
-//   }
-
-//   .tech-table {
-//     border-radius: 1.5em;
-//     width: 100%;
-//   }
-// }
-
-// .tech-table {
-//   border-collapse: collapse;
-//   border-spacing: 0;
-//   width: 100%;
-//   border-radius: 1.5em;
-//   overflow: hidden;
-//   box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
-// }
-
-// .tech-table th,
-// .tech-table td {
-//   border: 1px solid #ccc;
-//   padding: 10px;
-// }
-
-// .table-container-2 {
-//   border-radius: 1.5em;
-//   text-align: left;
-// }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, onSnapshot, doc } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, doc, Timestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "firebase/firestore";
 import { DateTimePicker } from "@mui/x-date-pickers";
@@ -10,56 +10,32 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 
 export const TaskForm = () => {
-  const [address, setTitle] = useState("");
+  const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
+  const [title,setTitle] = useState("");
   const [technicians, setTechnicians] = useState([]);
   const [clients, setClients] = useState([]);
   const [selectedTechnician, setSelectedTechnician] = useState("");
   const [selectedClient, setSelectedClient] = useState("");
   const [sameAsCompanyAddress, setSameAsCompanyAddress] = useState(false);
-  const [startDateTime, setStartDateTime] = useState("");
+  const [startDate, setStartDate] = useState("");
 
-  //   useEffect(() => {
-  //     // Fetch technicians and clients from Firestore
-  //     const fetchTechnicians = async () => {
-  //       const techniciansRef = collection('Technicians');
-  //       const techniciansSnapshot = await techniciansRef.get();
-  //       const technicianData = techniciansSnapshot.docs.map(doc => ({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       }));
-  //       setTechnicians(technicianData);
-  //     };
 
-  //     const fetchClients = async () => {
-  //       const clientsRef = collection('Clients');
-  //       const clientsSnapshot = await clientsRef.get();
-  //       const clientData = clientsSnapshot.docs.map(doc => ({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       }));
-  //       setClients(clientData);
-  //     };
+  // useEffect(() => {
+  //   const technicianCollectionRef = collection(db, "Technicians");
 
-  //     fetchTechnicians();
-  //     fetchClients();
-  //   }, []);
+  //   const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
+  //     const updatedTechnicians = [];
+  //     snapshot.forEach((doc) => {
+  //       updatedTechnicians.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setTechnicians(updatedTechnicians);
+  //   });
 
-  useEffect(() => {
-    const technicianCollectionRef = collection(db, "Technicians");
-
-    const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
-      const updatedTechnicians = [];
-      snapshot.forEach((doc) => {
-        updatedTechnicians.push({ ...doc.data(), id: doc.id });
-      });
-      setTechnicians(updatedTechnicians);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
   useEffect(() => {
     const clientCollectionRef = collection(db, "Clients");
 
@@ -79,13 +55,18 @@ export const TaskForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const startDateTimeStamp = Timestamp.fromDate(new Date(startDate))
+
     const taskData = {
+      title,
       address,
       description,
-      technician: doc(db, "Technicians", `${selectedTechnician}`),
+      // technician: doc(db, "Technicians", `${selectedTechnician}`),
       company: doc(db, "Clients", `${selectedClient}`),
       isArrived: false,
       isVerified: false,
+      startDate : startDateTimeStamp,
+      
     };
     const jobsCollectionRef = collection(db, "Jobs");
     try {
@@ -103,56 +84,6 @@ export const TaskForm = () => {
       <h2>Create Task</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="address">Address</label>
-          <input
-            disabled={sameAsCompanyAddress}
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              const theClient = clients.find(
-                (obj) => obj.id === selectedClient
-              );
-              setTitle(theClient.address);
-              setSameAsCompanyAddress(true);
-            }}
-          >
-            Same As Company Address
-          </button>
-        </div>
-        <div>
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <div>
-          <label htmlFor="technician">Technician:</label>
-          <select
-            id="technician"
-            value={selectedTechnician}
-            onChange={(e) => setSelectedTechnician(e.target.value)}
-            required
-          >
-            <option value="">Select a technician</option>
-            {technicians.map((technician) => (
-              <option key={technician.id} value={technician.id}>
-                {technician.firstName} {technician.lastName}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
           <label htmlFor="client">Client:</label>
           <select
             id="client"
@@ -169,21 +100,125 @@ export const TaskForm = () => {
           </select>
         </div>
         <div>
-        {/* <DateTimePicker
+          <label htmlFor="address">Task Address</label>
+          <input
+            disabled={sameAsCompanyAddress}
+            type="text"
+            id="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <button
+            disabled={sameAsCompanyAddress}
+            onClick={(e) => {
+              e.preventDefault();
+              const theClient = clients.find(
+                (obj) => obj.id === selectedClient
+              );
+              setAddress(theClient.address);
+              setSameAsCompanyAddress(true);
+            }}
+          >
+            Same As Company Address
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              
+              
+              setSameAsCompanyAddress(false);
+            }}
+          >
+            X
+          </button>
+        </div>
+        <div>
+          <label htmlFor="title">Job Title:</label>
+          <textarea
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        {/* <div>
+          <label htmlFor="technician">Technician:</label>
+          <select
+            id="technician"
+            value={selectedTechnician}
+            onChange={(e) => setSelectedTechnician(e.target.value)}
+            required
+          >
+            <option value="">Select a technician</option>
+            {technicians.map((technician) => (
+              <option key={technician.id} value={technician.id}>
+                {technician.firstName} {technician.lastName}
+              </option>
+            ))}
+          </select>
+        </div> */}
+
+        <div>
+          <label htmlFor="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            value={startDate.split("T")[0]} // Extract the date from startDateTime
+            onChange={(e) => setStartDate(e.target.value)}
+            required
+          />
+        </div>
+        {/* <div>
+          <label htmlFor="startTime">Start Time:</label>
+          <input
+            type="time"
+            id="startTime"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="endTime">End Time:</label>
+          <input
+            type="time"
+            id="endTime"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+            required
+          />
+        </div> */}
+
+        <div>
+          {/* <DateTimePicker
   label="Uncontrolled picker"
   defaultValue={dayjs('2022-04-17T15:30')}
 /> */}
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["MobileDateTimePicker"]}>
               <DemoItem>
                 <MobileDateTimePicker
                   value={startDateTime}
-                  onChange={(newValue) => setStartDateTime(newValue.toISOString())}
+                  onChange={(newValue) =>
+                    setStartDateTime(newValue.toISOString())
+                  }
                   defaultValue={dayjs("2023-06-25T05:30:00.000Z")}
                 />
               </DemoItem>
             </DemoContainer>
-          </LocalizationProvider>
+          </LocalizationProvider> */}
         </div>
         <button type="submit">Create Task</button>
       </form>

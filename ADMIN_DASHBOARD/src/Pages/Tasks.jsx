@@ -10,9 +10,8 @@ import { TaskForm } from "../Components/Tasks/TaskForm";
 export const Tasks = () => {
   const [jobs, setJobs] = useState([]);
 
-  const [searchTerm,setSearchTerm] = useState("");
-  const [searchColumn,setSearchColumn] = useState("Task Name");
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchColumn, setSearchColumn] = useState("Task Name");
 
   useEffect(() => {
     // Create a reference to the "Jobs" collection in Firestore
@@ -21,34 +20,50 @@ export const Tasks = () => {
     // Set up a Firestore listener for real-time updates (or use getDocs for one-time fetch)
     const unsubscribe = onSnapshot(jobsCollectionRef, async (snapshot) => {
       const updatedJobs = [];
-
+      
       // Iterate over the jobs
       for (const docRef of snapshot.docs) {
         const jobData = docRef.data();
-        console.log(jobData);
-        const technicianRef = jobData.technician; // Assuming "technician" is the reference field
-        const companyRef = jobData.company
+        var jobWithTechnician = jobData;
+        if(jobData.technician){
+          
+          const technicianRef = jobData.technician; 
+          
+          
+          const technicianDoc = await getDoc(technicianRef);
+          if (technicianDoc.exists()) {
+            
+            // Extract the technician's name
+            const technicianName =
+              technicianDoc.data().firstName +
+              " " +
+              technicianDoc.data().lastName;
+            // Combine job data with technician name
+            jobWithTechnician = {
+              ...jobWithTechnician,
+              technicianName,
+              
+            };
+  
+            
+          }
+        }
 
-        // Fetch the associated technician document
-        const technicianDoc = await getDoc(technicianRef);
-        const companyDoc = await getDoc(companyRef)
+        
+        const companyRef = jobData.company;
+        const companyDoc = await getDoc(companyRef);
+        
 
-        if (technicianDoc.exists() && companyDoc.exists()) {
-          console.log(technicianDoc.data());
-          // Extract the technician's name
-
-          const technicianName = technicianDoc.data().firstName +" " + technicianDoc.data().lastName;
-          const companyName = companyDoc.data().companyName
-          const companyAddress = companyDoc.data().address
-
+        if (companyDoc.exists()) {
+          const companyName = companyDoc.data().companyName;
+          const companyAddress = companyDoc.data().address;
 
           // Combine job data with technician name
-          const jobWithTechnician = {
-            ...jobData,
-            technicianName,
+          jobWithTechnician = {
+            ...jobWithTechnician,
+            
             companyName,
             companyAddress,
-            
           };
 
           updatedJobs.push(jobWithTechnician);
@@ -56,7 +71,7 @@ export const Tasks = () => {
       }
 
       setJobs(updatedJobs);
-      console.log(jobs);
+      
     });
 
     // Clean up the listener when the component unmounts
@@ -70,33 +85,34 @@ export const Tasks = () => {
         <Navigation />
         <UserCard />
         <div className="component-container">
-        <TaskForm/>
+          <TaskForm />
           <div className="name">
             <p>Tasks Log</p>
           </div>
           <div>
+            <input
+              type="text"
+              placeholder="Search by name..."
+              className="search-input"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
 
-          <input
-        type="text"
-        placeholder="Search by name..."
-        className="search-input"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-          <select
-                className="search-column-select"
-                value={searchColumn}
-                onChange={(e) => setSearchColumn(e.target.value)}
-              >
-                <option value="Task Name">Task Name</option>
-                <option value="Company">Company</option>
-                <option value="Address">Address</option>
-                <option value="Technician Name">Technician Name</option>
-              </select>
-            <TasksTable tasks={jobs} searchTerm={searchTerm}  searchColumn={searchColumn}/>
-            
-
+            <select
+              className="search-column-select"
+              value={searchColumn}
+              onChange={(e) => setSearchColumn(e.target.value)}
+            >
+              <option value="Task Name">Task Name</option>
+              <option value="Company">Company</option>
+              <option value="Address">Address</option>
+              
+            </select>
+            <TasksTable
+              tasks={jobs}
+              searchTerm={searchTerm}
+              searchColumn={searchColumn}
+            />
           </div>
         </div>
       </div>
