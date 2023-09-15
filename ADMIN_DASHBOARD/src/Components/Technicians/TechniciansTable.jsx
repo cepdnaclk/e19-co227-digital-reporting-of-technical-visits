@@ -58,14 +58,14 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
           <tr>
             <th>
               Technician Name{" "}
-              <button onClick={() => handleSort("firstName")}>{sortDirection === "asc" && searchColumn === "Name" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              <button onClick={() => handleSort("firstName")}>{sortDirection === "asc" && sortBy === "firstName" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
             </th>
             <th>
               Email Address{" "}
-              <button onClick={() => handleSort("email")}>{sortDirection === "asc" && searchColumn === "Email" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              <button onClick={() => handleSort("email")}>{sortDirection === "asc" && sortBy === "email" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
             </th>
             <th>
-              Address <button onClick={() => handleSort("address")}>{sortDirection === "asc" && searchColumn === "Address" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              Address <button onClick={() => handleSort("address")}>{sortDirection === "asc" && sortBy === "address" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
             </th>
             <th>Telephone Number </th>
           </tr>
