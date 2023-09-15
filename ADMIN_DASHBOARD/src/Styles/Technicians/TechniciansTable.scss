@@ -22,7 +22,7 @@
       text-align: left;
     }
 
-    button{
+    button {
       align-content: center;
       align-items: center;
       justify-content: center;
@@ -39,7 +39,6 @@
       padding: 1.2em 0.9em;
       text-align: left;
       vertical-align: middle;
-      // white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -48,7 +47,7 @@
       text-align: left;
     }
 
-    @media (width < 1400px) {
+    @media (max-width: 1400px) {
       th,
       td {
         padding: 1.2em 0.9em;
@@ -92,7 +91,15 @@
       }
     }
   }
+
+  .technician-details {
+    background-color: #f2f3f3ef;
+    padding: 1em;
+    border: 1px solid #ccc;
+    margin-top: 1em;
+  }
 }
+
 
 /*-------------------previous styling----------------------*/
 // .table-container-2 {
