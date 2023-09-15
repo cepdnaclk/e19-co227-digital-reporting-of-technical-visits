@@ -21,21 +21,21 @@ export const TaskForm = () => {
   const [startDate, setStartDate] = useState("");
 
 
-  useEffect(() => {
-    const technicianCollectionRef = collection(db, "Technicians");
+  // useEffect(() => {
+  //   const technicianCollectionRef = collection(db, "Technicians");
 
-    const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
-      const updatedTechnicians = [];
-      snapshot.forEach((doc) => {
-        updatedTechnicians.push({ ...doc.data(), id: doc.id });
-      });
-      setTechnicians(updatedTechnicians);
-    });
+  //   const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
+  //     const updatedTechnicians = [];
+  //     snapshot.forEach((doc) => {
+  //       updatedTechnicians.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setTechnicians(updatedTechnicians);
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
   useEffect(() => {
     const clientCollectionRef = collection(db, "Clients");
 
@@ -153,7 +153,7 @@ export const TaskForm = () => {
             required
           ></textarea>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="technician">Technician:</label>
           <select
             id="technician"
@@ -168,7 +168,7 @@ export const TaskForm = () => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div>
           <label htmlFor="date">Date:</label>

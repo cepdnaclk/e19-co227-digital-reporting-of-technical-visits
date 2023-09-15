@@ -106,7 +106,7 @@ export const Tasks = () => {
               <option value="Task Name">Task Name</option>
               <option value="Company">Company</option>
               <option value="Address">Address</option>
-              <option value="Technician Name">Technician Name</option>
+              
             </select>
             <TasksTable
               tasks={jobs}
