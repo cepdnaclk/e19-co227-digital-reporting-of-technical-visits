@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
 
-  .close-button {
+  .close_button {
     position: absolute;
     top: -12px;
     right: -12px;
@@ -87,13 +87,13 @@
     width: 10rem;
   }
 
-  .mobile-inputs {
+  .mobile_inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  button[type="button"] {
+  button[type="mobile"] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -119,7 +119,7 @@
     background-color: #1a8c38;
   }
 
-  .first-name {
+  .first_name {
     display: flex;
     flex-direction: row;
     text-align: start;
@@ -129,7 +129,7 @@
       font-size: 30px;
     }
   }
-  .last-name {
+  .last_name {
     display: flex;
     flex-direction: row;
     text-align: start;
@@ -139,7 +139,7 @@
       font-size: 30px;
     }
   }
-  .e-mail {
+  .e_mail {
     display: flex;
     flex-direction: row;
     text-align: start;
@@ -161,14 +161,14 @@
     }
   }
 
-  .phone-number {
+  .phone_number {
     display: flex;
     flex-direction: row;
     text-align: start;
     align-items: center;
     gap: 20px;
+    margin-left: -5em;
     .icon {
-      margin-left: -3em;
       font-size: 30px;
     }
   }
