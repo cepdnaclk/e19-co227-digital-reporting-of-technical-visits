@@ -145,7 +145,11 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
         </div>
       )}
       {showTechnicianDetails && selectedTechnician && (
-        <div className="technician-details">
+        <div
+          className={`technician-details ${
+            showTechnicianDetails ? "" : "closed"
+          }`}
+        >
           <button className="close-button" onClick={closeTechnicianDetails}>
             &#10006;
           </button>
