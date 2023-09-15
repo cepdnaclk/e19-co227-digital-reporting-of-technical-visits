@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../Styles/UserCard.scss";
+import styles from "../Styles/UserCard.module.scss";
 import { auth } from "../config/firebase";
 // import { GoogleLogin, googleLogout, GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -31,11 +31,11 @@ const UserCard = () => {
   }, []);
 
   return (
-    <div className="user-card">
+    <div className={styles.user_card}>
       {user ? (
-        <div className="user-info">
+        <div className={styles.user_info}>
           <img src={user.photoURL} alt="User" />
-          <div className="user-details">
+          <div className={styles.user_details}>
             <p>{user.displayName}</p>
             <p>{user.email}</p>
             

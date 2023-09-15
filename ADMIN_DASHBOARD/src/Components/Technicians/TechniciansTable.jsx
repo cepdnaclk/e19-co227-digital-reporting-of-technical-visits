@@ -144,11 +144,9 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
 
       {/* Display the edit form as a modal/popup when needed */}
       {isEditFormVisible && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeEditForm}>
-              &times;
-            </span>
+        <div className="model">
+          <div className="model_content">
+            
             {/* Pass the selected technician to the edit form */}
             <TechnicianEditForm
               technician={selectedTechnician}

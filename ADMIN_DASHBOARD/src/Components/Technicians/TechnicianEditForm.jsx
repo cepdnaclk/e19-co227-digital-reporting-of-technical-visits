@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import "../../Styles/Technicians/TechnicianForm.scss";
+import styles from "../../Styles/Technicians/TechnicianForm.module.scss";
 import {
   BsFillFileEarmarkPersonFill,
   BsFileEarmarkPerson,
@@ -85,16 +85,16 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card">
-      <h2 className="topic">Edit Technician</h2>
-      <button className="close-button" onClick={() => onClosing()}>
+    <form onSubmit={handleSubmit} className={styles.card}>
+      <h2 className={styles.topic}>Edit Technician</h2>
+      <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
-      <div className="first-name">
+      <div className={styles.first_name}>
         <div className="icon">
           <BsFillFileEarmarkPersonFill />
         </div>
-        <div className="first-name-input">
+        <div className={styles.first_name_input}>
           <label htmlFor="firstName">First Name </label>
           <input
             type="text"
@@ -107,11 +107,11 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
         </div>
       </div>
 
-      <div className="last-name">
+      <div className={styles.last_name}>
         <div className="icon">
           <BsFileEarmarkPerson />
         </div>
-        <div className="first-name-input">
+        <div className={styles.first_name_input}>
           <label htmlFor="lastName">Last Name </label>
           <input
             type="text"
@@ -124,11 +124,11 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
         </div>
       </div>
 
-      <div className="e-mail">
+      <div className={styles.e_mail}>
         <div className="icon">
           <AiOutlineMail />
         </div>
-        <div className="email-input">
+        <div className={styles.email_input}>
           <label htmlFor="email">Email&emsp;&emsp;&ensp;</label>
           <input
             type="email"
@@ -141,7 +141,7 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
         </div>
       </div>
 
-      <div className="address">
+      <div className={styles.address}>
         <div className="icon">
           <GoLocation />
         </div>
@@ -158,16 +158,16 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
         </div>
       </div>
 
-      <div className="phone-number">
+      <div className={styles.phone_number}>
         <div className="icon">
           <BsTelephoneFill />
         </div>
-        <div className="mobile-number">
+        <div className={styles.mobile_number}>
           <label htmlFor="mobile">Mobile Numbers:</label>
           {formData.mobile.map((mobileNumber, index) => (
             <div key={index}>
               <input
-                type="text"
+                type="number"
                 name="mobile"
                 value={mobileNumber}
                 onChange={(e) => handleChange(e, index)}
@@ -180,14 +180,14 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
               )}
             </div>
           ))}
-          <button type="button" onClick={handleAddMobile}>
+          <button type="mobile" onClick={handleAddMobile}>
             Add Mobile Number
           </button>
         </div>
       </div>
 
       <div>
-        <button type="submit">Update</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
