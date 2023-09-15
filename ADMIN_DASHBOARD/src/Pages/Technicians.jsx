@@ -62,7 +62,6 @@ export const Technician = () => {
             {showForm && <TechnicianForm onClosing={closeForm} />}
           </div>
           <div className="table-container">
-
             <div className="search-bar">
               <input
                 type="text"
@@ -82,6 +81,7 @@ export const Technician = () => {
                 <option value="TP">Telephone</option>
               </select>
             </div>
+
 
 
             {technicians.length > 0 ? (
