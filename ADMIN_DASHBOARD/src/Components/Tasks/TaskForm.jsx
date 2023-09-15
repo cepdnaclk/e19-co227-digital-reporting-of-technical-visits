@@ -1,42 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { collection, addDoc,onSnapshot ,doc} from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import { collection, addDoc, onSnapshot, doc } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import 'firebase/firestore';
+import "firebase/firestore";
+import { DateTimePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
+import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 
 export const TaskForm = () => {
-  const [address, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [address, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [technicians, setTechnicians] = useState([]);
   const [clients, setClients] = useState([]);
-  const [selectedTechnician, setSelectedTechnician] = useState('');
-  const [selectedClient, setSelectedClient] = useState('');
-  const [sameAsCompanyAddress,setSameAsCompanyAddress] = useState(false);
+  const [selectedTechnician, setSelectedTechnician] = useState("");
+  const [selectedClient, setSelectedClient] = useState("");
+  const [sameAsCompanyAddress, setSameAsCompanyAddress] = useState(false);
+  const [startDateTime, setStartDateTime] = useState("");
 
-//   useEffect(() => {
-//     // Fetch technicians and clients from Firestore
-//     const fetchTechnicians = async () => {
-//       const techniciansRef = collection('Technicians');
-//       const techniciansSnapshot = await techniciansRef.get();
-//       const technicianData = techniciansSnapshot.docs.map(doc => ({
-//         id: doc.id,
-//         ...doc.data(),
-//       }));
-//       setTechnicians(technicianData);
-//     };
+  //   useEffect(() => {
+  //     // Fetch technicians and clients from Firestore
+  //     const fetchTechnicians = async () => {
+  //       const techniciansRef = collection('Technicians');
+  //       const techniciansSnapshot = await techniciansRef.get();
+  //       const technicianData = techniciansSnapshot.docs.map(doc => ({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       }));
+  //       setTechnicians(technicianData);
+  //     };
 
-//     const fetchClients = async () => {
-//       const clientsRef = collection('Clients');
-//       const clientsSnapshot = await clientsRef.get();
-//       const clientData = clientsSnapshot.docs.map(doc => ({
-//         id: doc.id,
-//         ...doc.data(),
-//       }));
-//       setClients(clientData);
-//     };
+  //     const fetchClients = async () => {
+  //       const clientsRef = collection('Clients');
+  //       const clientsSnapshot = await clientsRef.get();
+  //       const clientData = clientsSnapshot.docs.map(doc => ({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       }));
+  //       setClients(clientData);
+  //     };
 
-//     fetchTechnicians();
-//     fetchClients();
-//   }, []);
+  //     fetchTechnicians();
+  //     fetchClients();
+  //   }, []);
 
   useEffect(() => {
     const technicianCollectionRef = collection(db, "Technicians");
@@ -69,26 +76,24 @@ export const TaskForm = () => {
     };
   }, []);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    
 
     const taskData = {
       address,
       description,
-      technician: doc(db,"Technicians",`${selectedTechnician}`),
-      company: doc(db,"Clients",`${selectedClient}`),
+      technician: doc(db, "Technicians", `${selectedTechnician}`),
+      company: doc(db, "Clients", `${selectedClient}`),
       isArrived: false,
-      isVerified: false
+      isVerified: false,
     };
     const jobsCollectionRef = collection(db, "Jobs");
     try {
-      await addDoc(jobsCollectionRef,taskData);
-      console.log('Task created successfully!');
+      await addDoc(jobsCollectionRef, taskData);
+      console.log("Task created successfully!");
       // You can also redirect the user or display a success message here
     } catch (error) {
-      console.error('Error creating task:', error);
+      console.error("Error creating task:", error);
       // Handle error, display error message, etc.
     }
   };
@@ -104,24 +109,30 @@ export const TaskForm = () => {
             type="text"
             id="address"
             value={address}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
         <div>
-            <button onClick={(e)=>{
-                    e.preventDefault();
-                const theClient = clients.find(obj => obj.id===selectedClient);
-                setTitle(theClient.address);
-                setSameAsCompanyAddress(true);
-            }}>Same As Company Address</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              const theClient = clients.find(
+                (obj) => obj.id === selectedClient
+              );
+              setTitle(theClient.address);
+              setSameAsCompanyAddress(true);
+            }}
+          >
+            Same As Company Address
+          </button>
         </div>
         <div>
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
             required
           ></textarea>
         </div>
@@ -130,11 +141,11 @@ export const TaskForm = () => {
           <select
             id="technician"
             value={selectedTechnician}
-            onChange={e => setSelectedTechnician(e.target.value)}
+            onChange={(e) => setSelectedTechnician(e.target.value)}
             required
           >
             <option value="">Select a technician</option>
-            {technicians.map(technician => (
+            {technicians.map((technician) => (
               <option key={technician.id} value={technician.id}>
                 {technician.firstName} {technician.lastName}
               </option>
@@ -146,20 +157,36 @@ export const TaskForm = () => {
           <select
             id="client"
             value={selectedClient}
-            onChange={e => setSelectedClient(e.target.value)}
+            onChange={(e) => setSelectedClient(e.target.value)}
             required
           >
             <option value="">Select a client</option>
-            {clients.map(client => (
+            {clients.map((client) => (
               <option key={client.id} value={client.id}>
                 {client.companyName}
               </option>
             ))}
           </select>
         </div>
+        <div>
+        {/* <DateTimePicker
+  label="Uncontrolled picker"
+  defaultValue={dayjs('2022-04-17T15:30')}
+/> */}
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["MobileDateTimePicker"]}>
+              <DemoItem>
+                <MobileDateTimePicker
+                  value={startDateTime}
+                  onChange={(newValue) => setStartDateTime(newValue.toISOString())}
+                  defaultValue={dayjs("2023-06-25T05:30:00.000Z")}
+                />
+              </DemoItem>
+            </DemoContainer>
+          </LocalizationProvider>
+        </div>
         <button type="submit">Create Task</button>
       </form>
     </div>
   );
 };
-
