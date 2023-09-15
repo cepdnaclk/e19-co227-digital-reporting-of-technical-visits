@@ -1,9 +1,9 @@
-import "../../Styles/Navigation/NavItem.scss";
+import styles from "../../Styles/Navigation/NavItem.module.scss";
 
 const NavItem = ({ Icon, title }) => {
   return (
-    <div className="nav">
-      {Icon && <Icon className="icon" />}
+    <div className={styles.nav}>
+      {Icon && <Icon className={styles.icon} />}
       <h2>{title ? title : null}</h2>
     </div>
   );

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/UserCard.scss";
 import { auth } from "../config/firebase";
-import { GoogleLogin, googleLogout, GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleLogin, googleLogout, GoogleOAuthProvider } from "@react-oauth/google";
 
 const UserCard = () => {
   const [user, setUser] = useState(null);
 
-  const clientID =
-    "296031466051-f33qjbgaft3pbim0l039def1kssgppd0.apps.googleusercontent.com";
+  // const clientID =
+  //   "296031466051-f33qjbgaft3pbim0l039def1kssgppd0.apps.googleusercontent.com";
 
-  const onSuccess = (response) => {
-    handleLogin(response);
-  };
+  // const onSuccess = (response) => {
+  //   handleLogin(response);
+  // };
 
-  const onFailure = (error) => {
-    handleFailure(error);
-  };
+  // const onFailure = (error) => {
+  //   handleFailure(error);
+  // };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {

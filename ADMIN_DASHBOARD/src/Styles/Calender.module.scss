@@ -1,4 +1,4 @@
-.calender-container {
+.calender_container {
   display: flex;
   gap: 5px;
   justify-content: center;
@@ -12,31 +12,31 @@
   border-radius: 1em;
   box-shadow: 0px 6px 25px -7px rgba(0, 0, 0, 0.1);
 
-  .calender-boarder {
+  .calender_boarder {
     width: 24rem; //96px
     height: 24rem; //96px
     padding: 1.5em;
     margin-top: 1.5em;
     padding-bottom: 0rem;
 
-    .inside-container {
+    .inside_container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.5em;
 
-      .calender-header-1 {
+      .calender_header_1 {
         user-select: none;
         font-weight: 600;
         font-size: 1rem;
       }
 
-      .calender-header-2 {
+      .calender_header_2 {
         display: flex;
         gap: 10px;
         align-items: center;
 
-        .move-back {
+        .move_back {
           width: 1.25rem;
           height: 1.25rem;
           cursor: pointer;
@@ -47,7 +47,7 @@
           }
         }
 
-        .today-button {
+        .today_button {
           cursor: pointer;
           font-size: 1rem;
           &:hover {
@@ -56,7 +56,7 @@
           }
         }
 
-        .move-forward {
+        .move_forward {
           width: 1.25rem;
           height: 1.25rem;
           cursor: pointer;
@@ -69,11 +69,11 @@
       }
     }
 
-    .week-days {
+    .week_days {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
 
-      .day-text {
+      .day_text {
         font-size: 0.875rem;
         text-align: center;
         height: 3rem;
@@ -94,11 +94,11 @@
       }
     }
 
-    .month-days {
+    .month_days {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
 
-      .day-text-row {
+      .day_text_row {
         padding: 0.2rem;
         text-align: center;
         height: 2.8rem;
@@ -108,11 +108,11 @@
         font-size: 0.875rem;
         border-top: 1px solid #e2e8f0;
 
-        .current-month {
+        .current_month {
           color: #cbd5e0;
         }
 
-        .select-date {
+        .select_date {
           background-color: black;
           color: #fff;
         }
@@ -123,7 +123,7 @@
         }
 
 
-        .normal-day {
+        .normal_day {
           height: 2.1rem;
           font-size: 0.875rem;
           width: 2.1rem;
@@ -143,7 +143,7 @@
     }
   }
 
-  .shedule-boarder {
+  .shedule_boarder {
     height: auto;
     width: 24rem;
     text-align: left;
@@ -154,7 +154,7 @@
       padding-right: 1.25rem; // Equivalent to sm:px-5
     }
 
-    .shedule-header {
+    .shedule_header {
       font-weight: 600; // Equivalent to font-semibold
       font-size: 0.9rem;
       margin-bottom: 0.75rem;
