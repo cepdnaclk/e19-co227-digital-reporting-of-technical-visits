@@ -106,16 +106,26 @@
     }
 
     h2 {
-      font-size: 1.5em;
+      font-size: 2em;
       color: #333;
       margin-bottom: 1em;
+      font-weight: bold;
+      text-align: center;
     }
 
-    p {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 1em;
-      font-weight: bold;
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2em;
+
+      p {
+        font-size: 1.3em;
+        color: #555;
+        margin-bottom: 0.5em;
+        font-weight: bold;
+        text-align: center;
+      }
     }
 
     .close-button {
@@ -125,7 +135,7 @@
       background-color: transparent;
       border: none;
       color: #ff0000;
-      font-size: 1.5em;
+      font-size: 2em;
       cursor: pointer;
       padding: 0;
     }
@@ -133,7 +143,7 @@
     svg {
       margin-right: 0.5em;
       vertical-align: middle;
-      font-size: 1.2em;
+      font-size: 1.5em;
     }
   }
 }
