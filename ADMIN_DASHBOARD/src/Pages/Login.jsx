@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/Login.scss";
+import styles from "../Styles/Login.module.scss";
 import { auth, googleProvider } from "../config/firebase";
 import {
   signInWithEmailAndPassword,
@@ -41,29 +41,29 @@ export const Login = () => {
     }
   };
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="login-left">
-          <img src="./logo.jpg" alt="Logo" className="logo" />
+    <div className={styles.login_page}>
+      <div className={styles.login_container}>
+        <div className={styles.login_left}>
+          <img src="./logo.jpg" alt="Logo" className={styles.logo} />
         </div>
-        <form className="login-right" onSubmit={signIn}>
+        <form className={styles.login_right} onSubmit={signIn}>
           <h2>Welcome, Please login to your account.</h2>
-          <div className="google-signin-container">
-            <button className="google-signin" onClick={signInWithGoogle}>
+          <div className={styles.google_signin_container}>
+            <button className={styles.google_signin} onClick={signInWithGoogle}>
               <img
                 src="src\assets\google.png"
                 alt=""
-                className="google-logo"
+                className={styles.google_logo}
               ></img>
               <p>Sign in with Google</p>
             </button>
           </div>
-          <div className="cred-breaker">
-            <div className="line"></div>
+          <div className={styles.cred_breaker}>
+            <div className={styles.line}></div>
             <span>LOGIN WITH YOUR CREDENTIALS</span>
-            <div className="line"></div>
+            <div className={"line"}></div>
           </div>
-          <div className="input-container">
+          <div className={styles.input_container}>
             <label htmlFor="username">Username or Email</label>
             <input
               type="text"
@@ -74,7 +74,7 @@ export const Login = () => {
               }}
             />
           </div>
-          <div className="input-container">
+          <div className={styles.input_container}>
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -85,7 +85,7 @@ export const Login = () => {
               }}
             />
           </div>
-          <div className="login-button">
+          <div className={styles.login_button}>
             <button type="submit">Login</button>
           </div>
         </form>
