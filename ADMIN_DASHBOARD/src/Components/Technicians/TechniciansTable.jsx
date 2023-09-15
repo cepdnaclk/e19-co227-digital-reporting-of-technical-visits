@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa";
 
 import "../../Styles/Technicians/TechniciansTable.scss"; 
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
