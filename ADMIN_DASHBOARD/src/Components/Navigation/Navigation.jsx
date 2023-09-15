@@ -5,7 +5,7 @@ import UserCard from "../UserCard";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-import "../../Styles/Navigation/Navigation.scss";
+import styles from "../../Styles/Navigation/Navigation.module.scss";
 import { FcSettings, FcOvertime,FcOrgUnit} from "react-icons/fc";
 import { FaTasks, FaUsers, FaCity} from "react-icons/fa";
 export const Navigation = () => {
@@ -20,58 +20,58 @@ export const Navigation = () => {
     console.log(auth?.currentUser?.photoURL || "No Image");
   }, []);
   return (
-    <div className="navigation">
-      <div className="header">
-        <div className="profile">
-          <img src="/logo.jpg" alt="user-img" className="profile-img" />
+    <div className={styles.navigation}>
+      <div className={styles.header}>
+        <div className={styles.profile}>
+          <img src="/logo.jpg" alt="user-img" className={styles.profile_img} />
         </div>
       </div>
 
       <span></span>
 
-      <ul className="item-list">
+      <ul className={styles.item_list}>
         <li
-          className={location.pathname === "/dashboard" ? "active" : ""}
+          className={location.pathname === "/dashboard" ? styles.active : ""}
           onClick={() => handleItemClick("/dashboard")}
         >
           <NavItem title="Dashboard" Icon={FcOrgUnit} />
         </li>
         <li
-          className={location.pathname === "/clients" ? "active" : ""}
+          className={location.pathname === "/clients" ? styles.active : ""}
           onClick={() => handleItemClick("/clients")}
         >
           <NavItem title="Clients" Icon={FaCity} />
         </li>
         <li
-          className={location.pathname === "/tech" ? "active" : ""}
+          className={location.pathname === "/tech" ? styles.active : ""}
           onClick={() => handleItemClick("/tech")}
         >
           <NavItem title="Technicians" Icon={FaUsers} />
         </li>
         <li
-          className={location.pathname === "/tasks" ? "active" : ""}
+          className={location.pathname === "/tasks" ? styles.active : ""}
           onClick={() => handleItemClick("/tasks")}
         >
           <NavItem title="Tasks" Icon={FaTasks} />
         </li>
         </ul>
-        <hr className="line" />
-        <ul className="item-list-2">
+        <hr className={styles.line} />
+        <ul className={styles.item_list_2}>
         <li
-          className={location.pathname === "/techassign" ? "active" : ""}
+          className={location.pathname === "/techassign" ? styles.active : ""}
           onClick={() => handleItemClick("/techassign")}
         >
           <NavItem title="Technician Assign" Icon={FcOvertime} />
         </li>
         <li
-          className={location.pathname === "/settings" ? "active" : ""}
+          className={location.pathname === "/settings" ? styles.active : ""}
           onClick={() => handleItemClick("/settings")}
         >
           <NavItem title="Settings" Icon={FcSettings} />
         </li>
       </ul>
 
-      <ul className="item-list">
+      <ul className={styles.item_list}>
         
       </ul>
     </div>

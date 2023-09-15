@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../Styles/Tasks/TasksTable.scss"; // Import your SCSS stylesheet
+import styles from "../../Styles/Tasks/TasksTable.module.scss"; // Import your SCSS stylesheet
 import { BsSortAlphaDown,BsSortAlphaDownAlt } from "react-icons/bs";
 
 export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
@@ -40,8 +40,8 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
   });
 
   return (
-    <div className="table-container-2">
-      <table className="task-table">
+    <div className={styles.table_container_2}>
+      <table className={styles.task_table}>
         <thead>
           <tr>
             <th>

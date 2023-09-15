@@ -53,7 +53,7 @@
   overflow: hidden;
 }
 
-.profile-img {
+.profile_img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain; /* Maintain aspect ratio without cropping */
@@ -63,7 +63,7 @@
   font-size: 15px;
 }
 
-.item-list {
+.item_list {
   font-size: 17px;
   padding-top: 20px;
   justify-content: center;
@@ -71,7 +71,7 @@
   list-style-type: none;
 }
 
-.item-list-2 {
+.item_list_2 {
   font-size: 28px;
   padding-top: 20px;
   padding-left: 10px;
