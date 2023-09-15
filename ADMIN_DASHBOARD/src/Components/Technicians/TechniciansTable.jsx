@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+
 import "../../Styles/Technicians/TechniciansTable.scss"; 
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
-import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa"; 
+import { TechnicianEditForm } from "./TechnicianEditForm";
 
 export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
-  const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
-  const [selectedTechnician, setSelectedTechnician] = useState(null);
+
+  const [selectedTechnician, setSelectedTechnician] = useState(null); 
+  const [showTechnicianDetails, setShowTechnicianDetails] = useState(false); 
 
   const handleSort = (field) => {
     setShowTechnicianDetails(false);
@@ -114,22 +117,24 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
             &#10006;
           </button>
           <h2>Technician Details</h2>
-          <p>
-            <FaUser />
-            Name: {selectedTechnician.firstName} {selectedTechnician.lastName}
-          </p>
-          <p>
-            <FaEnvelope />
-            Email: {selectedTechnician.email}
-          </p>
-          <p>
-            <FaMapMarker />
-            Address: {selectedTechnician.address}
-          </p>
-          <p>
-            <FaPhone />
-            Telephone Number: {selectedTechnician.mobile[0]}
-          </p>
+          <div className="info-section">
+            <p>
+              <FaUser />
+              Name: {selectedTechnician.firstName} {selectedTechnician.lastName}
+            </p>
+            <p>
+              <FaEnvelope />
+              Email: {selectedTechnician.email}
+            </p>
+            <p>
+              <FaMapMarker />
+              Address: {selectedTechnician.address}
+            </p>
+            <p>
+              <FaPhone />
+              Telephone Number: {selectedTechnician.mobile[0]}
+            </p>
+          </div>
         </div>
       )}
     </div>
