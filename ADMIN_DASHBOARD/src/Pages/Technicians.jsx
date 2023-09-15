@@ -5,7 +5,7 @@ import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import { TechniciansTable } from "../Components/Technicians/TechniciansTable";
 import { TechnicianForm } from "../Components/Technicians/TechnicianForm";
-import "../Styles/Technicians.scss";
+import styles from "../Styles/Technicians.module.scss";
 
 export const Technician = () => {
   const [technicians, setTechnicians] = useState([]);
@@ -13,9 +13,7 @@ export const Technician = () => {
   const [showForm, setShowForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-
   const [searchColumn, setSearchColumn] = useState("Name");
-
 
   useEffect(() => {
     const technicianCollectionRef = collection(db, "Technicians");
@@ -41,37 +39,38 @@ export const Technician = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className={styles.container}>
         <Navigation />
         <UserCard />
 
-        <div className="component-container">
-          <div className="title">
+        <div className={styles.component_container}>
+          <div className={styles.title}>
             <p>Technician Log</p>
           </div>
-          <div>
+          <div className={styles.button_container}>
             {!showForm && (
               <button
-                className="add-technician-button"
+                className={styles.add_technician_button}
                 onClick={() => setShowForm(true)}
               >
                 Add New Technician
               </button>
             )}
+          </div>
 
             {showForm && <TechnicianForm onClosing={closeForm} />}
-          </div>
-          <div className="table-container">
-            <div className="search-bar">
+          <div className={styles.table_container}>
+            <div className={styles.search_bar}>
               <input
                 type="text"
                 placeholder="Search Technicians..."
-                className="search-input"
+                className={styles.search_input}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
+              <p className={styles.lable}>Sort by:</p>
               <select
-                className="search-column-select"
+                className={styles.search_column_select}
                 value={searchColumn}
                 onChange={(e) => setSearchColumn(e.target.value)}
               >
@@ -82,15 +81,11 @@ export const Technician = () => {
               </select>
             </div>
 
-
-
             {technicians.length > 0 ? (
               <TechniciansTable
                 technicians={technicians}
                 searchTerm={searchTerm}
-
                 searchColumn={searchColumn}
-
               />
             ) : (
               <p>Loading technicians...</p>

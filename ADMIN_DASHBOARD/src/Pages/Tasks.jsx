@@ -3,7 +3,7 @@ import UserCard from "../Components/UserCard";
 import { collection, onSnapshot, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useState, useEffect } from "react";
-import "../Styles/Tasks.scss";
+import styles from "../Styles/Tasks.module.scss";
 import { TasksTable } from "../Components/Tasks/TasksTable";
 import { TaskForm } from "../Components/Tasks/TaskForm";
 
@@ -20,19 +20,16 @@ export const Tasks = () => {
     // Set up a Firestore listener for real-time updates (or use getDocs for one-time fetch)
     const unsubscribe = onSnapshot(jobsCollectionRef, async (snapshot) => {
       const updatedJobs = [];
-      
+
       // Iterate over the jobs
       for (const docRef of snapshot.docs) {
         const jobData = docRef.data();
         var jobWithTechnician = jobData;
-        if(jobData.technician){
-          
-          const technicianRef = jobData.technician; 
-          
-          
+        if (jobData.technician) {
+          const technicianRef = jobData.technician;
+
           const technicianDoc = await getDoc(technicianRef);
           if (technicianDoc.exists()) {
-            
             // Extract the technician's name
             const technicianName =
               technicianDoc.data().firstName +
@@ -42,17 +39,12 @@ export const Tasks = () => {
             jobWithTechnician = {
               ...jobWithTechnician,
               technicianName,
-              
             };
-  
-            
           }
         }
 
-        
         const companyRef = jobData.company;
         const companyDoc = await getDoc(companyRef);
-        
 
         if (companyDoc.exists()) {
           const companyName = companyDoc.data().companyName;
@@ -61,7 +53,7 @@ export const Tasks = () => {
           // Combine job data with technician name
           jobWithTechnician = {
             ...jobWithTechnician,
-            
+
             companyName,
             companyAddress,
           };
@@ -71,7 +63,6 @@ export const Tasks = () => {
       }
 
       setJobs(updatedJobs);
-      
     });
 
     // Clean up the listener when the component unmounts
@@ -81,38 +72,40 @@ export const Tasks = () => {
   }, []);
   return (
     <div>
-      <div className="container">
+      <div className={styles.container}>
         <Navigation />
         <UserCard />
-        <div className="component-container">
+        <div className={styles.component_container}>
           <TaskForm />
-          <div className="name">
+          <div className={styles.name}>
             <p>Tasks Log</p>
           </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Search by name..."
-              className="search-input"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+          <div className={styles.table_container}>
+            <div className={styles.search_bar}>
+              <input
+                type="text"
+                placeholder="Search by name..."
+                className={styles.search_input}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
 
-            <select
-              className="search-column-select"
-              value={searchColumn}
-              onChange={(e) => setSearchColumn(e.target.value)}
-            >
-              <option value="Task Name">Task Name</option>
-              <option value="Company">Company</option>
-              <option value="Address">Address</option>
-              
-            </select>
-            <TasksTable
-              tasks={jobs}
-              searchTerm={searchTerm}
-              searchColumn={searchColumn}
-            />
+              <select
+                className={styles.search_column_select}
+                value={searchColumn}
+                onChange={(e) => setSearchColumn(e.target.value)}
+              >
+                <option value="Task Name">Task Name</option>
+                <option value="Company">Company</option>
+                <option value="Address">Address</option>
+              </select>
+              </div>
+              <TasksTable
+                tasks={jobs}
+                searchTerm={searchTerm}
+                searchColumn={searchColumn}
+              />
+            
           </div>
         </div>
       </div>

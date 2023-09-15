@@ -1,6 +1,6 @@
 import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
-import "../Styles/Clients.scss";
+import styles from "../Styles/Clients.module.scss";
 import { db } from "../config/firebase";
 import { useState,useEffect } from "react";
 import { ClientsTable } from "../Components/Clients/ClientsTable";
@@ -26,10 +26,13 @@ export const Clients = () => {
   }, []);
   return (
     <div>
-      <div className="container">
+      <div className={styles.container}>
         <Navigation />
         <UserCard />
-        <div className="component-container">
+        <div className={styles.component_container}>
+        <div className={styles.title}>
+            <p>Clients Log</p>
+          </div>
           <ClientsTable clients={clients} searchTerm="" searchColumn="companyName"/>
         </div>
       </div>

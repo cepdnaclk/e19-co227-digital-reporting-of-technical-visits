@@ -1,15 +1,15 @@
 import Calendar from "../Components/Calender";
 import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
-import "../Styles/Dashboard.scss";
+import styles from  "../Styles/Dashboard.module.scss";
 
 export const Dashboard = () => {
   return (
     <div>
-      <div className="container">
+      <div className={styles.container}>
         <Navigation />
         <UserCard />
-        <div className="component-container">
+        <div className={styles.component_container}>
           {/* <div className="name">
             <p>Dashboard Page</p>
           </div> */}

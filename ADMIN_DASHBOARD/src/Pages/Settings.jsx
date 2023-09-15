@@ -1,17 +1,17 @@
 import { Navigation } from "../Components/Navigation/Navigation";
 import { TaskForm } from "../Components/Tasks/TaskForm";
 import UserCard from "../Components/UserCard";
-import "../Styles/Dashboard.scss";
+import styles from  "../Styles/Settings.module.scss";
 
 export const Settings = () => {
   return (
     <div>
-      <div className="container">
+      <div className={styles.container}>
         <Navigation />
         <UserCard />
-        
-        <div className="component-container">
-          <div className="name">
+
+        <div className={styles.component_container}>
+          <div className={styles.title}>
             <p>Settings</p>
           </div>
         </div>

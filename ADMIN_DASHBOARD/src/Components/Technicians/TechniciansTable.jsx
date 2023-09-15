@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa";
-
+import { MdCreate } from "react-icons/md";
 import styles from "../../Styles/Technicians/TechniciansTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import { TechnicianEditForm } from "./TechnicianEditForm";
@@ -130,10 +130,12 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
               </td>
               <td>
                 <button
+                  className={classNames(styles.btn, styles.editBtn)}
                   onClick={() => {
                     openEditForm(technician);
                   }}
                 >
+                  <MdCreate />
                   Edit
                 </button>
               </td>
@@ -144,15 +146,12 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
 
       {/* Display the edit form as a modal/popup when needed */}
       {isEditFormVisible && (
-        <div className="model">
-          <div className="model_content">
-            
-            {/* Pass the selected technician to the edit form */}
-            <TechnicianEditForm
-              technician={selectedTechnician}
-              onClosing={closeEditForm}
-            />
-          </div>
+        <div className={styles.cardContainer}>
+          {/* Pass the selected technician to the edit form */}
+          <TechnicianEditForm
+            technician={selectedTechnician}
+            onClosing={closeEditForm}
+          />
         </div>
       )}
 
