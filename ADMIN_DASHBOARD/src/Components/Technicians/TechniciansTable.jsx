@@ -57,12 +57,6 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
 
   return (
     <div className="table-container-2">
-      <div
-        className={`table-overlay ${
-          showTechnicianDetails ? "show-details" : ""
-        }`}
-        onClick={closeTechnicianDetails}
-      ></div>
       <table className="tech-table">
         <thead>
           <tr>
@@ -116,6 +110,9 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
       </table>
       {showTechnicianDetails && selectedTechnician && (
         <div className="technician-details">
+          <button className="close-button" onClick={closeTechnicianDetails}>
+            &#10006;
+          </button>
           <h2>Technician Details</h2>
           <p>
             Name: {selectedTechnician.firstName} {selectedTechnician.lastName}
