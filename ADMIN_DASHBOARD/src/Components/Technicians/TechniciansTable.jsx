@@ -2,15 +2,16 @@ import React, { useState } from "react";
 
 import "../../Styles/Technicians/TechniciansTable.scss"; 
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
-import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa"; 
-import { TechnicianEditForm } from "./TechnicianEditForm";
+import { TechnicianEditForm } from "./TechnicianEditForm"; // Import the TechnicianEditForm component
 
 export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
 
-  const [selectedTechnician, setSelectedTechnician] = useState(null); 
-  const [showTechnicianDetails, setShowTechnicianDetails] = useState(false); 
+  const [selectedTechnician, setSelectedTechnician] = useState(null); // State to store the selected technician
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false); // State to control the visibility of the edit form
+
+  const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
 
   const handleSort = (field) => {
     setShowTechnicianDetails(false);
