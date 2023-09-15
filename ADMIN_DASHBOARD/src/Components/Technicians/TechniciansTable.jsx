@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import "../../Styles/Technicians/TechniciansTable.scss"; // Import your SCSS stylesheet
-import { BsSortAlphaDown,  BsSortAlphaDownAlt} from "react-icons/bs";
+import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 
-
-export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
-
+export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
-  //   const [searchTerm, setSearchTerm] = useState("");
+  const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
+  const [selectedTechnician, setSelectedTechnician] = useState(null);
 
   const handleSort = (field) => {
+    setShowTechnicianDetails(false);
+    setSelectedTechnician(null);
+
     if (field === sortBy) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
     } else {
       setSortBy(field);
       setSortDirection("asc");
     }
+  };
+
+  const handleTechnicianClick = (technician) => {
+    setShowTechnicianDetails(true);
+    setSelectedTechnician(technician);
   };
 
   const sortedTechnicians = [...technicians].sort((a, b) => {
@@ -30,25 +37,17 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
   });
 
   const filteredTechnicians = sortedTechnicians.filter((technician) => {
-    if (searchColumn ==="Name"){
+    if (searchColumn === "Name") {
       const fullName =
-      `${technician.firstName} ${technician.lastName}`.toLowerCase();
-    return fullName.includes(searchTerm.toLowerCase());
+        `${technician.firstName} ${technician.lastName}`.toLowerCase();
+      return fullName.includes(searchTerm.toLowerCase());
+    } else if (searchColumn === "Email") {
+      return technician.email.includes(searchTerm.toLowerCase());
+    } else if (searchColumn === "Address") {
+      return technician.address.includes(searchTerm.toLowerCase());
+    } else if (searchColumn === "TP") {
+      return technician.mobile[0].includes(searchTerm.toLowerCase());
     }
-    else if (searchColumn ==="Email"){
-      
-    return technician.email.includes(searchTerm.toLowerCase());
-    }
-    else if (searchColumn ==="Address"){
-    return technician.address.includes(searchTerm.toLowerCase());
-    }
-   
-    else if (searchColumn ==="TP"){
-    return technician.mobile[0].includes(searchTerm.toLowerCase());
-    }
-   
-
-    
   });
 
   return (
@@ -58,23 +57,44 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
           <tr>
             <th>
               Technician Name{" "}
-              <button onClick={() => handleSort("firstName")}>{sortDirection === "asc" && searchColumn === "Name" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              <button onClick={() => handleSort("firstName")}>
+                {sortDirection === "asc" && searchColumn === "Name" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
             <th>
               Email Address{" "}
-              <button onClick={() => handleSort("email")}>{sortDirection === "asc" && searchColumn === "Email" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              <button onClick={() => handleSort("email")}>
+                {sortDirection === "asc" && searchColumn === "Email" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
             <th>
-              Address <button onClick={() => handleSort("address")}>{sortDirection === "asc" && searchColumn === "Address" ? <BsSortAlphaDownAlt/> : <BsSortAlphaDown/>}</button>
+              Address{" "}
+              <button onClick={() => handleSort("address")}>
+                {sortDirection === "asc" && searchColumn === "Address" ? (
+                  <BsSortAlphaDownAlt />
+                ) : (
+                  <BsSortAlphaDown />
+                )}
+              </button>
             </th>
-            <th>Telephone Number </th>
+            <th>Telephone Number</th>
           </tr>
         </thead>
         <tbody>
           {filteredTechnicians.map((technician) => (
             <tr key={technician.id}>
               <td>
-                {technician.firstName} {technician.lastName}
+                <button onClick={() => handleTechnicianClick(technician)}>
+                  {technician.firstName} {technician.lastName}
+                </button>
               </td>
               <td>{technician.email}</td>
               <td>{technician.address}</td>
@@ -83,6 +103,17 @@ export const TechniciansTable = ({ technicians,searchTerm,searchColumn}) => {
           ))}
         </tbody>
       </table>
+      {showTechnicianDetails && selectedTechnician && (
+        <div className="technician-details">
+          <h2>Technician Details</h2>
+          <p>
+            Name: {selectedTechnician.firstName} {selectedTechnician.lastName}
+          </p>
+          <p>Email: {selectedTechnician.email}</p>
+          <p>Address: {selectedTechnician.address}</p>
+          <p>Telephone Number: {selectedTechnician.mobile[0]}</p>
+        </div>
+      )}
     </div>
   );
 };
