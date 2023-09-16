@@ -12,6 +12,7 @@
   align-content: center;
   overflow: hidden;
 
+
   .component_container {
     position: relative;
     top: 50%;
@@ -24,6 +25,9 @@
     border-bottom-right-radius: 20px;
     overflow-y: auto;
     text-align: center;
+
+   
+    
 
     .table_container {
       position: relative;
@@ -56,6 +60,7 @@
 
           &:focus {
             border-color: transparent;
+            border-bottom-color: #a7d6fd;
             font-weight: 600;
             scale: 1.03;
           }
