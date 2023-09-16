@@ -12,7 +12,6 @@
   align-content: center;
   overflow: hidden;
 
-
   .component_container {
     position: relative;
     top: 50%;
@@ -20,14 +19,12 @@
     margin-left: 220px;
     margin-top: 0;
     height: 90%;
+    // Set width to remaining size after the navigation
     width: calc(100% - 220px);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     overflow-y: auto;
     text-align: center;
-
-   
-    
 
     .table_container {
       position: relative;
@@ -38,7 +35,6 @@
       flex-direction: column;
       margin-top: 38px;
       margin-bottom: 20px;
-      
 
       .search_bar {
         display: flex;
@@ -47,6 +43,11 @@
         padding: 3px;
         gap: 1.5em;
         vertical-align: center;
+        
+        /* 
+        Styling the selecter which selects sort by
+          - removed background colour and underlined that
+        */
         select {
           margin-bottom: 20px;
           width: fit-content;
@@ -57,6 +58,7 @@
           justify-content: space-evenly;
           outline: none;
           box-shadow: 0px 6px 35px -7px rgba(255, 255, 255, 0.938);
+          font-size: 0.75rem;
 
           &:focus {
             border-color: transparent;
@@ -69,9 +71,12 @@
         .lable {
           margin-left: 1em;
           margin-right: -1em;
-          font-size: 14px;
+          font-size: 0.75rem;
         }
 
+        /*
+        Search Bar styling
+        */
         .search_input {
           padding: 10px;
           padding-inline: 20px;
@@ -81,7 +86,7 @@
           box-shadow: 0px 6px 35px -7px rgba(0, 0, 0, 0.15);
           outline: none;
           transition: border-color 0.3s ease;
-          text-overflow: ellipsis;
+          font-size: 0.75rem;
 
           &:focus {
             border-color: transparent;
@@ -89,6 +94,7 @@
           }
 
           &::placeholder {
+            padding-left: -2em;
             transition: all ease-in-out 0.2s;
             outline: none;
             background: transparent;
@@ -99,8 +105,14 @@
       }
     }
 
+    @media (width < 1200px) {
+      .table_container {
+        width: 90%;
+      }
+    }
+
     .title {
-      font-size: xx-large;
+      font-size: 1.6em;
       font-weight: bolder;
       padding-top: 12vh;
       padding-bottom: 2vh;
@@ -119,6 +131,12 @@
   margin-top: 1em;
 }
 
+@media (width < 1200px) {
+  .button_container {
+    width: 90%;
+  }
+}
+
 .add_technician_button {
   padding: 10px 20px;
   background-color: darken($color: rgb(54, 54, 54), $amount: 1);
@@ -127,7 +145,7 @@
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 15px;
+  font-size: 0.8em;
   font-weight: bold;
   margin-top: 1em;
   overflow: hidden;

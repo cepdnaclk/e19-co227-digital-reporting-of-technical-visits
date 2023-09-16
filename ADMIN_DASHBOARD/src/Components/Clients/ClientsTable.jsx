@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "../../Styles/Clients/ClientsTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
+import classNames from "classnames";
+import { MdCreate } from "react-icons/md";
 
 export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("companyName");
@@ -87,11 +89,12 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
               <td>{client.address}</td>
               <td>{client.mobile[0]}</td>
               <td>
-                <button
+                <button className={classNames(styles.btn, styles.editBtn)}
                   // onClick={() => {
                   //   openEditForm(technician);
                   // }}
                 >
+                  <MdCreate />
                   Edit
                 </button>
               </td>

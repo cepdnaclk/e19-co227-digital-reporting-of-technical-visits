@@ -1,33 +1,33 @@
 .user_card {
-  height: 3.5rem;
-  width: 18rem;
+  height: 3rem;
+  width: 14rem;
   z-index: 99;
-  padding: 0.5rem 1.5rem;
+  padding: 0.4rem 0.4rem;
   border-radius: 1.75rem;
   background-color: #b6cff56c;
   background-color: #f8f8f8ef;
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: 1.8rem;
+  right: 1.8rem;
   box-shadow: 0px 6px 25px -7px rgba(165, 204, 255, 0.4);
 
   .user_info {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
     img {
       border-radius: 100%;
-      height: 2.6rem;
+      height: 2.3rem;
     }
 
     .user_details {
       width: 100%;
       p {
         text-align: left;
-        font-size: small;
+        font-size: 0.7rem;
         font-weight: 500;
         color: rgb(119, 129, 139);
       }

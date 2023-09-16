@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1em 0em;
+  padding: 0.8em 0em;
   width: 100%;
   animation: fadeIn 1000ms ease-in;
   font: 1em sans-serif;
@@ -18,14 +18,17 @@
     overflow: hidden;
     width: 100%;
     box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.2);
-    font-size: 0.9em;
+    font-size: 0.8em;
     thead tr {
       color: hsl(0, 0%, 95%);
       background-color: darken($color: rgb(54, 54, 54), $amount: 2);
       text-align: left;
+      align-items: center;
+      align-content: center;
     }
 
     button {
+      vertical-align: middle;
       align-content: center;
       align-items: center;
       justify-content: center;
@@ -49,15 +52,16 @@
 
     th {
       text-align: left;
+      white-space: nowrap;
     }
 
-    @media (width < 1400px) {
+    @media (width < 1080px) {
       th,
       td {
         padding: 1.2em 0.9em;
         text-align: left;
         vertical-align: middle;
-        font-size: 0.9em;
+        font-size: 0.85em;
         border: 1px solid #ccc;
       }
 
@@ -128,10 +132,10 @@
     background-color: #ffffff;
     border: 1px solid #e7e7e7;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%,-50%);
     width: auto;
     height: auto;
     z-index: 2;
@@ -148,7 +152,7 @@
     }
 
     h2 {
-      font-size: 2em;
+      font-size: 1em;
       color: #333;
       margin-bottom: 1em;
       font-weight: bold;
@@ -158,15 +162,15 @@
     .info_section {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-bottom: 2em;
+      align-items: flex-start;
+      text-align: left;
 
       p {
-        font-size: 1.3em;
+        font-size: 0.75em;
         color: #555;
         margin-bottom: 0.5em;
         font-weight: bold;
-        text-align: center;
+        text-align: left;
       }
     }
 
@@ -177,7 +181,7 @@
       background-color: transparent;
       border: none;
       color: #ff0000;
-      font-size: 2em;
+      font-size: 1em;
       cursor: pointer;
       padding: 0;
     }
@@ -185,7 +189,7 @@
     svg {
       margin-right: 0.5em;
       vertical-align: middle;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
   }
 }
