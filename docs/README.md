@@ -22,11 +22,12 @@ title: Digital Reporting of Technical Visits
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Objective](#objective)
-3. [Key Features](#key-features)
-4. [Why Use Our Software](#why-use-our-software)
-5. [Getting Started](#getting-started)
-6. [Contact](#contact)
-7. [Links](#links)
+3. [Solution Architecture](#solution-architecture)
+4. [Key Features](#key-features)
+5. [Why Use Our Software](#why-use-our-software)
+6. [Getting Started](#getting-started)
+7. [Contact](#contact)
+8. [Links](#links)
 
 ---
 
@@ -38,6 +39,8 @@ When Engineers or Technicians visit sites to provide technical services (such as
 ## Objective
 
 The primary objective of this project is to create a simple yet powerful software tool that enables engineers, technicians, and service providers to seamlessly generate detailed reports while on-site, followed by verification and approval from the service recipients. By doing so, we aim to foster accountability, transparency, and open communication between service providers and receivers.
+
+## Solution Architecture
 
 ## Key Features
 
