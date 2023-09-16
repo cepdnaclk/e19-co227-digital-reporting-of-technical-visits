@@ -22,12 +22,13 @@ title: Digital Reporting of Technical Visits
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Objective](#objective)
-3. [Solution Architecture](#solution-architecture)
-4. [Key Features](#key-features)
-5. [Why Use Our Software](#why-use-our-software)
-6. [Getting Started](#getting-started)
-7. [Contact](#contact)
-8. [Links](#links)
+3. [Highlevel Solution Architecture](#highlevel-solution-architecture)
+4. [Software Design](#software-design)
+5. [Key Features](#key-features)
+6. [Why Use Our Software](#why-use-our-software)
+7. [Getting Started](#getting-started)
+8. [Contact](#contact)
+9. [Links](#links)
 
 ---
 
@@ -40,7 +41,20 @@ When Engineers or Technicians visit sites to provide technical services (such as
 
 The primary objective of this project is to create a simple yet powerful software tool that enables engineers, technicians, and service providers to seamlessly generate detailed reports while on-site, followed by verification and approval from the service recipients. By doing so, we aim to foster accountability, transparency, and open communication between service providers and receivers.
 
-## Solution Architecture
+## Highlevel Solution Architecture
+![Architecture](./images/architecture.jpg)
+
+## Software Design
+
+### User Interface for Technicians - Mobile Application
+
+Mobile application mainly consists of;
+    
+1. Login Page
+    * Managing User login with the email and the password.
+
+
+
 
 ## Key Features
 
