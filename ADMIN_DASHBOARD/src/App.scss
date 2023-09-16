@@ -15,11 +15,13 @@
   scrollbar-color: transparent;
   scrollbar-width: 10px;
 
+  /*-----Scroll Bar Stylings-----*/
   &::-webkit-scrollbar {
     background-color: transparent;
     width: 10px;
+    height: 10px;
     cursor: pointer;
-    padding-left: 5px;
+    
   }
 
   &::-webkit-scrollbar-thumb {
@@ -33,13 +35,17 @@
     }
   }
 
-  &::-webkit-scrollbar-button {
-    border-style: solid;
-    height: 16px;
-    width: 16px;
+  &::-webkit-scrollbar-corner{
+    background: transparent;
   }
 
-  /* Up */
+  &::-webkit-scrollbar-button {
+    border-style: solid;
+    height: 12px;
+    width: 12px;
+  }
+
+  /* Up-Arrow */
   &::-webkit-scrollbar-button:vertical:decrement {
     border-width: 0 6px 12px 6px;
     border-color: transparent transparent #bbbbbb transparent;
@@ -49,7 +55,7 @@
     }
   }
 
-  /* Down */
+  /* Down-arrow */
   &::-webkit-scrollbar-button:vertical:increment {
     border-width: 12px 6px 0 6px;
     border-color: #bbbbbb transparent transparent transparent;
@@ -58,13 +64,31 @@
       border-color: #a0afcf transparent transparent transparent;
     }
   }
-}
 
-.App {
-  position: relative;
-  display: flex;
-  min-height: 100vh;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background-color: rgb(210, 219, 243);
+  /* Left */
+  &::-webkit-scrollbar-button:horizontal:decrement {
+    border-width: 6px 12px 6px 0;
+    border-color: transparent #bbbbbb transparent transparent;
+    &:hover {
+      border-color: transparent #a0afcf transparent transparent;
+    }
+  }
+
+  /* Right */
+  &::-webkit-scrollbar-button:horizontal:increment {
+    border-width: 6px 0 6px 12px;
+    border-color: transparent transparent transparent #bbbbbb;
+    &:hover {
+      border-color: transparent transparent transparent #a0afcf;
+    }
+  }
+
+  .App {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgb(210, 219, 243);
+  }
 }

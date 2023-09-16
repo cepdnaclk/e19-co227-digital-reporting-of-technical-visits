@@ -63,7 +63,7 @@ export const Technician = () => {
             <div className={styles.search_bar}>
               <input
                 type="text"
-                placeholder="Search Technicians..."
+                placeholder="&#128270; &ensp;Search Technicians... "
                 className={styles.search_input}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}

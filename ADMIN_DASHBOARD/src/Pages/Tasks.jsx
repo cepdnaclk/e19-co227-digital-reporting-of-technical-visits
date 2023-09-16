@@ -84,12 +84,12 @@ export const Tasks = () => {
             <div className={styles.search_bar}>
               <input
                 type="text"
-                placeholder="Search by name..."
+                placeholder="&#128270; &ensp;Search by name..."
                 className={styles.search_input}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-
+              <p className={styles.lable}>Sort by:</p>
               <select
                 className={styles.search_column_select}
                 value={searchColumn}
@@ -99,13 +99,12 @@ export const Tasks = () => {
                 <option value="Company">Company</option>
                 <option value="Address">Address</option>
               </select>
-              </div>
-              <TasksTable
-                tasks={jobs}
-                searchTerm={searchTerm}
-                searchColumn={searchColumn}
-              />
-            
+            </div>
+            <TasksTable
+              tasks={jobs}
+              searchTerm={searchTerm}
+              searchColumn={searchColumn}
+            />
           </div>
         </div>
       </div>

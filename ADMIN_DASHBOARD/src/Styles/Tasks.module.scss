@@ -42,26 +42,35 @@
         padding: 3px;
         gap: 1em;
         vertical-align: center;
+        
+        /* 
+        Styling the selecter which selects sort by
+          - removed background colour and underlined that
+        */
         select {
           margin-bottom: 20px;
-          appearance: none;
-          width: 15%;
-          border-radius: 30px;
-          padding: 10px;
-          padding-inline: 15px;
+          width: fit-content;
           margin: 2px;
           border-color: transparent;
+          border-bottom-color: #ccc;
+          background-color: transparent;
           justify-content: space-evenly;
           outline: none;
+          box-shadow: 0px 6px 35px -7px rgba(255, 255, 255, 0.938);
+          font-size: 0.75rem;
 
           &:focus {
-            border-color: #bedaf8;
+            border-color: transparent;
+            border-bottom-color: #a7d6fd;
+            font-weight: 600;
             scale: 1.03;
           }
         }
 
         .lable{
-          font-size: 14px;
+          margin-left: 1em;
+          margin-right: -1em;
+          font-size: 0.75rem;
         }
 
         .search_input {
@@ -73,7 +82,7 @@
           box-shadow: 0px 6px 35px -7px rgba(0, 0, 0, 0.15);
           outline: none;
           transition: border-color 0.3s ease;
-          text-overflow: ellipsis;
+          font-size: 0.75rem;
 
           &:focus {
             border-color: transparent;
@@ -91,12 +100,18 @@
       }
     }
 
+    @media (width < 1200px) {
+      .table_container {
+        width: 90%;
+      }
+    }
+
     .name {
-      font-size: xx-large;
+      font-size: 1.6em;
       font-weight: bolder;
       padding-top: 12vh;
       padding-bottom: 5vh;
-      color: black;
+      color: #444444;
     }
   }
 }

@@ -2,7 +2,7 @@
   display: flex;
   gap: 5px;
   justify-content: center;
-  width: 420px;
+  width: 25rem;
   align-items: center;
   flex-direction: column;
   height: auto;
@@ -13,9 +13,9 @@
   box-shadow: 0px 6px 25px -7px rgba(0, 0, 0, 0.1);
 
   .calender_boarder {
-    width: 24rem; //96px
-    height: 24rem; //96px
-    padding: 1.5em;
+    width: 22rem; //96px
+    height: 22rem; //96px
+    padding: 1em;
     margin-top: 1.5em;
     padding-bottom: 0rem;
 
@@ -28,7 +28,7 @@
       .calender_header_1 {
         user-select: none;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
 
       .calender_header_2 {
@@ -37,8 +37,8 @@
         align-items: center;
 
         .move_back {
-          width: 1.25rem;
-          height: 1.25rem;
+          width: 1.2rem;
+          height: 1.2rem;
           cursor: pointer;
 
           &:hover {
@@ -49,7 +49,7 @@
 
         .today_button {
           cursor: pointer;
-          font-size: 1rem;
+          font-size: 0.8rem;
           &:hover {
             transform: scale(1.05);
             transition: all 0.3s; /* You can adjust the transition duration as needed */
@@ -57,8 +57,8 @@
         }
 
         .move_forward {
-          width: 1.25rem;
-          height: 1.25rem;
+          width: 1.2rem;
+          height: 1.2rem;
           cursor: pointer;
 
           &:hover {
@@ -72,16 +72,18 @@
     .week_days {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      
 
       .day_text {
-        font-size: 0.875rem;
-        text-align: center;
-        height: 3rem;
-        width: 3rem;
+        padding: 0.2rem;
+        font-size: 0.72rem;
+        height: 2.4rem;
         display: grid;
         justify-content: center;
         align-content: center;
         color: #636363;
+        text-align: center;
         user-select: none;
 
         &:nth-child(1) {
@@ -101,11 +103,11 @@
       .day_text_row {
         padding: 0.2rem;
         text-align: center;
-        height: 2.8rem;
+        height: 2.4rem;
         display: grid;
         justify-content: center;
         align-content: center;
-        font-size: 0.875rem;
+        font-size: 0.72rem;
         border-top: 1px solid #e2e8f0;
 
         .current_month {
@@ -124,9 +126,9 @@
 
 
         .normal_day {
-          height: 2.1rem;
-          font-size: 0.875rem;
-          width: 2.1rem;
+          font-size: 0.72rem;
+          height: 1.8rem;
+          width: 1.8rem;
           border-radius: 50%;
           display: grid;
           justify-content: center;
@@ -145,7 +147,7 @@
 
   .shedule_boarder {
     height: auto;
-    width: 24rem;
+    width: 22rem;
     text-align: left;
     margin-bottom: 2.5em;
 
@@ -156,13 +158,13 @@
 
     .shedule_header {
       font-weight: 600; // Equivalent to font-semibold
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       margin-bottom: 0.75rem;
     }
 
     .meetings {
       color: #9bb9da;
-      font-size: 0.885rem;
+      font-size: 0.75rem;
     }
   }
     // @media (width > 1080px) {
