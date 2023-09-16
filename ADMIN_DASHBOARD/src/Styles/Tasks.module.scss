@@ -32,7 +32,7 @@
       transform: translate(-50%, 0);
       display: flex;
       flex-direction: column;
-      margin-top: 40px;
+      margin-top: 38px;
       margin-bottom: 20px;
 
       .search_bar {
@@ -40,13 +40,9 @@
         align-content: center;
         align-items: center;
         padding: 3px;
-        gap: 1em;
+        gap: 1.5em;
         vertical-align: center;
-        
-        /* 
-        Styling the selecter which selects sort by
-          - removed background colour and underlined that
-        */
+
         select {
           margin-bottom: 20px;
           width: fit-content;
@@ -67,7 +63,7 @@
           }
         }
 
-        .lable{
+        .label {
           margin-left: 1em;
           margin-right: -1em;
           font-size: 0.75rem;
@@ -90,6 +86,7 @@
           }
 
           &::placeholder {
+            padding-left: -2em;
             transition: all ease-in-out 0.2s;
             outline: none;
             background: transparent;
@@ -100,18 +97,76 @@
       }
     }
 
-    @media (width < 1200px) {
-      .table_container {
-        width: 90%;
-      }
-    }
+//     .name {
+//       font-size: 1.6em;
+//       font-weight: bolder;
+//       padding-top: 12vh;
+//       padding-bottom: 2vh;
+//       color: #444444;
+//     }
+//   }
+// }
 
-    .name {
-      font-size: 1.6em;
-      font-weight: bolder;
-      padding-top: 12vh;
-      padding-bottom: 5vh;
-      color: #444444;
+// .button_container {
+//   position: relative;
+//   width: 80%;
+//   left: 50%;
+//   transform: translate(-50%, 0);
+//   overflow: hidden;
+//   display: flex;
+//   justify-content: flex-start;
+//   margin-top: 1em;
+
+  // @media (width < 1200px) {
+  //   width: 90%;
+  // }
+  @media (width < 1200px) {
+    .table_container {
+      width: 90%;
     }
   }
+
+  .title {
+    font-size: 1.6em;
+    font-weight: bolder;
+    padding-top: 12vh;
+    padding-bottom: 2vh;
+    color: #444444;
+  }
 }
+}
+
+.button_container {
+  position: relative;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  overflow: hidden;
+  display: flex;
+  margin-top: 1em;
+}
+
+@media (width < 1200px) {
+  .button_container {
+    width: 90%;
+  }
+}
+  .create_task_button {
+    padding: 10px 20px;
+    background-color: darken($color: rgb(54, 54, 54), $amount: 1);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: 1em;
+    overflow: hidden;
+
+    &:hover {
+      color: white;
+      background-color: #0056b3;
+    }
+  }
+
