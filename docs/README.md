@@ -33,7 +33,7 @@ title: Digital Reporting of Technical Visits
 ## Introduction
 
 When Engineers or Technicians visit sites to provide technical services (such as repairs, troubleshooting, maintenance), a report should be filled by the visiting service provider and checked off by the service receiver to maintain accountability and transparency. The expectation of this project is to develop a simple, easy to use, robust software application for the above purpose. 
-
+![Report](./images/technical_reporting.jpg)
 
 ## Objective
 
