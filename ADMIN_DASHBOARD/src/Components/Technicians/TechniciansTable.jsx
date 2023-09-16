@@ -6,7 +6,7 @@ import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import { TechnicianEditForm } from "./TechnicianEditForm";
 import classNames from "classnames";
 
-export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
+export const TechniciansTable = ({ technicians, searchTerm, searchColumn, technicianEdit }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
 
@@ -132,7 +132,7 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
                 <button
                   className={classNames(styles.btn, styles.editBtn)}
                   onClick={() => {
-                    openEditForm(technician);
+                    technicianEdit(technician);
                   }}
                 >
                   <MdCreate />
@@ -144,16 +144,7 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn }) => {
         </tbody>
       </table>
 
-      {/* Display the edit form as a modal/popup when needed */}
-      {isEditFormVisible && (
-        <div className={styles.cardContainer}>
-          {/* Pass the selected technician to the edit form */}
-          <TechnicianEditForm
-            technician={selectedTechnician}
-            onClosing={closeEditForm}
-          />
-        </div>
-      )}
+      
 
       {showTechnicianDetails && selectedTechnician && (
         <div

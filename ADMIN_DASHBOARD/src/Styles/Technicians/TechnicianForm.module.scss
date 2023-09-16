@@ -20,10 +20,10 @@
 
   .close_button {
     position: absolute;
-    top: -12px;
-    right: -12px;
+    top: -15px;
+    right: -15px;
     background-color: rgb(235, 169, 169);
-    border-color: rgb(116, 1, 1);
+    border-color: transparent;
     height: 30px;
     width: 30px;
     align-content: center;
@@ -32,7 +32,7 @@
     font-size: 22px;
     font-weight: bolder;
     cursor: pointer;
-    color: #333;
+    color: #4e4e4e;
     &:hover {
       color: #f00;
       background-color: rgb(247, 239, 239);
