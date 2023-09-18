@@ -127,7 +127,7 @@ See the prototype of the Web app interface [here](https://www.figma.com/proto/uF
 **Wire frame Diagram for the Web
 application**
 
-![Webapp](./images/mobile_figma.png)
+![Webapp](./images/web_figma.png)
 
 ## Key Features
 
