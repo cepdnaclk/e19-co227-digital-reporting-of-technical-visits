@@ -43,13 +43,15 @@ class AuthService {
     await _auth.signOut();
   }
 
-  getFirebaseUser(){
-    return  _auth.currentUser!;
+  getFirebaseUser() {
+    // print("in the getFirebaseUserEmail");
+    // print(_auth.currentUser!);
+    return _auth.currentUser!;
   }
 
   String? getUserImage() {
     if (_auth.currentUser?.photoURL != null) {
-      print(_auth.currentUser?.photoURL);
+      // print(_auth.currentUser?.photoURL);
       return _auth.currentUser?.photoURL;
     } else {
       return "https://www.google.com/url?sa=i&url=https%3A%2F%2Ficons-for-free.com%2Fprofile%2Bprofile%2Bpage%2Buser%2Bicon-1320186864367220794%2F&psig=AOvVaw3SquSzXvD-RJRUQsn45nUW&ust=1693303516480000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCLjaqaiN_4ADFQAAAAAdAAAAABAJ";
@@ -58,7 +60,7 @@ class AuthService {
 
   String? getUserName() {
     if (_auth.currentUser?.displayName != null) {
-      print(_auth.currentUser?.displayName);
+      // print(_auth.currentUser?.displayName);
       return _auth.currentUser?.displayName;
     } else {
       return "Profile Name";
@@ -67,7 +69,7 @@ class AuthService {
 
   String? getUserEmail() {
     if (_auth.currentUser?.email != null) {
-      print(_auth.currentUser?.email);
+      // print(_auth.currentUser?.email);
       return _auth.currentUser?.email;
     } else {
       return "example@gmail.com";
