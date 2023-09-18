@@ -152,7 +152,7 @@ application**
 
 **Technicians Page (Implemented)**
 
-![techniciansPage](./images/technicians_log.png)
+![techniciansPage](./images/tech_log.png)
 
 
 **Tasks Page (Wireframe)**
