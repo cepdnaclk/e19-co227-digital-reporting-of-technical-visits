@@ -9,7 +9,8 @@ class ProfileController extends GetxController {
   final _userRepo = Get.put(UserRepository());
 
   getUserData() {
-    final email = AuthService().getFirebaseUser().email;
+    final email = AuthService().getUserEmail();
+    
     if (email != null) {
       return _userRepo.getUserDetails(email);
     } else {
