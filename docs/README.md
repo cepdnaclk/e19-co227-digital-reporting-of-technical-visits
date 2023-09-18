@@ -52,7 +52,20 @@ Mobile application mainly consists of;
     
 1. Login Page
     * Managing User login with the email and the password.
+    * User can choose preffered account for logging.
+2. Profile Page
+    * User can see the completed, ongoing and missed tasks.
+3. Job Cards
+    * In assiged task list page, user can see the all information about the task.
+    * After doing the task, user can see the job done card.
+4. SideBar
+    * User can navigate through pages using sidebar.
+5. Logout Page
+   
+See the prototype of the mobile app interface [here](https://www.figma.com/proto/ZJFEjCkwhxeERxmkAQdxP1/VisitLog?type=design&node-id=7-2&t=Nw2wuyAjBMAtArIR-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=7%3A2)
 
+**Wire frame Diagram for the Mobile
+application**
 
 
 
