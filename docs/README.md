@@ -77,7 +77,6 @@ application**
 **Login Page (Implemented)**
 
 ![loginPage](./images/login.png)
-![loginPageaccount]
 
 **Profile Page (Implemented)**
 
@@ -128,6 +127,13 @@ See the prototype of the Web app interface [here](https://www.figma.com/proto/uF
 application**
 
 ![Webapp](./images/web_figma.png)
+
+
+
+**Login Page (Implemented)**
+
+![loginPage](./images/login.png)
+
 
 ## Key Features
 
