@@ -67,7 +67,30 @@ See the prototype of the mobile app interface [here](https://www.figma.com/proto
 **Wire frame Diagram for the Mobile
 application**
 
+![Mobileapp](./images/mobile_figma.png)
 
+
+
+**Login Page (Implemented)**
+
+![loginPage](./images/login.png)
+
+
+**Profile Page (Implemented)**
+
+![profilePage](./images/profile.png)
+
+**Job Cards (Implemented)**
+
+![jobcards](./images/all_job_cards.png)![jobCard](./images/Job_card.png)![doneJobCard](./images/done_job.png)
+
+**Side Bar (Implemented)**
+
+![sideBar](./images/sidebar.png)
+
+**Logout Page (Implemented)**
+
+![logoutPage](./images/logout.png)
 
 ## Key Features
 
