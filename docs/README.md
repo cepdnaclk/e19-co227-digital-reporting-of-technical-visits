@@ -58,9 +58,12 @@ Mobile application mainly consists of;
 3. Job Cards
     * In assiged task list page, user can see the all information about the task.
     * After doing the task, user can see the job done card.
-4. SideBar
+4. Technician Form
+    * User can fill this form instead of using a paper.
+    * There is a digital signature ba also.
+5. SideBar
     * User can navigate through pages using sidebar.
-5. Logout Page
+6. Logout Page
    
 See the prototype of the mobile app interface [here](https://www.figma.com/proto/ZJFEjCkwhxeERxmkAQdxP1/VisitLog?type=design&node-id=7-2&t=Nw2wuyAjBMAtArIR-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=7%3A2)
 
@@ -74,7 +77,7 @@ application**
 **Login Page (Implemented)**
 
 ![loginPage](./images/login.png)
-
+![loginPageaccount]
 
 **Profile Page (Implemented)**
 
@@ -84,6 +87,10 @@ application**
 
 ![jobcards](./images/all_job_cards.png)![jobCard](./images/Job_card.png)![doneJobCard](./images/done_job.png)
 
+**Technician Form (Implemented)**
+
+![technicianForm](./images/form.png)
+
 **Side Bar (Implemented)**
 
 ![sideBar](./images/sidebar.png)
@@ -91,6 +98,36 @@ application**
 **Logout Page (Implemented)**
 
 ![logoutPage](./images/logout.png)
+
+
+### User Interface for Administration - Web Application
+
+Web application mainly consists of;
+    
+1. Login Page
+    * Managing Admin login with the email and the password.
+    * Or can sign in with google
+    * User can choose preffered account for logging.
+2. Dashboard Page
+    * User can see the completed, ongoing and missed tasks.
+3. Clients Page
+    * In assiged task list page, user can see the all information about the task.
+    * After doing the task, user can see the job done card.
+4. Technicians Page
+    * User can fill this form instead of using a paper.
+    * There is a digital signature ba also.
+5. Tasks Page
+    * User can navigate through pages using sidebar.
+6. Technician Assign Page
+
+7. Settings Page
+   
+See the prototype of the Web app interface [here](https://www.figma.com/proto/uFw6wGwKTS4zzlWgCK6FuP/VisitLog---WebPage?type=design&node-id=4-162&t=MNVIIypJkiAslQQy-0&scaling=contain&page-id=0%3A1&starting-point-node-id=4%3A162)
+
+**Wire frame Diagram for the Web
+application**
+
+![Webapp](./images/mobile_figma.png)
 
 ## Key Features
 
