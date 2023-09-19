@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
@@ -15,6 +17,7 @@ class ReportImages extends StatelessWidget {
     required this.representative,
     required this.type,
     required this.notes,
+    required this.images,
   }) : super(key: key);
 
   static String id = "report_images";
@@ -26,6 +29,7 @@ class ReportImages extends StatelessWidget {
   final String representative;
   final String type;
   final String notes;
+  final List<Uint8List> images;
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final List<Map<String, String>> items = TaskList().items;
@@ -111,6 +115,18 @@ class ReportImages extends StatelessWidget {
                           },
                           children: tableRows,
                         ),
+                        SizedBox(height: 20),
+                        if (images != null)
+                          Wrap(
+                            spacing: 8.0,
+                            children: images.map((image) {
+                              return Image.memory(
+                                image,
+                                height: 100,
+                                width: 100,
+                              );
+                            }).toList(),
+                          ),
                       ],
                     ),
                   ),
@@ -124,9 +140,6 @@ class ReportImages extends StatelessWidget {
   }
 
   TableRow buildTableRow(String label, String value) {
-    // if (value.isEmpty) {
-    //   value = "-";
-    // }
     return TableRow(
       decoration: BoxDecoration(
         border: Border(
