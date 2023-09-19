@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa";
 import { MdCreate } from "react-icons/md";
 import styles from "../../Styles/Technicians/TechniciansTable.module.scss";
@@ -19,6 +19,16 @@ export const TechniciansTable = ({
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
 
   const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
+
+  useEffect(() => {
+    // Add 'open' class to the body to hide overflow
+    if (showTechnicianDetails) {
+      document.body.classList.add("open");
+    } else {
+      // Remove 'open' class from the body to show overflow
+      document.body.classList.remove("open");
+    }
+  }, [showTechnicianDetails]);
 
   const handleSort = (field) => {
     setShowTechnicianDetails(false);
@@ -67,13 +77,11 @@ export const TechniciansTable = ({
     }
   });
 
-  // Function to open the edit form with the selected technician data
   const openEditForm = (technician) => {
     setSelectedTechnician(technician);
     setIsEditFormVisible(true);
   };
 
-  // Function to close the edit form
   const closeEditForm = () => {
     setSelectedTechnician(null);
     setIsEditFormVisible(false);
@@ -81,6 +89,11 @@ export const TechniciansTable = ({
 
   return (
     <div className={styles.table_container_2}>
+      {/* Overlay */}
+      <div
+        className={`${styles.overlay} ${showTechnicianDetails ? "open" : ""}`}
+      />
+
       <table className={styles.tech_table}>
         <thead>
           <tr>
