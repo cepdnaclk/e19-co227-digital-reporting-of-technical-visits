@@ -32,18 +32,21 @@ class TaskRepository {
         final Timestamp startDate = data['startDate'] as Timestamp;
         final DateTime startDateTime = startDate.toDate();
         final String date = startDateTime.toString();
-        final bool isArrived = data['isArrived'];
+        final bool isVerified = data['isVerified'];
+        final String id = documentSnapshot.id;
+
 
         if (startDateTime.year == today.year &&
             startDateTime.month == today.month &&
-            startDateTime.day == today.day && 
-            isArrived == false) {
+            startDateTime.day == today.day &&
+            isVerified == false) {
           final Map<String, String> item = {
             'name': company,
             'subTopic': title,
             'location': address,
             'description': description,
             'time': date,
+            'id': id,
           };
 
           fetchedItems.add(item);

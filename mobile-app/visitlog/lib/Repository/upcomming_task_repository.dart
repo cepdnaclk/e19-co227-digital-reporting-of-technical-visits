@@ -32,12 +32,12 @@ class UpcommingTaskRepository {
         final Timestamp startDate = data['startDate'] as Timestamp;
         final DateTime startDateTime = startDate.toDate();
         final String date = startDateTime.toString();
-        final bool isArrived = data['isArrived'];
+        final bool isVerified = data['isVerified'];
 
         if (startDateTime.year >= today.year &&
             startDateTime.month >= today.month &&
             startDateTime.day > today.day && 
-            isArrived == false) {
+            isVerified == false) {
           final Map<String, String> item = {
             'name': company,
             'subTopic': title,

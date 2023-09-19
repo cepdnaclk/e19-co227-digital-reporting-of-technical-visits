@@ -152,7 +152,7 @@ class JobCardsList extends StatelessWidget {
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
               Container(
-                height: 300,
+                height: 320,
                 child: Column(
                   children: [
                     SizedBox(
