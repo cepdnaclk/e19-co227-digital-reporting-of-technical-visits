@@ -7,7 +7,6 @@ import { MdCreate } from "react-icons/md";
 export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
-  //   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSort = (field) => {
     if (field === sortBy) {
@@ -19,8 +18,8 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   };
 
   const sortedClients = [...clients].sort((a, b) => {
-    const aValue = sortBy ? a[sortBy] : a.name;
-    const bValue = sortBy ? b[sortBy] : b.name;
+    const aValue = sortBy ? (a[sortBy] || "").toString() : (a.name || "").toString();
+    const bValue = sortBy ? (b[sortBy] || "").toString() : (b.name || "").toString();
 
     if (sortDirection === "asc") {
       return aValue.localeCompare(bValue);
@@ -31,15 +30,16 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
 
   const filteredClients = sortedClients.filter((client) => {
     if (searchColumn === "companyName") {
-      const fullName = `${client.firstName} ${client.lastName}`.toLowerCase();
+      const fullName = `${(client.firstName || "").toLowerCase()} ${(client.lastName || "").toLowerCase()}`;
       return fullName.includes(searchTerm.toLowerCase());
     } else if (searchColumn === "Email") {
-      return client.email.includes(searchTerm.toLowerCase());
+      return (client.email || "").includes(searchTerm.toLowerCase());
     } else if (searchColumn === "Address") {
-      return client.address.includes(searchTerm.toLowerCase());
+      return (client.address || "").includes(searchTerm.toLowerCase());
     } else if (searchColumn === "TP") {
-      return client.mobile[0].includes(searchTerm.toLowerCase());
+      return ((client.mobile && client.mobile[0]) || "").includes(searchTerm.toLowerCase());
     }
+    return true; // Return true for unmatched columns
   });
 
   return (
@@ -84,10 +84,10 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
         <tbody>
           {filteredClients.map((client) => (
             <tr key={client.id}>
-              <td>{client.companyName}</td>
-              <td>{client.email}</td>
-              <td>{client.address}</td>
-              <td>{client.mobile[0]}</td>
+              <td>{client.companyName || ""}</td>
+              <td>{client.email || ""}</td>
+              <td>{client.address || ""}</td>
+              <td>{(client.mobile && client.mobile[0]) || ""}</td>
               <td>
                 <button className={classNames(styles.btn, styles.editBtn)}
                   // onClick={() => {
@@ -105,3 +105,4 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
     </div>
   );
 };
+
