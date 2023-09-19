@@ -11,11 +11,11 @@ export const Dashboard = () => {
       <Navigation />
       <UserCard />
       <div className={styles.component_container}>
+        <Calendar />
         <div className={styles.cardContainer}>
           <OngoingTasksCard />
           <CompletedTasksCard />
         </div>
-        <Calendar />
       </div>
     </div>
   );
