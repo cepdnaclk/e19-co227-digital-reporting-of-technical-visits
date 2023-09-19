@@ -86,9 +86,9 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
           {filteredTasks.map((task) => (
             <tr key={task.id}>
               <td>{task.title}</td>
-              <td>{task.companyName}</td>
+              <td>{task.companyName || "No company"}</td>
               <td>{task.address}</td>
-              <td>{task.companyAddress}</td>
+              <td>{task.companyAddress || "No Company Address"}</td>
               <td>{task.isArrived ? <p>Arrived</p> : <p>Not Arrived</p>}</td>
               <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
               <td>{task.technicianName || "No Technician"}</td>

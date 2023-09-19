@@ -62,13 +62,15 @@ export const TaskForm = () => {
       address,
       description,
       // technician: doc(db, "Technicians", `${selectedTechnician}`),
-      company: doc(db, "Clients", `${selectedClient}`),
+      companyRef: doc(db, "Clients", `${selectedClient}`),
+      company: clients.find(company=>company.id==selectedClient).companyName,
       isArrived: false,
       isVerified: false,
       startDate : startDateTimeStamp,
+      email: "ajanith101@gmail.com"
       
     };
-    const jobsCollectionRef = collection(db, "Jobs");
+    const jobsCollectionRef = collection(db, "Tasks");
     try {
       await addDoc(jobsCollectionRef, taskData);
       console.log("Task created successfully!");

@@ -15,7 +15,7 @@ export const Tasks = () => {
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    const jobsCollectionRef = collection(db, "Jobs");
+    const jobsCollectionRef = collection(db, "Tasks");
 
     const unsubscribe = onSnapshot(jobsCollectionRef, async (snapshot) => {
       const updatedJobs = [];
@@ -23,10 +23,14 @@ export const Tasks = () => {
       for (const docRef of snapshot.docs) {
         const jobData = docRef.data();
         var jobWithTechnician = jobData;
-        if (jobData.technician) {
-          const technicianRef = jobData.technician;
+        if (jobData.email && jobData.technicianRef) {
+          
+          const technicianRef = jobData.technicianRef;
+          console.log(jobData);
+          
 
           const technicianDoc = await getDoc(technicianRef);
+          
           if (technicianDoc.exists()) {
             const technicianName =
               technicianDoc.data().firstName +
@@ -36,13 +40,15 @@ export const Tasks = () => {
               ...jobWithTechnician,
               technicianName,
             };
+            console.log(technicianName)
           }
         }
 
-        const companyRef = jobData.company;
-        const companyDoc = await getDoc(companyRef);
+        
 
-        if (companyDoc.exists()) {
+        if (jobData.companyRef) {
+          const companyRef = jobData.companyRef;
+        const companyDoc = await getDoc(companyRef);
           const companyName = companyDoc.data().companyName;
           const companyAddress = companyDoc.data().address;
 
