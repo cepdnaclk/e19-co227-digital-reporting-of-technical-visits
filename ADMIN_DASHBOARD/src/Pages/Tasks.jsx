@@ -78,12 +78,10 @@ export const Tasks = () => {
             <p>Tasks Log</p>
           </div>
           <div className={styles.button_container}>
-          <button
-            className={styles.create_task_button}
-            onClick={toggleForm}
-          >
-            Create Task
-          </button></div>
+            <button className={styles.create_task_button} onClick={toggleForm}>
+              Create Task
+            </button>
+          </div>
           {showForm && <TaskForm />}
           <div className={styles.table_container}>
             <div className={styles.search_bar}>

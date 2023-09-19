@@ -52,8 +52,117 @@ Mobile application mainly consists of;
     
 1. Login Page
     * Managing User login with the email and the password.
+    * User can choose preffered account for logging.
+2. Profile Page
+    * User can see the completed, ongoing and missed tasks.
+3. Job Cards
+    * In assiged task list page, user can see the all information about the task.
+    * After doing the task, user can see the job done card.
+4. Technician Form
+    * User can fill this form instead of using a paper.
+    * There is a digital signature ba also.
+5. SideBar
+    * User can navigate through pages using sidebar.
+6. Logout Page
+   
+See the prototype of the mobile app interface [here](https://www.figma.com/proto/ZJFEjCkwhxeERxmkAQdxP1/VisitLog?type=design&node-id=7-2&t=Nw2wuyAjBMAtArIR-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=7%3A2)
+
+**Wire frame Diagram for the Mobile
+application**
+
+![Mobileapp](./images/mobile_figma.png)
 
 
+
+**Login Page (Implemented)**
+
+![loginPage](./images/login_mobile.png)
+
+**Profile Page (Implemented)**
+
+![profilePage](./images/profile.png)
+
+**Job Cards (Implemented)**
+
+![jobcards](./images/all_job_cards.png)![jobCard](./images/Job_card.png)![doneJobCard](./images/done_job.png)
+
+**Technician Form (Implemented)**
+
+![technicianForm](./images/form.png)
+
+**Side Bar (Implemented)**
+
+![sideBar](./images/sidebar.png)
+
+**Logout Page (Implemented)**
+
+![logoutPage](./images/logout.png)
+
+
+### User Interface for Administration - Web Application
+
+Web application mainly consists of;
+    
+1. Login Page
+    * Managing Admin login with the email and the password.
+    * Or can sign in with google
+    * Admin can choose preffered account for logging.
+2. Dashboard Page
+    * Admin can see the calender, ongoing tasks and completed tasks.
+    * Admin can add clients, technicians and tasks here.
+3. Clients Page
+    * Can view all the clients.
+    * Can add new clients.
+    * Can search for specific clients.
+4. Technicians Page
+    * Can view all the technicians.
+    * Can add new technicians.
+    * Can search for specific technicians.
+5. Tasks Page
+    * Can view all the tasks.
+    * Can add new tasks.
+    * Can search for specific tasks.
+6. Technician Assign Page
+    * Can view all the assignments of tehcnicians with the time; today, upcoming and Previous.
+7. Settings Page
+    * Admin can edit their profile as well as technicians' profiles in settings page.
+   
+See the prototype of the Web app interface [here](https://www.figma.com/proto/uFw6wGwKTS4zzlWgCK6FuP/VisitLog---WebPage?type=design&node-id=4-162&t=MNVIIypJkiAslQQy-0&scaling=contain&page-id=0%3A1&starting-point-node-id=4%3A162)
+
+**Wire frame Diagram for the Web
+application**
+
+![Webapp](./images/web_figma.png)
+
+
+
+**Login Page (Implemented)**
+
+![loginPage](./images/login.png)
+
+
+**Dashboard Page (Wireframe)**
+
+![dashboardPage](./images/dashboard-figma.png)
+
+**Clients Page (Wireframe)**
+
+![clientsPage](./images/clients.png)
+
+
+**Technicians Page (Implemented)**
+
+![techniciansPage](./images/tech_log.png)
+
+
+**Tasks Page (Wireframe)**
+
+![tasksPage](./images/Tasks.png)
+
+
+**Technician Assign Page (Wireframe)**
+
+![technicianAssignPage](./images/technician_assign.png)
 
 
 ## Key Features
