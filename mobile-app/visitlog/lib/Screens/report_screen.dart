@@ -11,13 +11,20 @@ import 'package:visitlog/services/auth_service.dart';
 import 'package:visitlog/utils.dart';
 
 class ReportScreen extends StatefulWidget {
-  ReportScreen({super.key, required this.topic, required this.subTopic, required this.location, required this.description});
+  ReportScreen(
+      {super.key,
+      required this.topic,
+      required this.subTopic,
+      required this.location,
+      required this.description,
+      required this.docId});
   static const String id = "report_screen";
 
   final String topic;
   final String subTopic;
   final String location;
   final String description;
+  final String docId;
 
   @override
   _ReportScreenState createState() => _ReportScreenState();
@@ -42,7 +49,6 @@ class _ReportScreenState extends State<ReportScreen> {
       _images.add(img);
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -223,11 +229,14 @@ class _ReportScreenState extends State<ReportScreen> {
                             TextFormField(
                               style: const TextStyle(color: Colors.black),
                               onChanged: (value) {
-                                representative = value;
+                                setState(() {
+                                  representative = value;
+                                });
                               },
                               decoration: InputDecoration(
                                 isDense: true, // important line
-                                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(0, 10, 0, 10),
                               ),
                             ),
                             SizedBox(height: 10),
@@ -242,11 +251,14 @@ class _ReportScreenState extends State<ReportScreen> {
                             TextFormField(
                               style: const TextStyle(color: Colors.black),
                               onChanged: (value) {
-                                type = value;
+                                setState(() {
+                                  type = value;
+                                });
                               },
                               decoration: InputDecoration(
                                 isDense: true,
-                                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(0, 10, 0, 10),
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -264,7 +276,9 @@ class _ReportScreenState extends State<ReportScreen> {
                                 TextFormField(
                                   style: const TextStyle(color: Colors.black),
                                   onChanged: (value) {
-                                    notes = value;
+                                    setState(() {
+                                      notes = value;
+                                    });
                                   },
                                   controller: _textController,
                                   maxLines: 4,
@@ -290,9 +304,10 @@ class _ReportScreenState extends State<ReportScreen> {
                                         InkWell(
                                           onTap: selectImage,
                                           child: Ink.image(
-                                            image: const AssetImage('icon/AddIcon.png'),
-                                            height: 80,
-                                            width: 80,
+                                            image: const AssetImage(
+                                                'icon/AddIcon.png'),
+                                            height: 100,
+                                            width: 100,
                                           ),
                                         ),
                                         const Text(
@@ -304,19 +319,19 @@ class _ReportScreenState extends State<ReportScreen> {
                                           ),
                                         ),
                                         const SizedBox(height: 8),
-                                          Container(
-                                            height: 100.0,
-                                            child: Wrap(
-                                              spacing: 8.0,
-                                              children: _images.map((image) {
-                                                return Image.memory(
-                                                  image,
-                                                  height: 100,
-                                                  width: 100,
-                                                );
-                                              }).toList(),
-                                            ),
+                                        Container(
+                                          height: 100.0,
+                                          child: Wrap(
+                                            spacing: 8.0,
+                                            children: _images.map((image) {
+                                              return Image.memory(
+                                                image,
+                                                height: 100,
+                                                width: 100,
+                                              );
+                                            }).toList(),
                                           ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -345,17 +360,16 @@ class _ReportScreenState extends State<ReportScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ReportImages(
-                              topic:widget.topic,
-                              subTopic: widget.subTopic,
-                              date: cdate,
-                              address: widget.location,
-                              representative: representative,
-                              type: type,
-                              notes: notes,
-                              images: _images,
-                              )
-                            ),
+                              builder: (context) => ReportImages(
+                                  topic: widget.topic,
+                                  subTopic: widget.subTopic,
+                                  date: cdate,
+                                  address: widget.location,
+                                  representative: representative,
+                                  type: type,
+                                  notes: notes,
+                                  images: _images,
+                                  docId: widget.docId)),
                         );
                       },
                       style: ElevatedButton.styleFrom(

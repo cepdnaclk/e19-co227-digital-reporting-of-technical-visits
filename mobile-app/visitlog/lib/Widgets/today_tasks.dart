@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Controllers/task_controller.dart';
-import 'package:visitlog/Screens/report_screen.dart';
+import 'package:visitlog/Screens/arrival_confirm.dart';
+
 import 'package:visitlog/Utils/date_time.dart';
 
 
@@ -66,6 +67,7 @@ class TodayTaskBuildItem extends StatelessWidget {
                               item['location'] ?? '',
                               getDateInFormat(DateTime.parse(item['time']!)),
                               TimeTo12Hour(DateTime.parse(item['time']!)),
+                              item['id'] ?? '',
                             );
                           },
                         ),
@@ -78,6 +80,7 @@ class TodayTaskBuildItem extends StatelessWidget {
                             item['location'] ?? '',
                             getDateInFormat(DateTime.parse(item['time']!)),
                             TimeTo12Hour(DateTime.parse(item['time']!)),
+                            item['id'] ?? '',
                           );
                         },
                       ),
@@ -101,7 +104,7 @@ class TodayTaskBuildItem extends StatelessWidget {
   }
 
   void _showDescriptionDialog(BuildContext context, String description,
-      String topic, String subTopic, String location, String date, String time) {
+      String topic, String subTopic, String location, String date, String time, String id) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -114,7 +117,7 @@ class TodayTaskBuildItem extends StatelessWidget {
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
               Container(
-                height: 350,
+                height: 390,
                 child: Column(
                   children: [
                     SizedBox(
@@ -187,11 +190,12 @@ class TodayTaskBuildItem extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ReportScreen(
+                                      builder: (context) => ArrivalConfirm(
                                           topic: topic,
                                           subTopic: subTopic,
                                           location: location,
-                                          description: description)));
+                                          description: description,
+                                          docId: id,)));
                             },
                             style: ElevatedButton.styleFrom(
                               shape: const StadiumBorder(),
