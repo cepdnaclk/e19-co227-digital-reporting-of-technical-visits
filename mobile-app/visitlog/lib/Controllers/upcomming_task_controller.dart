@@ -18,8 +18,14 @@ class UpcommingTaskController extends GetxController {
   void onInit() {
     super.onInit();
     // Initialize or fetch data from TaskRepository here
-    // For example:
     fetchData();
+
+    // Set up a Firestore snapshot listener
+    final collectionReference = _taskRepository.getFirestoreCollection(userEmail!);
+    collectionReference.snapshots().listen((querySnapshot) {
+      // Trigger the fetchData function whenever Firestore data changes
+      fetchData();
+    });
   }
 
   Future<void> fetchData() async {
