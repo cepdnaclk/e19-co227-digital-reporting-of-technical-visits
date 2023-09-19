@@ -27,7 +27,7 @@ class _ReportScreenState extends State<ReportScreen> {
   late String representative;
   late String type;
   late String notes;
-  Uint8List? _image;
+  List<Uint8List> _images = [];
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final _formkey = GlobalKey<FormState>();
@@ -39,9 +39,10 @@ class _ReportScreenState extends State<ReportScreen> {
   void selectImage() async {
     Uint8List img = await pickImage(ImageSource.gallery);
     setState(() {
-      _image = img;
+      _images.add(img);
     });
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -290,8 +291,8 @@ class _ReportScreenState extends State<ReportScreen> {
                                           onTap: selectImage,
                                           child: Ink.image(
                                             image: const AssetImage('icon/AddIcon.png'),
-                                            height: 100,
-                                            width: 100,
+                                            height: 80,
+                                            width: 80,
                                           ),
                                         ),
                                         const Text(
@@ -302,6 +303,20 @@ class _ReportScreenState extends State<ReportScreen> {
                                             color: Color(0xFFC8C8C9),
                                           ),
                                         ),
+                                        const SizedBox(height: 8),
+                                          Container(
+                                            height: 100.0,
+                                            child: Wrap(
+                                              spacing: 8.0,
+                                              children: _images.map((image) {
+                                                return Image.memory(
+                                                  image,
+                                                  height: 100,
+                                                  width: 100,
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ),
                                       ],
                                     ),
                                   ),
@@ -337,7 +352,8 @@ class _ReportScreenState extends State<ReportScreen> {
                               address: widget.location,
                               representative: representative,
                               type: type,
-                              notes: notes
+                              notes: notes,
+                              images: _images,
                               )
                             ),
                         );
