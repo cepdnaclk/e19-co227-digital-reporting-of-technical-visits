@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Controllers/upcomming_task_controller.dart';
 import 'package:visitlog/Screens/report_screen.dart';
+import 'package:visitlog/Utils/date_time.dart';
 
 class UpcommingTaskBuildItem extends StatelessWidget {
   UpcommingTaskBuildItem({super.key});
@@ -65,26 +66,28 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                           color: Colors.white,
                         ),
                         onPressed: () {
+                            _showDescriptionDialog(
+                              context,
+                              item['description'] ?? '',
+                              item['name'] ?? '',
+                              item['subTopic'] ?? '',
+                              item['location'] ?? '',
+                              getDateInFormat(DateTime.parse(item['time']!)),
+                              TimeTo12Hour(DateTime.parse(item['time']!)),
+                            );
+                          },
+                        ),
+                        onTap: () {
                           _showDescriptionDialog(
                             context,
                             item['description'] ?? '',
                             item['name'] ?? '',
                             item['subTopic'] ?? '',
                             item['location'] ?? '',
-                            item['time'] ?? '',
+                            getDateInFormat(DateTime.parse(item['time']!)),
+                            TimeTo12Hour(DateTime.parse(item['time']!)),
                           );
                         },
-                      ),
-                      onTap: () {
-                        _showDescriptionDialog(
-                          context,
-                          item['description'] ?? '',
-                          item['name'] ?? '',
-                          item['subTopic'] ?? '',
-                          item['location'] ?? '',
-                          item['time'] ?? '',
-                        );
-                      },
                     ),
                   ),
                 ),
@@ -97,7 +100,7 @@ class UpcommingTaskBuildItem extends StatelessWidget {
   }
 
   void _showDescriptionDialog(BuildContext context, String description,
-      String topic, String subTopic, String location, String date) {
+      String topic, String subTopic, String location, String date, String time) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -110,7 +113,7 @@ class UpcommingTaskBuildItem extends StatelessWidget {
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
               Container(
-                height: 330,
+                height: 350,
                 child: Column(
                   children: [
                     SizedBox(
@@ -145,9 +148,22 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
-                        leading: const Icon(Icons.lock_clock),
+                        leading: const Icon(Icons.calendar_month),
                         title: Text(
                           date,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: ListTile(
+                        leading: const Icon(Icons.access_time),
+                        title: Text(
+                          time,
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,

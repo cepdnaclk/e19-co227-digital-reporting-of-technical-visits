@@ -8,6 +8,8 @@ class TaskModel {
   final String? description;
   final String? startDate;
   final String? email;
+  final bool? isArrived;
+  final bool? isVerified;
 
   const TaskModel({
     this.id,
@@ -17,6 +19,8 @@ class TaskModel {
     required this.description,
     required this.startDate,
     required this.email,
+    required this.isArrived,
+    required this.isVerified,
   });
 
   toJson() {
@@ -27,6 +31,8 @@ class TaskModel {
       "description": description,
       "email": email,
       "startDate": startDate,
+      "isArrived": isArrived,
+      "isVerified": isVerified,
     };
   }
 
@@ -34,11 +40,14 @@ class TaskModel {
       DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
     return TaskModel(
-        company: data["company"],
-        title: data["title"],
-        address: data["address"],
-        description: data["description"],
-        startDate: data["startDate"].toString(),
-        email: data["email"]);
+      company: data["company"],
+      title: data["title"],
+      address: data["address"],
+      description: data["description"],
+      startDate: data["startDate"].toString(),
+      email: data["email"],
+      isArrived: data["isArrived"],
+      isVerified: data['isVerified'],
+    );
   }
 }

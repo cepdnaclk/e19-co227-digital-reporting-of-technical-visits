@@ -1,25 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rxdart/rxdart.dart';
+// import 'package:flutter/foundation.dart';
 
-class TaskRepository {
+class JobCardRepository {
+  List<Map<String, String>> items = [];
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  List<Map<String, String>> items = [];
-
-  // BehaviorSubject to stream changes to the task items list
-  final BehaviorSubject<List<Map<String, String>>> _taskItemsStream =
-      BehaviorSubject<List<Map<String, String>>>();
+  Query<Object?> getFirestoreCollection(String? email) {
+    final CollectionReference jobsCollection = _db.collection('Tasks');
+    return jobsCollection.where('email', isEqualTo: email);
+  }
 
   Future<void> fetchData(String email) async {
     final String? userEmail = email; // Replace with the user's email
-
     final CollectionReference jobsCollection = _db.collection('Tasks');
-    final DateTime today = DateTime.now();
+    // final DateTime today = DateTime.now();
     final List<Map<String, String>> fetchedItems = [];
 
     try {
-      final QuerySnapshot querySnapshot =
-          await jobsCollection.where('email', isEqualTo: userEmail).get();
+      final QuerySnapshot querySnapshot = await jobsCollection
+          .where('email', isEqualTo: userEmail)
+          .get();
 
       for (final QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         final Map<String, dynamic> data =
@@ -32,12 +32,9 @@ class TaskRepository {
         final Timestamp startDate = data['startDate'] as Timestamp;
         final DateTime startDateTime = startDate.toDate();
         final String date = startDateTime.toString();
-        final bool isArrived = data['isArrived'];
+        final bool isVerified = data['isVerified'];
 
-        if (startDateTime.year == today.year &&
-            startDateTime.month == today.month &&
-            startDateTime.day == today.day && 
-            isArrived == false) {
+        if ( isVerified == true) {
           final Map<String, String> item = {
             'name': company,
             'subTopic': title,
@@ -52,16 +49,16 @@ class TaskRepository {
 
       // Update your items list with the fetched data
       items = fetchedItems;
-
-      // Notify the listeners that the items list has changed
-      _taskItemsStream.add(items);
+      // if (kDebugMode) {
+      //   print(items);
+      // }
     } catch (e) {
       print('Error fetching data: $e');
     }
   }
 
-  // Stream to listen for changes to the task items list
-  Stream<List<Map<String, String>>> get taskItemsStream {
-    return _taskItemsStream.stream;
+  List<Map<String, String>> getItems() {
+    return items;
   }
 }
+

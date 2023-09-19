@@ -5,24 +5,36 @@ import 'package:visitlog/Components/upper_bar.dart';
 import 'package:visitlog/Widgets/job_list.dart';
 import '../Widgets/bottom_navigation.dart';
 import 'package:visitlog/Data/tasks.dart';
+import 'package:visitlog/Widgets/search_bar.dart';
+import 'package:visitlog/Widgets/sort_dropdown.dart';
 
 // ignore: must_be_immutable
-class JobCard extends StatelessWidget {
+class JobCard extends StatefulWidget {
   JobCard({super.key});
   static String id = "job_card_page";
-  late String keyword;
+
+  @override
+  State<JobCard> createState() => _JobCardState();
+}
+
+class _JobCardState extends State<JobCard> {
+  String keyword = "";
+
+  String sortCriteria = "DateTime";
+
   final List<Map<String, String>> items = TaskList().items;
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         key: _globalKey,
-        drawer: DrawerWidget(id: id),
+        drawer: DrawerWidget(id: JobCard.id),
         bottomNavigationBar: NavBar(
-          id: id,
+          id: JobCard.id,
           indexNum: 1,
         ),
         body: Column(
@@ -59,75 +71,43 @@ class JobCard extends StatelessWidget {
                 SizedBox(
                   width: 10.0.w,
                 ),
-                const Text(
-                  "Sort",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
+                // const Text(
+                //   "Sort",
+                //   style: TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.w400,
+                //   ),
+                // ),
+                // SizedBox(
+                //   width: 1.0.w,
+                // ),
+                // Icon(Icons.arrow_drop_down_outlined),
+
+                SortDropdown(
+                  onSelected: (value) {
+                    setState(() {
+                      sortCriteria = value;
+                    });
+                  },
+                  sortOptions: const ['Company', 'Task', 'DateTime'],
+                ),
+                const Spacer(),
+                SearchBarContainer(
+                  onChanged: (value) {
+                    setState(() {
+                      keyword = value;
+                    });
+                  },
                 ),
                 SizedBox(
-                  width: 1.0.w,
-                ),
-                Icon(Icons.arrow_drop_down_outlined),
-                const Spacer(),
-                Form(
-                  child: Container(
-                    width: 51.0.w,
-                    height: 10.0.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                    child: TextFormField(
-                      style: TextStyle(color: Colors.black45),
-                      onChanged: (value) {
-                        keyword = value;
-                      },
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(18),
-                                  borderSide: const BorderSide(
-                                    color: Color.fromARGB(255, 221, 232, 250),
-                                  )),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18),
-                                  borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 213, 226, 247),
-                                  )
-                        ),          
-                        fillColor: Color.fromARGB(255, 221, 232, 250),
-                        suffixIcon: const Padding(
-                          padding: EdgeInsetsDirectional.only(start: 16, end: 16),
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.black38,
-                          ),
-                        ),
-                        hintText: 'Search......',
-                        hintStyle: TextStyle(color: Colors.black38),
-                        
-                      ),
-                      textAlignVertical: TextAlignVertical.center,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10.0.w,)
+                  width: 10.0.w,
+                )
               ],
             ),
             Expanded(
-              child: 
-                  ListView.builder(
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      return BuildItem(
-                        index: index,
-                      );
-                    },
-                  ),
-                  
-              ),
+              child:
+                  JobCardsList(searchWord: keyword, sortCriteria: sortCriteria),
+            ),
             SizedBox(
               height: 6.0.h,
             )
