@@ -11,24 +11,32 @@
   align-items: center;
   align-content: center;
 
-  .component_container {
-    margin-left: 220px;
-    margin-top: 16vh;
+.component_container {
+  margin-left: 220px;
+  margin-top: 16vh;
 
-    padding-bottom: 4em;
-    height: 100%;
-    width: 95% -220px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    // background-color: aqua;
-    text-align: center;
-    overflow-y: auto;
+  padding-bottom: 4em;
+  height: 100%;
+  width: 95% -220px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  // background-color: aqua;
+  text-align: center;
+  overflow-y: auto;
 
-    .name {
-      padding-top: 18vh;
-      font-size: xx-large;
-      font-weight: bolder;
-      color: #555555;
-    }
+  .name {
+    padding-top: 18vh;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: #555555;
   }
+}
+
+
+.cardContainer {
+  flex-direction: row; 
+
+  width: 100%; 
+}
+
 }
