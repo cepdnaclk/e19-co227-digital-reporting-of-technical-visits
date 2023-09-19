@@ -6,7 +6,12 @@ import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import { TechnicianEditForm } from "./TechnicianEditForm";
 import classNames from "classnames";
 
-export const TechniciansTable = ({ technicians, searchTerm, searchColumn, technicianEdit }) => {
+export const TechniciansTable = ({
+  technicians,
+  searchTerm,
+  searchColumn,
+  technicianEdit,
+}) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
 
@@ -143,8 +148,6 @@ export const TechniciansTable = ({ technicians, searchTerm, searchColumn, techni
           ))}
         </tbody>
       </table>
-
-      
 
       {showTechnicianDetails && selectedTechnician && (
         <div
