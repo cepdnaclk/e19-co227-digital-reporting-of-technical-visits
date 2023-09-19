@@ -94,11 +94,11 @@ exports.sendTaskEmail = onDocumentCreated("Tasks/{taskId}", (event) => {
 exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
   const fileBucket = storage.bucket();
 
-  const filePath = "images/welcome.jpg";
+  const filePath = "images/logo.jpg";
 
   const [downloadResponse] = await fileBucket.file(filePath).download();
 
-  const pdfBuffer = await generatePDF(event.data.after.data());
+  const pdfBuffer = await generatePDF(event.data.after.data(),downloadResponse);
 
   // Upload the PDF to Google Cloud Storage
   const pdfFileName = `task_${event.params.taskId}.pdf`;
@@ -113,8 +113,13 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
   if (taskData.isCompleted && !taskPrevData.isCompleted) {
     const pdfBuffer = await generatePDF(event.data.after.data());
 
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 5); // Add 5 hours
+    currentDate.setMinutes(currentDate.getMinutes() + 30); // Add 30 minutes
+    const formattedDate = currentDate.toLocaleString().replace(/\//g, '_');
+
     // Upload the PDF to Google Cloud Storage
-    const pdfFileName = `task_${event.params.taskId}.pdf`;
+    const pdfFileName = `taskReports/task_${taskData.company}_${taskData.title}_${formattedDate}.pdf`;
     const pdfFile = fileBucket.file(pdfFileName);
     await pdfFile.save(pdfBuffer);
     // Create an email transporter
@@ -133,10 +138,7 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
       subject: "New Task Created",
       text: `Dear Client,\n\nYour Task is Completed Task details: ${taskData.title}\n. The Task File is attached herewith`,
       attachments: [
-        {
-          filename: "welcome.jpg", // The name you want for the attached image
-          content: downloadResponse, // The file buffer
-        },
+       
         {
           filename: pdfFileName,
           content: pdfBuffer, // Attach the PDF buffer
@@ -155,7 +157,7 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
 });
 
 // Function to generate PDF using pdfkit
-async function generatePDF(taskData) {
+async function generatePDF(taskData,logo) {
   return new Promise((resolve, reject) => {
     const pdfBuffer = [];
     const doc = new pdfkit();
@@ -169,9 +171,45 @@ async function generatePDF(taskData) {
       resolve(Buffer.concat(pdfBuffer));
     });
 
-    // Add content to the PDF
+    // doc.image(logo,10,10);
+
+    // Set font and size for the PDF
+    doc.font("Helvetica-Bold");
+    doc.fontSize(18);
+
+    // Add a title to the PDF
+    doc.text("Task Completion Report", { align: "center" });
+
+    // Set font and size for the client details
+    doc.font("Helvetica");
+    doc.fontSize(12);
+
+    // Add client details
+    doc.text(`Client Name: ${taskData.company}`);
+    doc.text(`Client Email: ${taskData.companyEmail}`);
+    doc.text(`Client Address: ${taskData.address}`);
+
+    // Add task details
     doc.text(`Task Title: ${taskData.title}`);
     doc.text(`Task Description: ${taskData.description}`);
+    doc.text(`Start Date: ${taskData.startDate}`);
+    doc.text(`Is Completed: ${taskData.isCompleted ? "Yes" : "No"}`);
+
+    // You can include additional task-related details here
+
+    // Add a line break
+    doc.moveDown();
+
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 5); // Add 5 hours
+    currentDate.setMinutes(currentDate.getMinutes() + 30); // Add 30 minutes
+    const formattedDate = currentDate.toLocaleString();
+
+    // Add a footer with the current date
+    doc.text(`Report generated on: ${formattedDate}`, {
+      align: "right",
+    });
+
     doc.end();
   });
 }
