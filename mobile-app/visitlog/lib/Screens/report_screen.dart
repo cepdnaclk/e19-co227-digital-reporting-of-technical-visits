@@ -55,13 +55,13 @@ class _ReportScreenState extends State<ReportScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 6.0.h,
+                height: 5.0.h,
               ),
               UpperWidgetBar(globalKey: _globalKey),
               const Text(
-                "COMPANY NAME",
+                "",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.w700,
                 ),
                 textAlign: TextAlign.center,
@@ -76,16 +76,17 @@ class _ReportScreenState extends State<ReportScreen> {
                   shadowColor: Color.fromARGB(255, 77, 77, 77),
                   color: Color(0xFFE6F1F9),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
                     children: [
+                      const SizedBox(height: 12),
                       Center(
                         child: Text(
                           widget.topic,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 19,
+                            fontSize: 20,
                           ),
                         ),
                       ),
@@ -95,18 +96,18 @@ class _ReportScreenState extends State<ReportScreen> {
                           style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             color: Color(0xFF194C9F),
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 1),
+                      const SizedBox(height: 12),
                     ],
                   ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 20,
+                  vertical: MediaQuery.of(context).size.height / 25,
                   horizontal: MediaQuery.of(context).size.width / 15,
                 ),
                 child: Container(
@@ -130,180 +131,182 @@ class _ReportScreenState extends State<ReportScreen> {
                       ),
                     ],
                   ),
-                  child: Form(
-                    key: _formkey,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height / 20,
-                        horizontal: MediaQuery.of(context).size.width / 15,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Inspection Date',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formkey,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: MediaQuery.of(context).size.height / 20,
+                          horizontal: MediaQuery.of(context).size.width / 15,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Inspection Date',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
-                          ),
-                          Text(
-                            cdate,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
+                            Text(
+                              cdate,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                              ),
                             ),
-                          ),
-                          Divider(
-                            color: const Color.fromARGB(137, 163, 163, 163),
-                            thickness: 2,
-                            indent: 0,
-                            endIndent: 0,
-                          ),
-                          SizedBox(height: 1),
-                          const Text(
-                            'Technical Officer',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
+                            Divider(
+                              color: const Color.fromARGB(137, 163, 163, 163),
+                              thickness: 2,
+                              indent: 0,
+                              endIndent: 0,
                             ),
-                          ),
-                          Text(
-                            UserName ?? '',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
+                            SizedBox(height: 1),
+                            const Text(
+                              'Technical Officer',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
-                          ),
-                          Divider(
-                            color: const Color.fromARGB(137, 163, 163, 163),
-                            thickness: 2,
-                            indent: 0,
-                            endIndent: 0,
-                          ),
-                          SizedBox(height: 1),
-                          const Text(
-                            'Address',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
+                            Text(
+                              UserName ?? '',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                              ),
                             ),
-                          ),
-                          Text(
-                            widget.location,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
+                            Divider(
+                              color: const Color.fromARGB(137, 163, 163, 163),
+                              thickness: 2,
+                              indent: 0,
+                              endIndent: 0,
                             ),
-                          ),
-                          Divider(
-                            color: const Color.fromARGB(137, 163, 163, 163),
-                            thickness: 2,
-                            indent: 0,
-                            endIndent: 0,
-                          ),
-                          SizedBox(height: 1),
-                          const Text(
-                            'Site Representative',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
+                            SizedBox(height: 1),
+                            const Text(
+                              'Address',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
-                          ),
-                          TextFormField(
-                            style: const TextStyle(color: Colors.black),
-                            onChanged: (value) {
-                              representative = value;
-                            },
-                            decoration: InputDecoration(
-                              isDense: true, // important line
-                              contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            Text(
+                              widget.location,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 10),
-                          const Text(
-                            'Type of work',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
+                            Divider(
+                              color: const Color.fromARGB(137, 163, 163, 163),
+                              thickness: 2,
+                              indent: 0,
+                              endIndent: 0,
                             ),
-                          ),
-                          TextFormField(
-                            style: const TextStyle(color: Colors.black),
-                            onChanged: (value) {
-                              type = value;
-                            },
-                            decoration: InputDecoration(
-                              isDense: true,
-                              contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            SizedBox(height: 1),
+                            const Text(
+                              'Site Representative',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'Notes',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
+                            TextFormField(
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (value) {
+                                representative = value;
+                              },
+                              decoration: InputDecoration(
+                                isDense: true, // important line
+                                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          Column(
-                            children: <Widget>[
-                              TextFormField(
-                                style: const TextStyle(color: Colors.black),
-                                onChanged: (value) {
-                                  notes = value;
-                                },
-                                controller: _textController,
-                                maxLines: 4,
-                                minLines: 4,
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(6.0),
+                            SizedBox(height: 10),
+                            const Text(
+                              'Type of work',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            TextFormField(
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (value) {
+                                type = value;
+                              },
+                              decoration: InputDecoration(
+                                isDense: true,
+                                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              'Notes',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Column(
+                              children: <Widget>[
+                                TextFormField(
+                                  style: const TextStyle(color: Colors.black),
+                                  onChanged: (value) {
+                                    notes = value;
+                                  },
+                                  controller: _textController,
+                                  maxLines: 4,
+                                  minLines: 4,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(6.0),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 10),
-                              Card(
-                                elevation: 0,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      InkWell(
-                                        onTap: selectImage,
-                                        child: Ink.image(
-                                          image: const AssetImage('icon/AddIcon.png'),
-                                          height: 100,
-                                          width: 100,
-                                        ),
-                                      ),
-                                      const Text(
-                                        'Add Images',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                          color: Color(0xFFC8C8C9),
-                                        ),
-                                      ),
-                                    ],
+                                const SizedBox(height: 10),
+                                Card(
+                                  elevation: 0,
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7),
                                   ),
-                                ),
-                              )
-                            ],
-                          )
-                        ],
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        InkWell(
+                                          onTap: selectImage,
+                                          child: Ink.image(
+                                            image: const AssetImage('icon/AddIcon.png'),
+                                            height: 100,
+                                            width: 100,
+                                          ),
+                                        ),
+                                        const Text(
+                                          'Add Images',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                            color: Color(0xFFC8C8C9),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -355,6 +358,9 @@ class _ReportScreenState extends State<ReportScreen> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 8,
               )
             ],
           ),
