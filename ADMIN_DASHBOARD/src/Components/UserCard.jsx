@@ -21,7 +21,7 @@ const UserCard = () => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setUser(authUser);
-        console.log(user.photoURL)
+        console.log(user.photoURL);
       } else {
         setUser(null);
       }
@@ -38,10 +38,9 @@ const UserCard = () => {
           <div className={styles.user_details}>
             <p>{user.displayName}</p>
             <p>{user.email}</p>
-            
           </div>
         </div>
-
+      ) : (
         // <GoogleOAuthProvider clientId={clientID}>
         //   <GoogleLogin
         //         onSuccess={onSuccess}
@@ -55,7 +54,6 @@ const UserCard = () => {
         //         onFailure={onFailure}
         //       />
         // </GoogleOAuthProvider>
-      ) : (
         <p>Guest User</p>
       )}
     </div>

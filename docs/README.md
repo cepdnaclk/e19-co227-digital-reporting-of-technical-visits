@@ -35,7 +35,7 @@ title: Digital Reporting of Technical Visits
 ## Introduction
 
 When Engineers or Technicians visit sites to provide technical services (such as repairs, troubleshooting, maintenance), a report should be filled by the visiting service provider and checked off by the service receiver to maintain accountability and transparency. The expectation of this project is to develop a simple, easy to use, robust software application for the above purpose. 
-![Report](./images/reporting.jpg)
+<p align="center"><img align="center" alt="GIF" src="./images/reporting.jpg"></p>
 
 ## Objective
 
@@ -76,8 +76,7 @@ application**
 
 **Login Page (Implemented)**
 
-![loginPage](./images/login.png)
-![loginPageaccount]
+![loginPage](./images/login_mobile.png)
 
 **Profile Page (Implemented)**
 
@@ -107,20 +106,26 @@ Web application mainly consists of;
 1. Login Page
     * Managing Admin login with the email and the password.
     * Or can sign in with google
-    * User can choose preffered account for logging.
+    * Admin can choose preffered account for logging.
 2. Dashboard Page
-    * User can see the completed, ongoing and missed tasks.
+    * Admin can see the calender, ongoing tasks and completed tasks.
+    * Admin can add clients, technicians and tasks here.
 3. Clients Page
-    * In assiged task list page, user can see the all information about the task.
-    * After doing the task, user can see the job done card.
+    * Can view all the clients.
+    * Can add new clients.
+    * Can search for specific clients.
 4. Technicians Page
-    * User can fill this form instead of using a paper.
-    * There is a digital signature ba also.
+    * Can view all the technicians.
+    * Can add new technicians.
+    * Can search for specific technicians.
 5. Tasks Page
-    * User can navigate through pages using sidebar.
+    * Can view all the tasks.
+    * Can add new tasks.
+    * Can search for specific tasks.
 6. Technician Assign Page
-
+    * Can view all the assignments of tehcnicians with the time; today, upcoming and Previous.
 7. Settings Page
+    * Admin can edit their profile as well as technicians' profiles in settings page.
    
 See the prototype of the Web app interface [here](https://www.figma.com/proto/uFw6wGwKTS4zzlWgCK6FuP/VisitLog---WebPage?type=design&node-id=4-162&t=MNVIIypJkiAslQQy-0&scaling=contain&page-id=0%3A1&starting-point-node-id=4%3A162)
 
@@ -128,6 +133,37 @@ See the prototype of the Web app interface [here](https://www.figma.com/proto/uF
 application**
 
 ![Webapp](./images/web_figma.png)
+
+
+
+**Login Page (Implemented)**
+
+![loginPage](./images/login.png)
+
+
+**Dashboard Page (Wireframe)**
+
+![dashboardPage](./images/dashboard-figma.png)
+
+**Clients Page (Wireframe)**
+
+![clientsPage](./images/clients.png)
+
+
+**Technicians Page (Implemented)**
+
+![techniciansPage](./images/Technician_log.jpeg)
+
+
+**Tasks Page (Wireframe)**
+
+![tasksPage](./images/Tasks.png)
+
+
+**Technician Assign Page (Wireframe)**
+
+![technicianAssignPage](./images/technician_assign.png)
+
 
 ## Key Features
 

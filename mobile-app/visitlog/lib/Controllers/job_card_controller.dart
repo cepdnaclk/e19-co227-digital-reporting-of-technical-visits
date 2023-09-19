@@ -1,18 +1,17 @@
 import 'package:get/get.dart';
-import 'package:visitlog/Repository/upcomming_task_repository.dart';
+import 'package:visitlog/Repository/job_card_repository.dart';
 import 'package:visitlog/services/auth_service.dart';
 
-class UpcommingTaskController extends GetxController {
-  final UpcommingTaskRepository _taskRepository = UpcommingTaskRepository();
+class JobCardController extends GetxController {
+  final JobCardRepository _Repository = JobCardRepository();
   final String? userEmail =
         AuthService().getUserEmail();
 
         // RxBool to track loading state
   var isLoading = true.obs;
   // Getter to access the items list from TaskRepository
-  List<Map<String, String>> get taskItems => _taskRepository.getItems();
+  List<Map<String, String>> get taskItems => _Repository.getItems();
 
-  
 
   @override
   void onInit() {
@@ -21,7 +20,7 @@ class UpcommingTaskController extends GetxController {
     fetchData();
 
     // Set up a Firestore snapshot listener
-    final collectionReference = _taskRepository.getFirestoreCollection(userEmail!);
+    final collectionReference = _Repository.getFirestoreCollection(userEmail!);
     collectionReference.snapshots().listen((querySnapshot) {
       // Trigger the fetchData function whenever Firestore data changes
       fetchData();
@@ -31,7 +30,7 @@ class UpcommingTaskController extends GetxController {
   Future<void> fetchData() async {
     isLoading.value = true; // Set loading to true while fetching data
     try {
-      await _taskRepository.fetchData(userEmail!);
+      await _Repository.fetchData(userEmail!);
     } finally {
       isLoading.value = false; // Set loading to false when data fetching is complete
     }

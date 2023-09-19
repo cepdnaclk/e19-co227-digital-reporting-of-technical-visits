@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import styles from "../../Styles/Technicians/TechnicianForm.module.scss";
+import styles from "../../Styles/Clients/ClientForm.module.scss";
 import {
   BsFillFileEarmarkPersonFill,
   BsFileEarmarkPerson,
@@ -10,30 +10,27 @@ import {
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 
-export const TechnicianEditForm = ({ technician, onClosing }) => {
-  const technicianCollectionRef = collection(db, "Technicians");
+export const ClientEditForm = ({ client, onClosing }) => {
+  const clientCollectionRef = collection(db, "Clients");
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    companyName: "",
     email: "",
     address: "",
     mobile: [""],
   });
 
   useEffect(() => {
-    // Populate the form with the technician's data when it's available
-    if (technician) {
+    // Populate the form with the client's data when it's available
+    if (client) {
       setFormData({
-        firstName: technician.firstName || "",
-        lastName: technician.lastName || "",
-        email: technician.email || "",
-        address: technician.address || "",
-        mobile: technician.mobile || [""],
+        companyName: client.companyName || "",
+        email: client.email || "",
+        address: client.address || "",
+        mobile: client.mobile || [""],
       });
     }
-    console.log(formData.mobile);
-  }, [technician]);
+  }, [client]);
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
@@ -73,52 +70,33 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Update the technician's data in the database
+    // Update the client's data in the database
     await onUpdate(formData);
     onClosing();
   };
 
   const onUpdate = async (data) => {
-    console.log(data);
-    // Update the document in Firestore
-    await updateDoc(doc(technicianCollectionRef, technician.id), data);
+    await updateDoc(doc(clientCollectionRef, client.id), data);
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.card}>
-      <h2 className={styles.topic}>Edit Technician</h2>
+      <h2 className={styles.topic}>Edit Client</h2>
       <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
-      <div className={styles.first_name}>
+      <div className={styles.company_name}>
         <div className="icon">
           <BsFillFileEarmarkPersonFill />
         </div>
-        <div className={styles.first_name_input}>
-          <label htmlFor="firstName">First Name </label>
+        <div className={styles.company_name_input}>
+          <label htmlFor="companyName">Company Name </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={(e) => handleChange(e, 0)}
-            required
-          />
-        </div>
-      </div>
-
-      <div className={styles.last_name}>
-        <div className="icon">
-          <BsFileEarmarkPerson />
-        </div>
-        <div className={styles.first_name_input}>
-          <label htmlFor="lastName">Last Name </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={(e) => handleChange(e, 1)}
+            id="companyName"
+            name="companyName"
+            value={formData.companyName}
+            onChange={(e) => handleChange(e, "companyName")}
             required
           />
         </div>
@@ -135,7 +113,7 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
             id="email"
             name="email"
             value={formData.email}
-            onChange={(e) => handleChange(e, 2)}
+            onChange={(e) => handleChange(e, "email")}
             required
           />
         </div>
@@ -145,14 +123,14 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
         <div className="icon">
           <GoLocation />
         </div>
-        <div>
+        <div className={styles.address_input}>
           <label htmlFor="address">Address&emsp;&ensp;</label>
           <input
             type="text"
             id="address"
             name="address"
             value={formData.address}
-            onChange={(e) => handleChange(e, 3)}
+            onChange={(e) => handleChange(e, "address")}
             required
           />
         </div>
@@ -180,7 +158,7 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
               )}
             </div>
           ))}
-          <button type="mobile" onClick={handleAddMobile}>
+          <button type="button" onClick={handleAddMobile}>
             Add Mobile Number
           </button>
         </div>
