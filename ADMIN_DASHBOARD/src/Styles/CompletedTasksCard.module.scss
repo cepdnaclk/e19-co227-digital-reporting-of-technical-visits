@@ -3,4 +3,14 @@
   height: 220px; 
   border-radius: 20px;
   background: linear-gradient(to bottom, green, white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  .centeredNumber {
+   
+    font-size: 2em; 
+
+  }
 }
