@@ -326,7 +326,17 @@ class _ReportScreenState extends State<ReportScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ReportImages()),
+                          MaterialPageRoute(
+                            builder: (context) => ReportImages(
+                              topic:widget.topic,
+                              subTopic: widget.subTopic,
+                              date: cdate,
+                              address: widget.location,
+                              representative: representative,
+                              type: type,
+                              notes: notes
+                              )
+                            ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
