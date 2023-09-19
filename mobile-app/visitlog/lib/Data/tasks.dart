@@ -2,7 +2,7 @@ class TaskList {
   final List<Map<String, String>> items = [
     {
         'name': 'Lanka Builders',
-        'subTopic': 'Lanka Builders',
+        'subTopic': 'Construction Inspection',
         'description': 'Lanka Builders is a trusted construction company that specializes in creating beautiful and durable structures. With a commitment to quality and craftsmanship, they bring your architectural dreams to life. Contact them for all your construction needs.',
         'location': '890, Colombo Road, Galle',
         'time': '10.00 A.M. - 11.00 A.M.',

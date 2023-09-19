@@ -1,77 +1,145 @@
 import 'package:flutter/material.dart';
-import 'package:visitlog/Data/tasks.dart';
+import 'package:get/get.dart';
+import 'package:visitlog/Controllers/job_card_controller.dart';
+import 'package:visitlog/Utils/date_time.dart';
 
-class BuildItem extends StatelessWidget {
-  BuildItem({super.key, required this.index});
-  final List<Map<String, String>> items = TaskList().items;
-  final int index;
+class JobCardsList extends StatelessWidget {
+  final String searchWord;
+  final String sortCriteria;
+
+  JobCardsList({
+    super.key,
+    required this.searchWord,
+    required this.sortCriteria,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
-      child: SizedBox(
-        height: 75,
-        child: Card(
-          color: Color.fromARGB(255, 55, 55, 55),
-          shadowColor: const Color.fromARGB(220, 50, 152, 192),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          elevation: 10, // Adjust elevation as needed
-          margin: const EdgeInsets.all(4.0), // Add margin for spacing
-          child: Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: ListTile(
-              leading: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.work, color: Colors.white),
-                ],
-              ),
-              title: Text(
-                items[index]['name'] ?? '',
-                style: const TextStyle(color: Colors.white),
-              ),
-              subtitle: Text(
-                items[index]['subTopic'] ?? '',
-                style:
-                    const TextStyle(color: Color.fromARGB(255, 185, 227, 247)),
-              ),
-              trailing: IconButton(
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
+    final controller = Get.put(JobCardController());
+    return Obx(() {
+      // Check if data is loading
+      if (controller.isLoading.value) {
+        // Display a circular loader while data is loading
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      } else if (controller.taskItems.isEmpty) {
+        // Handle case when there is no data
+        return Center(
+          child: Text('No Completed Jobs available.'),
+        );
+      } else {
+        // print("JobCard: ${searchWord}");
+
+        // Filter and sort the task items
+        // Sort the task items
+        final sortedItems = controller.taskItems
+          ..sort((a, b) {
+            // Sort by sortCriteria
+            switch (sortCriteria) {
+              case 'Company':
+                return a['name']?.compareTo(b['name']!) ?? 0;
+              case 'Task':
+                return a['subTopic']?.compareTo(b['subTopic']!) ?? 0;
+              case 'DateTime':
+                return DateTime.parse(a['time']!)
+                    .compareTo(DateTime.parse(b['time']!));
+              default:
+                return 0;
+            }
+          });
+
+        final filteredAndSortedItems = sortedItems
+            .where((item) =>
+                item['name']
+                    ?.toLowerCase()
+                    .contains(searchWord.toLowerCase()) ??
+                true)
+            .toList();
+
+        // Display the filtered and sorted task items
+        return ListView.builder(
+          itemCount: filteredAndSortedItems.length,
+          itemBuilder: (context, index) {
+            final item = filteredAndSortedItems[index];
+
+            return Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
+              child: SizedBox(
+                height: 75,
+                child: Card(
+                  color: Color.fromARGB(255, 55, 55, 55),
+                  shadowColor: const Color.fromARGB(220, 50, 152, 192),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  elevation: 10,
+                  margin: const EdgeInsets.all(4.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: ListTile(
+                      leading: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.work, color: Colors.white),
+                        ],
+                      ),
+                      title: Text(
+                        item['name'] ?? '',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        item['subTopic'] ?? '',
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 185, 227, 247)),
+                      ),
+                      trailing: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          _showDescriptionDialog(
+                            context,
+                            item['description'] ?? '',
+                            item['name'] ?? '',
+                            item['subTopic'] ?? '',
+                            item['location'] ?? '',
+                            getDateInFormat(DateTime.parse(item['time']!)),
+                            TimeTo12Hour(DateTime.parse(item['time']!)),
+                          );
+                        },
+                      ),
+                      onTap: () {
+                        _showDescriptionDialog(
+                          context,
+                          item['description'] ?? '',
+                          item['name'] ?? '',
+                          item['subTopic'] ?? '',
+                          item['location'] ?? '',
+                          getDateInFormat(DateTime.parse(item['time']!)),
+                          TimeTo12Hour(DateTime.parse(item['time']!)),
+                        );
+                      },
+                    ),
+                  ),
                 ),
-                onPressed: () {
-                  _showDescriptionDialog(
-                    context,
-                    items[index]['description'] ?? '',
-                    items[index]['name'] ?? '',
-                    items[index]['subTopic'] ?? '',
-                    items[index]['location'] ?? '',
-                    items[index]['time'] ?? '',
-                  );
-                },
               ),
-              onTap: () {
-                _showDescriptionDialog(
-                  context,
-                  items[index]['description'] ?? '',
-                  items[index]['name'] ?? '',
-                  items[index]['subTopic'] ?? '',
-                  items[index]['location'] ?? '',
-                  items[index]['time'] ?? '',
-                );
-              },
-            ),
-          ),
-        ),
-      ),
-    );
+            );
+          },
+        );
+      }
+    });
   }
 
-  void _showDescriptionDialog(BuildContext context, String description,
-      String topic, String subTopic, String location, String time) {
+  void _showDescriptionDialog(
+      BuildContext context,
+      String description,
+      String topic,
+      String subTopic,
+      String location,
+      String date,
+      String time) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -83,12 +151,8 @@ class BuildItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
-              // Container(
-              //   height: 200,
-              //   child: _TopPortion(topic: topic, subTopic: subTopic),
-              // ),
               Container(
-                height: 280,
+                height: 300,
                 child: Column(
                   children: [
                     SizedBox(
@@ -123,7 +187,20 @@ class BuildItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: ListTile(
-                        leading: const Icon(Icons.lock_clock),
+                        leading: const Icon(Icons.calendar_month),
+                        title: Text(
+                          date,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: ListTile(
+                        leading: const Icon(Icons.access_time),
                         title: Text(
                           time,
                           style: const TextStyle(
@@ -144,7 +221,6 @@ class BuildItem extends StatelessWidget {
   }
 }
 
-// ignore: unused_element
 class _TopPortion extends StatelessWidget {
   const _TopPortion({required this.topic, required this.subTopic});
 
@@ -164,11 +240,9 @@ class _TopPortion extends StatelessWidget {
                   end: Alignment.topCenter,
                   colors: [
                     Color.fromARGB(255, 12, 71, 51),
-                    Color.fromARGB(195, 12, 71, 32)
+                    Color.fromARGB(195, 12, 71, 32),
                   ]),
               borderRadius: BorderRadius.only(
-                // bottomLeft: Radius.circular(50),
-                // bottomRight: Radius.circular(50),
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
               )),
@@ -196,5 +270,7 @@ class _TopPortion extends StatelessWidget {
         )
       ],
     );
+
+    // Added debugWidget to display the searchWord and sortCriteria variables
   }
 }

@@ -48,6 +48,7 @@ dependencies:
   responsive_sizer: ^3.1.1
   curved_navigation_bar: ^1.0.3
   rxdart: ^0.27.1
+  intl: ^0.18.1
   image_picker: ^0.8.1
   # validators: ^3.0.0
   # loading_overlay: ^0.3.0
