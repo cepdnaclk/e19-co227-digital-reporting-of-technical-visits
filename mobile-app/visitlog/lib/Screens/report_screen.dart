@@ -45,6 +45,9 @@ class _ReportScreenState extends State<ReportScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String representative = '-';
+    String type = '-';
+    String notes = '-';
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

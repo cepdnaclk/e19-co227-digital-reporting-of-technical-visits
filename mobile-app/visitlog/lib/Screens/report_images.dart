@@ -6,15 +6,17 @@ import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 
 class ReportImages extends StatelessWidget {
-  ReportImages({Key? key, 
+  ReportImages({
+    Key? key,
     required this.topic,
     required this.subTopic,
     required this.date,
     required this.address,
     required this.representative,
     required this.type,
-    required this.notes
+    required this.notes,
   }) : super(key: key);
+
   static String id = "report_images";
 
   final String topic;
@@ -35,12 +37,23 @@ class ReportImages extends StatelessWidget {
     final String localsubTopic = subTopic;
     final String localDate = date;
     final String localAddress = address;
+
+    List<TableRow> tableRows = [
+      buildTableRow('Company', localTopic),
+      buildTableRow('Visit Type', localsubTopic),
+      buildTableRow('Inspection Date', localDate),
+      buildTableRow('Technical Officer', UserName ?? ''),
+      buildTableRow('Address', localAddress),
+      buildTableRow('Site Representative', representative),
+      buildTableRow('Type of Work', type),
+      buildTableRow('Notes', notes),
+    ];
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         key: _globalKey,
         drawer: DrawerWidget(id: id),
-        //bottomNavigationBar: NavBar(id: id, indexNum: 0,),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -49,9 +62,6 @@ class ReportImages extends StatelessWidget {
                 height: 6.0.h,
               ),
               UpperWidgetBar(globalKey: _globalKey),
-              // SizedBox(
-              //   height: 9.0.h,
-              // ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height / 20,
@@ -83,275 +93,77 @@ class ReportImages extends StatelessWidget {
                       vertical: MediaQuery.of(context).size.height / 20,
                       horizontal: MediaQuery.of(context).size.width / 15,
                     ),
-                  child: Column(
-                    children: [
-                      Text(
-                        "COMPANY NAME",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
+                    child: Column(
+                      children: [
+                        Text(
+                          "COMPANY NAME",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20), // Add space before the table
-                      Table(
-                        columnWidths: {
-                          0: FlexColumnWidth(1),
-                          1: FlexColumnWidth(2),
-                        },
-                        children: [
-                          TableRow(
-                            children: [
-                              const TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Company',
-                                    style: TextStyle(
-                                      color: Color(0xFF757575),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    localTopic,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Visit Type',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    localsubTopic,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Inspection Date',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    localDate,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Technical Officer',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    UserName ?? '',
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Address',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    localAddress,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Site Representative',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    representative,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Type of Work',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    type,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Notes',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    notes,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black87,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                        SizedBox(height: 20),
+                        Table(
+                          columnWidths: {
+                            0: FlexColumnWidth(1),
+                            1: FlexColumnWidth(2),
+                          },
+                          children: tableRows,
+                        ),
+                      ],
+                    ),
                   ),
-                  ),
-                )
                 ),
-              
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  TableRow buildTableRow(String label, String value) {
+    // if (value.isEmpty) {
+    //   value = "-";
+    // }
+    return TableRow(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Color(0xFFC8C8C9),
+            width: 1,
+          ),
+        ),
+      ),
+      children: [
+        TableCell(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: Text(
+              label,
+              style: TextStyle(
+                color: Color(0xFF757575),
+                fontSize: 12,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ),
+        ),
+        TableCell(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: Text(
+              value,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+                fontSize: 12,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
