@@ -5,6 +5,11 @@ class UpcommingTaskRepository {
   List<Map<String, String>> items = [];
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  Query<Object?> getFirestoreCollection(String? email) {
+    final CollectionReference jobsCollection = _db.collection('Tasks');
+    return jobsCollection.where('email', isEqualTo: email);
+  }
+
   Future<void> fetchData(String email) async {
     final String? userEmail = email; // Replace with the user's email
     final CollectionReference jobsCollection = _db.collection('Tasks');

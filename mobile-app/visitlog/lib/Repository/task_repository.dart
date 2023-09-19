@@ -1,12 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/foundation.dart';
+import 'package:rxdart/rxdart.dart';
 
 class TaskRepository {
-  List<Map<String, String>> items = [];
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  List<Map<String, String>> items = [];
+
+  // BehaviorSubject to stream changes to the task items list
+  final BehaviorSubject<List<Map<String, String>>> _taskItemsStream = BehaviorSubject<List<Map<String, String>>>();
 
   Future<void> fetchData(String email) async {
     final String? userEmail = email; // Replace with the user's email
+
     final CollectionReference jobsCollection = _db.collection('Tasks');
     final DateTime today = DateTime.now();
     final List<Map<String, String>> fetchedItems = [];
@@ -45,16 +50,16 @@ class TaskRepository {
 
       // Update your items list with the fetched data
       items = fetchedItems;
-      // if (kDebugMode) {
-      //   print(items);
-      // }
+
+      // Notify the listeners that the items list has changed
+      _taskItemsStream.add(items);
     } catch (e) {
       print('Error fetching data: $e');
     }
   }
 
-  List<Map<String, String>> getItems() {
-    return items;
+  // Stream to listen for changes to the task items list
+  Stream<List<Map<String, String>>> get taskItemsStream {
+    return _taskItemsStream.stream;
   }
 }
-

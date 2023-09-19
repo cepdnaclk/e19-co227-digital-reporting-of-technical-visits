@@ -4,23 +4,29 @@ import 'package:visitlog/services/auth_service.dart';
 
 class TaskController extends GetxController {
   final TaskRepository _taskRepository = TaskRepository();
-  final String? userEmail =
-        AuthService().getUserEmail();
+  final String? userEmail = AuthService().getUserEmail();
 
-        // RxBool to track loading state
+  // RxBool to track loading state
   var isLoading = true.obs;
-  // Getter to access the items list from TaskRepository
-  List<Map<String, String>> get taskItems => _taskRepository.getItems();
 
-  
+  // List<Map<String, String>> get taskItems => _taskRepository.items;
+  // To get real-time updates, use this instead:
+  Stream<List<Map<String, String>>> get taskItemsStream => _taskRepository.taskItemsStream;
 
   @override
   void onInit() {
     super.onInit();
+
     // Initialize or fetch data from TaskRepository here
-    // For example:
     fetchData();
+
+    // Set up a stream listener
+    taskItemsStream.listen((taskItems) {
+      fetchData();
+    });
+
   }
+  
 
   Future<void> fetchData() async {
     isLoading.value = true; // Set loading to true while fetching data
@@ -30,6 +36,4 @@ class TaskController extends GetxController {
       isLoading.value = false; // Set loading to false when data fetching is complete
     }
   }
-  
-  // Your other controller methods here
 }
