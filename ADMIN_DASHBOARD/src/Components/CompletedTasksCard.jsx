@@ -5,7 +5,7 @@ const CompletedTasksCard = () => {
   return (
     <div className={styles.completedTasksCard}>
       <h1>Completed Tasks</h1>
-     
+      <div className={styles.centeredNumber}>0</div>
     </div>
   );
 };
