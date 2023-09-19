@@ -15,7 +15,7 @@ export const Technician = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-/* 
+  /* 
 useRef is used to create a reference to a DOM element or to persist values
 across renders without causing re-renders when the value changes.
 It's often used for accessing and manipulating DOM elements directly,
