@@ -13,7 +13,6 @@ export const TechnicianAssign = () => {
           <div className={styles.name}>
             <p>Technician Assign</p>
           </div>
-          
         </div>
       </div>
     </div>
