@@ -27,6 +27,7 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
   });
 
   const filteredTasks = sortedTasks.filter((task) => {
+    console.log(tasks);
     if (searchColumn === "Task Name")
       return task.title.toLowerCase().includes(searchTerm.toLowerCase());
     else if (searchColumn === "Company")
