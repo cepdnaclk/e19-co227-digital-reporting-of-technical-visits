@@ -32,7 +32,7 @@ class JobCardRepository {
         final Timestamp startDate = data['startDate'] as Timestamp;
         final DateTime startDateTime = startDate.toDate();
         final String date = startDateTime.toString();
-        final bool isVerified = data['isVerified'];
+        final bool isVerified = data['isCompleted'];
 
         if ( isVerified == true) {
           final Map<String, String> item = {

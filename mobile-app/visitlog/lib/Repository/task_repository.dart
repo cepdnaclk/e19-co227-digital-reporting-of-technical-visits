@@ -32,7 +32,7 @@ class TaskRepository {
         final Timestamp startDate = data['startDate'] as Timestamp;
         final DateTime startDateTime = startDate.toDate();
         final String date = startDateTime.toString();
-        final bool isVerified = data['isVerified'];
+        final bool isVerified = data['isCompleted'];
         final String id = documentSnapshot.id;
 
 

@@ -306,8 +306,8 @@ class _ReportScreenState extends State<ReportScreen> {
                                           child: Ink.image(
                                             image: const AssetImage(
                                                 'icon/AddIcon.png'),
-                                            height: 100,
-                                            width: 100,
+                                            height: 80,
+                                            width: 80,
                                           ),
                                         ),
                                         const Text(
