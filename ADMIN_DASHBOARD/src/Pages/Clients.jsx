@@ -4,10 +4,12 @@ import styles from "../Styles/Clients.module.scss";
 import { db } from "../config/firebase";
 import { useState,useEffect } from "react";
 import { ClientsTable } from "../Components/Clients/ClientsTable";
+import { ClientForm } from "../Components/Clients/ClientForm";
 import { collection,onSnapshot } from "firebase/firestore";
 
 export const Clients = () => {
   const [clients,setClients] = useState([]);
+  const [showForm,setShowForm] = useState(false);
 
   useEffect(() => {
     const clientCollectionRef = collection(db, "Clients");
@@ -33,6 +35,17 @@ export const Clients = () => {
         <div className={styles.title}>
             <p>Clients Log</p>
           </div>
+          <div className={styles.button_container}>
+            {!showForm && (
+              <button
+                className={styles.add_technician_button}
+                onClick={() => setShowForm(true)}
+              >
+                Add New Client
+              </button>
+            )}
+          </div>
+          {showForm && <ClientForm onClosing={()=>{setShowForm(false)}}/>}
           <ClientsTable clients={clients} searchTerm="" searchColumn="companyName"/>
         </div>
       </div>

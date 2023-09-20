@@ -4,7 +4,7 @@ import { db } from "../../config/firebase";
 import styles from "../../Styles/Clients/ClientForm.module.scss";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill ,BsTelephoneFill} from "react-icons/bs";
 
 export const ClientForm = ({ onClosing }) => {
   const clientCollectionRef = collection(db, "Clients");
@@ -72,7 +72,9 @@ export const ClientForm = ({ onClosing }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.card}>
       <h2 className={styles.topic}>Add a Client</h2>
-      <button className={styles.close_button} onClick={() => onClosing()}>
+      <button className={styles.close_button} onClick={(e) => {
+        e.preventDefault();
+        onClosing()}}>
         X
       </button>
       <div className={styles.company_name}>
@@ -135,7 +137,7 @@ export const ClientForm = ({ onClosing }) => {
           {formData.mobile.map((mobileNumber, index) => (
             <div key={index}>
               <input
-                type="number"
+                type="text"
                 name="mobile"
                 value={mobileNumber}
                 onChange={(e) => handleChange(e, index)}

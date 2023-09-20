@@ -61,11 +61,13 @@ export const TaskForm = () => {
       title,
       address,
       description,
+      companyEmail:clients.find(company=>company.id==selectedClient).email,
       // technician: doc(db, "Technicians", `${selectedTechnician}`),
       companyRef: doc(db, "Clients", `${selectedClient}`),
       company: clients.find(company=>company.id==selectedClient).companyName,
       isArrived: false,
       isVerified: false,
+      isCompleted: false,
       startDate : startDateTimeStamp,
       email: "ajanith101@gmail.com"
       
