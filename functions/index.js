@@ -221,7 +221,13 @@ async function generatePDF(taskData, logo) {
     // Add task details
     doc.text(`Task Title: ${taskData.title}`);
     doc.text(`Task Description: ${taskData.description}`);
-    doc.text(`Start Date: ${taskData.startDate}`);
+
+    const jsDate = taskData.startDate.toDate();
+
+    // Format the JavaScript Date object as a string (e.g., "YYYY-MM-DD HH:MM:SS")
+    const formattedStartDate = `${jsDate.getFullYear()}-${String(jsDate.getMonth() + 1).padStart(2, '0')}-${String(jsDate.getDate()).padStart(2, '0')} ${String(jsDate.getHours()).padStart(2, '0')}:${String(jsDate.getMinutes()).padStart(2, '0')}:${String(jsDate.getSeconds()).padStart(2, '0')}`;
+
+    doc.text(`Start Date: ${formattedStartDate}`);
     doc.text(`Is Completed: ${taskData.isCompleted ? "Yes" : "No"}`);
 
     // You can include additional task-related details here
