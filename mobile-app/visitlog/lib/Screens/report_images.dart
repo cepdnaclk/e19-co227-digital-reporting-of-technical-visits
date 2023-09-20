@@ -122,7 +122,7 @@ class ReportImages extends StatelessWidget {
                         final CollectionReference tasksCollection =
                             FirebaseFirestore.instance.collection('Tasks');
                         await tasksCollection.doc(docId).update({
-                          'isConfirmed': true,
+                          'isCompleted': true,
                         });
                       },
                       style: ElevatedButton.styleFrom(
