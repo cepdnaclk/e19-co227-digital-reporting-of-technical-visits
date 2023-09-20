@@ -79,7 +79,8 @@ exports.sendTaskEmail = onDocumentCreated("Tasks/{taskId}", (event) => {
     from: "visitloginfo@gmail.com",
     to: taskData.companyEmail, // Assuming you store the client's email in the task document.
     subject: "New Task Created",
-    text: `Dear Client,\n\nA new task has been created for you. Task details: ${taskData.title}`,
+    text: `Dear Client,\n\nA new task has been created for you. 
+    \n\nTask : ${taskData.title}\nDescription:${taskData.description}`,
   };
 
   transporter.sendMail(taskMailOptions, (error, info) => {
@@ -92,31 +93,24 @@ exports.sendTaskEmail = onDocumentCreated("Tasks/{taskId}", (event) => {
 });
 
 exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
-  const fileBucket = storage.bucket();
-
-  const filePath = "images/logo.jpg";
-
-  const [downloadResponse] = await fileBucket.file(filePath).download();
-
-  const pdfBuffer = await generatePDF(event.data.after.data(),downloadResponse);
-
-  // Upload the PDF to Google Cloud Storage
-  const pdfFileName = `task_${event.params.taskId}.pdf`;
-  const pdfFile = fileBucket.file(pdfFileName);
-  await pdfFile.save(pdfBuffer);
-
-  logger.log("Image downloaded!");
-
   const taskData = event.data.after.data();
   const taskPrevData = event.data.before.data();
 
   if (taskData.isCompleted && !taskPrevData.isCompleted) {
+    const fileBucket = storage.bucket();
+
+    const filePath = "images/logo.jpg";
+
+    const [downloadResponse] = await fileBucket.file(filePath).download();
+
+    logger.log("Image downloaded!");
+
     const pdfBuffer = await generatePDF(event.data.after.data());
 
     const currentDate = new Date();
     currentDate.setHours(currentDate.getHours() + 5); // Add 5 hours
     currentDate.setMinutes(currentDate.getMinutes() + 30); // Add 30 minutes
-    const formattedDate = currentDate.toLocaleString().replace(/\//g, '_');
+    const formattedDate = currentDate.toLocaleString().replace(/\//g, "_");
 
     // Upload the PDF to Google Cloud Storage
     const pdfFileName = `taskReports/task_${taskData.company}_${taskData.title}_${formattedDate}.pdf`;
@@ -135,10 +129,9 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
     const taskMailOptions = {
       from: "visitloginfo@gmail.com",
       to: taskData.companyEmail, // Assuming you store the client's email in the task document.
-      subject: "New Task Created",
+      subject: "Task Completed",
       text: `Dear Client,\n\nYour Task is Completed Task details: ${taskData.title}\n. The Task File is attached herewith`,
       attachments: [
-       
         {
           filename: pdfFileName,
           content: pdfBuffer, // Attach the PDF buffer
@@ -154,10 +147,46 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
       }
     });
   }
+
+  if(taskData.isArrived && !taskPrevData.isArrived){
+
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 5); // Add 5 hours
+    currentDate.setMinutes(currentDate.getMinutes() + 30); // Add 30 minutes
+    const formattedDate = currentDate.toLocaleString()
+
+     // Create an email transporter
+     const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "visitloginfo@gmail.com",
+        pass: "tqzb jwnh vkdw zdds",
+      },
+    });
+
+    // Compose the task notification email
+    const taskMailOptions = {
+      from: "visitloginfo@gmail.com",
+      to: taskData.companyEmail, // Assuming you store the client's email in the task document.
+      subject: "Technician Arrived",
+      text: `Dear Client,\n\nYour Technician is arrived at your location for the following task: ${taskData.title}\n. 
+      Arrival Date and Time: ${formattedDate} `,
+      
+    };
+
+    transporter.sendMail(taskMailOptions, (error, info) => {
+      if (error) {
+        console.log("Error sending task notification email:", error);
+      } else {
+        console.log("Task notification email sent: " + info.response);
+      }
+    });
+
+  }
 });
 
 // Function to generate PDF using pdfkit
-async function generatePDF(taskData,logo) {
+async function generatePDF(taskData, logo) {
   return new Promise((resolve, reject) => {
     const pdfBuffer = [];
     const doc = new pdfkit();
