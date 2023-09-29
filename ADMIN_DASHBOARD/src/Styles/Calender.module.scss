@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 .calender_container {
   display: flex;
   gap: 5px;
@@ -8,9 +10,10 @@
   height: auto;
   background-color: white;
   margin-left: 5em;
-  margin-top: 1em;
+  margin-top: 4em;
   border-radius: 1em;
   box-shadow: 0px 6px 25px -7px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 
   .calender_boarder {
     width: 22rem; //96px
@@ -35,6 +38,11 @@
         display: flex;
         gap: 10px;
         align-items: center;
+        font-family: $font-stack;
+
+        h1{
+          font-family: $font-stack;
+        }
 
         .move_back {
           width: 1.2rem;
@@ -78,6 +86,7 @@
       .day_text {
         padding: 0.2rem;
         font-size: 0.72rem;
+        font-family: $font-stack;
         height: 2.4rem;
         display: grid;
         justify-content: center;
@@ -110,25 +119,12 @@
         font-size: 0.72rem;
         border-top: 1px solid #e2e8f0;
 
-        .current_month {
-          color: #cbd5e0;
-        }
-
-        .select_date {
-          background-color: black;
-          color: #fff;
-        }
-        
-        .today {
-          background-color: #e53e3e;
-          color: #fff;
-        }
-
-
         .normal_day {
+          background-color: transparent;
           font-size: 0.72rem;
           height: 1.8rem;
           width: 1.8rem;
+          border-color: transparent;
           border-radius: 50%;
           display: grid;
           justify-content: center;
@@ -140,6 +136,24 @@
             background-color: #8a9eb8; /* Black background color on hover */
             color: #fff; /* White text color on hover */
           }
+        }
+        .current_month {
+          color: #cbd5e0;
+        }
+
+        .task_date {
+          background-color: #0e5cc2;
+          color: #fff;
+        }
+
+        .select_date {
+          background-color: black;
+          color: #fff;
+        }
+
+        .today {
+          background-color: #e53e3e;
+          color: #fff;
         }
       }
     }
@@ -162,10 +176,48 @@
       margin-bottom: 0.75rem;
     }
 
-    .meetings {
+    .meeting_container{
+      max-height: 200px; /* Adjust the desired max height */
+      overflow-y: auto;
+
+      .meetings {
       color: #9bb9da;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
+      font-family: $font-stack;
     }
+
+    .shedule_container {
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      padding-left: 1rem;
+      border-radius: 0.5rem;
+      background-color: #f0f4f8;
+      cursor: pointer;
+      transition: all 0.3s; /* You can adjust the transition duration as needed */
+
+      &:hover {
+        background-color: #e2e8f0; /* Black background color on hover */
+        color: #fff; /* White text color on hover */
+      }
+
+      .meetings_data {
+        text-align: center;
+        font-size: 0.75rem;
+        color: #5e6975;
+        font-family: $font-stack;
+      }
+
+      .meeting_title {
+        font-size: 0.75rem;
+        color: #4a5568;
+      }
+    }}
+
   }
     // @media (width > 1080px) {
     //   flex-direction: row;
