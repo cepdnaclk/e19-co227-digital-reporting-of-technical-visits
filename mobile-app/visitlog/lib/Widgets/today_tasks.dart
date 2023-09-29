@@ -8,66 +8,75 @@ import 'package:visitlog/Utils/date_time.dart';
 
 
 class TodayTaskBuildItem extends StatelessWidget {
-  final TaskController controller = Get.put(TaskController());
+
+  
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<Map<String, String>>>(
-      stream: controller.taskItemsStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final List<Map<String, String>> taskItems = snapshot.data!;
+    final TaskController controller = Get.put(TaskController());
+    return Obx(() {
+      // Check if data is loading
+      if (controller.isLoading.value) {
+        // Display a circular loader while data is loading
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      } else if (controller.taskItems.isEmpty) {
+        // Handle case when there is no data
+        return Center(
+          child: Text('No tasks available.'),
+        );
+      } else {
+        return ListView.builder(
+          itemCount: controller.taskItems.length,
+          itemBuilder: (context, index) {
+            final item = controller.taskItems[index];
 
-          return ListView.builder(
-            itemCount: taskItems.length,
-            itemBuilder: (context, index) {
-              final item = taskItems[index];
-
-              return Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
-                child: SizedBox(
-                  height: 75,
-                  child: Card(
-                    color: Color.fromARGB(255, 55, 55, 55),
-                    shadowColor: const Color.fromARGB(220, 50, 152, 192),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    elevation: 10,
-                    margin: const EdgeInsets.all(4.0),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: ListTile(
-                        leading: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.work, color: Colors.white),
-                          ],
+            return Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
+              child: SizedBox(
+                height: 75,
+                child: Card(
+                  color: Color.fromARGB(255, 55, 55, 55),
+                  shadowColor: const Color.fromARGB(220, 50, 152, 192),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  elevation: 10,
+                  margin: const EdgeInsets.all(4.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: ListTile(
+                      leading: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.work, color: Colors.white),
+                        ],
+                      ),
+                      title: Text(
+                        item['name'] ?? '',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        item['subTopic'] ?? '',
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 185, 227, 247)),
+                      ),
+                      trailing: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
                         ),
-                        title: Text(
-                          item['name'] ?? '',
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(
-                          item['subTopic'] ?? '',
-                          style: const TextStyle(
-                              color: Color.fromARGB(255, 185, 227, 247)),
-                        ),
-                        trailing: IconButton(
-                          icon: const Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
+                        onPressed: () {
                             _showDescriptionDialog(
-                              context,
-                              item['description'] ?? '',
-                              item['name'] ?? '',
-                              item['subTopic'] ?? '',
-                              item['location'] ?? '',
-                              getDateInFormat(DateTime.parse(item['time']!)),
-                              TimeTo12Hour(DateTime.parse(item['time']!)),
-                              item['id'] ?? '',
+                            context,
+                            item['description'] ?? '',
+                            item['name'] ?? '',
+                            item['subTopic'] ?? '',
+                            item['location'] ?? '',
+                            getDateInFormat(DateTime.parse(item['time']!)),
+                            TimeTo12Hour(DateTime.parse(item['time']!)),
+                            item['id'] ?? '',
                             );
                           },
                         ),
@@ -83,24 +92,15 @@ class TodayTaskBuildItem extends StatelessWidget {
                             item['id'] ?? '',
                           );
                         },
-                      ),
                     ),
                   ),
                 ),
-              );
-            },
-          );
-        } else if (snapshot.hasError) {
-          // Handle error here
-          return Center(child: Text('Error fetching data: ${snapshot.error}'));
-        } else {
-          // Display loading spinner here
-          return Center(
-          child: CircularProgressIndicator(),
+              ),
+            );
+          },
         );
-        }
-      },
-    );
+      }
+    });
   }
 
   void _showDescriptionDialog(BuildContext context, String description,

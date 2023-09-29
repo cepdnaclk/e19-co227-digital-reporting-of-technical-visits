@@ -3,12 +3,12 @@ import 'package:rxdart/rxdart.dart';
 
 class TaskRepository {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-
   List<Map<String, String>> items = [];
 
-  // BehaviorSubject to stream changes to the task items list
-  final BehaviorSubject<List<Map<String, String>>> _taskItemsStream =
-      BehaviorSubject<List<Map<String, String>>>();
+  Query<Object?> getFirestoreCollection(String? email) {
+    final CollectionReference jobsCollection = _db.collection('Tasks');
+    return jobsCollection.where('email', isEqualTo: email);
+  }
 
   Future<void> fetchData(String email) async {
     final String? userEmail = email; // Replace with the user's email
@@ -35,7 +35,6 @@ class TaskRepository {
         final bool isVerified = data['isCompleted'];
         final String id = documentSnapshot.id;
 
-
         if (startDateTime.year == today.year &&
             startDateTime.month == today.month &&
             startDateTime.day == today.day &&
@@ -57,14 +56,13 @@ class TaskRepository {
       items = fetchedItems;
 
       // Notify the listeners that the items list has changed
-      _taskItemsStream.add(items);
+      
     } catch (e) {
       print('Error fetching data: $e');
     }
   }
 
-  // Stream to listen for changes to the task items list
-  Stream<List<Map<String, String>>> get taskItemsStream {
-    return _taskItemsStream.stream;
+  List<Map<String, String>> getItems() {
+    return items;
   }
 }
