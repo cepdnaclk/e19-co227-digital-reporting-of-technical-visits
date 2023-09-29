@@ -3,12 +3,14 @@
 .user_card {
   height: 3rem;
   width: 14rem;
-  z-index: 99;
+  z-index: 1;
   padding: 0.4rem 0.4rem;
   border-radius: 1.75rem;
   background-color: #b6cff56c;
   background-color: #f8f8f8ef;
   position: fixed;
+  align-items: center; /* Center horizontally */
+  text-align: center;
   top: 1.8rem;
   right: 1.8rem;
   box-shadow: 0px 6px 25px -7px rgba(165, 204, 255, 0.4);
@@ -37,6 +39,98 @@
         color: rgb(119, 129, 139);
         font-family: $font-stack;
       }
+
+      
     }
   }
+
+  .logout_button {
+    background-color: #ff5733;
+    text-align: center;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    width: 12rem;
+    margin-top: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(250, 54, 54, 0.6);
+
+    &:hover {
+      background-color: #ff7f54;
+      box-shadow: 0 2px 4px rgba(255, 107, 107, 0.71);
+      scale: 1.03;
+    }
+  }
+
+  
+}
+
+.logout_dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 3rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  z-index: 2;
+  text-align: center;
+
+  p {
+    margin: 0 0 20px;
+  }
+
+  button {
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(250, 54, 54, 0.6);
+
+    &:hover {
+      background-color: #ff7f54;
+      box-shadow: 0 2px 4px rgba(255, 107, 107, 0.71);
+      scale: 1.03;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: -6%;
+  left: -5%;
+  width: 110%;
+  height: 115%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1; /* Behind the dialog */
+
+  /* Center content vertically and horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.overlay_button {
+  position: fixed;
+  top: -6%;
+  left: -5%;
+  width: 110%;
+  height: 115%;
+  background-color: transparent ;
+  z-index: 1; 
+
+  /* Center content vertically and horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
 }
