@@ -39,8 +39,6 @@
         color: rgb(119, 129, 139);
         font-family: $font-stack;
       }
-
-      
     }
   }
 
@@ -48,6 +46,7 @@
     background-color: #ff5733;
     text-align: center;
     color: #fff;
+    z-index: 99;
     border: none;
     padding: 10px 25px;
     width: 12rem;
@@ -63,8 +62,6 @@
       scale: 1.03;
     }
   }
-
-  
 }
 
 .logout_dialog {
@@ -87,6 +84,7 @@
   button {
     background-color: #ff5733;
     color: #fff;
+    z-index: 3;
     border: none;
     padding: 10px 20px;
     margin: 5px 20px;
@@ -106,13 +104,11 @@
 .overlay {
   position: fixed;
   top: -6%;
-  left: -5%;
+  left: -2.8%;
   width: 110%;
   height: 115%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 1; /* Behind the dialog */
-
-  /* Center content vertically and horizontally */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,14 +117,12 @@
 
 .overlay_button {
   position: fixed;
-  top: -6%;
-  left: -5%;
-  width: 110%;
-  height: 115%;
-  background-color: transparent ;
-  z-index: 1; 
-
-  /* Center content vertically and horizontally */
+  top: 16%;
+  left: 65%;
+  width: 40%;
+  height: 45%;
+  background-color: transparent;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;

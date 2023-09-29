@@ -56,23 +56,28 @@ const UserCard = () => {
     setShowLogoutDialog(false);
   };
 
-  return (<>
-    <div className={styles.user_card} onClick={() => {
-        toggleLogoutButton();
-      }}>
-      <div className={styles.user_info}>
-        <img src={user ? user.photoURL : ""} alt="User" />
-        <div className={styles.user_details}>
-          <p>{user ? user.displayName : "Guest User"}</p>
-          <p>{user ? user.email : ""}</p>
+  return (
+    <>
+      <div
+        className={styles.user_card}
+        onClick={() => {
+          toggleLogoutButton();
+        }}
+      >
+        <div className={styles.user_info}>
+          <img src={user ? user.photoURL : ""} alt="User" />
+          <div className={styles.user_details}>
+            <p>{user ? user.displayName : "Guest User"}</p>
+            <p>{user ? user.email : ""}</p>
+          </div>
         </div>
+        {showLogoutButton && (
+          <button onClick={handleLogout} className={styles.logout_button}>
+            Logout
+          </button>
+        )}
       </div>
-      {showLogoutButton && <button onClick={handleLogout} className={styles.logout_button}>
-        Logout
-      </button>}
-      
-    </div>
-    {showLogoutDialog && (
+      {showLogoutDialog && (
         <div className={styles.logout_dialog}>
           <p>Are you sure you want to log out?</p>
           <button onClick={confirmLogout}>Yes</button>
@@ -96,4 +101,3 @@ const UserCard = () => {
 };
 
 export default UserCard;
-
