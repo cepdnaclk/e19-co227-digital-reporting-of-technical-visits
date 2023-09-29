@@ -17,9 +17,8 @@ class UpcommingTaskRepository {
     final List<Map<String, String>> fetchedItems = [];
 
     try {
-      final QuerySnapshot querySnapshot = await jobsCollection
-          .where('email', isEqualTo: userEmail)
-          .get();
+      final QuerySnapshot querySnapshot =
+          await jobsCollection.where('email', isEqualTo: userEmail).get();
 
       for (final QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         final Map<String, dynamic> data =
@@ -36,7 +35,7 @@ class UpcommingTaskRepository {
 
         if (startDateTime.year >= today.year &&
             startDateTime.month >= today.month &&
-            startDateTime.day > today.day && 
+            startDateTime.day > today.day &&
             isVerified == false) {
           final Map<String, String> item = {
             'name': company,
@@ -64,4 +63,3 @@ class UpcommingTaskRepository {
     return items;
   }
 }
-

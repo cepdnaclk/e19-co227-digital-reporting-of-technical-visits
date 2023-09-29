@@ -9,9 +9,8 @@ class TaskController extends GetxController {
   // RxBool to track loading state
   var isLoading = true.obs;
 
-  // List<Map<String, String>> get taskItems => _taskRepository.items;
-  // To get real-time updates, use this instead:
-  Stream<List<Map<String, String>>> get taskItemsStream => _taskRepository.taskItemsStream;
+  List<Map<String, String>> get taskItems => _taskRepository.items;
+  
 
   @override
   void onInit() {
@@ -21,7 +20,9 @@ class TaskController extends GetxController {
     fetchData();
 
     // Set up a stream listener
-    taskItemsStream.listen((taskItems) {
+   final collectionReference = _taskRepository.getFirestoreCollection(userEmail!);
+    collectionReference.snapshots().listen((querySnapshot) {
+      // Trigger the fetchData function whenever Firestore data changes
       fetchData();
     });
 
