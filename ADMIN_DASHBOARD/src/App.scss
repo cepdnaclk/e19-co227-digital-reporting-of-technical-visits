@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +7,10 @@
   font-family: roboto;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  // font-family: "Raleway", sans-serif;
+  .number-font {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Replace "YourNumberFont" with the desired font name */
+  }
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
