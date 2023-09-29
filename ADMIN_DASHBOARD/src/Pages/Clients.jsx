@@ -45,6 +45,7 @@ export const Clients = () => {
               </button>
             )}
           </div>
+          
           {showForm && <ClientForm onClosing={()=>{setShowForm(false)}}/>}
           <ClientsTable clients={clients} searchTerm="" searchColumn="companyName"/>
         </div>
