@@ -1,24 +1,27 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import NavItem from "./NavItem";
 import { auth } from "../../config/firebase";
 import UserCard from "../UserCard";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import styles from "../../Styles/Navigation/Navigation.module.scss";
-import { FcSettings, FcOvertime,FcOrgUnit} from "react-icons/fc";
-import { FaTasks, FaUsers, FaCity} from "react-icons/fa";
+import { FcSettings, FcOvertime, FcOrgUnit } from "react-icons/fc";
+import { FaTasks, FaUsers, FaCity } from "react-icons/fa";
+
 export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth.currentUser) {
+      navigate("/");
+    }
+  }, [navigate]);
+
   const handleItemClick = (path) => {
     navigate(path);
   };
 
-  useEffect(() => {
-    console.log(auth?.currentUser?.displayName || auth?.currentUser?.email);
-    console.log(auth?.currentUser?.photoURL || "No Image");
-  }, []);
   return (
     <div className={styles.navigation}>
       <div className={styles.header}>
@@ -54,9 +57,9 @@ export const Navigation = () => {
         >
           <NavItem title="Tasks" Icon={FaTasks} />
         </li>
-        </ul>
-        <hr className={styles.line} />
-        <ul className={styles.item_list_2}>
+      </ul>
+      <hr className={styles.line} />
+      <ul className={styles.item_list_2}>
         <li
           className={location.pathname === "/techassign" ? styles.active : ""}
           onClick={() => handleItemClick("/techassign")}
@@ -71,9 +74,7 @@ export const Navigation = () => {
         </li>
       </ul>
 
-      <ul className={styles.item_list}>
-        
-      </ul>
+      <ul className={styles.item_list}></ul>
     </div>
   );
 };

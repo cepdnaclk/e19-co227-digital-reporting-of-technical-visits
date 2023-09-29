@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from "react";
 import styles from "../Styles/UserCard.module.scss";
 import { auth } from "../config/firebase";
-// import { GoogleLogin, googleLogout, GoogleOAuthProvider } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 const UserCard = () => {
   const [user, setUser] = useState(null);
-
-  // const clientID =
-  //   "296031466051-f33qjbgaft3pbim0l039def1kssgppd0.apps.googleusercontent.com";
-
-  // const onSuccess = (response) => {
-  //   handleLogin(response);
-  // };
-
-  // const onFailure = (error) => {
-  //   handleFailure(error);
-  // };
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setUser(authUser);
-        console.log(user.photoURL);
       } else {
         setUser(null);
+        navigate("/");
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 
   return (
     <div className={styles.user_card}>
@@ -41,19 +31,6 @@ const UserCard = () => {
           </div>
         </div>
       ) : (
-        // <GoogleOAuthProvider clientId={clientID}>
-        //   <GoogleLogin
-        //         onSuccess={onSuccess}
-        //         // shape="pill"
-        //         // theme="outline"
-        //         // type="icon"
-        //         // text="sign in with"
-        //         theme="outlined" // or  "outline"
-        //         text="signin_with"
-        //         shape="circle"
-        //         onFailure={onFailure}
-        //       />
-        // </GoogleOAuthProvider>
         <p>Guest User</p>
       )}
     </div>
