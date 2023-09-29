@@ -12,11 +12,11 @@ export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!auth.currentUser) {
-      navigate("/");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   if (!auth.currentUser) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   const handleItemClick = (path) => {
     navigate(path);
