@@ -3,7 +3,7 @@ import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import OngoingTasksCard from "../Components/OngoingTasksCard";
 import CompletedTasksCard from "../Components/CompletedTasksCard";
-import styles from "../Styles/Dashboard.module.scss";
+import styles from "../Styles/Dashboard.module.scss"
 
 export const Dashboard = () => {
   return (
