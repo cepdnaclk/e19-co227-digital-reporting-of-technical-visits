@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:visitlog/Controllers/upcomming_task_controller.dart';
+import 'package:visitlog/Controllers/task_controller.dart';
 import 'package:visitlog/Screens/arrival_confirm.dart';
 
 import 'package:visitlog/Utils/date_time.dart';
@@ -11,7 +11,7 @@ class UpcommingTaskBuildItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UpcommingTaskController());
+    final controller = Get.put(TaskController());
 
     return Obx(() {
       // Check if data is loading
@@ -20,16 +20,16 @@ class UpcommingTaskBuildItem extends StatelessWidget {
         return Center(
           child: CircularProgressIndicator(),
         );
-      } else if (controller.taskItems.isEmpty) {
+      } else if (controller.upcommingTasks.isEmpty) {
         // Handle case when there is no data
         return Center(
           child: Text('No tasks available.'),
         );
       } else {
         return ListView.builder(
-          itemCount: controller.taskItems.length,
+          itemCount: controller.upcommingTasks.length,
           itemBuilder: (context, index) {
-            final item = controller.taskItems[index];
+            final item = controller.upcommingTasks[index];
 
             return Padding(
               padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),

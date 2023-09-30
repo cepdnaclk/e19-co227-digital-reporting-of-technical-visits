@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visitlog/Controllers/job_card_controller.dart';
+import 'package:visitlog/Controllers/task_controller.dart';
 import 'package:visitlog/Utils/date_time.dart';
 
 class JobCardsList extends StatelessWidget {
@@ -15,7 +15,7 @@ class JobCardsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(JobCardController());
+    final controller = Get.put(TaskController());
     return Obx(() {
       // Check if data is loading
       if (controller.isLoading.value) {
@@ -23,7 +23,7 @@ class JobCardsList extends StatelessWidget {
         return Center(
           child: CircularProgressIndicator(),
         );
-      } else if (controller.taskItems.isEmpty) {
+      } else if (controller.jobs.isEmpty) {
         // Handle case when there is no data
         return Center(
           child: Text('No Completed Jobs available.'),
@@ -33,7 +33,7 @@ class JobCardsList extends StatelessWidget {
 
         // Filter and sort the task items
         // Sort the task items
-        final sortedItems = controller.taskItems
+        final sortedItems = controller.jobs
           ..sort((a, b) {
             // Sort by sortCriteria
             switch (sortCriteria) {
