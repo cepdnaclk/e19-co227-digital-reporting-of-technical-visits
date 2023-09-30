@@ -11,6 +11,10 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Replace "YourNumberFont" with the desired font name */
   }
 
+  input {
+    border: transparent;
+  }
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
