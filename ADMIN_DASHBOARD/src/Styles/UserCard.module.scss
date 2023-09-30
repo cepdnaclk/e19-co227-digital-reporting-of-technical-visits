@@ -43,7 +43,7 @@
   }
 
   .logout_button {
-    background-color: #ff5733;
+    background-color: #547fff;
     text-align: center;
     color: #fff;
     z-index: 99;
@@ -54,11 +54,11 @@
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s;
-    box-shadow: 0 2px 4px rgba(250, 54, 54, 0.6);
+    box-shadow: 0 2px 4px rgba(15, 100, 255, 0.6);
 
     &:hover {
-      background-color: #ff7f54;
-      box-shadow: 0 2px 4px rgba(255, 107, 107, 0.71);
+      background-color: #547fff;
+      box-shadow: 0 2px 4px rgba(15, 100, 255, 0.71);
       scale: 1.03;
     }
   }
@@ -82,7 +82,7 @@
   }
 
   button {
-    background-color: #ff5733;
+    background-color:  #547fff;
     color: #fff;
     z-index: 3;
     border: none;
@@ -91,11 +91,11 @@
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(250, 54, 54, 0.6);
+    box-shadow: 0 2px 4px rgba(107, 107, 255, 0.6);
 
     &:hover {
-      background-color: #ff7f54;
-      box-shadow: 0 2px 4px rgba(255, 107, 107, 0.71);
+      background-color:  #547fff;
+      box-shadow: 0 2px 4px rgba(107, 107, 255, 0.6);
       scale: 1.03;
     }
   }
