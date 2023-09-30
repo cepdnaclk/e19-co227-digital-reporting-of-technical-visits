@@ -1,6 +1,6 @@
 .completedTasksCard {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 20px;
   background: linear-gradient(to bottom, green, rgb(242, 248, 237));
   display: flex;
@@ -8,11 +8,24 @@
   align-items: center;
   justify-content: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+    background-color: inherit;
+    padding: 0.3em;
+    transition: all 150ms ease-in-out;
+  }
   .centeredNumber {
     font-size: 2em;
   }
   &:hover {
     box-shadow: 0 3px 14px rgba(154, 255, 107, 0.2);
     scale: 1.02;
+  }
+  @media (height < 700px) {
+    scale: 0.9;
+  }
+  @media (width < 1080px) {
+    scale: 0.8;
   }
 }

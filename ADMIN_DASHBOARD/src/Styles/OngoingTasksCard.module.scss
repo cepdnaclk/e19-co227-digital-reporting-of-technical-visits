@@ -1,6 +1,6 @@
 .ongoingTasksCard {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 20px;
   margin-right: 20px;
   background: linear-gradient(to bottom, rgb(243, 90, 116), rgb(247, 243, 243));
@@ -9,11 +9,25 @@
   align-items: center;
   justify-content: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  h1{
+    font-size: 1.5em;
+    font-weight: 700;
+    background-color: inherit;
+    padding: 0.3em;
+    transition: all 150ms ease-in-out;
+  }
   .centeredNumber {
     font-size: 2em;
   }
   &:hover {
     box-shadow: 0 3px 14px rgba(255, 107, 107, 0.15);
     scale: 1.03;
+  }
+  @media (height < 700px) {
+    scale: 0.9;
+    
+  }
+  @media (width < 1080px) {
+    scale: 0.8;
   }
 }

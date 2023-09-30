@@ -86,7 +86,7 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.card}>
-      <h2 className={styles.topic}>Edit Technician</h2>
+      <div className={styles.topic_container}><h2 className={styles.topic}>Edit Technician Details</h2></div>
       <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
@@ -174,10 +174,11 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
                 required
               />
               {index > 0 && (
-                <button type="button" onClick={() => handleRemoveMobile(index)}>
+                <button type="Remove" onClick={() => handleRemoveMobile(index)}>
                   Remove
                 </button>
               )}
+              {index == 0 &&<button type="fill">fill text</button>}
             </div>
           ))}
           <button type="mobile" onClick={handleAddMobile}>
