@@ -7,9 +7,10 @@ import {
   BsFileEarmarkPerson,
   BsTelephoneFill,
 } from "react-icons/bs";
+import classNames from "classnames";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
-
+import { MdError, MdPlaylistAddCheckCircle } from "react-icons/md";
 export const TechnicianEditForm = ({ technician, onClosing }) => {
   const technicianCollectionRef = collection(db, "Technicians");
 
@@ -70,12 +71,17 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
     });
   };
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Update the technician's data in the database
     await onUpdate(formData);
-    onClosing();
+    setShowFeedbackSuccess(true);
+    setTimeout(() => {
+      setShowFeedbackSuccess(false);
+      onClosing();
+    }, 2000);
   };
 
   const onUpdate = async (data) => {
@@ -189,6 +195,15 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
 
       <div>
         <button type="submit">Submit</button>
+      </div>
+      <div
+        className={classNames(
+          styles.feedbackContainer,styles.feedbackWaiting,
+          showFeedbackSuccess && styles.show
+        )}
+      >
+        <MdPlaylistAddCheckCircle className={styles.feedbackIcon} />
+        <p>Technician Was Edited!</p>
       </div>
     </form>
   );

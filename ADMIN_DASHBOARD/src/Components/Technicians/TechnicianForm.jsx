@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import styles from "../../Styles/Technicians/TechnicianForm.module.scss";
+import classNames from "classnames";
 import {
   BsFillFileEarmarkPersonFill,
   BsFileEarmarkPerson,
   BsTelephoneFill,
 } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
+import { FiMapPin, FiCheck, FiCheckCircle } from "react-icons/fi";
 import { GoLocation } from "react-icons/go";
 export const TechnicianForm = ({ onClosing }) => {
   const technicianCollectionRef = collection(db, "Technicians");
@@ -55,11 +57,17 @@ export const TechnicianForm = ({ onClosing }) => {
     });
   };
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await onSubmit(formData);
-    onClosing();
+    setShowFeedbackSuccess(true);
+    setTimeout(() => {
+      setShowFeedbackSuccess(false);
+      onClosing();
+    }, 2000);
+    
 
     setFormData({
       firstName: "",
@@ -73,9 +81,11 @@ export const TechnicianForm = ({ onClosing }) => {
   const onSubmit = async (data) => {
     console.log(data);
     await addDoc(technicianCollectionRef, data);
+    
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className={styles.card}>
       <div className={styles.topic_container}><h2 className={styles.topic}>Add a Technician</h2></div>
       <button className={styles.close_button} onClick={() => onClosing()}>
@@ -181,6 +191,17 @@ export const TechnicianForm = ({ onClosing }) => {
       <div>
         <button type="submit">Submit</button>
       </div>
+      <div
+        className={classNames(
+          styles.feedbackContainer,
+          showFeedbackSuccess && styles.show
+        )}
+      >
+        <FiCheckCircle className={styles.feedbackIcon} />
+        <p>Technician Added Successfully!</p>
+      </div>
     </form>
+    
+    </>
   );
 };
