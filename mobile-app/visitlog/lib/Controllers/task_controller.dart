@@ -10,6 +10,8 @@ class TaskController extends GetxController {
   var isLoading = true.obs;
 
   List<Map<String, String>> get taskItems => _taskRepository.items;
+  List<Map<String, String>> get upcommingTasks => _taskRepository.upcommingItems;
+  List<Map<String, String>> get jobs => _taskRepository.jobs;
   
 
   @override

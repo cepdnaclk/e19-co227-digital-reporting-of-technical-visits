@@ -8,6 +8,7 @@ import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// ignore: must_be_immutable
 class ReportImages extends StatelessWidget {
   ReportImages(
       {Key? key,
