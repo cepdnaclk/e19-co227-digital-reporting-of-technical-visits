@@ -74,18 +74,22 @@
     border-bottom: 1px solid #ccc;
     transition: 0.3s;
     font-size: 12px;
-    background-color: inherit;
+    background-color: #edeeee;
   }
 
   input:focus {
     border: none;
     border-bottom: 1px solid #ccc;
+    background-color: #edeeee;
   }
 
-  input:active {
+  input::placeholder {
     border: none;
     border-bottom: 1px solid #ccc;
+    background-color: tomato;
   }
+
+
 
   input[type="email"] {
     width: 100%;
@@ -160,17 +164,21 @@
     color: #fff;
     border: none;
     border-radius: 18px;
-    padding: 0.6rem 6rem;
+    padding: 0.6rem 5.5rem;
     font-size: 14px;
     font-weight: 600;
     margin-top: 0.5rem;
     box-shadow: 0 3px 6px rgba(82, 145, 85, 0.5);
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
   }
 
   button[type="submit"]:hover {
     background-color: #1a8c38;
     box-shadow: 0 4px 7px rgba(82, 145, 85, 0.6);
+    
   }
 
   .first_name {
@@ -232,4 +240,51 @@
     font-size: 1.2em;
     margin: 0px;
   }
+
+
+.feedbackContainer {
+  visibility: hidden;
+  position: absolute;
+  top: -5;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 2em;
+  height: 100.3%;
+  width: 100%;
+  padding: 2em 1em;
+  text-align: center;
+  background-color: $bgcolor;
+  z-index: 9999;
+  display: flex;
+  transform: scaleX(0);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: hsl(165, 65%, 41%);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in;
+  transition: all 150ms ease-in;
+  
+
+  .feedbackIcon {
+    height: 100px;
+    scale: 4;
+  }
+
+  &.show {
+    visibility: visible;
+    transform: scaleX(1);
+    opacity: 1;
+  }
+    
+  
+  &.feedbackWaiting {
+    color: $waitingColor;
+  }
+  &.feedbackError {
+    color: rgb(169, 45, 64);
+  }
+}
 }
