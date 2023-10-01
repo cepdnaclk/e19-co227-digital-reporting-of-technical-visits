@@ -30,6 +30,7 @@ export const ClientEditForm = ({ client, onClosing }) => {
         mobile: client.mobile || [""],
       });
     }
+    console.log(formData.mobile);
   }, [client]);
 
   const handleChange = (e, index) => {

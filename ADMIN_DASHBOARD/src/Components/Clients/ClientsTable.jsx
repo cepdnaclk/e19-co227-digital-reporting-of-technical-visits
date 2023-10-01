@@ -8,6 +8,12 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
 
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
+
+  const [showClientDetails, setShowClientDetails] = useState(false);
+
+
   const handleSort = (field) => {
     if (field === sortBy) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
@@ -18,8 +24,12 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   };
 
   const sortedClients = [...clients].sort((a, b) => {
-    const aValue = sortBy ? (a[sortBy] || "").toString() : (a.name || "").toString();
-    const bValue = sortBy ? (b[sortBy] || "").toString() : (b.name || "").toString();
+    const aValue = sortBy
+      ? (a[sortBy] || "").toString()
+      : (a.name || "").toString();
+    const bValue = sortBy
+      ? (b[sortBy] || "").toString()
+      : (b.name || "").toString();
 
     if (sortDirection === "asc") {
       return aValue.localeCompare(bValue);
@@ -30,14 +40,18 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
 
   const filteredClients = sortedClients.filter((client) => {
     if (searchColumn === "companyName") {
-      const fullName = `${(client.firstName || "").toLowerCase()} ${(client.lastName || "").toLowerCase()}`;
+      const fullName = `${(client.firstName || "").toLowerCase()} ${(
+        client.lastName || ""
+      ).toLowerCase()}`;
       return fullName.includes(searchTerm.toLowerCase());
     } else if (searchColumn === "Email") {
       return (client.email || "").includes(searchTerm.toLowerCase());
     } else if (searchColumn === "Address") {
       return (client.address || "").includes(searchTerm.toLowerCase());
     } else if (searchColumn === "TP") {
-      return ((client.mobile && client.mobile[0]) || "").includes(searchTerm.toLowerCase());
+      return ((client.mobile && client.mobile[0]) || "").includes(
+        searchTerm.toLowerCase()
+      );
     }
     return true; // Return true for unmatched columns
   });
@@ -89,7 +103,8 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
               <td>{client.address || ""}</td>
               <td>{(client.mobile && client.mobile[0]) || ""}</td>
               <td>
-                <button className={classNames(styles.btn, styles.editBtn)}
+                <button
+                  className={classNames(styles.btn, styles.editBtn)}
                   // onClick={() => {
                   //   openEditForm(technician);
                   // }}
@@ -105,4 +120,3 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
     </div>
   );
 };
-

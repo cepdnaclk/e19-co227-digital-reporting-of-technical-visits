@@ -21,7 +21,6 @@ export const TechniciansTable = ({
   const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
 
   useEffect(() => {
-    
     // Add 'open' class to the body to hide overflow
     if (showTechnicianDetails) {
       document.body.classList.add("open");
@@ -32,7 +31,6 @@ export const TechniciansTable = ({
   }, [showTechnicianDetails]);
 
   const handleSort = (field) => {
-    
     setShowTechnicianDetails(false);
     setSelectedTechnician(null);
 
