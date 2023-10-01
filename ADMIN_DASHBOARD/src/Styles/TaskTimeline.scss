@@ -1,0 +1,68 @@
+.timeline-table {
+    border-radius: 1.8em;
+    border-collapse: collapse;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.2);
+    font-size: 0.8em;
+    thead tr {
+      color: hsl(0, 0%, 95%);
+      background-color: darken($color: rgb(54, 54, 54), $amount: 2);
+      text-align: left;
+      align-items: center;
+      align-content: center;
+    }
+
+
+}
+// /* TaskTimeline.css */
+// .task-timeline {
+//   display: grid;
+//   grid-template-columns: auto repeat(12, 1fr); /* Adjust the number of columns as needed */
+//   grid-template-rows: auto;
+//   gap: 4px; /* Adjust the gap between grid items */
+// }
+
+// .time-slots {
+//   grid-column: 1;
+//   grid-row: 2 / span 1;
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
+//   gap: 4px;
+// }
+
+// .time-slot-label {
+//   text-align: center;
+//   font-weight: bold;
+// }
+
+// .technician-labels {
+//   grid-column: 2 / span 1;
+//   grid-row: 1;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+//   gap: 4px;
+// }
+
+// .technician-label {
+//   text-align: center;
+//   font-weight: bold;
+// }
+
+// .timeline-grid {
+//   grid-column: 2 / span 12; /* Adjust the number of columns as needed */
+//   grid-row: 2 / span 1;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+//   grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
+//   gap: 4px;
+// }
+
+// .task-card {
+//   background-color: #3498db;
+//   color: #fff;
+//   padding: 4px;
+//   border-radius: 4px;
+//   text-align: center;
+// }
