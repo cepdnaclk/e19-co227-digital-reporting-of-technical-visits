@@ -2,14 +2,14 @@ import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import styles from "../Styles/Clients.module.scss";
 import { db } from "../config/firebase";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ClientsTable } from "../Components/Clients/ClientsTable";
 import { ClientForm } from "../Components/Clients/ClientForm";
-import { collection,onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 export const Clients = () => {
-  const [clients,setClients] = useState([]);
-  const [showForm,setShowForm] = useState(false);
+  const [clients, setClients] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const clientCollectionRef = collection(db, "Clients");
@@ -32,7 +32,7 @@ export const Clients = () => {
         <Navigation />
         <UserCard />
         <div className={styles.component_container}>
-        <div className={styles.title}>
+          <div className={styles.title}>
             <p>Clients Log</p>
           </div>
           <div className={styles.button_container}>
@@ -45,9 +45,19 @@ export const Clients = () => {
               </button>
             )}
           </div>
-          
-          {showForm && <ClientForm onClosing={()=>{setShowForm(false)}}/>}
-          <ClientsTable clients={clients} searchTerm="" searchColumn="companyName"/>
+
+          {showForm && (
+            <ClientForm
+              onClosing={() => {
+                setShowForm(false);
+              }}
+            />
+          )}
+          <ClientsTable
+            clients={clients}
+            searchTerm=""
+            searchColumn="companyName"
+          />
         </div>
       </div>
     </div>

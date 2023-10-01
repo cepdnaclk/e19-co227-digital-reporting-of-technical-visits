@@ -92,7 +92,9 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.card}>
-      <div className={styles.topic_container}><h2 className={styles.topic}>Edit Technician Details</h2></div>
+      <div className={styles.topic_container}>
+        <h2 className={styles.topic}>Edit Technician Details</h2>
+      </div>
       <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
@@ -184,7 +186,7 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
                   Remove
                 </button>
               )}
-              {index == 0 &&<button type="fill">fill text</button>}
+              {index == 0 && <button type="fill">fill text</button>}
             </div>
           ))}
           <button type="mobile" onClick={handleAddMobile}>
@@ -198,7 +200,8 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
       </div>
       <div
         className={classNames(
-          styles.feedbackContainer,styles.feedbackWaiting,
+          styles.feedbackContainer,
+          styles.feedbackWaiting,
           showFeedbackSuccess && styles.show
         )}
       >
