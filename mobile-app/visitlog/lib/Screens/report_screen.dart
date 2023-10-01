@@ -31,9 +31,9 @@ class ReportScreen extends StatefulWidget {
 }
 
 class _ReportScreenState extends State<ReportScreen> {
-  late String representative;
-  late String type;
-  late String notes;
+  late String representative = '-';
+  late String type = '-';
+  late String notes = '-';
   List<Uint8List> _images = [];
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
@@ -52,9 +52,9 @@ class _ReportScreenState extends State<ReportScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String representative = '-';
-    String type = '-';
-    String notes = '-';
+    // String representative = '-';
+    // String type = '-';
+    // String notes = '-';
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

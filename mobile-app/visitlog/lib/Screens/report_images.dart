@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
@@ -8,20 +7,19 @@ import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// ignore: must_be_immutable
 class ReportImages extends StatelessWidget {
-  ReportImages(
-      {Key? key,
-      required this.topic,
-      required this.subTopic,
-      required this.date,
-      required this.address,
-      required this.representative,
-      required this.type,
-      required this.notes,
-      required this.images,
-      required this.docId})
-      : super(key: key);
+  ReportImages({
+    Key? key,
+    required this.topic,
+    required this.subTopic,
+    required this.date,
+    required this.address,
+    required this.representative,
+    required this.type,
+    required this.notes,
+    required this.images,
+    required this.docId,
+  }) : super(key: key);
 
   static String id = "report_images";
 
@@ -36,7 +34,6 @@ class ReportImages extends StatelessWidget {
   final String docId;
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  final List<Map<String, String>> items = TaskList().items;
   String? UserName = AuthService().getUserName();
 
   @override
@@ -63,56 +60,80 @@ class ReportImages extends StatelessWidget {
         key: _globalKey,
         drawer: DrawerWidget(id: id),
         body: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-            SizedBox(
-              height: 6.0.h,
-            ),
-            UpperWidgetBar(globalKey: _globalKey),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height / 20,
-                horizontal: MediaQuery.of(context).size.width / 15,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 6.0.h,
               ),
-              child: Padding(
+              UpperWidgetBar(globalKey: _globalKey),
+              Padding(
                 padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 28,
-                  horizontal: MediaQuery.of(context).size.width / 18,
+                  vertical: MediaQuery.of(context).size.height / 20,
+                  horizontal: MediaQuery.of(context).size.width / 15,
                 ),
-                child: Column(
-                  children: [
-                    Text(
-                      "COMPANY NAME",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 216, 216, 216),
+                        offset: Offset(
+                          5.0,
+                          5.0,
+                        ),
+                        blurRadius: 10.0,
+                        spreadRadius: 2.0,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 20),
-                    Table(
-                      columnWidths: {
-                        0: FlexColumnWidth(1),
-                        1: FlexColumnWidth(2),
-                      },
-                      children: tableRows,
-                    ),
-                    SizedBox(height: 20),
-                    if (images != null)
-                      Wrap(
-                        spacing: 8.0,
-                        children: images.map((image) {
-                          return Image.memory(
-                            image,
-                            height: 100,
-                            width: 100,
-                          );
-                        }).toList(),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        spreadRadius: 0.0,
                       ),
-                  ],
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height / 28,
+                      horizontal: MediaQuery.of(context).size.width / 18,
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "COMPANY NAME",
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 20),
+                        Table(
+                          columnWidths: {
+                            0: FlexColumnWidth(1),
+                            1: FlexColumnWidth(2),
+                          },
+                          children: tableRows,
+                        ),
+                        SizedBox(height: 20),
+                        if (images != null)
+                          Wrap(
+                            spacing: 8.0,
+                            children: images.map((image) {
+                              return Image.memory(
+                                image,
+                                height: 100,
+                                width: 100,
+                              );
+                            }).toList(),
+                          ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
-            Padding(
+              Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +160,9 @@ class ReportImages extends StatelessWidget {
                             const Text(
                               'SUBMIT',
                               style: TextStyle(
-                                  fontSize: 18, color: Colors.black87),
+                                fontSize: 18,
+                                color: Colors.black87,
+                              ),
                             ),
                             SizedBox(width: 1.0.w),
                             const Icon(
@@ -153,7 +176,8 @@ class ReportImages extends StatelessWidget {
                   ],
                 ),
               ),
-          ]),
+            ],
+          ),
         ),
       ),
     );
