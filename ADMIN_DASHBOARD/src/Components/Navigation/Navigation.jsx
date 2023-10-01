@@ -26,7 +26,12 @@ export const Navigation = () => {
     <div className={styles.navigation}>
       <div className={styles.header}>
         <div className={styles.profile}>
-          <img src="/logo.jpg" alt="user-img" className={styles.profile_img} />
+          <img
+            onClick={() => handleItemClick("/dashboard")}
+            src="/logo.jpg"
+            alt="user-img"
+            className={styles.profile_img}
+          />
         </div>
       </div>
 
