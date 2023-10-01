@@ -6,6 +6,7 @@ import 'package:visitlog/Components/upper_bar.dart';
 import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 
 class ReportImages extends StatefulWidget {
   ReportImages({
@@ -41,6 +42,8 @@ class _ReportImagesState extends State<ReportImages> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   String? UserName = AuthService().getUserName();
   late List<bool> isSelected;
+  bool isSignatureSelected = true; // Track if the user selects the signature option
+  final GlobalKey<SfSignaturePadState> _signaturePadKey = GlobalKey();
 
   @override
   void initState() {
@@ -140,8 +143,10 @@ class _ReportImagesState extends State<ReportImages> {
                               );
                             }).toList(),
                           ),
+                        SizedBox(height: 20),
+                        
                         Container(
-                          height: 20, // Adjust the height as needed
+                          height: 20,
                           alignment: Alignment.centerLeft,
                           child: ToggleButtons(
                             borderColor: Color(0xFF082A63),
@@ -171,11 +176,40 @@ class _ReportImagesState extends State<ReportImages> {
                                 for (int i = 0; i < isSelected.length; i++) {
                                   isSelected[i] = i == index;
                                 }
+                                isSignatureSelected = index == 0;
                               });
                             },
                             isSelected: isSelected,
                           ),
                         ),
+                        SizedBox(height: 20),
+                        
+                        if (isSignatureSelected)
+                          Container(
+                            height: 100,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color(0xFFC8C8C9),
+                                width: 1.0,
+                              ),
+                            ),
+                            child: SfSignaturePad(
+                              key: _signaturePadKey,
+                            ),
+                          )
+                        else
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 10,
+                            ),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Enter OTP',
+                              ),
+                              // ToDo (OTP logic)
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -189,6 +223,11 @@ class _ReportImagesState extends State<ReportImages> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
+                        final image = await _signaturePadKey.currentState?.toImage(
+                          pixelRatio: 3.0,
+                        );
+                        // ToDo (save or display it)
+
                         final CollectionReference tasksCollection =
                             FirebaseFirestore.instance.collection('Tasks');
                         await tasksCollection.doc(widget.docId).update({
