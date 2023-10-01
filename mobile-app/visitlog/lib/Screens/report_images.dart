@@ -1,5 +1,5 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'dart:typed_data';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
 import 'package:visitlog/Components/upper_bar.dart';
@@ -7,7 +7,7 @@ import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ReportImages extends StatelessWidget {
+class ReportImages extends StatefulWidget {
   ReportImages({
     Key? key,
     required this.topic,
@@ -33,15 +33,27 @@ class ReportImages extends StatelessWidget {
   final List<Uint8List> images;
   final String docId;
 
+  @override
+  _ReportImagesState createState() => _ReportImagesState();
+}
+
+class _ReportImagesState extends State<ReportImages> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   String? UserName = AuthService().getUserName();
+  late List<bool> isSelected;
+
+  @override
+  void initState() {
+    isSelected = [true, false];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final String localTopic = topic;
-    final String localsubTopic = subTopic;
-    final String localDate = date;
-    final String localAddress = address;
+    final String localTopic = widget.topic;
+    final String localsubTopic = widget.subTopic;
+    final String localDate = widget.date;
+    final String localAddress = widget.address;
 
     List<TableRow> tableRows = [
       buildTableRow('Company', localTopic),
@@ -49,16 +61,16 @@ class ReportImages extends StatelessWidget {
       buildTableRow('Inspection Date', localDate),
       buildTableRow('Technical Officer', UserName ?? ''),
       buildTableRow('Address', localAddress),
-      buildTableRow('Site Representative', representative),
-      buildTableRow('Type of Work', type),
-      buildTableRow('Notes', notes),
+      buildTableRow('Site Representative', widget.representative),
+      buildTableRow('Type of Work', widget.type),
+      buildTableRow('Notes', widget.notes),
     ];
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         key: _globalKey,
-        drawer: DrawerWidget(id: id),
+        drawer: DrawerWidget(id: ReportImages.id),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -117,10 +129,10 @@ class ReportImages extends StatelessWidget {
                           children: tableRows,
                         ),
                         SizedBox(height: 20),
-                        if (images != null)
+                        if (widget.images != null)
                           Wrap(
                             spacing: 8.0,
-                            children: images.map((image) {
+                            children: widget.images.map((image) {
                               return Image.memory(
                                 image,
                                 height: 100,
@@ -128,6 +140,42 @@ class ReportImages extends StatelessWidget {
                               );
                             }).toList(),
                           ),
+                        Container(
+                          height: 20, // Adjust the height as needed
+                          alignment: Alignment.centerLeft,
+                          child: ToggleButtons(
+                            borderColor: Color(0xFF082A63),
+                            fillColor: Color(0xFF082A63),
+                            borderWidth: 1,
+                            selectedBorderColor: Color(0xFF082A63),
+                            selectedColor: Colors.white,
+                            borderRadius: BorderRadius.circular(0),
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                                child: Text(
+                                  'Signature',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                                child: Text(
+                                  'OTP Code',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            ],
+                            onPressed: (int index) {
+                              setState(() {
+                                for (int i = 0; i < isSelected.length; i++) {
+                                  isSelected[i] = i == index;
+                                }
+                              });
+                            },
+                            isSelected: isSelected,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -143,7 +191,7 @@ class ReportImages extends StatelessWidget {
                       onPressed: () async {
                         final CollectionReference tasksCollection =
                             FirebaseFirestore.instance.collection('Tasks');
-                        await tasksCollection.doc(docId).update({
+                        await tasksCollection.doc(widget.docId).update({
                           'isCompleted': true,
                         });
                       },
