@@ -51,9 +51,11 @@ export const TaskForm = () => {
       title,
       address,
       description,
-      companyEmail: clients.find((company) => company.id == selectedClient).email,
+      companyEmail: clients.find((company) => company.id == selectedClient)
+        .email,
       companyRef: doc(db, "Clients", `${selectedClient}`),
-      company: clients.find((company) => company.id == selectedClient).companyName,
+      company: clients.find((company) => company.id == selectedClient)
+        .companyName,
       isArrived: false,
       isVerified: false,
       isCompleted: false,
@@ -80,7 +82,10 @@ export const TaskForm = () => {
           <div className={styles.close_button} onClick={handleClose}>
             X
           </div>
-          <h2 className={styles.topic}>Create Task</h2>
+          <div className={styles.topic_container}>
+            <h2 className={styles.topic}>Create Task</h2>
+          </div>
+
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="client">Client:</label>
@@ -111,10 +116,13 @@ export const TaskForm = () => {
             </div>
             <div>
               <button
+                type="same"
                 disabled={sameAsCompanyAddress}
                 onClick={(e) => {
                   e.preventDefault();
-                  const theClient = clients.find((obj) => obj.id === selectedClient);
+                  const theClient = clients.find(
+                    (obj) => obj.id === selectedClient
+                  );
                   setAddress(theClient.address);
                   setSameAsCompanyAddress(true);
                 }}
@@ -122,6 +130,7 @@ export const TaskForm = () => {
                 Same As Company Address
               </button>
               <button
+                type="reset"
                 onClick={(e) => {
                   e.preventDefault();
                   setSameAsCompanyAddress(false);
@@ -132,12 +141,13 @@ export const TaskForm = () => {
             </div>
             <div>
               <label htmlFor="title">Job Title:</label>
-              <textarea
+              <input
+                type="text"
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-              ></textarea>
+              ></input>
             </div>
             <div>
               <label htmlFor="description">Description:</label>

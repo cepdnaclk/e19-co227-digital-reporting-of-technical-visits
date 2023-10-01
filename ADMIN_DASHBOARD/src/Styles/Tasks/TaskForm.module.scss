@@ -22,8 +22,8 @@
 
   .close_button {
     position: absolute;
-    top: -15px;
-    right: -15px;
+    top: -24px;
+    right: -24px;
     background-color: rgb(235, 169, 169);
     border-color: transparent;
     height: 30px;
@@ -43,10 +43,39 @@
 
  
 
-  .topic {
-    font-size: 20px;
-    font-weight: 700;
-    color: #7099ce;
+  .topic_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -1.8rem;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+    background-color: #1a628c;
+    width: 123.5%;
+    border-top-right-radius: 2.5rem;
+    border-top-left-radius: 2.5rem;
+    box-shadow: 0 5px 7px rgba(82, 127, 145, 0.2);
+    .topic {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #e7e9ec;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      background-color: inherit;
+      padding-bottom: 0.3em;
+      transition: all 150ms ease-in-out;
+    }
+  }
+
+  select{
+    width: 100%;
+    padding: 0.1rem 0.6rem;
+    margin: 0.2rem 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    transition: 0.3s;
+    font-size: 12px;
+    background-color: #edeeee;
   }
 
   input[type="text"],
@@ -59,6 +88,7 @@
     border-bottom: 1px solid #ccc;
     transition: 0.3s;
     font-size: 12px;
+    background-color: #edeeee;
     
   }
 
@@ -74,34 +104,78 @@
   }
 
   textarea {
-    height: 80px; 
+    height: 50px; 
+    background-color: transparent;
   }
 
   label {
+    margin-top: 1rem;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     width: 10rem;
+    display: flex;
   }
 
   button[type="submit"] {
     background-color: #28a745;
     color: #fff;
     border: none;
+    text-align: center;
     border-radius: 18px;
-    padding: 0.6rem 7rem;
+    padding: 0.6rem 4.5rem;
     font-size: 17px;
     font-weight: 600;
     margin-top: 0.5rem;
     box-shadow: 0 3px 6px rgba(82, 145, 85, 0.5);
     cursor: pointer;
-    display: flex;
-    flex-direction: row;
     gap: 30px;
   }
 
   button[type="submit"]:hover {
     background-color: #1a8c38;
     box-shadow: 0 4px 7px rgba(82, 145, 85, 0.6);
+  }
+
+  button[type="same"]{
+    background-color: #a0bee0;
+    color: #fff;
+    border: none;
+    text-align: center;
+    border-radius: 18px;
+    padding: 0.3rem 0.7rem;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    box-shadow: 0 3px 6px rgba(162, 201, 226, 0.5);
+    cursor: pointer;
+    gap: 30px;
+  }
+
+  button[type="same"]:hover{
+    background-color: #8cb0d1;
+    box-shadow: 0 4px 7px rgba(162, 201, 226, 0.6);
+  }
+
+
+  button[type="reset"]{
+    background-color: #e0a4a0;
+    color: #fff;
+    border: none;
+    text-align: center;
+    border-radius: 18px;
+    margin-left: 0.5rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    box-shadow: 0 3px 6px rgba(226, 162, 162, 0.5);
+    cursor: pointer;
+    gap: 30px;
+  }
+
+  button[type="reset"]:hover{
+    background-color: #d18c8c;
+    box-shadow: 0 4px 7px rgba(226, 162, 162, 0.6);
   }
 
   
