@@ -167,7 +167,7 @@ export const TechnicianAssign = () => {
           </div>
 
           {/* Include the TaskTimeline component */}
-          <div className={styles.timeline}>
+          <div className={styles.table_container}>
             <TaskTimeline
               tasks={tasks}
               startTime={startTime}
