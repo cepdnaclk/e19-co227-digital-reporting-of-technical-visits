@@ -12,57 +12,67 @@
       align-items: center;
       align-content: center;
     }
+    th,
+    td {
+      border: 0.5px solid #cccccc3b;
+      padding: 1.2em 0.9em;
+      text-align: left;
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
 
 
 }
 // /* TaskTimeline.css */
-// .task-timeline {
-//   display: grid;
-//   grid-template-columns: auto repeat(12, 1fr); /* Adjust the number of columns as needed */
-//   grid-template-rows: auto;
-//   gap: 4px; /* Adjust the gap between grid items */
-// }
+.task-timeline {
+  display: grid;
+  grid-template-columns: auto repeat(12, 1fr); /* Adjust the number of columns as needed */
+  grid-template-rows: auto;
+  gap: 4px; /* Adjust the gap between grid items */
+}
 
-// .time-slots {
-//   grid-column: 1;
-//   grid-row: 2 / span 1;
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
-//   gap: 4px;
-// }
+.time-slots {
+  grid-column: 1;
+  grid-row: 2 / span 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 4px;
+}
 
-// .time-slot-label {
-//   text-align: center;
-//   font-weight: bold;
-// }
+.time-slot-label {
+  text-align: center;
+  font-weight: bold;
+}
 
-// .technician-labels {
-//   grid-column: 2 / span 1;
-//   grid-row: 1;
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-//   gap: 4px;
-// }
+.technician-labels {
+  grid-column: 2 / span 1;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 4px;
+}
 
-// .technician-label {
-//   text-align: center;
-//   font-weight: bold;
-// }
+.technician-label {
+  text-align: center;
+  font-weight: bold;
+}
 
-// .timeline-grid {
-//   grid-column: 2 / span 12; /* Adjust the number of columns as needed */
-//   grid-row: 2 / span 1;
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-//   grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
-//   gap: 4px;
-// }
+.timeline-grid {
+  grid-column: 2 / span 12; /* Adjust the number of columns as needed */
+  grid-row: 2 / span 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 4px;
+}
 
-// .task-card {
-//   background-color: #3498db;
-//   color: #fff;
-//   padding: 4px;
-//   border-radius: 4px;
-//   text-align: center;
-// }
+.task-card {
+  background-color: #3498db;
+  color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+  text-align: center;
+}

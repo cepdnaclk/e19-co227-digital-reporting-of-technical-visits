@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../Styles/TaskTimeline.scss"
 
 const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) => {
   // Calculate the number of time slots
