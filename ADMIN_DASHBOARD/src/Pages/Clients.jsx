@@ -27,7 +27,6 @@ export const Clients = () => {
     };
   }, []);
   return (
-    <div>
       <div className={styles.container}>
         <Navigation />
         <UserCard />
@@ -60,6 +59,5 @@ export const Clients = () => {
           />
         </div>
       </div>
-    </div>
   );
 };
