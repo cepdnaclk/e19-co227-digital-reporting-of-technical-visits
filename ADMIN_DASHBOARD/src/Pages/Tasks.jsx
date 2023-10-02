@@ -131,22 +131,9 @@ setSelectedTask(task)
               }}
 
             />
-            <p className={styles.label}>Sort by:</p>
-            <select
-              className={styles.search_column_select}
-              value={searchColumn}
-              onChange={(e) => setSearchColumn(e.target.value)}
-            >
-              <option value="Task Name">Task Name</option>
-              <option value="Company">Company</option>
-              <option value="Address">Address</option>
-            </select>
+            
           </div>
-          <TasksTable
-            tasks={jobs}
-            searchTerm={searchTerm}
-            searchColumn={searchColumn}
-          />
+          
         </div>
       </div>
     </div>
