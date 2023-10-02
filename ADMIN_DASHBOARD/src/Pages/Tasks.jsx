@@ -6,6 +6,7 @@ import UserCard from "../Components/UserCard";
 import { TasksTable } from "../Components/Tasks/TasksTable";
 import { TaskForm } from "../Components/Tasks/TaskForm";
 import styles from "../Styles/Tasks.module.scss";
+import { TaskEditForm } from "../Components/Tasks/TaskEditForm";
 
 export const Tasks = () => {
   const [jobs, setJobs] = useState([]);
@@ -13,7 +14,8 @@ export const Tasks = () => {
   const [searchColumn, setSearchColumn] = useState("Task Name");
 
   const [showForm, setShowForm] = useState(false);
-
+  const [showEditForm,setShowEditForm] = useState(false)
+  const [selectedTask,setSelectedTask] = useState("");
   useEffect(() => {
     const jobsCollectionRef = collection(db, "Tasks");
 
@@ -70,45 +72,68 @@ export const Tasks = () => {
     setShowForm(!showForm);
   };
 
+  const closeEditForm = () => {
+    setShowEditForm(false)
+    setSelectedTask(null)
+  }
+
   return (
-    <div className={styles.container}>
-      <Navigation />
-      <UserCard />
-      <div className={styles.component_container}>
-        <div className={styles.name}>
-          <p>Tasks Log</p>
-        </div>
-        <div className={styles.button_container}>
-          <button className={styles.create_task_button} onClick={toggleForm}>
-            Create Task
-          </button>
-        </div>
-        {showForm && <TaskForm />}
-        <div className={styles.table_container}>
-          <div className={styles.search_bar}>
-            <input
-              type="text"
-              placeholder="&#128270; &ensp;Search by name..."
-              className={styles.search_input}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <p className={styles.label}>Sort by:</p>
-            <select
-              className={styles.search_column_select}
-              value={searchColumn}
-              onChange={(e) => setSearchColumn(e.target.value)}
-            >
-              <option value="Task Name">Task Name</option>
-              <option value="Company">Company</option>
-              <option value="Address">Address</option>
-            </select>
+
+    <div>
+      <div className={styles.container}>
+        <Navigation />
+        <UserCard />
+        <div className={styles.component_container}>
+          <div className={styles.name}>
+            <p>Tasks Log</p>
           </div>
-          <TasksTable
-            tasks={jobs}
-            searchTerm={searchTerm}
-            searchColumn={searchColumn}
+          <div className={styles.button_container}>
+            <button className={styles.create_task_button} onClick={toggleForm}>
+              Create Task
+            </button>
+          </div>
+          {showForm && <TaskForm />}
+          {showEditForm && (
+        <div className={styles.cardContainer} >
+          <TaskEditForm
+            task={selectedTask}
+            onClosing={closeEditForm}
           />
+        </div>
+      )}
+          <div className={styles.table_container}>
+            <div className={styles.search_bar}>
+              <input
+                type="text"
+                placeholder="&#128270; &ensp;Search by name..."
+                className={styles.search_input}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <p className={styles.label}>Sort by:</p>
+              <select
+                className={styles.search_column_select}
+                value={searchColumn}
+                onChange={(e) => setSearchColumn(e.target.value)}
+              >
+                <option value="Task Name">Task Name</option>
+                <option value="Company">Company</option>
+                <option value="Address">Address</option>
+              </select>
+            </div>
+            <TasksTable
+              tasks={jobs}
+              searchTerm={searchTerm}
+              searchColumn={searchColumn}
+              taskEdit={(task)=>{
+setShowEditForm(true)
+setSelectedTask(task)
+              }}
+
+            />
+            
+          </div>
+          
         </div>
       </div>
     </div>

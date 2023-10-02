@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "../../Styles/Tasks/TasksTable.module.scss"; // Import your SCSS stylesheet
 import { BsSortAlphaDown,BsSortAlphaDownAlt } from "react-icons/bs";
+import { MdCreate } from "react-icons/md";
 
-export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
+export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
 
@@ -94,6 +95,17 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn }) => {
               <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
               <td>{task.technicianName || "No Technician"}</td>
               <td>{task.startDate ? task.startDate.toDate().toLocaleDateString() : ""}</td>
+              <td>
+                <button
+                  
+                  onClick={() => {
+                    taskEdit(task);
+                  }}
+                >
+                  <MdCreate />
+                  Edit
+                </button>
+              </td>
 
             </tr>
           ))}

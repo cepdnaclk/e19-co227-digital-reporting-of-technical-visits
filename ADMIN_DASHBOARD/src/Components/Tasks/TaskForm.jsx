@@ -11,10 +11,19 @@ import "firebase/firestore";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import styles from "../../Styles/Tasks/TaskForm.module.scss";
 import dayjs from "dayjs";
+import {
+  BsFillFileEarmarkPersonFill,
+  BsFileEarmarkPerson,
+  BsTelephoneFill,
+} from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
+import { FiMapPin, FiCheck, FiCheckCircle } from "react-icons/fi";
+import { GoLocation } from "react-icons/go";
 import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+
 
 export const TaskForm = () => {
   const [address, setAddress] = useState("");
@@ -77,9 +86,11 @@ export const TaskForm = () => {
 
   return (
     <>
+
       {showForm && (
         <div className={styles.card}>
           <div className={styles.close_button} onClick={handleClose}>
+
             X
           </div>
           <div className={styles.topic_container}>

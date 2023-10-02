@@ -54,7 +54,8 @@ export const TechnicianEditForm = ({ technician, onClosing }) => {
     }
   };
 
-  const handleAddMobile = () => {
+  const handleAddMobile = (e) => {
+    e.preventDefault()
     setFormData({
       ...formData,
       mobile: [...formData.mobile, ""],
