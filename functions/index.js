@@ -78,7 +78,7 @@ exports.sendTaskEmail = onDocumentCreated("Tasks/{taskId}", (event) => {
   const taskMailOptions = {
     from: "visitloginfo@gmail.com",
     to: taskData.companyEmail, // Assuming you store the client's email in the task document.
-    subject: "New Task Created",
+    subject: `Task ${taskData.title}`,
     text: `Dear Client,\n\nA new task has been created for you. 
     \n\nTask : ${taskData.title}\nDescription:${taskData.description}`,
   };
@@ -132,7 +132,7 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
     const taskMailOptions = {
       from: "visitloginfo@gmail.com",
       to: taskData.companyEmail, // Assuming you store the client's email in the task document.
-      subject: "Task Completed",
+      subject: `Task ${taskData.title}`,
       text: `Dear Client,\n\nYour Task is Completed Task details: ${taskData.title}\n. The Task File is attached herewith`,
       attachments: [
         {
@@ -170,7 +170,7 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
     const taskMailOptions = {
       from: "visitloginfo@gmail.com",
       to: taskData.companyEmail, // Assuming you store the client's email in the task document.
-      subject: "Technician Arrived",
+      subject: `Task ${taskData.title}`,
       text: `Dear Client,\n\nYour Technician is arrived at your location for the following task: ${taskData.title}\n. 
       Arrival Date and Time: ${formattedDate} `,
     };
