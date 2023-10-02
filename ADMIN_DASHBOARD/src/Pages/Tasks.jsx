@@ -26,13 +26,11 @@ export const Tasks = () => {
         const jobData = docRef.data();
         var jobWithTechnician = jobData;
         if (jobData.email && jobData.technicianRef) {
-          
           const technicianRef = jobData.technicianRef;
           console.log(jobData);
-          
 
           const technicianDoc = await getDoc(technicianRef);
-          
+
           if (technicianDoc.exists()) {
             const technicianName =
               technicianDoc.data().firstName +
@@ -42,15 +40,13 @@ export const Tasks = () => {
               ...jobWithTechnician,
               technicianName,
             };
-            console.log(technicianName)
+            console.log(technicianName);
           }
         }
 
-        
-
         if (jobData.companyRef) {
           const companyRef = jobData.companyRef;
-        const companyDoc = await getDoc(companyRef);
+          const companyDoc = await getDoc(companyRef);
           const companyName = companyDoc.data().companyName;
           const companyAddress = companyDoc.data().address;
 
@@ -82,6 +78,7 @@ export const Tasks = () => {
   }
 
   return (
+
     <div>
       <div className={styles.container}>
         <Navigation />
@@ -132,8 +129,24 @@ export const Tasks = () => {
 setShowEditForm(true)
 setSelectedTask(task)
               }}
+
             />
+            <p className={styles.label}>Sort by:</p>
+            <select
+              className={styles.search_column_select}
+              value={searchColumn}
+              onChange={(e) => setSearchColumn(e.target.value)}
+            >
+              <option value="Task Name">Task Name</option>
+              <option value="Company">Company</option>
+              <option value="Address">Address</option>
+            </select>
           </div>
+          <TasksTable
+            tasks={jobs}
+            searchTerm={searchTerm}
+            searchColumn={searchColumn}
+          />
         </div>
       </div>
     </div>
