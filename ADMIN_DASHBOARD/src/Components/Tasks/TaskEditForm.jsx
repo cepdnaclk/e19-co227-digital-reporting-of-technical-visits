@@ -18,12 +18,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import styles from "../../Styles/Tasks/TasksForm.module.scss"
 
-export const TaskForm = () => {
-  const [address, setAddress] = useState("");
-  const [description, setDescription] = useState("");
-  const [title,setTitle] = useState("");
-  const [technicians, setTechnicians] = useState([]);
-  const [clients, setClients] = useState([]);
+export const TaskEditForm = ({task,onClosing}) => {
+
+    console.log(task);
+  const [address, setAddress] = useState(task.address);
+  const [description, setDescription] = useState(task.description);
+  const [title,setTitle] = useState(task.title);
+  const [technicians, setTechnicians] = useState();
+  const [client, setClient] = useState(task.companyName);
   const [selectedTechnician, setSelectedTechnician] = useState("");
   const [selectedClient, setSelectedClient] = useState("");
   const [sameAsCompanyAddress, setSameAsCompanyAddress] = useState(false);
@@ -45,21 +47,7 @@ export const TaskForm = () => {
   //     unsubscribe();
   //   };
   // }, []);
-  useEffect(() => {
-    const clientCollectionRef = collection(db, "Clients");
 
-    const unsubscribe = onSnapshot(clientCollectionRef, (snapshot) => {
-      const updatedClients = [];
-      snapshot.forEach((doc) => {
-        updatedClients.push({ ...doc.data(), id: doc.id });
-      });
-      setClients(updatedClients);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,9 +58,9 @@ export const TaskForm = () => {
       title,
       address,
       description,
-      companyEmail:clients.find(company=>company.id==selectedClient).email,
+      //companyEmail:clients.find(company=>company.id==selectedClient).email,
       // technician: doc(db, "Technicians", `${selectedTechnician}`),
-      companyRef: doc(db, "Clients", `${selectedClient}`),
+      
       company: clients.find(company=>company.id==selectedClient).companyName,
       isArrived: false,
       isVerified: false,
@@ -96,22 +84,17 @@ export const TaskForm = () => {
     <div>
       <h2>Create Task</h2>
       <form onSubmit={handleSubmit} className={styles.card}>
+      <div className={styles.topic_container}><h2 className={styles.topic}>Edit Technician Details</h2></div>
+      <button className={styles.close_button} onClick={(e) => {
+        e.preventDefault();
+        onClosing();}}>
+        X
+      </button>
         <div>
           <label htmlFor="client">Client:</label>
           
-          <select
-            id="client"
-            value={selectedClient}
-            onChange={(e) => setSelectedClient(e.target.value)}
-            required
-          >
-            <option value="">Select a client</option>
-            {clients.map((client) => (
-              <option key={client.id} value={client.id}>
-                {client.companyName}
-              </option>
-            ))}
-          </select>
+          <input type="text" name="" id="" value={client}/>
+          
         </div>
         <div>
           <label htmlFor="address">Task Address</label>
@@ -125,19 +108,7 @@ export const TaskForm = () => {
           />
         </div>
         <div>
-          <button
-            disabled={sameAsCompanyAddress}
-            onClick={(e) => {
-              e.preventDefault();
-              const theClient = clients.find(
-                (obj) => obj.id === selectedClient
-              );
-              setAddress(theClient.address);
-              setSameAsCompanyAddress(true);
-            }}
-          >
-            Same As Company Address
-          </button>
+          
           <button
             onClick={(e) => {
               e.preventDefault();

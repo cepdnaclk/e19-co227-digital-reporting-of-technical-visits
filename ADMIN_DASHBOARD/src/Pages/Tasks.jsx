@@ -6,6 +6,7 @@ import UserCard from "../Components/UserCard";
 import { TasksTable } from "../Components/Tasks/TasksTable";
 import { TaskForm } from "../Components/Tasks/TaskForm";
 import styles from "../Styles/Tasks.module.scss";
+import { TaskEditForm } from "../Components/Tasks/TaskEditForm";
 
 export const Tasks = () => {
   const [jobs, setJobs] = useState([]);
@@ -13,7 +14,8 @@ export const Tasks = () => {
   const [searchColumn, setSearchColumn] = useState("Task Name");
 
   const [showForm, setShowForm] = useState(false);
-
+  const [showEditForm,setShowEditForm] = useState(false)
+  const [selectedTask,setSelectedTask] = useState("");
   useEffect(() => {
     const jobsCollectionRef = collection(db, "Tasks");
 
@@ -74,6 +76,11 @@ export const Tasks = () => {
     setShowForm(!showForm);
   };
 
+  const closeEditForm = () => {
+    setShowEditForm(false)
+    setSelectedTask(null)
+  }
+
   return (
     <div>
       <div className={styles.container}>
@@ -89,6 +96,14 @@ export const Tasks = () => {
             </button>
           </div>
           {showForm && <TaskForm />}
+          {showEditForm && (
+        <div className={styles.cardContainer} >
+          <TaskEditForm
+            task={selectedTask}
+            onClosing={closeEditForm}
+          />
+        </div>
+      )}
           <div className={styles.table_container}>
             <div className={styles.search_bar}>
               <input
@@ -113,6 +128,10 @@ export const Tasks = () => {
               tasks={jobs}
               searchTerm={searchTerm}
               searchColumn={searchColumn}
+              taskEdit={(task)=>{
+setShowEditForm(true)
+setSelectedTask(task)
+              }}
             />
           </div>
         </div>
