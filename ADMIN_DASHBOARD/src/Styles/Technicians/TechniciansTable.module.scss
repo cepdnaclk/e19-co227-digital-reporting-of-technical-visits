@@ -114,16 +114,28 @@
       transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
     }
 
-    .editBtn {
-      background-color: $editColor;
-      border: 1px solid rgb(76, 120, 156);
-      border-radius: 1em;
+    .editBtn,
+.deleteBtn {
+  background-color: $editColor;
+  border: 1px solid rgb(76, 120, 156);
+  border-radius: 1em;
+  padding: 0.4em 0.8em;
+  color: white;
+  display: inline-block; 
+  vertical-align: middle; 
 
-      &:hover {
-        background-color: darken($editColor, $amount: 25);
-        border-color: darken($editColor, $amount: 25);
-      }
-    }
+  &:hover {
+    background-color: darken($editColor, $amount: 25);
+    border-color: darken($editColor, $amount: 25);
+  }
+
+  svg {
+    margin-right: 0.3em;
+    font-size: 1em;
+  }
+}
+
+    
   }
 
   .technician_details {
