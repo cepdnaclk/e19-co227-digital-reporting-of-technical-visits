@@ -20,12 +20,12 @@ class JobCardsList extends StatelessWidget {
       // Check if data is loading
       if (controller.isLoading.value) {
         // Display a circular loader while data is loading
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       } else if (controller.jobs.isEmpty) {
         // Handle case when there is no data
-        return Center(
+        return const Center(
           child: Text('No Completed Jobs available.'),
         );
       } else {

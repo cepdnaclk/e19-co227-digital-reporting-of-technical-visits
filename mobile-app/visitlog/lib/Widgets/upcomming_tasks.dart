@@ -67,19 +67,6 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                            _showDescriptionDialog(
-                            context,
-                            item['description'] ?? '',
-                            item['name'] ?? '',
-                            item['subTopic'] ?? '',
-                            item['location'] ?? '',
-                            getDateInFormat(DateTime.parse(item['time']!)),
-                            TimeTo12Hour(DateTime.parse(item['time']!)),
-                            item['id'] ?? '',
-                            );
-                          },
-                        ),
-                        onTap: () {
                           _showDescriptionDialog(
                             context,
                             item['description'] ?? '',
@@ -89,8 +76,23 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                             getDateInFormat(DateTime.parse(item['time']!)),
                             TimeTo12Hour(DateTime.parse(item['time']!)),
                             item['id'] ?? '',
+                            item['isArrived'] ?? '',
                           );
                         },
+                      ),
+                      onTap: () {
+                        _showDescriptionDialog(
+                          context,
+                          item['description'] ?? '',
+                          item['name'] ?? '',
+                          item['subTopic'] ?? '',
+                          item['location'] ?? '',
+                          getDateInFormat(DateTime.parse(item['time']!)),
+                          TimeTo12Hour(DateTime.parse(item['time']!)),
+                          item['id'] ?? '',
+                          item['isArrived'] ?? '',
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -102,8 +104,16 @@ class UpcommingTaskBuildItem extends StatelessWidget {
     });
   }
 
-  void _showDescriptionDialog(BuildContext context, String description,
-      String topic, String subTopic, String location, String date, String time,String id) {
+  void _showDescriptionDialog(
+      BuildContext context,
+      String description,
+      String topic,
+      String subTopic,
+      String location,
+      String date,
+      String time,
+      String id,
+      bool isArrived) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -187,14 +197,18 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ArrivalConfirm(
-                                          topic: topic,
-                                          subTopic: subTopic,
-                                          location: location,
-                                          description: description,
-                                          docId: id,)));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ArrivalConfirm(
+                                    topic: topic,
+                                    subTopic: subTopic,
+                                    location: location,
+                                    description: description,
+                                    docId: id,
+                                    isArrived: isArrived,
+                                  ),
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               shape: const StadiumBorder(),
