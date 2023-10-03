@@ -6,9 +6,12 @@ import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import {
   collection,
   addDoc,
+  getDocs,
+  deleteDoc,
   onSnapshot,
   doc,
   Timestamp,
+  query,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "firebase/firestore";
@@ -19,7 +22,6 @@ export const TechniciansTable = ({
   searchTerm,
   searchColumn,
   technicianEdit,
-  deleteTechnician,
 }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
@@ -96,22 +98,39 @@ export const TechniciansTable = ({
     setIsEditFormVisible(false);
   };
 
-  const confirmDelete = async (technicianId) => {
-    console.log("Confirm delete called");
-    try {
-      const tasksSnapshot = await collection(db, "tasks")
-        .where("technicianId", "==", technicianId)
-        .get();
+  const checkTechnicianInTaskCollection = async (email) => {
+    const queryRef = collection(db, "Tasks");
+    const querySnapshot = await getDocs(queryRef);
+  
+    return querySnapshot.docs.some((doc) => doc.data().email === email);
+  };
 
-      if (!tasksSnapshot.empty) {
-        alert(
-          "You are not allowed to delete. Technician has associated tasks."
-        );
-      } else {
-        deleteTechnician(technicianId);
-      }
+
+  const confirmDelete = async (email, technicianId) => {
+    console.log("Confirm delete called");
+
+    const inTaskCollection = await checkTechnicianInTaskCollection(email);
+
+    if (inTaskCollection) {
+      alert("You are not allowed to delete. Technician has associated tasks.");
+    } else {
+      await deleteTechnician(technicianId);
+    }
+  };
+
+  const deleteTechnician = async (technicianId) => {
+    try {
+      // Create a reference to the technician document using the provided ID
+      const technicianRef = doc(db, 'Technicians', technicianId); // Assuming 'Technicians' is the collection name
+  
+      // Delete the document
+      await deleteDoc(technicianRef);
+  
+      // Document successfully deleted
+      console.log(`Technician with ID ${technicianId} has been deleted.`);
     } catch (error) {
-      console.error("Error confirming delete:", error.message);
+      // Handle any errors that may occur during the deletion process
+      console.error('Error deleting technician:', error);
     }
   };
 
@@ -184,7 +203,7 @@ export const TechniciansTable = ({
                 </button>
                 <button
                   className={classNames(styles.btn, styles.deleteBtn)}
-                  onClick={() => confirmDelete(technician.id)}
+                  onClick={() => confirmDelete(technician.email, technician.id)}
                 >
                   Delete
                 </button>
