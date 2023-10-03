@@ -7,6 +7,9 @@ import 'package:visitlog/Components/upper_bar.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart' as path;
+import 'package:visitlog/Utils/date_time.dart';
 
 class ReportImages extends StatefulWidget {
   ReportImages({
@@ -69,6 +72,55 @@ class _ReportImagesState extends State<ReportImages> {
       buildTableRow('Type of Work', widget.type),
       buildTableRow('Notes', widget.notes),
     ];
+
+    Future<List<String>> uploadImagesToFirebaseStorage(
+        List<Uint8List> images) async {
+      final List<String> downloadUrls = [];
+
+      final FirebaseStorage storage = FirebaseStorage.instance;
+      final Reference storageRef = storage.ref();
+
+      for (int i = 0; i < images.length; i++) {
+        final Reference imageRef = storageRef
+            .child('images/${path.basename(DateTime.now().toString())}_$i.jpg');
+        final UploadTask uploadTask = imageRef.putData(images[i]);
+
+        await uploadTask.whenComplete(() async {
+          final String downloadUrl = await imageRef.getDownloadURL();
+          downloadUrls.add(downloadUrl);
+        });
+      }
+
+      return downloadUrls;
+    }
+
+    Future<String?> uploadSignatureImageToStorage(
+        Uint8List signatureImage) async {
+      final FirebaseStorage storage = FirebaseStorage.instance;
+      final Reference storageRef = storage.ref();
+
+      final Reference imageRef =
+          storageRef.child('signatures/${widget.docId}_signature.jpg');
+      final UploadTask uploadTask = imageRef.putData(signatureImage);
+
+      await uploadTask.whenComplete(() async {
+        final String signatureUrl = await imageRef.getDownloadURL();
+        return signatureUrl;
+      });
+    }
+
+    Future<void> saveSignatureToFirestore(String signatureUrl) async {
+      final CollectionReference tasksCollection =
+          FirebaseFirestore.instance.collection('Tasks');
+
+      try {
+        await tasksCollection.doc(widget.docId).update({
+          'signatureUrl': signatureUrl,
+        });
+      } catch (error) {
+        print('Error updating Firestore document: $error');
+      }
+    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -205,7 +257,7 @@ class _ReportImagesState extends State<ReportImages> {
                               vertical: 10,
                             ),
                             child: TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Enter OTP',
                               ),
                               // ToDo (OTP logic)
@@ -224,17 +276,33 @@ class _ReportImagesState extends State<ReportImages> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
-                        final image =
+                        final signatureImage =
                             await _signaturePadKey.currentState?.toImage(
                           pixelRatio: 3.0,
                         );
+                        final List<String> downloadUrls =
+                            await uploadImagesToFirebaseStorage(widget.images);
                         // ToDo (save or display it)
+                        print(downloadUrls);
+                        String? signatureUrl = "";
+
+                        if (signatureImage != null) {
+                          signatureUrl = await uploadSignatureImageToStorage(
+                              signatureImage as Uint8List);
+                        }
 
                         final CollectionReference tasksCollection =
                             FirebaseFirestore.instance.collection('Tasks');
-                        await tasksCollection.doc(widget.docId).update({
+                        await tasksCollection.doc(widget.docId).set({
                           'isCompleted': true,
-                        });
+                          'imageUrls': downloadUrls,
+                          'signatureUrl': signatureUrl,
+                          'workType': widget.type,
+                          'inspectionDate': localDate,
+                          'inspectionTime': TimeTo12Hour(DateTime.now()),
+                          'siteRepresentative': widget.representative,
+                          'notes': widget.notes
+                        }, SetOptions(merge: true));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF082A63),
