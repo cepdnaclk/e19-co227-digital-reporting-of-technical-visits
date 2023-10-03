@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { collection, onSnapshot, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Navigation } from "../Components/Navigation/Navigation";
@@ -7,66 +7,68 @@ import { TasksTable } from "../Components/Tasks/TasksTable";
 import { TaskForm } from "../Components/Tasks/TaskForm";
 import styles from "../Styles/Tasks.module.scss";
 import { TaskEditForm } from "../Components/Tasks/TaskEditForm";
+import { DataContext } from "../Context/dataContext";
 
 export const Tasks = () => {
-  const [jobs, setJobs] = useState([]);
+  // const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchColumn, setSearchColumn] = useState("Task Name");
 
   const [showForm, setShowForm] = useState(false);
   const [showEditForm,setShowEditForm] = useState(false)
   const [selectedTask,setSelectedTask] = useState("");
-  useEffect(() => {
-    const jobsCollectionRef = collection(db, "Tasks");
+  const {jobs} = useContext(DataContext);
+  // useEffect(() => {
+  //   const jobsCollectionRef = collection(db, "Tasks");
 
-    const unsubscribe = onSnapshot(jobsCollectionRef, async (snapshot) => {
-      const updatedJobs = [];
+  //   const unsubscribe = onSnapshot(jobsCollectionRef, async (snapshot) => {
+  //     const updatedJobs = [];
 
-      for (const docRef of snapshot.docs) {
-        const jobData = docRef.data();
-        var jobWithTechnician = jobData;
-        if (jobData.email && jobData.technicianRef) {
-          const technicianRef = jobData.technicianRef;
-          console.log(jobData);
+  //     for (const docRef of snapshot.docs) {
+  //       const jobData = docRef.data();
+  //       var jobWithTechnician = jobData;
+  //       if (jobData.email && jobData.technicianRef) {
+  //         const technicianRef = jobData.technicianRef;
+  //         console.log(jobData);
 
-          const technicianDoc = await getDoc(technicianRef);
+  //         const technicianDoc = await getDoc(technicianRef);
 
-          if (technicianDoc.exists()) {
-            const technicianName =
-              technicianDoc.data().firstName +
-              " " +
-              technicianDoc.data().lastName;
-            jobWithTechnician = {
-              ...jobWithTechnician,
-              technicianName,
-            };
-            console.log(technicianName);
-          }
-        }
+  //         if (technicianDoc.exists()) {
+  //           const technicianName =
+  //             technicianDoc.data().firstName +
+  //             " " +
+  //             technicianDoc.data().lastName;
+  //           jobWithTechnician = {
+  //             ...jobWithTechnician,
+  //             technicianName,
+  //           };
+  //           console.log(technicianName);
+  //         }
+  //       }
 
-        if (jobData.companyRef) {
-          const companyRef = jobData.companyRef;
-          const companyDoc = await getDoc(companyRef);
-          const companyName = companyDoc.data().companyName;
-          const companyAddress = companyDoc.data().address;
+  //       if (jobData.companyRef) {
+  //         const companyRef = jobData.companyRef;
+  //         const companyDoc = await getDoc(companyRef);
+  //         const companyName = companyDoc.data().companyName;
+  //         const companyAddress = companyDoc.data().address;
 
-          jobWithTechnician = {
-            ...jobWithTechnician,
-            companyName,
-            companyAddress,
-          };
+  //         jobWithTechnician = {
+  //           ...jobWithTechnician,
+  //           companyName,
+  //           companyAddress,
+  //         };
 
-          updatedJobs.push(jobWithTechnician);
-        }
-      }
+  //         updatedJobs.push(jobWithTechnician);
+  //       }
+  //     }
 
-      setJobs(updatedJobs);
-    });
+  //     setJobs(updatedJobs);
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
 
   const toggleForm = () => {
     setShowForm(!showForm);

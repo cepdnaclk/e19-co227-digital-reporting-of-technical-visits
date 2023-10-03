@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Navigation } from "../Components/Navigation/Navigation";
@@ -7,9 +7,11 @@ import { TechniciansTable } from "../Components/Technicians/TechniciansTable";
 import { TechnicianForm } from "../Components/Technicians/TechnicianForm";
 import { TechnicianEditForm } from "../Components/Technicians/TechnicianEditForm";
 import styles from "../Styles/Technicians.module.scss";
+import { DataContext } from "../Context/dataContext";
 
 export const Technician = () => {
-  const [technicians, setTechnicians] = useState([]);
+  // const [technicians, setTechnicians] = useState([]);
+  const {technicians} = useContext(DataContext);
   const [selectedTechnician, setSelectedTechnician] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -29,21 +31,21 @@ or for storing mutable values that don't trigger component re-renders.
 
   const [searchColumn, setSearchColumn] = useState("Name");
 
-  useEffect(() => {
-    const technicianCollectionRef = collection(db, "Technicians");
+  // useEffect(() => {
+  //   const technicianCollectionRef = collection(db, "Technicians");
 
-    const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
-      const updatedTechnicians = [];
-      snapshot.forEach((doc) => {
-        updatedTechnicians.push({ ...doc.data(), id: doc.id });
-      });
-      setTechnicians(updatedTechnicians);
-    });
+  //   const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
+  //     const updatedTechnicians = [];
+  //     snapshot.forEach((doc) => {
+  //       updatedTechnicians.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setTechnicians(updatedTechnicians);
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
 
   const createTechnician = async () => {};
 

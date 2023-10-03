@@ -7,10 +7,13 @@ import { Tasks } from "./Pages/Tasks";
 import { TechnicianAssign } from "./Pages/TechnicianAssign";
 import { Technician } from "./Pages/Technicians";
 import { Settings } from "./Pages/Settings";
+import { DataContextProvider } from "./Context/dataContext";
 
 function App() {
   return (
+    
     <div className="App">
+      <DataContextProvider>
       <Routes>
         {/*Main />*/}
         <Route path="/" element={<Login />} />
@@ -21,7 +24,9 @@ function App() {
         <Route path="/tech" element={<Technician />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
+      </DataContextProvider>
     </div>
+    
   );
 }
 
