@@ -5,12 +5,16 @@ import styles from "../../Styles/Technicians/TechniciansTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import { TechnicianEditForm } from "./TechnicianEditForm";
 import classNames from "classnames";
+import { collection, addDoc, onSnapshot, doc, Timestamp } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import "firebase/firestore";
 
 export const TechniciansTable = ({
   technicians,
   searchTerm,
   searchColumn,
   technicianEdit,
+  deleteTechnician,
 }) => {
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("asc");
@@ -149,12 +153,16 @@ export const TechniciansTable = ({
               <td>
                 <button
                   className={classNames(styles.btn, styles.editBtn)}
-                  onClick={() => {
-                    technicianEdit(technician);
-                  }}
+                  onClick={() => technicianEdit(technician)}
                 >
                   <MdCreate />
                   Edit
+                </button>
+                <button
+                  className={classNames(styles.btn, styles.deleteBtn)}
+                  onClick={() => deleteTechnician(technician.id)}
+                >
+                  Delete
                 </button>
               </td>
             </tr>
@@ -199,3 +207,9 @@ export const TechniciansTable = ({
     </div>
   );
 };
+
+
+
+
+
+

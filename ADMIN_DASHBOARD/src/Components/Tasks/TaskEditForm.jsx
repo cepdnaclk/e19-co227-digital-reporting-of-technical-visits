@@ -84,7 +84,7 @@ export const TaskEditForm = ({task,onClosing}) => {
     <div>
       <h2>Create Task</h2>
       <form onSubmit={handleSubmit} className={styles.card}>
-      <div className={styles.topic_container}><h2 className={styles.topic}>Edit Technician Details</h2></div>
+      <div className={styles.topic_container}><h2 className={styles.topic}>Edit Task Details</h2></div>
       <button className={styles.close_button} onClick={(e) => {
         e.preventDefault();
         onClosing();}}>
