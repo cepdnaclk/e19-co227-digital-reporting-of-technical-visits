@@ -3,11 +3,16 @@ import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa";
 import { MdCreate } from "react-icons/md";
 import styles from "../../Styles/Technicians/TechniciansTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
-import { TechnicianEditForm } from "./TechnicianEditForm";
-import classNames from "classnames";
-import { collection, addDoc, onSnapshot, doc, Timestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  doc,
+  Timestamp,
+} from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "firebase/firestore";
+import classNames from "classnames";
 
 export const TechniciansTable = ({
   technicians,
@@ -91,6 +96,25 @@ export const TechniciansTable = ({
     setIsEditFormVisible(false);
   };
 
+  const confirmDelete = async (technicianId) => {
+    console.log("Confirm delete called");
+    try {
+      const tasksSnapshot = await collection(db, "tasks")
+        .where("technicianId", "==", technicianId)
+        .get();
+
+      if (!tasksSnapshot.empty) {
+        alert(
+          "You are not allowed to delete. Technician has associated tasks."
+        );
+      } else {
+        deleteTechnician(technicianId);
+      }
+    } catch (error) {
+      console.error("Error confirming delete:", error.message);
+    }
+  };
+
   return (
     <div className={styles.table_container_2}>
       {/* Overlay */}
@@ -160,7 +184,7 @@ export const TechniciansTable = ({
                 </button>
                 <button
                   className={classNames(styles.btn, styles.deleteBtn)}
-                  onClick={() => deleteTechnician(technician.id)}
+                  onClick={() => confirmDelete(technician.id)}
                 >
                   Delete
                 </button>
@@ -207,9 +231,3 @@ export const TechniciansTable = ({
     </div>
   );
 };
-
-
-
-
-
-
