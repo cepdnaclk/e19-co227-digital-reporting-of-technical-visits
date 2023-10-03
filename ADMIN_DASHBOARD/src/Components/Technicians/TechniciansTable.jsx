@@ -30,6 +30,7 @@ export const TechniciansTable = ({
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
 
   const [showTechnicianDetails, setShowTechnicianDetails] = useState(false);
+  const [showDeleteError, setShowDeleteError] = useState(false);
 
   useEffect(() => {
     // Add 'open' class to the body to hide overflow
@@ -101,10 +102,9 @@ export const TechniciansTable = ({
   const checkTechnicianInTaskCollection = async (email) => {
     const queryRef = collection(db, "Tasks");
     const querySnapshot = await getDocs(queryRef);
-  
+
     return querySnapshot.docs.some((doc) => doc.data().email === email);
   };
-
 
   const confirmDelete = async (email, technicianId) => {
     console.log("Confirm delete called");
@@ -112,7 +112,7 @@ export const TechniciansTable = ({
     const inTaskCollection = await checkTechnicianInTaskCollection(email);
 
     if (inTaskCollection) {
-      alert("You are not allowed to delete. Technician has associated tasks.");
+      setShowDeleteError(true);
     } else {
       await deleteTechnician(technicianId);
     }
@@ -121,17 +121,21 @@ export const TechniciansTable = ({
   const deleteTechnician = async (technicianId) => {
     try {
       // Create a reference to the technician document using the provided ID
-      const technicianRef = doc(db, 'Technicians', technicianId); // Assuming 'Technicians' is the collection name
-  
+      const technicianRef = doc(db, "Technicians", technicianId); // Assuming 'Technicians' is the collection name
+
       // Delete the document
       await deleteDoc(technicianRef);
-  
+
       // Document successfully deleted
       console.log(`Technician with ID ${technicianId} has been deleted.`);
     } catch (error) {
       // Handle any errors that may occur during the deletion process
-      console.error('Error deleting technician:', error);
+      console.error("Error deleting technician:", error);
     }
+  };
+
+  const closeDeleteError = () => {
+    setShowDeleteError(false);
   };
 
   return (
@@ -245,6 +249,15 @@ export const TechniciansTable = ({
               Telephone Number: {selectedTechnician.mobile[0]}
             </p>
           </div>
+        </div>
+      )}
+
+      {showDeleteError && (
+        <div className={styles.delete_error_message}>
+          <p>
+            You are not allowed to delete. Technician has associated tasks.
+          </p>
+          <button onClick={closeDeleteError}>OK</button>
         </div>
       )}
     </div>

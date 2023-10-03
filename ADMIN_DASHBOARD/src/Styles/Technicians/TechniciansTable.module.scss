@@ -8,6 +8,7 @@
   width: 100%;
   animation: fadeIn 1000ms ease-in;
   font: 1em sans-serif;
+
   &.hide {
     display: none;
   }
@@ -19,6 +20,7 @@
     width: 100%;
     box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.2);
     font-size: 0.8em;
+
     thead tr {
       color: hsl(0, 0%, 95%);
       background-color: darken($color: rgb(54, 54, 54), $amount: 2);
@@ -71,16 +73,12 @@
     }
 
     tr {
-      th:first-child {
-        padding-left: 3em;
-      }
+      th:first-child,
       td:first-child {
         padding-left: 3em;
       }
 
-      th:last-child {
-        padding-right: 2em;
-      }
+      th:last-child,
       td:last-child {
         padding-right: 2em;
       }
@@ -90,9 +88,11 @@
       tr:nth-child(even) {
         background-color: #f2f3f3ef;
       }
+
       tr {
         background-color: white;
       }
+
       tr:hover {
         background-color: #e7e9eb;
       }
@@ -112,30 +112,28 @@
       font-size: 0.9em;
       transform: translateX(-12%);
       transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+
+      &.editBtn,
+      &.deleteBtn {
+        background-color: $editColor;
+        border: 1px solid rgb(76, 120, 156);
+        border-radius: 1em;
+        padding: 0.4em 0.8em;
+        color: white;
+        display: inline-block;
+        vertical-align: middle;
+
+        &:hover {
+          background-color: darken($editColor, $amount: 25);
+          border-color: darken($editColor, $amount: 25);
+        }
+
+        svg {
+          margin-right: 0.3em;
+          font-size: 1em;
+        }
+      }
     }
-
-    .editBtn,
-.deleteBtn {
-  background-color: $editColor;
-  border: 1px solid rgb(76, 120, 156);
-  border-radius: 1em;
-  padding: 0.4em 0.8em;
-  color: white;
-  display: inline-block; 
-  vertical-align: middle; 
-
-  &:hover {
-    background-color: darken($editColor, $amount: 25);
-    border-color: darken($editColor, $amount: 25);
-  }
-
-  svg {
-    margin-right: 0.3em;
-    font-size: 1em;
-  }
-}
-
-    
   }
 
   .technician_details {
@@ -202,25 +200,54 @@
       font-size: 1.2em;
     }
   }
-}
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: none;
-  filter: blur(0);
-}
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+    filter: blur(0);
+  }
 
-.technician_details.open + .overlay {
-  display: block;
-  filter: blur(4px);
-}
+  .technician_details.open + .overlay {
+    display: block;
+    filter: blur(4px);
+  }
 
-body.open {
-  overflow: hidden;
+  body.open {
+    overflow: hidden;
+  }
+
+  .delete_error_message {
+    background-color: #ffcccc;
+    border: 1px solid #ff0000;
+    padding: 1em;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    p {
+      margin: 0;
+      color: #ff0000;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+  }
 }
