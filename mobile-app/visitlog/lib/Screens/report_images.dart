@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
 import 'package:visitlog/Components/upper_bar.dart';
-import 'package:visitlog/Data/tasks.dart';
+// import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
@@ -42,7 +42,8 @@ class _ReportImagesState extends State<ReportImages> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   String? UserName = AuthService().getUserName();
   late List<bool> isSelected;
-  bool isSignatureSelected = true; // Track if the user selects the signature option
+  bool isSignatureSelected =
+      true; // Track if the user selects the signature option
   final GlobalKey<SfSignaturePadState> _signaturePadKey = GlobalKey();
 
   @override
@@ -84,8 +85,8 @@ class _ReportImagesState extends State<ReportImages> {
               UpperWidgetBar(globalKey: _globalKey),
               Padding(
                 padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 20,
-                  horizontal: MediaQuery.of(context).size.width / 15,
+                  vertical: MediaQuery.of(context).size.height / 40,
+                  horizontal: MediaQuery.of(context).size.width / 14,
                 ),
                 child: Container(
                   decoration: BoxDecoration(
@@ -144,7 +145,6 @@ class _ReportImagesState extends State<ReportImages> {
                             }).toList(),
                           ),
                         SizedBox(height: 20),
-                        
                         Container(
                           height: 20,
                           alignment: Alignment.centerLeft,
@@ -157,14 +157,16 @@ class _ReportImagesState extends State<ReportImages> {
                             borderRadius: BorderRadius.circular(0),
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0, vertical: 2.0),
                                 child: Text(
                                   'Signature',
                                   style: TextStyle(fontSize: 12),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0, vertical: 2.0),
                                 child: Text(
                                   'OTP Code',
                                   style: TextStyle(fontSize: 12),
@@ -183,7 +185,6 @@ class _ReportImagesState extends State<ReportImages> {
                           ),
                         ),
                         SizedBox(height: 20),
-                        
                         if (isSignatureSelected)
                           Container(
                             height: 100,
@@ -223,7 +224,8 @@ class _ReportImagesState extends State<ReportImages> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
-                        final image = await _signaturePadKey.currentState?.toImage(
+                        final image =
+                            await _signaturePadKey.currentState?.toImage(
                           pixelRatio: 3.0,
                         );
                         // ToDo (save or display it)
@@ -235,11 +237,13 @@ class _ReportImagesState extends State<ReportImages> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 233, 243, 248),
+                        backgroundColor: Color(0xFF082A63),
                         shape: const StadiumBorder(),
+                        elevation: 8,
+                        shadowColor: Color.fromARGB(255, 157, 193, 226),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(25.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -247,14 +251,14 @@ class _ReportImagesState extends State<ReportImages> {
                             const Text(
                               'SUBMIT',
                               style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black87,
-                              ),
+                                  fontSize: 20,
+                                  color: Color.fromARGB(221, 255, 255, 255),
+                                  fontWeight: FontWeight.w900),
                             ),
                             SizedBox(width: 1.0.w),
                             const Icon(
                               Icons.arrow_forward,
-                              color: Colors.black87,
+                              color: Color.fromARGB(221, 255, 255, 255),
                             )
                           ],
                         ),
@@ -262,6 +266,9 @@ class _ReportImagesState extends State<ReportImages> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 2.0.h,
               ),
             ],
           ),

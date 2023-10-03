@@ -305,7 +305,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                           onTap: selectImage,
                                           child: Ink.image(
                                             image: const AssetImage(
-                                                'icon/AddIcon.png'),
+                                                'assets/icon/AddIcon.png'),
                                             height: 80,
                                             width: 80,
                                           ),
@@ -323,11 +323,48 @@ class _ReportScreenState extends State<ReportScreen> {
                                           height: 100.0,
                                           child: Wrap(
                                             spacing: 8.0,
-                                            children: _images.map((image) {
-                                              return Image.memory(
-                                                image,
-                                                height: 100,
-                                                width: 100,
+                                            children: _images
+                                                .asMap()
+                                                .entries
+                                                .map((entry) {
+                                              final int index = entry.key;
+                                              final Uint8List image =
+                                                  entry.value;
+                                              return Stack(
+                                                children: [
+                                                  Image.memory(
+                                                    image,
+                                                    height: 100,
+                                                    width: 100,
+                                                  ),
+                                                  Positioned(
+                                                    top: 0,
+                                                    right: 0,
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          _images
+                                                              .removeAt(index);
+                                                        });
+                                                      },
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: const Color.fromARGB(255, 245, 225, 225),
+                                                        ),
+                                                        padding:
+                                                            EdgeInsets.all(4),
+                                                        child: Icon(
+                                                          Icons.close,
+                                                          size: 20,
+                                                          color: Colors.red,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               );
                                             }).toList(),
                                           ),

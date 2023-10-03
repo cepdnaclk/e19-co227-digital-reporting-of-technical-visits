@@ -9,8 +9,8 @@ class TaskController extends GetxController {
   // RxBool to track loading state
   var isLoading = true.obs;
 
-  List<Map<String, String>> get taskItems => _taskRepository.items;
-  List<Map<String, String>> get upcommingTasks => _taskRepository.upcommingItems;
+  List<Map<String, dynamic>> get taskItems => _taskRepository.items;
+  List<Map<String, dynamic>> get upcommingTasks => _taskRepository.upcommingItems;
   List<Map<String, String>> get jobs => _taskRepository.jobs;
   
 
