@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import styles from "../../Styles/Tasks/TasksTable.module.scss"; // Import your SCSS stylesheet
-import { BsSortAlphaDown,BsSortAlphaDownAlt } from "react-icons/bs";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import { MdCreate } from "react-icons/md";
+import styles from "../../Styles/Tasks/TasksTable.module.scss";
 
-export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
+export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
+  const [showDeleteError, setShowDeleteError] = useState(false);
 
   const handleSort = (field) => {
     if (field === sortBy) {
@@ -14,6 +17,54 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
       setSortBy(field);
       setSortDirection("asc");
     }
+  };
+
+  const handleDelete = async (taskId) => {
+    console.log("Delete button clicked");
+    confirmDelete(taskId);
+  };
+
+  const checkTechnicianInTaskCollection = async (technicianId) => {
+    try {
+      const queryRef = collection(db, "Tasks");
+      const querySnapshot = await getDocs(queryRef);
+
+      // Check if the technicianId is assigned to any task
+      return querySnapshot.docs.some(
+        (doc) => doc.data().technicianId === technicianId
+      );
+    } catch (error) {
+      console.error("Error checking technician in task collection:", error);
+      return false; // Assume error means technician is not in any task
+    }
+  };
+
+  const confirmDelete = async (taskId) => {
+    console.log("Confirm delete called");
+
+    const inTaskCollection = await checkTechnicianInTaskCollection(taskId);
+
+    if (inTaskCollection) {
+      setShowDeleteError(true);
+    } else {
+      await deleteTask(taskId);
+    }
+  };
+
+  const deleteTask = async (taskId) => {
+    try {
+      const taskRef = doc(db, "Tasks", taskId);
+
+      await deleteDoc(taskRef);
+
+      console.log(`Task with ID ${taskId} has been deleted.`);
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
+
+  const closeDeleteError = () => {
+    setShowDeleteError(false);
   };
 
   const sortedTasks = [...tasks].sort((a, b) => {
@@ -28,7 +79,6 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
   });
 
   const filteredTasks = sortedTasks.filter((task) => {
-    
     if (searchColumn === "Task Name")
       return task.title.toLowerCase().includes(searchTerm.toLowerCase());
     else if (searchColumn === "Company")
@@ -58,30 +108,31 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
             </th>
             <th>
               Company{" "}
-              <button onClick={() => handleSort("companyName")}>{sortDirection === "asc" && sortBy === "companyName" ? (
+              <button onClick={() => handleSort("companyName")}>
+                {sortDirection === "asc" && sortBy === "companyName" ? (
                   <BsSortAlphaDownAlt />
                 ) : (
                   <BsSortAlphaDown />
-                )}</button>
+                )}
+              </button>
             </th>
             <th>
               Task Address{" "}
-              <button onClick={() => handleSort("address")}>{sortDirection === "asc" && sortBy === "address" ? (
+              <button onClick={() => handleSort("address")}>
+                {sortDirection === "asc" && sortBy === "address" ? (
                   <BsSortAlphaDownAlt />
                 ) : (
                   <BsSortAlphaDown />
-                )}</button>
+                )}
+              </button>
             </th>
             <th>Company Address</th>
             <th>Verification Status</th>
             <th>Arrival Status</th>
-            <th>
-              Technician Name{" "}
-              {/* <button onClick={() => handleSort("technicianName")}>^</button> */}
-            </th>
-            <th>
-              Date
-            </th>
+            <th>Technician Name</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -94,10 +145,14 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
               <td>{task.isArrived ? <p>Arrived</p> : <p>Not Arrived</p>}</td>
               <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
               <td>{task.technicianName || "No Technician"}</td>
-              <td>{task.startDate ? task.startDate.toDate().toLocaleDateString() : ""}</td>
+              <td>
+                {task.startDate
+                  ? task.startDate.toDate().toLocaleDateString()
+                  : ""}
+              </td>
               <td>
                 <button
-                  
+                  className={styles.btn + " " + styles.editBtn}
                   onClick={() => {
                     taskEdit(task);
                   }}
@@ -106,11 +161,26 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn,taskEdit }) => {
                   Edit
                 </button>
               </td>
-
+              <td>
+                <button
+                  className={styles.btn + " " + styles.deleteBtn}
+                  onClick={() => {
+                    handleDelete(task.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showDeleteError && (
+        <div className={styles.delete_error_message}>
+          <p>Task is assigned to a technician. Cannot delete.</p>
+          <button onClick={closeDeleteError}>OK</button>
+        </div>
+      )}
     </div>
   );
 };

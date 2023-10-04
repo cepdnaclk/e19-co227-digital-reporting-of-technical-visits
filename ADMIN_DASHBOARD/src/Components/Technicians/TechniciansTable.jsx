@@ -254,9 +254,7 @@ export const TechniciansTable = ({
 
       {showDeleteError && (
         <div className={styles.delete_error_message}>
-          <p>
-            You are not allowed to delete. Technician has associated tasks.
-          </p>
+          <p>You are not allowed to delete. Technician has associated tasks.</p>
           <button onClick={closeDeleteError}>OK</button>
         </div>
       )}
