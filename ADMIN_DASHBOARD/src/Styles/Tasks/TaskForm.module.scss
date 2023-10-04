@@ -1,24 +1,24 @@
 .card {
-    position: fixed;
-    // scale: 0.9;
-    height: fit-content;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    width: 320px;
-    background-color: #edeeee;
-    border-radius: 3rem;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-    max-height: calc(100vh - 40px);
-    padding: 1.8rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    align-items: center;
-    justify-content: center;
-    border: 8px solid rgb(255, 255, 255);
+  position: fixed;
+  // scale: 0.9;
+  height: fit-content;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 320px;
+  background-color: #edeeee;
+  border-radius: 3rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  max-height: calc(100vh - 40px);
+  padding: 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid rgb(255, 255, 255);
 
   .close_button {
     position: absolute;
@@ -40,8 +40,6 @@
       background-color: rgb(247, 239, 239);
     }
   }
-
- 
 
   .topic_container {
     display: flex;
@@ -66,8 +64,9 @@
       transition: all 150ms ease-in-out;
     }
   }
+  
 
-  select{
+  select {
     width: 100%;
     padding: 0.1rem 0.6rem;
     margin: 0.2rem 0;
@@ -89,7 +88,6 @@
     transition: 0.3s;
     font-size: 12px;
     background-color: #edeeee;
-    
   }
 
   input:focus {
@@ -104,7 +102,7 @@
   }
 
   textarea {
-    height: 50px; 
+    height: 50px;
     background-color: transparent;
   }
 
@@ -136,7 +134,7 @@
     box-shadow: 0 4px 7px rgba(82, 145, 85, 0.6);
   }
 
-  button[type="same"]{
+  button[type="same"] {
     background-color: #a0bee0;
     color: #fff;
     border: none;
@@ -151,13 +149,12 @@
     gap: 30px;
   }
 
-  button[type="same"]:hover{
+  button[type="same"]:hover {
     background-color: #8cb0d1;
     box-shadow: 0 4px 7px rgba(162, 201, 226, 0.6);
   }
 
-
-  button[type="reset"]{
+  button[type="reset"] {
     background-color: #e0a4a0;
     color: #fff;
     border: none;
@@ -173,12 +170,11 @@
     gap: 30px;
   }
 
-  button[type="reset"]:hover{
+  button[type="reset"]:hover {
     background-color: #d18c8c;
     box-shadow: 0 4px 7px rgba(226, 162, 162, 0.6);
   }
 
-  
   .first_name {
     display: flex;
     flex-direction: row;
@@ -239,8 +235,4 @@
     font-size: 1.2em;
     margin: 0px;
   }
-
-
 }
-
-
