@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { collection, doc, updateDoc } from "firebase/firestore";
+import { collection, doc, updateDoc, addDoc, onSnapshot, Timestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import "firebase/firestore";
 import styles from "../../Styles/Clients/ClientForm.module.scss";
 import {
   BsFillFileEarmarkPersonFill,
@@ -11,6 +12,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 
 export const ClientEditForm = ({ client, onClosing }) => {
+  console.log(client);
   const clientCollectionRef = collection(db, "Clients");
 
   const [formData, setFormData] = useState({

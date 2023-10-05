@@ -2,15 +2,21 @@ import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import styles from "../Styles/Clients.module.scss";
 import { db } from "../config/firebase";
-import { useState, useEffect,useContext} from "react";
+import React,{ useState, useEffect,useContext} from "react";
 import { ClientsTable } from "../Components/Clients/ClientsTable";
 import { ClientForm } from "../Components/Clients/ClientForm";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, getDoc } from "firebase/firestore";
 import { DataContext } from "../Context/dataContext";
+import { ClientEditForm } from "../Components/Clients/ClientEditForm";
 
 export const Clients = () => {
   // const [clients, setClients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchColumn, setSearchColumn] = useState("Client Name");
+
   const [showForm, setShowForm] = useState(false);
+  const [showEditForm,setShowEditForm] = useState(false)
+  const [selectedTask,setSelectedTask] = useState("");
   const {clients} = useContext(DataContext);
   
 
@@ -29,6 +35,16 @@ export const Clients = () => {
   //     unsubscribe();
   //   };
   // }, []);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
+  const closeEditForm = () => {
+    setShowEditForm(false)
+    setSelectedTask(null)
+  }
+
   return (
       <div className={styles.container}>
         <Navigation />
@@ -48,19 +64,46 @@ export const Clients = () => {
             )}
           </div>
 
-          {showForm && (
-            <ClientForm
-              onClosing={() => {
-                setShowForm(false);
-              }}
-            />
-          )}
+          {showForm && <ClientForm />}
+          {showEditForm && (
+            <div className = {styles.cardcontainer} >
+            <ClientEditForm
+            client = {selectedClient}
+            onClosing = {closeEditForm}
+          />
+          </div>
+   ) }
+        <div className={styles.table_container}>
+            <div className={styles.search_bar}>
+              <input
+                type="text"
+                placeholder="&#128270; &ensp;Search by name..."
+                className={styles.search_input}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <p className={styles.label}>Sort by:</p>
+              <select
+                className={styles.search_column_select}
+                value={searchColumn}
+                onChange={(e) => setSearchColumn(e.target.value)}
+              >
+                <option value="Company Name">Company Name</option>
+                <option value="Email">Email</option>
+                <option value="Address">Address</option>
+              </select>
+            </div>
           <ClientsTable
             clients={clients}
-            searchTerm=""
-            searchColumn="companyName"
+            searchTerm={searchTerm}
+            searchColumn={searchColumn}
+            clientEdit={(client)=>{
+              setShowEditForm(true)
+              setSelectedClient(client)
+                            }}
           />
         </div>
+      </div>
       </div>
   );
 };
