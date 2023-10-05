@@ -126,7 +126,7 @@ class UpcommingTaskBuildItem extends StatelessWidget {
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
               Container(
-                height: 390,
+                height: 320,
                 child: Column(
                   children: [
                     SizedBox(
@@ -139,10 +139,13 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                         title: Text(
                           topic,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -152,10 +155,13 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                         title: Text(
                           location,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -165,10 +171,13 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                         title: Text(
                           date,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -178,10 +187,13 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                         title: Text(
                           time,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -189,6 +201,7 @@ class UpcommingTaskBuildItem extends StatelessWidget {
                         left: 20.0,
                         right: 20.0,
                         bottom: 20.0,
+                        top: 10.0
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
