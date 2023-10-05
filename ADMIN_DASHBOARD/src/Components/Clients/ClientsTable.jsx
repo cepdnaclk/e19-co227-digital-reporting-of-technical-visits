@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 import styles from "../../Styles/Clients/ClientsTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import classNames from "classnames";
@@ -7,6 +9,7 @@ import { MdCreate } from "react-icons/md";
 export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
+  const [showDeleteError, setShowDeleteError] = useState(false);
 
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
@@ -92,7 +95,8 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
               </button>
             </th>
             <th>Telephone Number</th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -104,19 +108,35 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
               <td>{(client.mobile && client.mobile[0]) || ""}</td>
               <td>
                 <button
-                  className={classNames(styles.btn, styles.editBtn)}
-                  // onClick={() => {
-                  //   openEditForm(technician);
-                  // }}
+                  className={styles.btn + " " + styles.editBtn}
+                  onClick={() => {
+                    taskEdit(task);
+                  }}
                 >
                   <MdCreate />
                   Edit
+                </button>
+              </td>
+              <td>
+                <button
+                  className={styles.btn + " " + styles.deleteBtn}
+                  onClick={() => {
+                    handleDelete(task.id);
+                  }}
+                >
+                  Delete
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showDeleteError && (
+        <div className={styles.delete_error_message}>
+          <p>Client is assigned to a task. Cannot delete.</p>
+          <button onClick={closeDeleteError}>OK</button>
+        </div>
+      )}
     </div>
   );
 };
