@@ -1,10 +1,12 @@
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:visitlog/Components/drawer.dart';
 import 'package:visitlog/Widgets/bottom_navigation.dart';
 import 'package:visitlog/services/auth_service.dart';
+import 'package:visitlog/Controllers/task_controller.dart';
+
 
 // ignore: must_be_immutable
 class Profile extends StatelessWidget {
@@ -93,16 +95,17 @@ class Profile extends StatelessWidget {
   }
 }
 
+
 // ignore: must_be_immutable
 class _ProfileInfoRow extends StatelessWidget {
   _ProfileInfoRow({Key? key}) : super(key: key);
 
   String? userImage = AuthService().getUserImage();
 
-  final List<ProfileInfoItem> _items = const [
-    ProfileInfoItem("Completed", 10, Colors.green),
-    ProfileInfoItem("On-Going", 5, Colors.blue),
-    ProfileInfoItem("Missed", 0, Colors.red),
+  final List<ProfileInfoItem> _items = [
+    ProfileInfoItem("Completed", Get.put(TaskController()).jobs.length, Colors.green),
+    ProfileInfoItem("On-Going", Get.put(TaskController()).taskItems.length + Get.put(TaskController()).upcommingTasks.length, Colors.blue),
+    const ProfileInfoItem("Missed", 0, Colors.red),
   ];
 
   @override
