@@ -13,35 +13,58 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) 
   }
 
   // Create a table row for each technician
-  const rows = technicians.map((tech) => {
+  const rows = technicians.map((tech, rowIndex) => {
+    
     // Initialize an empty row with time slot cells
     const rowCells = Array(numSlots + 1).fill(null);
+    console.log(tasks);
 
     // Populate the row with task cells based on the technician's tasks
-    tasks.forEach((task) => {
-      const slotIndex = Math.floor((task.startTime - startTime) / slotDuration);
+    tasks.forEach((task,index) => {
+      
+   
 
-      if (tech.id === task.technicianId) {
+// Create a Date object from the timestamp
+const taskStartDate = task.startDate.toDate();
+console.log(taskStartDate);
+console.log(startTime);
+      const slotIndex = Math.floor((taskStartDate  - startTime) / slotDuration);
+      console.log(slotIndex)
+
+      if (tech.email=== task.email) {
         rowCells[slotIndex] = (
-          <td key={task.id} className="task-cell">
+          <td index={index} className="task-cell">
             {task.title}
           </td>
         );
       }
     });
+    
 
     // Create a row with technician name and task cells
     return (
       <tr key={tech.id}>
-        <td className="technician-cell">{tech.name}</td>
-        {rowCells.map((cell, index) => (
-          <td key={index} className="time-slot-cell">
+        <td className="technician-cell">{tech.firstName}</td>
+        {rowCells.map((cell, columnIndex) => (
+          <td
+            key={columnIndex}
+            className={`time-slot-cell${cell ? ' filled-cell' : ''}`}
+            onClick={cell ? null : () => handleCellClick(timeSlots[columnIndex], tech)}
+          >
             {cell}
           </td>
         ))}
       </tr>
     );
   });
+
+  const handleCellClick = (timeSlot, technician) => {
+    // Call the onCellClick function and pass the timeSlot and technician as arguments
+    console.log("Clicked on cell for time slot:", timeSlot);
+    console.log("Technician:", technician.firstName);
+
+    // Add your logic to assign a job to the technician for the clicked slot here
+  };
 
   return (
     <div className="task-timeline">
