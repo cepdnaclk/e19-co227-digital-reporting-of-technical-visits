@@ -5,17 +5,14 @@ import styles from "../../Styles/Clients/ClientsTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import classNames from "classnames";
 import { MdCreate } from "react-icons/md";
+import { ClientEditForm } from "../../Components/Clients/ClientEditForm";
 
 export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
   const [showDeleteError, setShowDeleteError] = useState(false);
-
-  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [selectedClient, setSelectedClient] = useState(null);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
-
-  const [showClientDetails, setShowClientDetails] = useState(false);
-
 
   const handleSort = (field) => {
     if (field === sortBy) {
@@ -24,6 +21,20 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
       setSortBy(field);
       setSortDirection("asc");
     }
+  };
+
+  const clientEdit = (client) => {
+    setSelectedClient(client);
+    setIsEditFormVisible(true);
+  };
+
+  const closeEditForm = () => {
+    setIsEditFormVisible(false);
+    setSelectedClient(null);
+  };
+
+  const handleDelete = async (clientId) => {
+    // delete logic
   };
 
   const sortedClients = [...clients].sort((a, b) => {
@@ -56,7 +67,7 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
         searchTerm.toLowerCase()
       );
     }
-    return true; // Return true for unmatched columns
+    return true;
   });
 
   return (
@@ -110,7 +121,7 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
                 <button
                   className={styles.btn + " " + styles.editBtn}
                   onClick={() => {
-                    taskEdit(task);
+                    clientEdit(client);
                   }}
                 >
                   <MdCreate />
@@ -121,7 +132,7 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
                 <button
                   className={styles.btn + " " + styles.deleteBtn}
                   onClick={() => {
-                    handleDelete(task.id);
+                    handleDelete(client.id);
                   }}
                 >
                   Delete
@@ -131,12 +142,11 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
           ))}
         </tbody>
       </table>
-      {showDeleteError && (
-        <div className={styles.delete_error_message}>
-          <p>Client is assigned to a task. Cannot delete.</p>
-          <button onClick={closeDeleteError}>OK</button>
-        </div>
+      {isEditFormVisible && selectedClient && (
+        <ClientEditForm client={selectedClient} onClosing={closeEditForm} />
       )}
     </div>
   );
 };
+
+export default ClientsTable;
