@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'dart:typed_data';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -10,6 +12,7 @@ import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as path;
 import 'package:visitlog/Utils/date_time.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class ReportImages extends StatefulWidget {
   ReportImages({
@@ -48,6 +51,7 @@ class _ReportImagesState extends State<ReportImages> {
   bool isSignatureSelected =
       true; // Track if the user selects the signature option
   final GlobalKey<SfSignaturePadState> _signaturePadKey = GlobalKey();
+  Uint8List? _signatureImageBytes;
 
   @override
   void initState() {
@@ -94,21 +98,6 @@ class _ReportImagesState extends State<ReportImages> {
       return downloadUrls;
     }
 
-    Future<String?> uploadSignatureImageToStorage(
-        Uint8List signatureImage) async {
-      final FirebaseStorage storage = FirebaseStorage.instance;
-      final Reference storageRef = storage.ref();
-
-      final Reference imageRef =
-          storageRef.child('signatures/${widget.docId}_signature.jpg');
-      final UploadTask uploadTask = imageRef.putData(signatureImage);
-
-      await uploadTask.whenComplete(() async {
-        final String signatureUrl = await imageRef.getDownloadURL();
-        return signatureUrl;
-      });
-    }
-
     Future<void> saveSignatureToFirestore(String signatureUrl) async {
       final CollectionReference tasksCollection =
           FirebaseFirestore.instance.collection('Tasks');
@@ -121,6 +110,21 @@ class _ReportImagesState extends State<ReportImages> {
         print('Error updating Firestore document: $error');
       }
     }
+
+    Future<void> uploadSignatureImageToStorage(Uint8List signatureImage) async {
+      final FirebaseStorage storage = FirebaseStorage.instance;
+      final Reference storageRef = storage.ref();
+
+      final Reference imageRef =
+          storageRef.child('signatures/${widget.docId}_signature.jpg');
+      final UploadTask uploadTask = imageRef.putData(signatureImage);
+
+      await uploadTask.whenComplete(() async {
+        final String signatureUrl = await imageRef.getDownloadURL();
+        saveSignatureToFirestore(signatureUrl);
+      });
+    }
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -284,11 +288,21 @@ class _ReportImagesState extends State<ReportImages> {
                             await uploadImagesToFirebaseStorage(widget.images);
                         // ToDo (save or display it)
                         print(downloadUrls);
-                        String? signatureUrl = "";
+                        String signatureUrl = "";
 
                         if (signatureImage != null) {
-                          signatureUrl = await uploadSignatureImageToStorage(
-                              signatureImage as Uint8List);
+                          final ByteData? byteData = await signatureImage
+                              .toByteData(format: ImageByteFormat.png);
+                          if (byteData != null) {
+                            final Uint8List signatureBytes =
+                                byteData.buffer.asUint8List();
+                            setState(() {
+                              _signatureImageBytes = signatureBytes;
+                            });
+                            // Now you can upload _signatureImageBytes to Firebase Storage
+                            await uploadSignatureImageToStorage(
+                                _signatureImageBytes!);
+                          }
                         }
 
                         final CollectionReference tasksCollection =
@@ -296,7 +310,7 @@ class _ReportImagesState extends State<ReportImages> {
                         await tasksCollection.doc(widget.docId).set({
                           'isCompleted': true,
                           'imageUrls': downloadUrls,
-                          'signatureUrl': signatureUrl,
+                          // 'signatureUrl': signatureUrl,
                           'workType': widget.type,
                           'inspectionDate': localDate,
                           'inspectionTime': TimeTo12Hour(DateTime.now()),
