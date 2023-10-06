@@ -3,7 +3,7 @@ import Tab from './Tab';
 import TaskTimeline from './TaskTimeline';
 import styles from "../../Styles/TechnicianAssign/TimelineHandler.module.scss";
 
-const TimelineHandler = ({ jobs, technicians,technicianSelectionHandler,timeslotSelectionHandler,formHandler }) => {
+const TimelineHandler = ({ jobs, technicians,technicianSelectionHandler,timeslotSelectionHandler,formHandler,dateHandler }) => {
 
 console.log("Rerender");
   const [selectedTab, setSelectedTab] = useState('today');
@@ -66,7 +66,9 @@ console.log("Rerender");
           17, // End time: 5:00 PM
           0
         )
+        
       );
+      dateHandler(today)
 
     } else if (tab === 'past') {
       const yesterday = new Date();
@@ -83,7 +85,9 @@ console.log("Rerender");
           8, // Start time: 8:00 AM
           0
         )
+
       );
+
       setEndDateTime(
         new Date(
           yesterday.getFullYear(),
@@ -93,6 +97,7 @@ console.log("Rerender");
           0
         )
       );
+      dateHandler(yesterday)
     } 
     
     else if (tab === 'upcoming') {
@@ -120,6 +125,7 @@ console.log("Rerender");
           0
         )
       );
+      dateHandler(tomorrow);
     }
     
     
@@ -135,6 +141,7 @@ console.log("Rerender");
     const selectedDate = new Date(selectedDateString2);
     console.log("Parsed Date:", selectedDate); // Add this line
     setSelectedDate(selectedDate);
+    dateHandler(selectedDate);
   
     // Update startDateTime and endDateTime when selectedDate changes
     setStartDateTime(
@@ -201,6 +208,7 @@ console.log("Rerender");
           formHandler={formHandler}
           technicianSelectionHandler = {technicianSelectionHandler}
           timeslotSelectionHandler = {timeslotSelectionHandler}
+          
         />
       </div>
     </div>

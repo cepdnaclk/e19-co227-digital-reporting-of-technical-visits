@@ -35,6 +35,7 @@ const DataContextProvider = ({ children }) => {
       const updatedJobs = [];
 
       for (const docRef of snapshot.docs) {
+        console.log(docRef);
         const jobData = docRef.data();
         var jobWithTechnician = jobData;
         if (jobData.email) {
@@ -50,7 +51,7 @@ const DataContextProvider = ({ children }) => {
               ...jobWithTechnician,
               technicianName,
             };
-            console.log(technicianName);
+            
           }
         }
 
@@ -66,7 +67,7 @@ const DataContextProvider = ({ children }) => {
             companyAddress,
           };
 
-          updatedJobs.push(jobWithTechnician);
+          updatedJobs.push({ ...jobWithTechnician, id: docRef.id });
         }
       }
 

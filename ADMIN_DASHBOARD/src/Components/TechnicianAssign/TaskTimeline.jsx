@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
-import "../../Styles/TaskTimeline.scss"
+import React, { useState } from "react";
+import "../../Styles/TaskTimeline.scss";
 
-const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, technicianSelectionHandler,timeslotSelectionHandler,formHandler}) => {
+const TaskTimeline = ({
+  tasks,
+  startTime,
+  endTime,
+  slotDuration,
+  technicians,
+  technicianSelectionHandler,
+  timeslotSelectionHandler,
+  formHandler,
+  
+}) => {
   // Calculate the number of time slots
   const numSlots = Math.floor((endTime - startTime) / slotDuration);
 
@@ -9,7 +19,9 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, te
   const timeSlots = [];
   for (let i = 0; i <= numSlots; i++) {
     const slotTime = new Date(startTime.getTime() + i * slotDuration);
-    timeSlots.push(slotTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    timeSlots.push(
+      slotTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    );
   }
   const [showTaskInfo, setShowTaskInfo] = useState(null);
 
@@ -17,25 +29,24 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, te
 
   const handleMouseEnter = (index, event) => {
     if (!event) return; // Check if event is undefined
-  
+    // if(showTaskInfo) return;
     const mouseX = event.clientX;
     const mouseY = event.clientY;
-    
+
     const taskCell = event.currentTarget;
     const cellRect = taskCell.getBoundingClientRect();
-    
+
     const isTopCorner = mouseY < cellRect.top + cellRect.height / 2;
     const isLeftCorner = mouseX < cellRect.left + cellRect.width / 2;
-    
+
     const tooltipPosition = {
-      top: isTopCorner ? mouseY : mouseY -150,
+      top: isTopCorner ? mouseY : mouseY - 150,
       left: isLeftCorner ? mouseX : mouseX - 150,
     };
-    
+
     setTooltipPosition(tooltipPosition);
     setShowTaskInfo(index);
   };
-  
 
   const handleMouseLeave = () => {
     setShowTaskInfo(null);
@@ -49,32 +60,41 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, te
     // Populate the row with task cells based on the technician's tasks
     tasks.forEach((task, index) => {
       const taskStartDate = task.startDate.toDate();
-      const slotIndex = Math.floor((taskStartDate - startTime) / slotDuration);
+      const startYear = startTime.getFullYear();
+      const startMonth = startTime.getMonth();
+      const startDay = startTime.getDate();
 
-      if (tech.email === task.email) {
-        rowCells[slotIndex] = (
-          <td
-            key={index}
-            index={index}
-            className="task-cell"
-            onMouseEnter={() => handleMouseEnter(index,event)}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              backgroundColor:
-                task.isVerified
-                  ? 'green'
-                  : task.isCompleted
-                  ? 'blue'
-                  : task.isArrived
-                  ? 'orange'
-                  : 'red',
-            }}
-          >
-            <div className="task-title">{task.title}</div>
-            
-            
-          </td>
+      if (
+        taskStartDate.getFullYear() === startYear &&
+        taskStartDate.getMonth() === startMonth &&
+        taskStartDate.getDate() === startDay
+      ) {
+        const slotIndex = Math.floor(
+          (taskStartDate - startTime) / slotDuration
         );
+        console.log(task, slotIndex, startDay, startMonth, startYear);
+        if (tech.email === task.email && slotIndex <= numSlots) {
+          rowCells[slotIndex] = (
+            <td
+              key={index}
+              index={index}
+              className="task-cell"
+              // onMouseEnter={() => handleMouseEnter(index,event)}
+              // onMouseLeave={handleMouseLeave}
+              style={{
+                backgroundColor: task.isVerified
+                  ? "rgba(20, 100, 30, 0.7)"
+                  : task.isCompleted
+                  ? "rgba(3, 26, 66, 0.9)"
+                  : task.isArrived
+                  ? "rgba(130,120,3, 0.9)"
+                  : "rgba(100,10,20, 0.9)",
+              }}
+            >
+              <div className="task-title">{task.title}</div>
+            </td>
+          );
+        }
       }
     });
 
@@ -85,10 +105,11 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, te
         {rowCells.map((cell, columnIndex) => (
           <td
             key={columnIndex}
-            className={`time-slot-cell${cell ? ' filled-cell' : ''}`}
-            onClick={cell ? null : () => handleCellClick(timeSlots[columnIndex], tech)}
+            className={`time-slot-cell${cell ? " filled-cell" : ""}`}
+            onClick={
+              cell ? null : () => handleCellClick(timeSlots[columnIndex], tech)
+            }
           >
-            
             {cell}
           </td>
         ))}
@@ -96,12 +117,10 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, te
     );
   });
 
-  
-
   const handleCellClick = (timeSlot, technician) => {
-    technicianSelectionHandler(technician)
-    timeslotSelectionHandler(timeSlot)
-    formHandler(true)
+    technicianSelectionHandler(technician);
+    timeslotSelectionHandler(timeSlot);
+    formHandler(true);
     // Call the onCellClick function and pass the timeSlot and technician as arguments
     console.log("Clicked on cell for time slot:", timeSlot);
     console.log("Technician:", technician.firstName);
@@ -111,16 +130,31 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, te
 
   return (
     <div className="task-timeline">
-      <div className="task-tooltip" style={{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px`, display: showTaskInfo !== null ? 'block' : 'none' }}
+      <div
+        className="task-tooltip"
+        style={{
+          top: `${tooltipPosition.top}px`,
+          left: `${tooltipPosition.left}px`,
+          display: showTaskInfo !== null ? "block" : "none",
+        }}
       >
-      {showTaskInfo !== null && (
+        {showTaskInfo !== null && (
           <div className="task-info">
             <p>Title: {tasks[showTaskInfo].title}</p>
-            
+
             <p>Description: {tasks[showTaskInfo].description}</p>
-            <p>Arrival Status:{tasks[showTaskInfo].isArrived ? "Completed":"Not Completed"} </p>
-            <p>Verification Status Status:{tasks[showTaskInfo].isVerified ? "Completed":"Not Completed"} </p>
-            <p>Completion Status:{tasks[showTaskInfo].isCompleted ? "Completed":"Not Completed"} </p>
+            <p>
+              Arrival Status:
+              {tasks[showTaskInfo].isArrived ? "Completed" : "Not Completed"}{" "}
+            </p>
+            <p>
+              Verification Status Status:
+              {tasks[showTaskInfo].isVerified ? "Completed" : "Not Completed"}{" "}
+            </p>
+            <p>
+              Completion Status:
+              {tasks[showTaskInfo].isCompleted ? "Completed" : "Not Completed"}{" "}
+            </p>
             <p>Description: {tasks[showTaskInfo].description}</p>
             {/* Display more task information here */}
             <p>Assigned to: {tasks[showTaskInfo].technicianName}</p>

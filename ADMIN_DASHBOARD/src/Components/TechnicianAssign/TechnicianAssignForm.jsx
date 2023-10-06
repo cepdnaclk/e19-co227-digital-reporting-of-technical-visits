@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react';
-import { DataContext } from '../../Context/dataContext'; // Import your DataContext here
+import React, { useContext, useState, useEffect } from "react";
+import { DataContext } from "../../Context/dataContext"; // Import your DataContext here
+import styles from "../../Styles/TechnicianAssign/TechnicianAssignForm.module.scss";
+import { collection, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
-const TechnicianAssignForm = ({ technician, timeslot }) => {
-  // Access the jobs from the DataContext
-  const { jobs } = useContext(DataContext);
+const TechnicianAssignForm = ({ technician, timeslot, date, onClose }) => {
+  // Access the jobs and technicians from the DataContext
+  const { jobs, technicians } = useContext(DataContext);
   const unassignedJobs = jobs.filter((job) => !job.email);
-  console.log(unassignedJobs);
+  const jobCollectionRef = collection(db, "Tasks");
 
-  // State to track the selected job
-  const [selectedJob, setSelectedJob] = useState('');
+  // State to track the selected job and technician email
+  const [selectedJob, setSelectedJob] = useState("");
+  const [technicianEmail, setTechnicianEmail] = useState("");
 
   // Function to handle job selection
   const handleJobChange = (e) => {
@@ -16,24 +20,90 @@ const TechnicianAssignForm = ({ technician, timeslot }) => {
   };
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can perform actions with the selected job here
-    console.log(`Technician: ${technician}, Timeslot: ${timeslot}, Job: ${selectedJob}`);
+
+    if (!selectedJob) {
+      console.error("Please select a job.");
+      return;
+    }
+
+    if (!date || !timeslot) {
+      console.error("Date and timeslot must be selected.");
+      return;
+    }
+
+    // Parse the timeslot in "hh:mm A" format (e.g., "10:00 AM")
+    const timeParts = timeslot.split(" ");
+    if (timeParts.length !== 2) {
+      console.error("Invalid timeslot format.");
+      return;
+    }
+
+    const [time, ampm] = timeParts;
+    const [hours, minutes] = time.split(":");
+    let adjustedHours = Number(hours);
+
+    // Adjust hours for PM times
+    if (ampm === "PM" && adjustedHours !== 12) {
+      adjustedHours += 12;
+    }
+
+    // Create a new Date object with the selected date and adjusted time
+    const jobDate = new Date(date);
+    jobDate.setHours(adjustedHours);
+    jobDate.setMinutes(Number(minutes));
+
+    // Now, you have the complete date and time for the job
+    console.log(
+      `Technician: ${technician.id}, Job: ${selectedJob}, Date and Time: ${jobDate.toISOString()}, Email: ${technicianEmail}`
+    );
+    const formData={
+        
+        startDate:jobDate,
+        email:technicianEmail,
+    }
+
+    await onUpdate(formData,selectedJob);
+    onClose();
   };
 
+  const onUpdate = async (data,id) => {
+    console.log(data);
+    // Update the document in Firestore
+    await updateDoc(doc(jobCollectionRef, id), data);
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    onClose();
+  };
+
+  useEffect(() => {
+    // Find the technician's email by ID
+    if (technician && technician.id) {
+      const matchingTechnician = technicians.find(
+        (tech) => tech.id === technician.id
+      );
+      if (matchingTechnician) {
+        setTechnicianEmail(matchingTechnician.email);
+      }
+    }
+  }, [technician, technicians]);
+
   return (
-    <div>
+    <div className={styles.card}>
+      <button className={styles.close_button} onClick={(e) => handleClose(e)}>
+        X
+      </button>
       <h2>Assign Job for Technician</h2>
       <p>
-  Technician Name: {technician ? technician.firstName : 'Not selected'}
-</p>
-<p>
-  Technician Email: {technician ? technician.email : 'Not selected'}
-</p>
+        Technician Name: {technician ? technician.firstName : "Not selected"}
+      </p>
+      <p>Technician Email: {technicianEmail || "Not available"}</p>
+      <p>Date: {date ? date.toISOString().split("T")[0] : "Not Selected"}</p>
 
-
-      <p>Timeslot: {timeslot ?  timeslot:"Not selected"}</p>
+      <p>Timeslot: {timeslot ? timeslot : "Not selected"}</p>
       <form onSubmit={handleSubmit}>
         <label>
           Select Job:

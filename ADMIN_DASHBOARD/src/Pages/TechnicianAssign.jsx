@@ -11,9 +11,10 @@ import TaskLegend from "../Components/TechnicianAssign/TaskLegend";
 export const TechnicianAssign = () => {
   // Sample data for tasks, start time, end time, slot duration, and technicians
   const { jobs, technicians } = useContext(DataContext);
-  const [showAssignForm, setShowAssignForm] = useState(true);
+  const [showAssignForm, setShowAssignForm] = useState(false);
   const [selectedTechnician, setSelectedTechnician] = useState();
   const [selectedTimeslot, setSelectedTimeslot] = useState();
+  const [selectedParentDate,setSelectedParentDate] = useState(new Date());
 
   // const tasks = [
   //   {
@@ -187,6 +188,7 @@ export const TechnicianAssign = () => {
               formHandler={setShowAssignForm}
               technicianSelectionHandler = {setSelectedTechnician}
               timeslotSelectionHandler = {setSelectedTimeslot}
+              dateHandler = {setSelectedParentDate}
             />
             {/* <TaskTimeline
               tasks={jobs}
@@ -201,6 +203,10 @@ export const TechnicianAssign = () => {
               <TechnicianAssignForm
                 technician={selectedTechnician}
                 timeslot={selectedTimeslot}
+                date = {selectedParentDate}
+                onClose = {()=>{
+                  setShowAssignForm(false);
+                }}
               />
             )}
           </div>
