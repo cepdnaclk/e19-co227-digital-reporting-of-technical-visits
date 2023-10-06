@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: center;
   border: 8px solid rgb(255, 255, 255);
+  overflow: visible;
 
   .close_button {
     position: absolute;
@@ -31,7 +32,9 @@
     align-content: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 22px;
+    font-size: 20px;
+    padding-top: 2px;
+    text-align: center;
     font-weight: bolder;
     cursor: pointer;
     color: #4e4e4e;

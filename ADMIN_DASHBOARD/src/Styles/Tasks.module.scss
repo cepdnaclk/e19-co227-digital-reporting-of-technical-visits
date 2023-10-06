@@ -26,7 +26,7 @@
 
     .table_container {
       position: relative;
-      width: 80%;
+      width: 90%;
       left: 50%;
       transform: translate(-50%, 0);
       display: flex;
@@ -137,10 +137,9 @@
 
 .button_container {
   position: relative;
-  width: 80%;
+  width: 90%;
   left: 50%;
   transform: translate(-50%, 0);
-  overflow: hidden;
   display: flex;
   margin-top: 1em;
 }
