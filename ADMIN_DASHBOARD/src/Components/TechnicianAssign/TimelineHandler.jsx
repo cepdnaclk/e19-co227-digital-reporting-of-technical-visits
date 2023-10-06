@@ -3,7 +3,7 @@ import Tab from './Tab';
 import TaskTimeline from './TaskTimeline';
 import styles from "../../Styles/TechnicianAssign/TimelineHandler.module.scss";
 
-const TimelineHandler = ({ jobs, technicians }) => {
+const TimelineHandler = ({ jobs, technicians,technicianSelectionHandler,timeslotSelectionHandler,formHandler }) => {
 
 console.log("Rerender");
   const [selectedTab, setSelectedTab] = useState('today');
@@ -198,6 +198,9 @@ console.log("Rerender");
           endTime={endDateTime}
           slotDuration={60 * 60 * 1000} // Slot duration is 1 hour
           technicians={technicians}
+          formHandler={formHandler}
+          technicianSelectionHandler = {technicianSelectionHandler}
+          timeslotSelectionHandler = {timeslotSelectionHandler}
         />
       </div>
     </div>

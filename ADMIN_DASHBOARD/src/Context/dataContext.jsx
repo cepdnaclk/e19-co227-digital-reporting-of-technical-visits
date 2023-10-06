@@ -37,17 +37,15 @@ const DataContextProvider = ({ children }) => {
       for (const docRef of snapshot.docs) {
         const jobData = docRef.data();
         var jobWithTechnician = jobData;
-        if (jobData.email && jobData.technicianRef) {
-          const technicianRef = jobData.technicianRef;
-          console.log(jobData);
-
-          const technicianDoc = await getDoc(technicianRef);
-
-          if (technicianDoc.exists()) {
+        if (jobData.email) {
+          // Find the technician with matching email
+          const matchingTechnician = technicians.find(
+            (technician) => technician.email === jobData.email
+          );
+  
+          if (matchingTechnician) {
             const technicianName =
-              technicianDoc.data().firstName +
-              " " +
-              technicianDoc.data().lastName;
+              matchingTechnician.firstName + " " + matchingTechnician.lastName;
             jobWithTechnician = {
               ...jobWithTechnician,
               technicianName,

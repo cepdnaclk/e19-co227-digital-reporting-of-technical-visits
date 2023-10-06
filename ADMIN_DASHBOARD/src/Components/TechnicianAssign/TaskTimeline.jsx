@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../../Styles/TaskTimeline.scss"
 
-const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) => {
+const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians, technicianSelectionHandler,timeslotSelectionHandler,formHandler}) => {
   // Calculate the number of time slots
   const numSlots = Math.floor((endTime - startTime) / slotDuration);
 
@@ -59,6 +59,16 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) 
             className="task-cell"
             onMouseEnter={() => handleMouseEnter(index,event)}
             onMouseLeave={handleMouseLeave}
+            style={{
+              backgroundColor:
+                task.isVerified
+                  ? 'green'
+                  : task.isCompleted
+                  ? 'blue'
+                  : task.isArrived
+                  ? 'orange'
+                  : 'red',
+            }}
           >
             <div className="task-title">{task.title}</div>
             
@@ -89,6 +99,9 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) 
   
 
   const handleCellClick = (timeSlot, technician) => {
+    technicianSelectionHandler(technician)
+    timeslotSelectionHandler(timeSlot)
+    formHandler(true)
     // Call the onCellClick function and pass the timeSlot and technician as arguments
     console.log("Clicked on cell for time slot:", timeSlot);
     console.log("Technician:", technician.firstName);
@@ -102,9 +115,15 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) 
       >
       {showTaskInfo !== null && (
           <div className="task-info">
+            <p>Title: {tasks[showTaskInfo].title}</p>
+            
+            <p>Description: {tasks[showTaskInfo].description}</p>
+            <p>Arrival Status:{tasks[showTaskInfo].isArrived ? "Completed":"Not Completed"} </p>
+            <p>Verification Status Status:{tasks[showTaskInfo].isVerified ? "Completed":"Not Completed"} </p>
+            <p>Completion Status:{tasks[showTaskInfo].isCompleted ? "Completed":"Not Completed"} </p>
+            <p>Description: {tasks[showTaskInfo].description}</p>
             {/* Display more task information here */}
-            <p>{tasks[showTaskInfo].description}</p>
-            <p>Assigned to: {tasks[showTaskInfo].assignee}</p>
+            <p>Assigned to: {tasks[showTaskInfo].technicianName}</p>
             {/* Add more task details as needed */}
           </div>
         )}
