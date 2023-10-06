@@ -76,7 +76,7 @@
 
       th:last-child,
       td:last-child {
-        padding-right: 2em;
+        padding-right: 1em;
       }
 
       th:first-child{
@@ -134,6 +134,25 @@
       &:hover {
         background-color: darken($editColor, $amount: 25);
         border-color: darken($editColor, $amount: 25);
+      }
+    }
+
+    .deleteBtn {
+      background-color: $cancelColor;
+      border: 1px solid rgb(219, 130, 118);
+      border-radius: 1em;
+      padding: 0.4em 0.8em;
+      color: white;
+      vertical-align: middle;
+
+      &:hover {
+        background-color: darken($cancelColor, $amount: 25);
+        border-color: darken($cancelColor, $amount: 25);
+      }
+
+      svg {
+        margin-right: 0.3em;
+        font-size: 1em;
       }
     }
   }
