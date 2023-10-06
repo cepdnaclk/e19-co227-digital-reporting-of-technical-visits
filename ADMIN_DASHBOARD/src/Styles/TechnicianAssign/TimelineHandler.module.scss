@@ -1,0 +1,29 @@
+.handler_container{
+    
+
+}
+.date_input{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin:5px;
+    p {
+        margin-right: 10px;
+      }
+    
+      input[type="date"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
+.today_date{
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10.2px;
+    margin:5.5px;
+}

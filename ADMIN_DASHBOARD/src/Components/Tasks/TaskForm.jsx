@@ -69,7 +69,7 @@ export const TaskForm = () => {
       isVerified: false,
       isCompleted: false,
       startDate: startDateTimeStamp,
-      email: "ajanith101@gmail.com",
+      
     };
     const jobsCollectionRef = collection(db, "Tasks");
     try {

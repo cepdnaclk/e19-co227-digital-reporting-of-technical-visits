@@ -1,0 +1,29 @@
+
+.legend {
+    
+    justify-content: space-around;
+    
+  }
+  .legend-title{
+    font-weight: bold;
+    font-size:1.6em;
+    }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding:5px;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    
+  }
+  
+  .legend-text {
+    font-weight: bold;
+  }
+  
