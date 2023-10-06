@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../../Styles/TaskTimeline.scss"
 
 const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) => {
@@ -11,35 +11,62 @@ const TaskTimeline = ({ tasks, startTime, endTime, slotDuration, technicians }) 
     const slotTime = new Date(startTime.getTime() + i * slotDuration);
     timeSlots.push(slotTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   }
+  const [showTaskInfo, setShowTaskInfo] = useState(null);
+
+  const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
+
+  const handleMouseEnter = (index, event) => {
+    if (!event) return; // Check if event is undefined
+  
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    
+    const taskCell = event.currentTarget;
+    const cellRect = taskCell.getBoundingClientRect();
+    
+    const isTopCorner = mouseY < cellRect.top + cellRect.height / 2;
+    const isLeftCorner = mouseX < cellRect.left + cellRect.width / 2;
+    
+    const tooltipPosition = {
+      top: isTopCorner ? mouseY : mouseY -150,
+      left: isLeftCorner ? mouseX : mouseX - 150,
+    };
+    
+    setTooltipPosition(tooltipPosition);
+    setShowTaskInfo(index);
+  };
+  
+
+  const handleMouseLeave = () => {
+    setShowTaskInfo(null);
+  };
 
   // Create a table row for each technician
   const rows = technicians.map((tech, rowIndex) => {
-    
     // Initialize an empty row with time slot cells
     const rowCells = Array(numSlots + 1).fill(null);
-    console.log(tasks);
 
     // Populate the row with task cells based on the technician's tasks
-    tasks.forEach((task,index) => {
-      
-   
+    tasks.forEach((task, index) => {
+      const taskStartDate = task.startDate.toDate();
+      const slotIndex = Math.floor((taskStartDate - startTime) / slotDuration);
 
-// Create a Date object from the timestamp
-const taskStartDate = task.startDate.toDate();
-console.log(taskStartDate);
-console.log(startTime);
-      const slotIndex = Math.floor((taskStartDate  - startTime) / slotDuration);
-      console.log(slotIndex)
-
-      if (tech.email=== task.email) {
+      if (tech.email === task.email) {
         rowCells[slotIndex] = (
-          <td index={index} className="task-cell">
-            {task.title}
+          <td
+            key={index}
+            index={index}
+            className="task-cell"
+            onMouseEnter={() => handleMouseEnter(index,event)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="task-title">{task.title}</div>
+            
+            
           </td>
         );
       }
     });
-    
 
     // Create a row with technician name and task cells
     return (
@@ -51,12 +78,15 @@ console.log(startTime);
             className={`time-slot-cell${cell ? ' filled-cell' : ''}`}
             onClick={cell ? null : () => handleCellClick(timeSlots[columnIndex], tech)}
           >
+            
             {cell}
           </td>
         ))}
       </tr>
     );
   });
+
+  
 
   const handleCellClick = (timeSlot, technician) => {
     // Call the onCellClick function and pass the timeSlot and technician as arguments
@@ -68,6 +98,17 @@ console.log(startTime);
 
   return (
     <div className="task-timeline">
+      <div className="task-tooltip" style={{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px`, display: showTaskInfo !== null ? 'block' : 'none' }}
+      >
+      {showTaskInfo !== null && (
+          <div className="task-info">
+            {/* Display more task information here */}
+            <p>{tasks[showTaskInfo].description}</p>
+            <p>Assigned to: {tasks[showTaskInfo].assignee}</p>
+            {/* Add more task details as needed */}
+          </div>
+        )}
+      </div>
       <table className="timeline-table">
         <thead>
           <tr>

@@ -4,6 +4,7 @@ import styles from "../Styles/TechniciansAssign.module.scss";
 import TaskTimeline from "../Components/TechnicianAssign/TaskTimeline"; // Import the TaskTimeline component
 import { useContext } from "react";
 import { DataContext } from "../Context/dataContext";
+import TimelineHandler from "../Components/TechnicianAssign/TimelineHandler";
 
 export const TechnicianAssign = () => {
   // Sample data for tasks, start time, end time, slot duration, and technicians
@@ -157,7 +158,7 @@ export const TechnicianAssign = () => {
   // ];
   const startTime = new Date(2023,9,1,8,0); // Replace with your desired start time
   const endTime = new Date(2023,9,1,17,0); // Replace with your desired end time
-  const slotDuration = 60 * 60 * 1000; // 30 minutes in milliseconds
+  const slotDuration = 60 * 60 * 1000; // hour in milliseconds
   
 
   return (
@@ -172,13 +173,14 @@ export const TechnicianAssign = () => {
 
           {/* Include the TaskTimeline component */}
           <div className={styles.table_container}>
-            <TaskTimeline
+            <TimelineHandler jobs={jobs} technicians={technicians}/>
+            {/* <TaskTimeline
               tasks={jobs}
               startTime={startTime}
               endTime={endTime}
               slotDuration={slotDuration}
               technicians={technicians}
-            />
+            /> */}
           </div>
         </div>
       </div>
