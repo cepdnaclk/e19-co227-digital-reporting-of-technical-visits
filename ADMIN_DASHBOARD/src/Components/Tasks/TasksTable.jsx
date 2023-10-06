@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
-import { MdCreate } from "react-icons/md";
+import { RiShieldCheckLine } from "react-icons/ri";
+import { MdCreate, MdDelete } from "react-icons/md";
 import styles from "../../Styles/Tasks/TasksTable.module.scss";
 import { DataContext } from "../../Context/dataContext";
 
@@ -129,8 +130,8 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
               </button>
             </th>
             <th>Company Address</th>
-            <th>Verification Status</th>
             <th>Arrival Status</th>
+            <th>Verification Status</th>
             <th>Technician Name</th>
             <th>Date</th>
             <th>Edit</th>
@@ -145,7 +146,7 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
               <td>{task.address}</td>
               <td>{task.companyAddress || "No Company Address"}</td>
               <td>{task.isArrived ? <p>Arrived</p> : <p>Not Arrived</p>}</td>
-              <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
+              <td>{task.isverified ? <p>Verified</p> : (task.isCompleted? <p>Not Verified</p> : <button className={styles.btn + " " + styles.verify}><RiShieldCheckLine/>Verify</button>)}</td>
               <td>
       {technicians.find((technician) => technician.email === task.email)?.firstName || "No Technician"}{' '}
       {technicians.find((technician) => technician.email === task.email)?.lastName || ""}
@@ -172,7 +173,7 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
                   onClick={() => {
                     handleDelete(task.id);
                   }}
-                >
+                ><MdDelete />
                   Delete
                 </button>
               </td>

@@ -78,7 +78,7 @@ export const ClientEditForm = ({ client, onClosing }) => {
       <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
-      <div className={styles.first_name}>
+      <div className={styles.company_name}>
         <div className="icon">
           <BsFillFileEarmarkPersonFill />
         </div>
@@ -88,7 +88,7 @@ export const ClientEditForm = ({ client, onClosing }) => {
             type="text"
             id="firstName"
             name="firstName"
-            value={formData.firstName}
+            value={formData.companyName}
             onChange={(e) => handleChange(e, 0)}
             required
           />
@@ -144,13 +144,14 @@ export const ClientEditForm = ({ client, onClosing }) => {
               />
 
               {index > 0 && (
-                <button type="button" onClick={() => handleRemoveMobile(index)}>
+                <button type="Remove" onClick={() => handleRemoveMobile(index)}>
                   Remove
                 </button>
               )}
+              {index == 0 && <button type="fill">fill text</button>}
             </div>
           ))}
-          <button type="button" onClick={handleAddMobile}>
+          <button type="mobile" onClick={handleAddMobile}>
             Add Mobile Number
           </button>
         </div>
