@@ -146,9 +146,10 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
               <td>{task.companyAddress || "No Company Address"}</td>
               <td>{task.isArrived ? <p>Arrived</p> : <p>Not Arrived</p>}</td>
               <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
-              <td>{technicians.find(
-            (technician) => technician.email === task.email
-          )?.firstName || "No Technician"}</td>
+              <td>
+      {technicians.find((technician) => technician.email === task.email)?.firstName || "No Technician"}{' '}
+      {technicians.find((technician) => technician.email === task.email)?.lastName || ""}
+    </td>
               <td>
                 {task.startDate
                   ? task.startDate.toDate().toLocaleDateString()
