@@ -1,7 +1,13 @@
 // tasksTable.module.scss
 
 @use "../variables" as *;
+@media(min-width:1500px){
+  .table_container_2 {
+    display: flex;
 
+    }
+
+}
 .table_container_2 {
   display: flex;
   align-items:center;
@@ -66,22 +72,9 @@
       text-align: left;
       white-space: nowrap;
     }
+    
 
-    @media (width < 1200px) {
-      th,
-      td {
-        padding: 1.2em 0.9em;
-        text-align: left;
-        vertical-align: middle;
-        font-size: 0.8em;
-        border: 1px solid #ccc;
-      }
-
-      th {
-        text-align: left;
-        font-size: 0.85em;
-      }
-    }
+    
 
     tr {
       th:first-child,
@@ -200,4 +193,32 @@
   }
 
  
+}
+@media (max-width:1500px ){
+  .table_container_2{
+    
+    margin-left:-60px;
+  }
+  
+    
+}
+@media (max-width: 1200px) {
+  .table_container_2{
+    margin-left: 0px;
+    
+  }
+      
+  th,
+  td {
+    padding: 1.2em 0.9em;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.8em;
+    border: 1px solid #ccc;
+  }
+
+  th {
+    text-align: left;
+    font-size: 0.85em;
+  }
 }

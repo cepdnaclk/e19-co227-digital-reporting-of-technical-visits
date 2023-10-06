@@ -2,13 +2,20 @@ import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import styles from "../Styles/TechniciansAssign.module.scss";
 import TaskTimeline from "../Components/TechnicianAssign/TaskTimeline"; // Import the TaskTimeline component
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../Context/dataContext";
+import TimelineHandler from "../Components/TechnicianAssign/TimelineHandler";
+import TechnicianAssignForm from "../Components/TechnicianAssign/TechnicianAssignForm";
+import TaskLegend from "../Components/TechnicianAssign/TaskLegend";
 
 export const TechnicianAssign = () => {
   // Sample data for tasks, start time, end time, slot duration, and technicians
-  const {jobs,technicians} = useContext(DataContext);
-  
+  const { jobs, technicians } = useContext(DataContext);
+  const [showAssignForm, setShowAssignForm] = useState(false);
+  const [selectedTechnician, setSelectedTechnician] = useState();
+  const [selectedTimeslot, setSelectedTimeslot] = useState();
+  const [selectedParentDate,setSelectedParentDate] = useState(new Date());
+
   // const tasks = [
   //   {
   //     id: 1,
@@ -131,7 +138,7 @@ export const TechnicianAssign = () => {
   //     technicianId: 3,
   //   },
   // ];
-  
+
   // const technicians = [
   //   {
   //     id: 1,
@@ -155,10 +162,9 @@ export const TechnicianAssign = () => {
   //   },
   //   // Add more technicians as needed
   // ];
-  const startTime = new Date(2023,9,1,8,0); // Replace with your desired start time
-  const endTime = new Date(2023,9,1,17,0); // Replace with your desired end time
-  const slotDuration = 60 * 60 * 1000; // 30 minutes in milliseconds
-  
+  const startTime = new Date(2023, 9, 1, 8, 0); // Replace with your desired start time
+  const endTime = new Date(2023, 9, 1, 17, 0); // Replace with your desired end time
+  const slotDuration = 60 * 60 * 1000; // hour in milliseconds
 
   return (
     <div>
@@ -166,19 +172,43 @@ export const TechnicianAssign = () => {
         <Navigation />
         <UserCard />
         <div className={styles.component_container}>
+          <div className={styles.legend_container}>
+          <TaskLegend/>
+          </div>
+          
           <div className={styles.name}>
             <p>Technician Assign</p>
           </div>
 
           {/* Include the TaskTimeline component */}
           <div className={styles.table_container}>
-            <TaskTimeline
+            <TimelineHandler
+              jobs={jobs}
+              technicians={technicians}
+              formHandler={setShowAssignForm}
+              technicianSelectionHandler = {setSelectedTechnician}
+              timeslotSelectionHandler = {setSelectedTimeslot}
+              dateHandler = {setSelectedParentDate}
+            />
+            {/* <TaskTimeline
               tasks={jobs}
               startTime={startTime}
               endTime={endTime}
               slotDuration={slotDuration}
               technicians={technicians}
-            />
+            /> */}
+          </div>
+          <div>
+            {showAssignForm && (
+              <TechnicianAssignForm
+                technician={selectedTechnician}
+                timeslot={selectedTimeslot}
+                date = {selectedParentDate}
+                onClose = {()=>{
+                  setShowAssignForm(false);
+                }}
+              />
+            )}
           </div>
         </div>
       </div>

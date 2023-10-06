@@ -1,0 +1,34 @@
+@use "../variables" as *;
+
+.tab_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    
+  }
+  
+  .tab {
+    cursor: pointer;
+    padding:5px 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+    border-color: transparent;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    margin: 8px;
+    background-color: #082621;
+    color: #fff;
+  
+    &:hover {
+      background-color: #474141;
+    }
+  
+    &.active {
+      background-color: #a5e8ee;
+      color: #121212;
+      font-size: 1.2em;
+
+    }
+  }
+  
