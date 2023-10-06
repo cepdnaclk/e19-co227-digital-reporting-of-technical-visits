@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:visitlog/Controllers/task_controller.dart';
 import 'package:visitlog/Utils/date_time.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 class JobCardsList extends StatelessWidget {
   final String searchWord;
@@ -152,23 +156,30 @@ class JobCardsList extends StatelessWidget {
             padding: const EdgeInsets.all(0),
             child: Stack(children: [
               Container(
-                height: 320,
+                height: 260,
                 child: Column(
                   children: [
                     SizedBox(
                         height: 92,
-                        child: _TopPortion(topic: topic, subTopic: subTopic)),
+                        child: _TopPortion(
+                          topic: topic,
+                          subTopic: subTopic,
+                          pdfUrl: "",
+                        )),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                      padding: const EdgeInsets.only(left: 20.0, top: 10),
                       child: ListTile(
                         leading: const Icon(Icons.location_city),
                         title: Text(
                           topic,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -178,10 +189,13 @@ class JobCardsList extends StatelessWidget {
                         title: Text(
                           location,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -191,10 +205,13 @@ class JobCardsList extends StatelessWidget {
                         title: Text(
                           date,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                     Padding(
@@ -204,10 +221,13 @@ class JobCardsList extends StatelessWidget {
                         title: Text(
                           time,
                           style: const TextStyle(
+                            fontSize: 15.5,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
+                        dense: true,
+                        visualDensity: VisualDensity(vertical: -3),
                       ),
                     ),
                   ],
@@ -222,10 +242,27 @@ class JobCardsList extends StatelessWidget {
 }
 
 class _TopPortion extends StatelessWidget {
-  const _TopPortion({required this.topic, required this.subTopic});
+  const _TopPortion(
+      {required this.topic, required this.subTopic, required this.pdfUrl});
 
   final String topic;
   final String subTopic;
+  final String pdfUrl;
+
+  Future<void> downloadPdf(String pdfUrl) async {
+    final http.Response response = await http.get(Uri.parse(pdfUrl));
+
+    if (response.statusCode == 200) {
+      final Directory appDirectory = await getApplicationDocumentsDirectory();
+      final File pdfFile = File('${appDirectory.path}/downloaded.pdf');
+      await pdfFile.writeAsBytes(response.bodyBytes);
+
+      // Now the PDF is downloaded and stored in the app's document directory.
+      print('PDF downloaded to ${pdfFile.path}');
+    } else {
+      throw Exception('Failed to download PDF');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -250,7 +287,10 @@ class _TopPortion extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(
+              left: 12.0,
+              bottom: 18.0,
+            ),
             child: ListTile(
               leading: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -263,8 +303,44 @@ class _TopPortion extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 16),
+                    fontSize: 17),
               ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: SizedBox(
+            width: 160,
+            height: 35,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await downloadPdf(pdfUrl);
+                    } catch (e) {
+                      print('Error downloading PDF: $e');
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color.fromARGB(255, 28, 124, 202), // Text color
+                    padding: EdgeInsets.symmetric(
+                        vertical: 2, horizontal: 14), // Padding
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(10), // Rounded corners
+                    ),
+                    elevation: 4, // Button shadow
+                  ),
+                  child: Text(
+                    'Download Report ⍗',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ],
             ),
           ),
         )

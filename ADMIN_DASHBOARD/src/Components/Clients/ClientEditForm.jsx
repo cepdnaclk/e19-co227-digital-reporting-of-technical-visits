@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { collection, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import styles from "../../Styles/Clients/ClientForm.module.scss";
-import {
-  BsFillFileEarmarkPersonFill,
-  BsFileEarmarkPerson,
-  BsTelephoneFill,
-} from "react-icons/bs";
+import { BsFillFileEarmarkPersonFill, BsTelephoneFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 
 export const ClientEditForm = ({ client, onClosing }) => {
-  const clientCollectionRef = collection(db, "Clients");
-
   const [formData, setFormData] = useState({
     companyName: "",
     email: "",
@@ -21,7 +15,6 @@ export const ClientEditForm = ({ client, onClosing }) => {
   });
 
   useEffect(() => {
-    // Populate the form with the client's data when it's available
     if (client) {
       setFormData({
         companyName: client.companyName || "",
@@ -30,7 +23,6 @@ export const ClientEditForm = ({ client, onClosing }) => {
         mobile: client.mobile || [""],
       });
     }
-    console.log(formData.mobile);
   }, [client]);
 
   const handleChange = (e, index) => {
@@ -70,34 +62,34 @@ export const ClientEditForm = ({ client, onClosing }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Update the client's data in the database
     await onUpdate(formData);
     onClosing();
   };
 
   const onUpdate = async (data) => {
-    await updateDoc(doc(clientCollectionRef, client.id), data);
+    await updateDoc(doc(db, "clients", client.id), data);
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.card}>
-      <h2 className={styles.topic}>Edit Client</h2>
+      <div className={styles.topic_container}>
+        <h2 className={styles.topic}>Edit Client Details</h2>
+      </div>
       <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
-      <div className={styles.company_name}>
+      <div className={styles.first_name}>
         <div className="icon">
           <BsFillFileEarmarkPersonFill />
         </div>
-        <div className={styles.company_name_input}>
-          <label htmlFor="companyName">Company Name </label>
+        <div className={styles.first_name_input}>
+          <label htmlFor="firstName">Company Name </label>
           <input
             type="text"
-            id="companyName"
-            name="companyName"
-            value={formData.companyName}
-            onChange={(e) => handleChange(e, "companyName")}
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={(e) => handleChange(e, 0)}
             required
           />
         </div>
@@ -114,29 +106,27 @@ export const ClientEditForm = ({ client, onClosing }) => {
             id="email"
             name="email"
             value={formData.email}
-            onChange={(e) => handleChange(e, "email")}
+            onChange={(e) => handleChange(e, 2)}
             required
           />
         </div>
       </div>
-
       <div className={styles.address}>
         <div className="icon">
           <GoLocation />
         </div>
-        <div className={styles.address_input}>
+        <div>
           <label htmlFor="address">Address&emsp;&ensp;</label>
           <input
             type="text"
             id="address"
             name="address"
             value={formData.address}
-            onChange={(e) => handleChange(e, "address")}
+            onChange={(e) => handleChange(e, 3)}
             required
           />
         </div>
       </div>
-
       <div className={styles.phone_number}>
         <div className="icon">
           <BsTelephoneFill />
@@ -146,12 +136,13 @@ export const ClientEditForm = ({ client, onClosing }) => {
           {formData.mobile.map((mobileNumber, index) => (
             <div key={index}>
               <input
-                type="number"
+                type="text"
                 name="mobile"
                 value={mobileNumber}
                 onChange={(e) => handleChange(e, index)}
                 required
               />
+
               {index > 0 && (
                 <button type="button" onClick={() => handleRemoveMobile(index)}>
                   Remove
@@ -164,10 +155,11 @@ export const ClientEditForm = ({ client, onClosing }) => {
           </button>
         </div>
       </div>
-
       <div>
         <button type="submit">Submit</button>
       </div>
     </form>
   );
 };
+
+export default ClientEditForm;

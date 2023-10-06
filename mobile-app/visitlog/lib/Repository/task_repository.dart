@@ -50,7 +50,7 @@ class TaskRepository extends GetxController {
             'location': address,
             'description': description,
             'time': date,
-            'isArrived' : isArrived,
+            'isArrived': isArrived,
             'id': id,
           };
 
@@ -68,7 +68,7 @@ class TaskRepository extends GetxController {
             'location': address,
             'description': description,
             'time': date,
-            'isArrived' : isArrived,
+            'isArrived': isArrived,
             'id': id,
           };
 
@@ -107,7 +107,7 @@ class TaskRepository extends GetxController {
     return upcommingItems;
   }
 
-  List<Map<String, String>> getJobss() {
+  List<Map<String, String>> getJobs() {
     return jobs;
   }
 }
