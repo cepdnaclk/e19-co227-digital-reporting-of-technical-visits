@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import ImageCarousel from "./Carousel";
-import {
-  collection,
-  updateDoc,
-  onSnapshot,
-  doc,
-  Timestamp,
-} from "firebase/firestore";
+import { DataContext } from "../../Context/dataContext";
+import { collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "firebase/firestore";
 import { DateTimePicker } from "@mui/x-date-pickers";
@@ -33,36 +28,31 @@ export const TaskVerifyForm = ({ task, onClosing }) => {
   console.log(task);
   const taskCollectionRef = collection(db, "Tasks");
   const [address, setAddress] = useState(task.address);
-  const [technicians, setTechnicians] = useState();
   const [client, setClient] = useState(task.companyName);
-  const [selectedTechnician, setSelectedTechnician] = useState("");
-  const [selectedClient, setSelectedClient] = useState("");
   const [sameAsCompanyAddress, setSameAsCompanyAddress] = useState(false);
   const [startDate, setStartDate] = useState(task.inspectionDate);
   const [inspectionTime, setInspectionTime] = useState(task.inspectionTime);
+  const { technicians } = useContext(DataContext);
 
-  const [formData, setFormData] = useState(
-    {
-      title: "",
-      notes: "",
-      description: "",
-      workType: "",
-      isVerified: true,
-    },
-  );
+  const [formData, setFormData] = useState({
+    title: "",
+    notes: "",
+    description: "",
+    workType: "",
+    isVerified: true,
+  });
 
   useEffect(() => {
     // Populate the form with the technician's data when it's available
     if (task) {
       setFormData({
         title: task.title,
-      notes: task.notes,
-      description: task.description,
-      workType: task.workType,
-      isVerified: true,
+        notes: task.notes,
+        description: task.description,
+        workType: task.workType,
+        isVerified: true,
       });
     }
-    console.log(formData.mobile);
   }, [task]);
 
   const handleChange = (e) => {
@@ -203,8 +193,15 @@ export const TaskVerifyForm = ({ task, onClosing }) => {
                   <input
                     type="text"
                     id="title"
-                    value={task.technicianName}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={
+                      (technicians.find(
+                        (technician) => technician.email === task.email
+                      )?.firstName || "No Technician") +
+                      " " +
+                      (technicians.find(
+                        (technician) => technician.email === task.email
+                      )?.lastName || "")
+                    }
                   ></input>
                 </div>
               </div>
@@ -248,6 +245,7 @@ export const TaskVerifyForm = ({ task, onClosing }) => {
                   <label htmlFor="description">Description:</label>
                   <textarea
                     id="description"
+                    name="description"
                     value={formData.description}
                     onChange={(e) => setDescription(e.target.value)}
                     required
@@ -262,6 +260,7 @@ export const TaskVerifyForm = ({ task, onClosing }) => {
                   <label htmlFor="description">Notes:</label>
                   <textarea
                     id="description"
+                    name="notes"
                     value={formData.notes}
                     onChange={(e) => setDescription(e.target.value)}
                     required
@@ -300,10 +299,20 @@ export const TaskVerifyForm = ({ task, onClosing }) => {
               </div>
             </div>
           </div>
-          <div className={styles.image_container}>
-            <ImageCarousel imageUrls={task.imageUrls} />
-            <a href={task.technicianReportUrl} target="_blank" rel="noopener noreferrer">Download Technician Report</a>
-          </div>
+          {task.imageUrls ? (
+            <div className={styles.image_container}>
+              <ImageCarousel imageUrls={task.imageUrls} />
+              <a
+                href={task.technicianReportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download Technician Report
+              </a>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
 
         <div>
