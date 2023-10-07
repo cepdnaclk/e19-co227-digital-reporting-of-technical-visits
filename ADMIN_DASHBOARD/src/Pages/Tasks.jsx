@@ -8,6 +8,7 @@ import { TaskForm } from "../Components/Tasks/TaskForm";
 import styles from "../Styles/Tasks.module.scss";
 import { TaskEditForm } from "../Components/Tasks/TaskEditForm";
 import { DataContext } from "../Context/dataContext";
+import Notification from "../Components/Notification";
 
 export const Tasks = () => {
   // const [jobs, setJobs] = useState([]);
@@ -85,6 +86,7 @@ export const Tasks = () => {
       <div className={styles.container}>
         <Navigation />
         <UserCard />
+        <Notification />
         <div className={styles.component_container}>
           <div className={styles.name}>
             <p>Tasks Log</p>

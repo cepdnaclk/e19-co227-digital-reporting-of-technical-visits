@@ -11,22 +11,20 @@ import { DataContextProvider } from "./Context/dataContext";
 
 function App() {
   return (
-    
     <div className="App">
       <DataContextProvider>
-      <Routes>
-        {/*Main />*/}
-        <Route path="/" element={<Login />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/techassign" element={<TechnicianAssign />} />
-        <Route path="/tech" element={<Technician />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
+        <Routes>
+          {/*Main />*/}
+          <Route path="/" element={<Login />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/techassign" element={<TechnicianAssign />} />
+          <Route path="/tech" element={<Technician />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </DataContextProvider>
     </div>
-    
   );
 }
 

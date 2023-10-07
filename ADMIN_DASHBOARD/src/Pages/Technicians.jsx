@@ -8,6 +8,7 @@ import { TechnicianForm } from "../Components/Technicians/TechnicianForm";
 import { TechnicianEditForm } from "../Components/Technicians/TechnicianEditForm";
 import styles from "../Styles/Technicians.module.scss";
 import { DataContext } from "../Context/dataContext";
+import Notification from "../Components/Notification";
 
 export const Technician = () => {
   // const [technicians, setTechnicians] = useState([]);
@@ -117,6 +118,7 @@ This effect attaches a click event listener to close the form when clicking outs
       <div className={styles.container}>
         <Navigation />
         <UserCard />
+        <Notification/>
 
         <div className={styles.component_container}>
           <div className={styles.title}>

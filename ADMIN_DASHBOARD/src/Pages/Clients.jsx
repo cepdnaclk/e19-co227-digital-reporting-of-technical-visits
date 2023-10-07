@@ -8,6 +8,7 @@ import { ClientForm } from "../Components/Clients/ClientForm";
 import { collection, onSnapshot, getDoc } from "firebase/firestore";
 import { DataContext } from "../Context/dataContext";
 import { ClientEditForm } from "../Components/Clients/ClientEditForm";
+import Notification from "../Components/Notification";
 
 export const Clients = () => {
   // const [clients, setClients] = useState([]);
@@ -48,6 +49,7 @@ export const Clients = () => {
     <div className={styles.container}>
       <Navigation />
       <UserCard />
+      <Notification />
       <div className={styles.component_container}>
         <div className={styles.title}>
           <p>Clients Log</p>
