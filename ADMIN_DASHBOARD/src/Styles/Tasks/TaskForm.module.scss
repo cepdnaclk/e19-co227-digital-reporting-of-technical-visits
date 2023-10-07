@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 .card {
   position: fixed;
   // scale: 0.9;
@@ -236,5 +238,49 @@
   svg {
     font-size: 1.2em;
     margin: 0px;
+  }
+
+  .feedbackContainer {
+    visibility: hidden;
+    position: absolute;
+    top: -5;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 2em;
+    height: 100.3%;
+    width: 100%;
+    padding: 2em 1em;
+    text-align: center;
+    background-color: $bgcolor;
+    z-index: 9999;
+    display: flex;
+    transform: scaleX(0);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: hsl(165, 65%, 41%);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in;
+    transition: all 150ms ease-in;
+
+    .feedbackIcon {
+      height: 100px;
+      scale: 4;
+    }
+
+    &.show {
+      visibility: visible;
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    &.feedbackWaiting {
+      color: $waitingColor;
+    }
+    &.feedbackError {
+      color: rgb(169, 45, 64);
+    }
   }
 }

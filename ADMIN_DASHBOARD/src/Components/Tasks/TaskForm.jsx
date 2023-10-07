@@ -153,6 +153,7 @@ export const TaskForm = ({onClosing}) => {
                   type="reset"
                   onClick={(e) => {
                     e.preventDefault();
+                    setAddress("");
                     setSameAsCompanyAddress(false);
                   }}
                 >
