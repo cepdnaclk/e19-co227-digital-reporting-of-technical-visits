@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { collection, onSnapshot, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Navigation } from "../Components/Navigation/Navigation";
@@ -7,6 +7,7 @@ import { TasksTable } from "../Components/Tasks/TasksTable";
 import { TaskForm } from "../Components/Tasks/TaskForm";
 import styles from "../Styles/Tasks.module.scss";
 import { TaskEditForm } from "../Components/Tasks/TaskEditForm";
+import { TaskVerifyForm } from "../Components/Tasks/TaskVerifyForm";
 import { DataContext } from "../Context/dataContext";
 
 export const Tasks = () => {
@@ -15,9 +16,13 @@ export const Tasks = () => {
   const [searchColumn, setSearchColumn] = useState("Task Name");
 
   const [showForm, setShowForm] = useState(false);
-  const [showEditForm,setShowEditForm] = useState(false)
-  const [selectedTask,setSelectedTask] = useState("");
-  const {jobs} = useContext(DataContext);
+  const [showVerifyForm, setShowVerifyForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [selectedTask, setSelectedTask] = useState("");
+  const { jobs } = useContext(DataContext);
+  const backgroundClick = useRef(null);
+  const backgroundClickEdit = useRef(null);
+  const backgroundClickVerify = useRef(null);
   // useEffect(() => {
   //   const jobsCollectionRef = collection(db, "Tasks");
 
@@ -70,18 +75,83 @@ export const Tasks = () => {
   //   };
   // }, []);
 
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick);
+
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClickVerify);
+
+    return () => {
+      document.removeEventListener("click", handleBackgroundClickVerify);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClickEdit);
+
+    return () => {
+      document.removeEventListener("click", handleBackgroundClickEdit);
+    };
+  }, []);
+
+  // Function to close the form when clicking outside of it.
+  const handleBackgroundClick = (e) => {
+    if (e.target === backgroundClick.current) {
+      setShowForm(false);
+    }
+  };
+
+  // Function to close the edit form when clicking outside of it.
+  const handleBackgroundClickEdit = (e) => {
+    if (e.target === backgroundClickEdit.current) {
+      closeEditForm();
+    }
+  };
+
+  const handleBackgroundClickVerify = (e) => {
+    if (e.target === backgroundClickVerify.current) {
+      closeVerifyForm();
+    }
+  };
+
   const toggleForm = () => {
     setShowForm(!showForm);
   };
 
   const closeEditForm = () => {
-    setShowEditForm(false)
-    setSelectedTask(null)
-  }
+    setShowEditForm(false);
+    setSelectedTask(null);
+  };
+
+  const closeVerifyForm = () => {
+    setShowVerifyForm(false);
+    setSelectedTask(null);
+  };
 
   return (
-
     <div>
+      {showEditForm && (
+        <div className={styles.cardContainer} ref={backgroundClickEdit}>
+          <TaskEditForm task={selectedTask} onClosing={closeEditForm} />
+        </div>
+      )}
+
+      {showForm && (
+        <div className={styles.cardContainer} ref={backgroundClick}>
+          <TaskForm onClosing={toggleForm} />
+        </div>
+      )}
+
+      {showVerifyForm && (
+        <div className={styles.cardContainer} ref={backgroundClickVerify}>
+          <TaskVerifyForm task={selectedTask} onClosing={closeVerifyForm} />
+        </div>
+      )}
       <div className={styles.container}>
         <Navigation />
         <UserCard />
@@ -94,15 +164,7 @@ export const Tasks = () => {
               Create Task
             </button>
           </div>
-          {showForm && <TaskForm />}
-          {showEditForm && (
-        <div className={styles.cardContainer} >
-          <TaskEditForm
-            task={selectedTask}
-            onClosing={closeEditForm}
-          />
-        </div>
-      )}
+
           <div className={styles.table_container}>
             <div className={styles.search_bar}>
               <input
@@ -123,19 +185,24 @@ export const Tasks = () => {
                 <option value="Address">Address</option>
               </select>
             </div>
-            <TasksTable
-              tasks={jobs}
-              searchTerm={searchTerm}
-              searchColumn={searchColumn}
-              taskEdit={(task)=>{
-setShowEditForm(true)
-setSelectedTask(task)
-              }}
-
-            />
-            
+            {jobs.length > 0 ? (
+              <TasksTable
+                tasks={jobs}
+                searchTerm={searchTerm}
+                searchColumn={searchColumn}
+                taskEdit={(task) => {
+                  setShowEditForm(true);
+                  setSelectedTask(task);
+                }}
+                taskVerify={(task) => {
+                  setShowVerifyForm(true);
+                  setSelectedTask(task);
+                }}
+              />
+            ) : (
+              <p className={styles.loading}>Loading Tasks.....</p>
+            )}
           </div>
-          
         </div>
       </div>
     </div>

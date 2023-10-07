@@ -132,6 +132,7 @@
       vertical-align: middle;
       gap: 0.2em;
       padding: 0.4em 1em 0.4em 0.8em;
+      background-color: rgb(180, 166, 138);
       color: white;
       border-radius: 1em;
       text-overflow: ellipsis;
@@ -141,6 +142,29 @@
       font-size: 0.9em;
       transform: translateX(-12%);
       transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+
+      &.verified{
+        display: inline-block;
+        padding: 0.4em 0.8em;
+        cursor: default;
+
+        svg {
+          margin-right: 0.3em;
+          font-size: 1em;
+        }
+      }
+
+      &.not_verify{
+        display: inline-block;
+        padding: 0.4em 0.8em;
+        cursor: default;
+        background-color: #b48787;
+
+        svg {
+          margin-right: 0.3em;
+          font-size: 1em;
+        }
+      }
 
       &.verify {
         background-color: $verifyColor;
