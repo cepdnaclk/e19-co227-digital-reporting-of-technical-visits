@@ -10,7 +10,7 @@ const DataContextProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    console.log("Warning: Data Fetching");
+    // console.log("Warning: Data Fetching");
     const technicianCollectionRef = collection(db, "Technicians");
 
     const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
@@ -27,15 +27,15 @@ const DataContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    console.log("Warning: Data Fetching");
+    // console.log("Warning: Data Fetching");
     const jobsCollectionRef = collection(db, "Tasks");
 
     const unsubscribe = onSnapshot(jobsCollectionRef, async (snapshot) => {
-      console.log("Warning: Data Fetching");
+      // console.log("Warning: Data Fetching");
       const updatedJobs = [];
 
       for (const docRef of snapshot.docs) {
-        console.log(docRef);
+        // console.log(docRef);
         const jobData = docRef.data();
         var jobWithTechnician = jobData;
         if (jobData.email) {
@@ -79,7 +79,7 @@ const DataContextProvider = ({ children }) => {
     };
   }, []);
   useEffect(() => {
-    console.log("Warning: Data Fetching");
+    // console.log("Warning: Data Fetching");
     const clientCollectionRef = collection(db, "Clients");
 
     const unsubscribe = onSnapshot(clientCollectionRef, (snapshot) => {

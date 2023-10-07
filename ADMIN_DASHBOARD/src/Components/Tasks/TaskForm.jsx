@@ -8,22 +8,16 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "firebase/firestore";
-import { DateTimePicker } from "@mui/x-date-pickers";
+import { FiCheckCircle } from "react-icons/fi";
 import styles from "../../Styles/Tasks/TaskForm.module.scss";
 import dayjs from "dayjs";
-import {
-  BsFillFileEarmarkPersonFill,
-  BsCalendar2Date,
-} from "react-icons/bs";
+import { BsFillFileEarmarkPersonFill, BsCalendar2Date } from "react-icons/bs";
 import { MdTaskAlt } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
 import { TbListDetails } from "react-icons/tb";
-import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import classNames from "classnames";
 
-export const TaskForm = ({onClosing}) => {
+export const TaskForm = ({ onClosing }) => {
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -49,6 +43,7 @@ export const TaskForm = ({onClosing}) => {
     };
   }, []);
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -71,6 +66,11 @@ export const TaskForm = ({onClosing}) => {
     const jobsCollectionRef = collection(db, "Tasks");
     try {
       await addDoc(jobsCollectionRef, taskData);
+      setShowFeedbackSuccess(true);
+      setTimeout(() => {
+        setShowFeedbackSuccess(false);
+        onClosing();
+      }, 2000);
       console.log("Task created successfully!");
     } catch (error) {
       console.error("Error creating task:", error);
@@ -82,10 +82,13 @@ export const TaskForm = ({onClosing}) => {
     <>
       {showForm && (
         <div className={styles.card}>
-          <div className={styles.close_button} onClick={(e) => {
-            e.preventDefault();
-            onClosing();
-          }}>
+          <div
+            className={styles.close_button}
+            onClick={(e) => {
+              e.preventDefault();
+              onClosing();
+            }}
+          >
             X
           </div>
           <div className={styles.topic_container}>
@@ -209,8 +212,18 @@ export const TaskForm = ({onClosing}) => {
                 />
               </div>
             </div>
-
-            <button type="submit">Create Task</button>
+            <div>
+              <button type="submit">Create Task</button>
+            </div>
+            <div
+              className={classNames(
+                styles.feedbackContainer,
+                showFeedbackSuccess && styles.show
+              )}
+            >
+              <FiCheckCircle className={styles.feedbackIcon} />
+              <p>Task Created Successfully!</p>
+            </div>
           </form>
         </div>
       )}
