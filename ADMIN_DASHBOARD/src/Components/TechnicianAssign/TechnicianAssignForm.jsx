@@ -3,6 +3,15 @@ import { DataContext } from "../../Context/dataContext"; // Import your DataCont
 import styles from "../../Styles/TechnicianAssign/TechnicianAssignForm.module.scss";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import {
+  BsFillFileEarmarkPersonFill,
+  BsCalendar2Date,
+  BsClock,
+} from "react-icons/bs";
+import { MdError, MdPlaylistAddCheckCircle } from "react-icons/md";
+import { AiOutlineMail } from "react-icons/ai";
+import { TbListDetails } from "react-icons/tb";
+import classNames from "classnames";
 
 const TechnicianAssignForm = ({ technician, timeslot, date, onClose }) => {
   // Access the jobs and technicians from the DataContext
@@ -19,6 +28,7 @@ const TechnicianAssignForm = ({ technician, timeslot, date, onClose }) => {
     setSelectedJob(e.target.value);
   };
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,19 +66,20 @@ const TechnicianAssignForm = ({ technician, timeslot, date, onClose }) => {
 
     // Now, you have the complete date and time for the job
     console.log(
-      `Technician: ${technician.id}, Job: ${selectedJob}, Date and Time: ${jobDate.toISOString()}, Email: ${technicianEmail}`
+      `Technician: ${
+        technician.id
+      }, Job: ${selectedJob}, Date and Time: ${jobDate.toISOString()}, Email: ${technicianEmail}`
     );
-    const formData={
-        
-        startDate:jobDate,
-        email:technicianEmail,
-    }
+    const formData = {
+      startDate: jobDate,
+      email: technicianEmail,
+    };
 
-    await onUpdate(formData,selectedJob);
+    await onUpdate(formData, selectedJob);
     onClose();
   };
 
-  const onUpdate = async (data,id) => {
+  const onUpdate = async (data, id) => {
     console.log(data);
     // Update the document in Firestore
     await updateDoc(doc(jobCollectionRef, id), data);
@@ -92,33 +103,82 @@ const TechnicianAssignForm = ({ technician, timeslot, date, onClose }) => {
   }, [technician, technicians]);
 
   return (
-    <div className={styles.card}>
+    <form onSubmit={handleSubmit} className={styles.card}>
       <button className={styles.close_button} onClick={(e) => handleClose(e)}>
         X
       </button>
-      <h2>Assign Job for Technician</h2>
-      <p>
-        Technician Name: {technician ? technician.firstName : "Not selected"}
-      </p>
-      <p>Technician Email: {technicianEmail || "Not available"}</p>
-      <p>Date: {date ? date.toISOString().split("T")[0] : "Not Selected"}</p>
+      <div className={styles.topic_container}>
+        <h2 className={styles.topic}>Assign Job for Technician</h2>
+      </div>
+      <div className={styles.client_name}>
+        <div className={styles.icon}>
+          <BsFillFileEarmarkPersonFill />
+        </div>
+        <div>
+          <label>Technician Name: </label>
+          <input type="text" value={technician
+              ? technician.firstName + " " + technician.lastName
+              : "Not selected"}
+          />
+        </div>
+      </div>
+      <div className={styles.e_mail}>
+        <div className={styles.icon}>
+          <AiOutlineMail />
+        </div>
+        <div>
+          <label>Technician Email:</label>
+          <input type="email" value={technicianEmail || "Not available"}/>
+        </div>
+      </div>
+      <div className={styles.date}>
+        <div className={styles.icon}>
+          <BsCalendar2Date />
+        </div>
+        <div>
+          <label>Date:</label>{" "}
+          <input type="date" value={date ? date.toISOString().split("T")[0] : "Not Selected"}/>
+        </div>
+      </div>
+      <div className={styles.e_mail}>
+        <div className={styles.icon}>
+          <BsClock />
+        </div>
+        <div>
+          <label>Timeslot:</label> 
+          <input type="times" value={timeslot ? timeslot : "Not selected"}></input>
+        </div>
+      </div>
 
-      <p>Timeslot: {timeslot ? timeslot : "Not selected"}</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Select Job:
-          <select value={selectedJob} onChange={handleJobChange}>
-            <option value="">Select a Job</option>
-            {unassignedJobs.map((job) => (
-              <option key={job.id} value={job.id}>
-                {job.title}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="submit">Assign Job</button>
-      </form>
-    </div>
+      <div className={styles.client_name}>
+        <div className={styles.icon}>
+          <TbListDetails />
+        </div>
+        <div> <label>Select Job:</label>
+        <select value={selectedJob} onChange={handleJobChange}>
+          <option value="">Select a Job</option>
+          {unassignedJobs.map((job) => (
+            <option key={job.id} value={job.id}>
+              {job.title}
+            </option>
+          ))}
+        </select></div>
+       
+      </div>
+
+      <button type="submit">Assign Job</button>
+      <div
+          className={classNames(
+            styles.feedbackContainer,
+            styles.feedbackWaiting,
+            showFeedbackSuccess && styles.show
+          )}
+        >
+          <MdPlaylistAddCheckCircle className={styles.feedbackIcon} />
+          <p>Task Verified!</p>
+        </div>
+
+    </form>
   );
 };
 

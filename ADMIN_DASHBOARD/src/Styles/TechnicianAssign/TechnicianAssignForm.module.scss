@@ -99,13 +99,31 @@
     font-size: 12px;
   }
 
-  input[type="number"] {
-    width: 102%;
+  input[type="date"] {
+    width: 130%;
     padding: 0.2rem 0.6rem;
     border: none;
     border-bottom: 1px solid #ccc;
     background-color: inherit;
     font-size: 12px;
+  }
+
+  input[type="times"] {
+    width: 105%;
+    padding: 0.2rem 0.6rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: inherit;
+    font-size: 12px;
+  }
+
+  select{
+    width: 120%;
+    padding: 0.2rem 0.6rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: inherit;
+    font-size: 14px;
   }
 
   label {
@@ -178,34 +196,39 @@
     box-shadow: 0 4px 7px rgba(82, 145, 85, 0.6);
   }
 
-  .first_name {
+  .client_name {
     display: flex;
     flex-direction: row;
+    justify-content: left;
     text-align: start;
+    width: 100%;
     align-items: center;
     gap: 20px;
     .icon {
-      font-size: 30px;
+      margin-top: 1rem;
+      font-size: 15px;
     }
   }
-  .last_name {
+  .date {
     display: flex;
+    width: 100%;
     flex-direction: row;
     text-align: start;
     align-items: center;
     gap: 20px;
     .icon {
-      font-size: 30px;
+      font-size: 15px;
     }
   }
   .e_mail {
     display: flex;
+    width: 100%;
     flex-direction: row;
     text-align: start;
     align-items: center;
     gap: 20px;
     .icon {
-      font-size: 30px;
+      font-size: 15px;
     }
   }
 

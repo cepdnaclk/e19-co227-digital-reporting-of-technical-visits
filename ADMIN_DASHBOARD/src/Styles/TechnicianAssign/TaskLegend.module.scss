@@ -1,29 +1,32 @@
-
 .legend {
-    
-    justify-content: space-around;
-    
-  }
-  .legend-title{
-    font-weight: bold;
-    font-size:1.6em;
-    }
-  
-  .legend-item {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    padding:5px;
-  }
-  
-  .legend-color {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-    
-  }
-  
-  .legend-text {
-    font-weight: bold;
-  }
-  
+  justify-content: space-around;
+  padding: 0.5rem;
+}
+
+.legend-title {
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 0.5rem;
+  margin-inline: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  padding: 5px;
+  margin-inline: 0.5rem;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 30%;
+}
+
+.legend-text {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-left: 0.8rem;
+}

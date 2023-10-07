@@ -48,7 +48,6 @@ or for storing mutable values that don't trigger component re-renders.
   //   };
   // }, []);
 
-  const createTechnician = async () => {};
 
   /*
  😶‍🌫️
