@@ -5,6 +5,8 @@ import styles from "../../Styles/Clients/ClientForm.module.scss";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { BsFillPersonFill, BsTelephoneFill } from "react-icons/bs";
+import classNames from "classnames";
+import {FiCheckCircle } from "react-icons/fi";
 
 export const ClientForm = ({ onClosing }) => {
   const clientCollectionRef = collection(db, "Clients");
@@ -51,11 +53,16 @@ export const ClientForm = ({ onClosing }) => {
     });
   };
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await onSubmit(formData);
-    onClosing();
+    setShowFeedbackSuccess(true);
+    setTimeout(() => {
+      setShowFeedbackSuccess(false);
+      onClosing();
+    }, 2000);
 
     setFormData({
       companyName: "",
@@ -64,6 +71,7 @@ export const ClientForm = ({ onClosing }) => {
       mobile: [""],
     });
   };
+
 
   const onSubmit = async (data) => {
     await addDoc(clientCollectionRef, data);
@@ -165,8 +173,17 @@ export const ClientForm = ({ onClosing }) => {
       </div>
 
       <div>
-        <button type="submit">Submit</button>
+        <button type="submit">Add Client</button>
       </div>
+      <div
+          className={classNames(
+            styles.feedbackContainer,
+            showFeedbackSuccess && styles.show
+          )}
+        >
+          <FiCheckCircle className={styles.feedbackIcon} />
+          <p>Client Added Successfully!</p>
+        </div>
     </form>
   );
 };

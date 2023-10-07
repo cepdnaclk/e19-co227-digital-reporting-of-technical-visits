@@ -1,29 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DataContext } from "../../Context/dataContext";
-import {
-  collection,
-  updateDoc,
-  doc,
-  Timestamp,
-} from "firebase/firestore";
+import { collection, updateDoc, doc, Timestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { MdError, MdPlaylistAddCheckCircle } from "react-icons/md";
+import { MdPlaylistAddCheckCircle } from "react-icons/md";
 import "firebase/firestore";
-import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
-import { BsFillFileEarmarkPersonFill, BsCalendar2Date ,BsFileEarmarkPerson,} from "react-icons/bs";
+import {
+  BsFillFileEarmarkPersonFill,
+  BsCalendar2Date,
+  BsFileEarmarkPerson,
+} from "react-icons/bs";
 import { MdTaskAlt } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
 import { TbListDetails } from "react-icons/tb";
-import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+
 import styles from "../../Styles/Tasks/TaskForm.module.scss";
 import classNames from "classnames";
 
 export const TaskEditForm = ({ task, onClosing }) => {
-  console.log(task);
+  // console.log(task);
   const taskCollectionRef = collection(db, "Tasks");
   const { technicians } = useContext(DataContext);
 
@@ -42,7 +37,7 @@ export const TaskEditForm = ({ task, onClosing }) => {
       setFormData({
         company: task.companyName,
         address: task.address,
-        title: task.title ,
+        title: task.title,
         email: task.email,
         description: task.description,
         startDate: task.startDate,
@@ -56,7 +51,6 @@ export const TaskEditForm = ({ task, onClosing }) => {
       ...formData,
       [name]: value,
     });
-    console.log(formData);
   };
 
   const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
@@ -132,7 +126,12 @@ export const TaskEditForm = ({ task, onClosing }) => {
           </div>
           <div>
             <label htmlFor="client">Client:</label>
-            <input type="text" name="clientName" id="" value={formData.company} />
+            <input
+              type="text"
+              name="clientName"
+              id=""
+              value={formData.company}
+            />
           </div>
         </div>
         <div className={styles.client_name}>
@@ -151,17 +150,6 @@ export const TaskEditForm = ({ task, onClosing }) => {
             />
           </div>
         </div>
-        {/* <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-
-              setSameAsCompanyAddress(false);
-            }}
-          >
-            X
-          </button>
-        </div> */}
         <div className={styles.client_name}>
           <div className="icon">
             <MdTaskAlt />{" "}
@@ -234,7 +222,9 @@ export const TaskEditForm = ({ task, onClosing }) => {
           </div>
         </div>
 
-        <div><button type="submit">Edit Task</button></div>
+        <div>
+          <button type="submit">Edit Task</button>
+        </div>
         <div
           className={classNames(
             styles.feedbackContainer,
@@ -245,7 +235,6 @@ export const TaskEditForm = ({ task, onClosing }) => {
           <MdPlaylistAddCheckCircle className={styles.feedbackIcon} />
           <p>Task was Edited!</p>
         </div>
-        
       </form>
     </>
   );
