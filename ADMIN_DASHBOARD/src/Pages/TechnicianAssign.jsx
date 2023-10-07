@@ -7,6 +7,7 @@ import { DataContext } from "../Context/dataContext";
 import TimelineHandler from "../Components/TechnicianAssign/TimelineHandler";
 import TechnicianAssignForm from "../Components/TechnicianAssign/TechnicianAssignForm";
 import TaskLegend from "../Components/TechnicianAssign/TaskLegend";
+import Notification from "../Components/Notification";
 
 export const TechnicianAssign = () => {
   // Sample data for tasks, start time, end time, slot duration, and technicians
@@ -171,6 +172,7 @@ export const TechnicianAssign = () => {
       <div className={styles.container}>
         <Navigation />
         <UserCard />
+        <Notification />
         <div className={styles.component_container}>
           <div className={styles.legend_container}>
           <TaskLegend/>
