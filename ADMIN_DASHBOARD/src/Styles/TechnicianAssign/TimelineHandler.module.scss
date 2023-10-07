@@ -1,29 +1,119 @@
-.handler_container{
-    
+@use "../variables" as *;
 
+.tabs{
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.date_input{
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    margin:5px;
-    p {
-        margin-right: 10px;
-      }
-    
-      input[type="date"] {
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
+
+.toggleSwitch {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2.4em;
+  background-color: white;
+  width: fit-content;
+  padding: 0.8em 2.4em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5em;
+  border-color: rgba(255, 255, 255, 0);
+  gap: 4em;
+  margin-top: 1em;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+
+  .toggleItem {
+    display: inline-block;
+    z-index: 10;
+    font-weight: 500;
+    font-size: 0.95em;
+    color: $disabledTextColor; // Default color
+    transition: color 300ms ease-in-out;
+    background-color: transparent;
+    border: none;
+
+    &.active {
+      color: white; // Color for the active button
+      font-weight: 600;
+      font-size: 1em;
     }
-.today_date{
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10.2px;
-    margin:5.5px;
+  }
+
+  .activeIndicator {
+    position: absolute;
+    height: 100%;
+    width: calc(100% / 3); /* Divide by the number of states */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .past {
+    content: " ";
+    position: absolute;
+    width: 30%; // Adjust the initial width
+    height: 83%;
+    border-radius: 5em;
+    top: 50%;
+    transform: translateY(-50%) translateX(-113.2%);
+    background-color: $waitingColor; // Default color
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.35, 1.15),
+      width 50ms ease-in-out, background-color 250ms ease-in-out;
+  }
+  
+  .today {
+    content: " ";
+    position: absolute;
+    width: 33%; // Adjust the initial width
+    height: 83%;
+    border-radius: 5em;
+    top: 50%;
+    transform: translateY(-50%) translateX(-19.5%);
+    background-color: $todayColor; // Default color
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.35, 1.15),
+      width 50ms ease-in-out, background-color 250ms ease-in-out;
+  }
+  
+  .upcoming {
+    content: " ";
+    position: absolute;
+    width: 42%; // Adjust the initial width
+    height: 83%;
+    border-radius: 5em;
+    top: 50%;
+    transform: translateY(-50%) translateX(66.5%);
+    background-color: $upcomingColor; // Default color
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.35, 1.15),
+      width 50ms ease-in-out, background-color 250ms ease-in-out;
+  }
+}
+
+.date_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95em;
+  padding: 5px;
+  margin: 5px;
+  p {
+    margin-right: 10px;
+  }
+
+  input[type="date"] {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+  }
+}
+.today_date {
+  font-weight: 400;
+  font-size: 0.95em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10.2px;
+  margin: 5.5px;
 }
