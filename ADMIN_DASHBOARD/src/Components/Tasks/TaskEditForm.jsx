@@ -12,13 +12,9 @@ import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import {
   BsFillFileEarmarkPersonFill,
-  BsFileEarmarkPerson,
-  BsTelephoneFill,
   BsCalendar2Date,
 } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
 import { MdTaskAlt } from "react-icons/md";
-import { FiMapPin, FiCheck, FiCheckCircle } from "react-icons/fi";
 import { GoLocation } from "react-icons/go";
 import { TbListDetails } from "react-icons/tb";
 import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
@@ -37,12 +33,12 @@ export const TaskEditForm = ({ task, onClosing }) => {
   const [selectedTechnician, setSelectedTechnician] = useState("");
   const [selectedClient, setSelectedClient] = useState("");
   const [sameAsCompanyAddress, setSameAsCompanyAddress] = useState(false);
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState(task.startDate);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const startDateTimeStamp = Timestamp.fromDate(new Date(startDate));
+    // const startDateTimeStamp = Timestamp.fromDate(new Date(startDate));
 
     const taskData = {
       title,
@@ -56,18 +52,19 @@ export const TaskEditForm = ({ task, onClosing }) => {
       isArrived: false,
       isVerified: false,
       isCompleted: false,
-      startDate: startDateTimeStamp,
+      startDate: startDate,
       email: "ajanith101@gmail.com",
     };
     const jobsCollectionRef = collection(db, "Tasks");
     try {
       await addDoc(jobsCollectionRef, taskData);
-      console.log("Task created successfully!");
+      console.log("Task Edited successfully!");
       // You can also redirect the user or display a success message here
     } catch (error) {
-      console.error("Error creating task:", error);
+      console.error("Error Editing task:", error);
       // Handle error, display error message, etc.
     }
+    onClosing();
   };
 
   return (
@@ -128,12 +125,13 @@ export const TaskEditForm = ({ task, onClosing }) => {
 
           <div>
             <label htmlFor="title">Job Title:</label>
-            <textarea
+            <input
               id="title"
+              type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-            ></textarea>
+            ></input>
           </div>
         </div>
 
@@ -159,11 +157,9 @@ export const TaskEditForm = ({ task, onClosing }) => {
           <div>
             <label htmlFor="date">Date:</label>
             <input
-              type="date"
+              type="text"
               id="date"
-              value={startDate.split("T")[0]} // Extract the date from startDateTime
-              onChange={(e) => setStartDate(e.target.value)}
-              required
+              value={dayjs(startDate.toDate()).format("YYYY MMMM DD")} // Extract the date from startDateTime
             />
           </div>
         </div>
