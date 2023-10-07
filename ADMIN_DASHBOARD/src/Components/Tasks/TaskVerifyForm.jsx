@@ -14,20 +14,17 @@ import {
   BsFillFileEarmarkPersonFill,
   BsFileEarmarkPerson,
   BsTelephoneFill,
-  BsCalendar2Date,
 } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
-import { MdTaskAlt } from "react-icons/md";
 import { FiMapPin, FiCheck, FiCheckCircle } from "react-icons/fi";
 import { GoLocation } from "react-icons/go";
-import { TbListDetails } from "react-icons/tb";
 import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import styles from "../../Styles/Tasks/TaskForm.module.scss";
+import styles from "../../Styles/Tasks/TasksForm.module.scss";
 
-export const TaskEditForm = ({ task, onClosing }) => {
+export const TaskVerifyForm = ({ task, onClosing }) => {
   console.log(task);
   const [address, setAddress] = useState(task.address);
   const [description, setDescription] = useState(task.description);
@@ -71,7 +68,8 @@ export const TaskEditForm = ({ task, onClosing }) => {
   };
 
   return (
-    <>
+    <div>
+      <h2>Create Task</h2>
       <form onSubmit={handleSubmit} className={styles.card}>
         <div className={styles.topic_container}>
           <h2 className={styles.topic}>Edit Task Details</h2>
@@ -85,32 +83,23 @@ export const TaskEditForm = ({ task, onClosing }) => {
         >
           X
         </button>
-        <div className={styles.client_name}>
-          <div className="icon">
-            <BsFillFileEarmarkPersonFill />
-          </div>
-          <div>
-            <label htmlFor="client">Client:</label>
-            <input type="text" name="clientName" id="" value={client} />
-          </div>
+        <div>
+          <label htmlFor="client">Client:</label>
+
+          <input type="text" name="" id="" value={client} />
         </div>
-        <div className={styles.client_name}>
-          <div className="icon">
-            <GoLocation />
-          </div>
-          <div>
-            <label htmlFor="address">Address</label>
-            <input
-              disabled={sameAsCompanyAddress}
-              type="text"
-              id="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </div>
+        <div>
+          <label htmlFor="address">Task Address</label>
+          <input
+            disabled={sameAsCompanyAddress}
+            type="text"
+            id="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
         </div>
-        {/* <div>
+        <div>
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -120,57 +109,40 @@ export const TaskEditForm = ({ task, onClosing }) => {
           >
             X
           </button>
-        </div> */}
-        <div className={styles.client_name}>
-          <div className="icon">
-            <MdTaskAlt />{" "}
-          </div>
-
-          <div>
-            <label htmlFor="title">Job Title:</label>
-            <textarea
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            ></textarea>
-          </div>
+        </div>
+        <div>
+          <label htmlFor="title">Job Title:</label>
+          <textarea
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          ></textarea>
         </div>
 
-        <div className={styles.client_name}>
-          <div className="icon">
-            <TbListDetails />
-          </div>
-          <div>
-            <label htmlFor="description">Description:</label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            ></textarea>
-          </div>
-        </div>
-
-        <div className={styles.client_name}>
-          <div className="icon">
-            <BsCalendar2Date />
-          </div>
-          <div>
-            <label htmlFor="date">Date:</label>
-            <input
-              type="date"
-              id="date"
-              value={startDate.split("T")[0]} // Extract the date from startDateTime
-              onChange={(e) => setStartDate(e.target.value)}
-              required
-            />
-          </div>
+        <div>
+          <label htmlFor="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            value={startDate.split("T")[0]} // Extract the date from startDateTime
+            onChange={(e) => setStartDate(e.target.value)}
+            required
+          />
         </div>
 
         <div></div>
-        <button type="submit">Edit Task</button>
+        <button type="submit">Create Task</button>
       </form>
-    </>
+    </div>
   );
 };

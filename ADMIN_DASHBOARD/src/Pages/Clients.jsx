@@ -65,7 +65,7 @@ export const Clients = () => {
           )}
         </div>
 
-        {showForm && <ClientForm />}
+        {showForm && <ClientForm onClosing={toggleForm}/>}
         {showEditForm && (
           <div className={styles.cardcontainer}>
             <ClientEditForm client={selectedClient} onClosing={closeEditForm} />

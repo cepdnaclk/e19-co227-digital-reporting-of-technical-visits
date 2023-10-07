@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaUser, FaEnvelope, FaMapMarker, FaPhone } from "react-icons/fa";
-import { MdCreate } from "react-icons/md";
+import { MdCreate, MdDelete } from "react-icons/md";
 import styles from "../../Styles/Technicians/TechniciansTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import {
@@ -180,6 +180,7 @@ export const TechniciansTable = ({
             </th>
             <th>Telephone Number</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -205,10 +206,13 @@ export const TechniciansTable = ({
                   <MdCreate />
                   Edit
                 </button>
+              </td>
+              <td>
                 <button
                   className={classNames(styles.btn, styles.deleteBtn)}
                   onClick={() => confirmDelete(technician.email, technician.id)}
                 >
+                  <MdDelete />
                   Delete
                 </button>
               </td>

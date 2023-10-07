@@ -4,7 +4,7 @@ import { db } from "../../config/firebase";
 import styles from "../../Styles/Clients/ClientsTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import classNames from "classnames";
-import { MdCreate } from "react-icons/md";
+import { MdCreate, MdDelete } from "react-icons/md";
 import { ClientEditForm } from "../../Components/Clients/ClientEditForm";
 
 export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
@@ -135,6 +135,7 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
                     handleDelete(client.id);
                   }}
                 >
+                  <MdDelete />
                   Delete
                 </button>
               </td>
