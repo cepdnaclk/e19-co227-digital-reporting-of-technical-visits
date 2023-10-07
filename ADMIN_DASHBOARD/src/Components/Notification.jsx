@@ -51,17 +51,19 @@ const Notification = () => {
 
       {showDropdown && (
         <div className={styles.dropdown}>
-          {notifications.map((notification, index) => (
-            <p
-              className={`${styles.notificationData} ${
-                notification.isRead ? styles.read : ""
-              }`}
-              key={index}
-              onClick={() => handleNotificationClick(notification.id)}
-            >
-              {notification.body}
-            </p>
-          ))}
+          <div className={styles.notification_drop}>
+            {notifications.map((notification, index) => (
+              <p
+                className={`${styles.notificationData} ${
+                  notification.isRead ? styles.read : ""
+                }`}
+                key={index}
+                onClick={() => handleNotificationClick(notification.id)}
+              >
+                {notification.body}
+              </p>
+            ))}
+          </div>
           {notifications.length > 0 && (
             <button
               className={styles.clearNotification}
