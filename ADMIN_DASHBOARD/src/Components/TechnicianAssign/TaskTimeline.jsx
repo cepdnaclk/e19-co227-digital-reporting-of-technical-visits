@@ -85,10 +85,11 @@ const TaskTimeline = ({
                 backgroundColor: task.isVerified
                   ? "rgba(20, 100, 30, 0.7)"
                   : task.isCompleted
-                  ? "rgba(3, 26, 66, 0.9)"
+                  ? "rgba(3, 26, 66, 0.8)"
                   : task.isArrived
-                  ? "rgba(130,120,3, 0.9)"
-                  : "rgba(100,10,20, 0.9)",
+                  ? "rgba(200,160,50, 0.8)"
+                  : "rgba(200,40,50, 0.8)",
+                  border: "none"
               }}
             >
               <div className="task-title">{task.title}</div>
