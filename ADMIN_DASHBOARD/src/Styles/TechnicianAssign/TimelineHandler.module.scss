@@ -7,6 +7,12 @@
   text-align: center;
 }
 
+
+
+.handler_container{
+  width: 95%;
+}
+
 .toggleSwitch {
   position: relative;
   left: 50%;
@@ -23,7 +29,6 @@
   border-color: rgba(255, 255, 255, 0);
   gap: 4em;
   margin-top: 1em;
-  cursor: pointer;
   user-select: none;
   position: relative;
 
@@ -32,6 +37,7 @@
     z-index: 10;
     font-weight: 500;
     font-size: 0.95em;
+    cursor: pointer;
     color: $disabledTextColor; // Default color
     transition: color 300ms ease-in-out;
     background-color: transparent;

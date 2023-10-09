@@ -5,6 +5,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  justify-items: center;
+  background-color: #ffffffce;
+  border-radius: 1.8em;
+
   
 
   .task-tooltip {
@@ -22,7 +26,7 @@
   .task-cell {
     cursor: pointer;
     position: relative; /* Add a position relative to the task cell */
-    border-radius: 10px;
+    border-radius: 0.8rem;
     
     &:hover {
       /* Show the tooltip when hovering over the task cell */
@@ -47,9 +51,13 @@
   }
 
   .time-slot-cell {
+
+
     /* Styles for the time slot cell */
     /* Add styles as needed */
   }
+
+scale: 0.9;
 
   /* Add styles for other elements as needed */
 }
@@ -71,31 +79,32 @@
     }
     th,
     td {
-      border: 0.5px solid #cccccc3b;
-      padding: 1.2em 0.9em;
-      text-align: left;
+      border: 0.5px solid #cccccc46;
+      padding: 0.8em 0.7em;
+      text-align: center;
       vertical-align: middle;
-      overflow: hidden;
       text-overflow: ellipsis;
+      width: calc(100%/11);
+      height: 3.5rem;
     }
     .task-title{
-      font-size:1em;
+      font-size:0.9em;
       color:white;
       font-weight: bold;
-      text-shadow: 1.5px 1px #000000;
-      
+      text-shadow: 1.5px 1px #6d6c6c59;
+      text-align: center;
     }
 
 
 
 }
 // /* TaskTimeline.css */
-.task-timeline {
-  display: grid;
-  grid-template-columns: auto repeat(12, 1fr); /* Adjust the number of columns as needed */
-  grid-template-rows: auto;
-  gap: 4px; /* Adjust the gap between grid items */
-}
+// .task-timeline {
+//   display: grid;
+//   grid-template-columns: auto repeat(12, 1fr); /* Adjust the number of columns as needed */
+//   grid-template-rows: auto;
+//   gap: 4px; /* Adjust the gap between grid items */
+// }
 
 .time-slots {
   grid-column: 1;

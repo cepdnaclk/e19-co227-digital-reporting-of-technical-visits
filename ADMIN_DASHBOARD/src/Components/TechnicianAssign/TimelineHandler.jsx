@@ -229,7 +229,7 @@ const TimelineHandler = ({
       {selectedTab == "today" && (
         <p className={styles.today_date}>{selectedDateString}</p>
       )}
-      <div className="table_container">
+      <div className={styles.table_container}>
         <TaskTimeline
           tasks={jobs}
           startTime={startDateTime}
