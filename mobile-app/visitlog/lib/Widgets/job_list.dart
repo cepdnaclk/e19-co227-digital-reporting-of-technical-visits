@@ -111,6 +111,7 @@ class JobCardsList extends StatelessWidget {
                             item['location'] ?? '',
                             getDateInFormat(DateTime.parse(item['time']!)),
                             TimeTo12Hour(DateTime.parse(item['time']!)),
+                            item['technicianReportUrl'] ?? '',
                           );
                         },
                       ),
@@ -123,6 +124,7 @@ class JobCardsList extends StatelessWidget {
                           item['location'] ?? '',
                           getDateInFormat(DateTime.parse(item['time']!)),
                           TimeTo12Hour(DateTime.parse(item['time']!)),
+                          item['technicianReportUrl'] ?? '',
                         );
                       },
                     ),
@@ -143,7 +145,9 @@ class JobCardsList extends StatelessWidget {
       String subTopic,
       String location,
       String date,
-      String time) {
+      String time,
+      String pdfUrl
+      ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -164,7 +168,7 @@ class JobCardsList extends StatelessWidget {
                         child: _TopPortion(
                           topic: topic,
                           subTopic: subTopic,
-                          pdfUrl: "",
+                          pdfUrl: pdfUrl,
                         )),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 10),
