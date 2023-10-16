@@ -1,11 +1,14 @@
-import 'dart:io';
-
+// import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:visitlog/Controllers/task_controller.dart';
 import 'package:visitlog/Utils/date_time.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
+// import 'package:http/http.dart' as http;
+// import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+// import 'package:dio/dio.dart';
+// import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 class JobCardsList extends StatelessWidget {
   final String searchWord;
@@ -146,8 +149,7 @@ class JobCardsList extends StatelessWidget {
       String location,
       String date,
       String time,
-      String pdfUrl
-      ) {
+      String technicianReportUrl) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -168,7 +170,7 @@ class JobCardsList extends StatelessWidget {
                         child: _TopPortion(
                           topic: topic,
                           subTopic: subTopic,
-                          pdfUrl: pdfUrl,
+                          pdfUrl: technicianReportUrl,
                         )),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 10),
@@ -253,21 +255,6 @@ class _TopPortion extends StatelessWidget {
   final String subTopic;
   final String pdfUrl;
 
-  Future<void> downloadPdf(String pdfUrl) async {
-    final http.Response response = await http.get(Uri.parse(pdfUrl));
-
-    if (response.statusCode == 200) {
-      final Directory appDirectory = await getApplicationDocumentsDirectory();
-      final File pdfFile = File('${appDirectory.path}/downloaded.pdf');
-      await pdfFile.writeAsBytes(response.bodyBytes);
-
-      // Now the PDF is downloaded and stored in the app's document directory.
-      print('PDF downloaded to ${pdfFile.path}');
-    } else {
-      throw Exception('Failed to download PDF');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -323,14 +310,15 @@ class _TopPortion extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
                     try {
-                      await downloadPdf(pdfUrl);
+                      await launchUrl(Uri.parse(pdfUrl));
                     } catch (e) {
-                      print('Error downloading PDF: $e');
+                      print('Error opening PDF: $e');
                     }
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Color.fromARGB(255, 28, 124, 202), // Text color
+                    backgroundColor:
+                        Color.fromARGB(255, 28, 124, 202), // Text color
                     padding: EdgeInsets.symmetric(
                         vertical: 2, horizontal: 14), // Padding
                     shape: RoundedRectangleBorder(
