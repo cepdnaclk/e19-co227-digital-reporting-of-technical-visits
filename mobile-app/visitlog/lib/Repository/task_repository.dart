@@ -60,12 +60,12 @@ class TaskRepository extends GetxController {
 
           fetchedItems.add(item);
         }
-        if ((startDateTime.year == today.year &&
+        if (((startDateTime.year == today.year &&
                 startDateTime.month == today.month &&
                 startDateTime.day > today.day) ||
             (startDateTime.year == today.year &&
                 startDateTime.month > today.month) ||
-            (startDateTime.year > today.year) && isCompleted == false) {
+            (startDateTime.year > today.year)) && isCompleted == false) {
           final Map<String, dynamic> item = {
             'name': company,
             'subTopic': title,
