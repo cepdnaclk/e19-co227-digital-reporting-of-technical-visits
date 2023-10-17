@@ -5,11 +5,13 @@ const {
   onDocumentCreated,
   onDocumentUpdated,
 } = require("firebase-functions/v2/firestore");
+const {onSchedule} = require("firebase-functions/v2/scheduler");
 const { getStorage,getDownloadURL } = require("firebase-admin/storage");
 const nodemailer = require("nodemailer");
 const axios = require("axios");
 const pdfkit = require("pdfkit");
-const UUID = require("uuid-v4");
+const moment = require("moment");
+
 
 // The Firebase Admin SDK to access Firestore.
 const { initializeApp } = require("firebase-admin/app");
@@ -19,6 +21,67 @@ const { getFirestore } = require("firebase-admin/firestore");
 
 initializeApp();
 const storage = getStorage();
+
+exports.technicianArrivesTommorow = onSchedule("every day 16:30",async(event)=>{
+  const tomorrow = moment().add(1, "days");
+  const tomorrowStart = tomorrow.startOf("day").toDate();
+  const tomorrowEnd = tomorrow.endOf("day").toDate();
+  const firestore = getFirestore();
+  try {
+    const tasksSnapshot = await firestore.collection("tasks")
+      .where("startDate", ">=", tomorrowStart)
+      .where("startDate", "<=", tomorrowEnd)
+      .get();
+
+    if (tasksSnapshot.empty) {
+      console.log("No tasks scheduled for tomorrow.");
+      return null;
+    }
+
+    // Create an email transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "visitloginfo@gmail.com",
+        pass: "tqzb jwnh vkdw zdds",
+      },
+    });
+
+    tasksSnapshot.forEach((taskDoc) => {
+      const taskData = taskDoc.data();
+      const clientEmail = taskData.companyEmail;
+      // const technicianName = taskData.technicianName;
+
+      const mailOptions = {
+        from: "visitloginfo@gmail.com",
+        to: clientEmail,
+        subject: `Task ${taskData.title}`,
+        text: `Hello,
+
+This is a reminder that your technician for the task: ${taskData.title} will arrive tomorrow. Please be ready for their visit.
+
+Thank you,
+VisitLog`,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error("Error sending email:", error);
+        } else {
+          console.log("Email sent:", info.response);
+        }
+      });
+    });
+
+    return null;
+  } catch (error) {
+    console.error("Error querying Firestore:", error);
+    return null;
+  }
+
+
+});
+
 
 exports.welcomeNewClient = onDocumentCreated(
   "Clients/{clientId}",
@@ -65,6 +128,9 @@ exports.welcomeNewClient = onDocumentCreated(
     });
   }
 );
+
+//This Function Accounts for Task Creation
+
 exports.sendTaskEmail = onDocumentCreated("Tasks/{taskId}", (event) => {
   const taskData = event.data.data();
 
@@ -144,7 +210,7 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
     const pdfFile = fileBucket.file(pdfFileName);
     await pdfFile.save(pdfBuffer);
 
-    
+    const url = await getDownloadURL(pdfFile);
     
     
 
@@ -154,11 +220,18 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
 
     try {
       await taskRef.update({
-        technicianReportUrl: pdfFileName,
+        technicianReportUrl: url,
       });
     } catch (error) {
       console.error("Error updating Firestore document:", error);
     }
+    notification={
+      'body':`Technician Completed the task: ${taskData.title}`,
+      'isRead':false
+    }
+    const notificationCollectionRef = firestore.collection("Notifications")
+    notificationCollectionRef.add(notification);
+
     // Create an email transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
