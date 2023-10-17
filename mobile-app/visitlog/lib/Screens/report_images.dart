@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:visitlog/Components/drawer.dart';
 import 'package:visitlog/Components/upper_bar.dart';
+import 'package:visitlog/Screens/task_screen.dart';
 // import 'package:visitlog/Data/tasks.dart';
 import 'package:visitlog/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -124,7 +125,6 @@ class _ReportImagesState extends State<ReportImages> {
         saveSignatureToFirestore(signatureUrl);
       });
     }
-
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -288,7 +288,6 @@ class _ReportImagesState extends State<ReportImages> {
                             await uploadImagesToFirebaseStorage(widget.images);
                         // ToDo (save or display it)
                         print(downloadUrls);
-                        String signatureUrl = "";
 
                         if (signatureImage != null) {
                           final ByteData? byteData = await signatureImage
@@ -302,6 +301,10 @@ class _ReportImagesState extends State<ReportImages> {
                             // Now you can upload _signatureImageBytes to Firebase Storage
                             await uploadSignatureImageToStorage(
                                 _signatureImageBytes!);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const TaskScreen()));
                           }
                         }
 
