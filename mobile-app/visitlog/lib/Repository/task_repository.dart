@@ -38,7 +38,10 @@ class TaskRepository extends GetxController {
         final String date = startDateTime.toString();
         final bool isCompleted = data['isCompleted'];
         final bool isArrived = data['isArrived'];
+        final String technicianReportUrl = data['technicianReportUrl'] ?? '';
         final String id = documentSnapshot.id;
+
+        print(technicianReportUrl);
 
         if (startDateTime.year == today.year &&
             startDateTime.month == today.month &&
@@ -52,6 +55,7 @@ class TaskRepository extends GetxController {
             'time': date,
             'isArrived': isArrived,
             'id': id,
+            'technicianReportUrl': technicianReportUrl,
           };
 
           fetchedItems.add(item);
@@ -70,6 +74,7 @@ class TaskRepository extends GetxController {
             'time': date,
             'isArrived': isArrived,
             'id': id,
+            'technicianReportUrl': technicianReportUrl,
           };
 
           fetchedUpcommingItems.add(item);
@@ -82,6 +87,7 @@ class TaskRepository extends GetxController {
             'location': address,
             'description': description,
             'time': date,
+            'technicianReportUrl': technicianReportUrl,
           };
 
           fetchedJobs.add(item);

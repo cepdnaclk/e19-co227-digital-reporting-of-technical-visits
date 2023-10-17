@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import styles from "../../Styles/Clients/ClientForm.module.scss";
 import { BsFillFileEarmarkPersonFill, BsTelephoneFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
+import { MdError, MdPlaylistAddCheckCircle } from "react-icons/md";
+import classNames from "classnames";
 
 export const ClientEditForm = ({ client, onClosing }) => {
+  const clientCollectionRef = collection(db, "Clients");
   const [formData, setFormData] = useState({
     companyName: "",
     email: "",
@@ -60,14 +63,20 @@ export const ClientEditForm = ({ client, onClosing }) => {
     });
   };
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     await onUpdate(formData);
-    onClosing();
+    setShowFeedbackSuccess(true);
+    setTimeout(() => {
+      setShowFeedbackSuccess(false);
+      onClosing();
+    }, 2000);
   };
 
   const onUpdate = async (data) => {
-    await updateDoc(doc(db, "clients", client.id), data);
+    await updateDoc(doc(clientCollectionRef, client.id), data);
   };
 
   return (
@@ -78,7 +87,7 @@ export const ClientEditForm = ({ client, onClosing }) => {
       <button className={styles.close_button} onClick={() => onClosing()}>
         X
       </button>
-      <div className={styles.first_name}>
+      <div className={styles.company_name}>
         <div className="icon">
           <BsFillFileEarmarkPersonFill />
         </div>
@@ -86,9 +95,9 @@ export const ClientEditForm = ({ client, onClosing }) => {
           <label htmlFor="firstName">Company Name </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
+            id="companyName"
+            name="companyName"
+            value={formData.companyName}
             onChange={(e) => handleChange(e, 0)}
             required
           />
@@ -144,20 +153,31 @@ export const ClientEditForm = ({ client, onClosing }) => {
               />
 
               {index > 0 && (
-                <button type="button" onClick={() => handleRemoveMobile(index)}>
+                <button type="Remove" onClick={() => handleRemoveMobile(index)}>
                   Remove
                 </button>
               )}
+              {index == 0 && <button type="fill">fill text</button>}
             </div>
           ))}
-          <button type="button" onClick={handleAddMobile}>
+          <button type="mobile" onClick={handleAddMobile}>
             Add Mobile Number
           </button>
         </div>
       </div>
       <div>
-        <button type="submit">Submit</button>
+        <button type="submit">Edit</button>
       </div>
+      <div
+          className={classNames(
+            styles.feedbackContainer,
+            styles.feedbackWaiting,
+            showFeedbackSuccess && styles.show
+          )}
+        >
+          <MdPlaylistAddCheckCircle className={styles.feedbackIcon} />
+          <p>Client was Edited!</p>
+        </div>
     </form>
   );
 };

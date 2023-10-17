@@ -2,11 +2,12 @@ import { Navigation } from "../Components/Navigation/Navigation";
 import UserCard from "../Components/UserCard";
 import styles from "../Styles/TechniciansAssign.module.scss";
 import TaskTimeline from "../Components/TechnicianAssign/TaskTimeline"; // Import the TaskTimeline component
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../Context/dataContext";
 import TimelineHandler from "../Components/TechnicianAssign/TimelineHandler";
 import TechnicianAssignForm from "../Components/TechnicianAssign/TechnicianAssignForm";
 import TaskLegend from "../Components/TechnicianAssign/TaskLegend";
+import Notification from "../Components/Notification";
 
 export const TechnicianAssign = () => {
   // Sample data for tasks, start time, end time, slot duration, and technicians
@@ -14,7 +15,23 @@ export const TechnicianAssign = () => {
   const [showAssignForm, setShowAssignForm] = useState(false);
   const [selectedTechnician, setSelectedTechnician] = useState();
   const [selectedTimeslot, setSelectedTimeslot] = useState();
-  const [selectedParentDate,setSelectedParentDate] = useState(new Date());
+  const [selectedParentDate, setSelectedParentDate] = useState(new Date());
+
+  const backgroundClick = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick);
+
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
+  }, []);
+
+  const handleBackgroundClick = (e) => {
+    if (e.target === backgroundClick.current) {
+      setShowAssignForm(false);
+    }
+  };
 
   // const tasks = [
   //   {
@@ -168,14 +185,27 @@ export const TechnicianAssign = () => {
 
   return (
     <div>
+      {showAssignForm && (
+            <div className={styles.cardContainer} ref={backgroundClick}>
+              <TechnicianAssignForm
+                technician={selectedTechnician}
+                timeslot={selectedTimeslot}
+                date={selectedParentDate}
+                onClose={() => {
+                  setShowAssignForm(false);
+                }}
+              />
+            </div>
+          )}
       <div className={styles.container}>
         <Navigation />
         <UserCard />
+        <Notification />
         <div className={styles.component_container}>
           <div className={styles.legend_container}>
-          <TaskLegend/>
+            <TaskLegend />
           </div>
-          
+
           <div className={styles.name}>
             <p>Technician Assign</p>
           </div>
@@ -186,9 +216,9 @@ export const TechnicianAssign = () => {
               jobs={jobs}
               technicians={technicians}
               formHandler={setShowAssignForm}
-              technicianSelectionHandler = {setSelectedTechnician}
-              timeslotSelectionHandler = {setSelectedTimeslot}
-              dateHandler = {setSelectedParentDate}
+              technicianSelectionHandler={setSelectedTechnician}
+              timeslotSelectionHandler={setSelectedTimeslot}
+              dateHandler={setSelectedParentDate}
             />
             {/* <TaskTimeline
               tasks={jobs}
@@ -198,18 +228,8 @@ export const TechnicianAssign = () => {
               technicians={technicians}
             /> */}
           </div>
-          <div>
-            {showAssignForm && (
-              <TechnicianAssignForm
-                technician={selectedTechnician}
-                timeslot={selectedTimeslot}
-                date = {selectedParentDate}
-                onClose = {()=>{
-                  setShowAssignForm(false);
-                }}
-              />
-            )}
-          </div>
+
+          
         </div>
       </div>
     </div>

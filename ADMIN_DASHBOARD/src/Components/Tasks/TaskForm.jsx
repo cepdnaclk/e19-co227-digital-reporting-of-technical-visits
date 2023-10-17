@@ -8,24 +8,16 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "firebase/firestore";
-import { DateTimePicker } from "@mui/x-date-pickers";
+import { FiCheckCircle } from "react-icons/fi";
 import styles from "../../Styles/Tasks/TaskForm.module.scss";
 import dayjs from "dayjs";
-import {
-  BsFillFileEarmarkPersonFill,
-  BsFileEarmarkPerson,
-  BsTelephoneFill,
-} from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
-import { FiMapPin, FiCheck, FiCheckCircle } from "react-icons/fi";
+import { BsFillFileEarmarkPersonFill, BsCalendar2Date } from "react-icons/bs";
+import { MdTaskAlt } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
-import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { TbListDetails } from "react-icons/tb";
+import classNames from "classnames";
 
-
-export const TaskForm = () => {
+export const TaskForm = ({ onClosing }) => {
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -51,6 +43,7 @@ export const TaskForm = () => {
     };
   }, []);
 
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -69,28 +62,33 @@ export const TaskForm = () => {
       isVerified: false,
       isCompleted: false,
       startDate: startDateTimeStamp,
-      
     };
     const jobsCollectionRef = collection(db, "Tasks");
     try {
       await addDoc(jobsCollectionRef, taskData);
+      setShowFeedbackSuccess(true);
+      setTimeout(() => {
+        setShowFeedbackSuccess(false);
+        onClosing();
+      }, 2000);
       console.log("Task created successfully!");
     } catch (error) {
       console.error("Error creating task:", error);
     }
-  };
-
-  const handleClose = () => {
-    setShowForm(false);
+    onClosing();
   };
 
   return (
     <>
-
       {showForm && (
         <div className={styles.card}>
-          <div className={styles.close_button} onClick={handleClose}>
-
+          <div
+            className={styles.close_button}
+            onClick={(e) => {
+              e.preventDefault();
+              onClosing();
+            }}
+          >
             X
           </div>
           <div className={styles.topic_container}>
@@ -98,88 +96,134 @@ export const TaskForm = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="client">Client:</label>
-              <select
-                id="client"
-                value={selectedClient}
-                onChange={(e) => setSelectedClient(e.target.value)}
-                required
-              >
-                <option value="">Select a client</option>
-                {clients.map((client) => (
-                  <option key={client.id} value={client.id}>
-                    {client.companyName}
-                  </option>
-                ))}
-              </select>
+            <div className={styles.client_name}>
+              <div className="icon">
+                <BsFillFileEarmarkPersonFill />
+              </div>
+              <div>
+                <label htmlFor="client">Client:</label>
+                <select
+                  id="client"
+                  value={selectedClient}
+                  onChange={(e) => setSelectedClient(e.target.value)}
+                  required
+                >
+                  <option value="">Select a client</option>
+                  {clients.map((client) => (
+                    <option key={client.id} value={client.id}>
+                      {client.companyName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className={styles.client_name}>
+              <div className="icon">
+                <GoLocation />
+              </div>
+              <div>
+                <label htmlFor="address">Task Address</label>
+                <input
+                  disabled={sameAsCompanyAddress}
+                  type="text"
+                  id="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className={styles.client_name}>
+              <p>&ensp;</p>
+              <div>
+                <button
+                  type="same"
+                  disabled={sameAsCompanyAddress}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const theClient = clients.find(
+                      (obj) => obj.id === selectedClient
+                    );
+                    setAddress(theClient.address);
+                    setSameAsCompanyAddress(true);
+                  }}
+                >
+                  Same As Company Address
+                </button>
+                <button
+                  type="reset"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setAddress("");
+                    setSameAsCompanyAddress(false);
+                  }}
+                >
+                  X
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.client_name}>
+              <div className="icon">
+                <MdTaskAlt />{" "}
+              </div>
+
+              <div>
+                <label htmlFor="title">Job Title:</label>
+                <input
+                  type="text"
+                  id="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                ></input>
+              </div>
+            </div>
+
+            <div className={styles.client_name}>
+              <div className="icon">
+                <TbListDetails />
+              </div>
+              <div>
+                <label htmlFor="description">Description:</label>
+                <textarea
+                  id="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <div className={styles.client_name}>
+              <div className="icon">
+                <BsCalendar2Date />
+              </div>
+              <div>
+                <label htmlFor="date">Date:</label>
+                <input
+                  type="date"
+                  id="date"
+                  value={startDate.split("T")[0]}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  required
+                />
+              </div>
             </div>
             <div>
-              <label htmlFor="address">Task Address</label>
-              <input
-                disabled={sameAsCompanyAddress}
-                type="text"
-                id="address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              />
+              <button type="submit">Create Task</button>
             </div>
-            <div>
-              <button
-                type="same"
-                disabled={sameAsCompanyAddress}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const theClient = clients.find(
-                    (obj) => obj.id === selectedClient
-                  );
-                  setAddress(theClient.address);
-                  setSameAsCompanyAddress(true);
-                }}
-              >
-                Same As Company Address
-              </button>
-              <button
-                type="reset"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSameAsCompanyAddress(false);
-                }}
-              >
-                X
-              </button>
+            <div
+              className={classNames(
+                styles.feedbackContainer,
+                showFeedbackSuccess && styles.show
+              )}
+            >
+              <FiCheckCircle className={styles.feedbackIcon} />
+              <p>Task Created Successfully!</p>
             </div>
-            <div>
-              <label htmlFor="title">Job Title:</label>
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="description">Description:</label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              ></textarea>
-            </div>
-            <div>
-              <label htmlFor="date">Date:</label>
-              <input
-                type="date"
-                id="date"
-                value={startDate.split("T")[0]}
-                onChange={(e) => setStartDate(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Create Task</button>
           </form>
         </div>
       )}

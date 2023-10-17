@@ -1,75 +1,112 @@
-import React, { useState, useEffect } from "react";
-import {
-  collection,
-  addDoc,
-  onSnapshot,
-  doc,
-  Timestamp,
-} from "firebase/firestore";
+import React, { useState, useEffect, useContext } from "react";
+import { DataContext } from "../../Context/dataContext";
+import { collection, updateDoc, doc, Timestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import { MdPlaylistAddCheckCircle } from "react-icons/md";
 import "firebase/firestore";
-import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import {
   BsFillFileEarmarkPersonFill,
+  BsCalendar2Date,
   BsFileEarmarkPerson,
-  BsTelephoneFill,
 } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
-import { FiMapPin, FiCheck, FiCheckCircle } from "react-icons/fi";
+import { MdTaskAlt } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
-import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import styles from "../../Styles/Tasks/TasksForm.module.scss";
+import { TbListDetails } from "react-icons/tb";
+
+import styles from "../../Styles/Tasks/TaskForm.module.scss";
+import classNames from "classnames";
 
 export const TaskEditForm = ({ task, onClosing }) => {
-  console.log(task);
-  const [address, setAddress] = useState(task.address);
-  const [description, setDescription] = useState(task.description);
-  const [title, setTitle] = useState(task.title);
-  const [technicians, setTechnicians] = useState();
-  const [client, setClient] = useState(task.companyName);
-  const [selectedTechnician, setSelectedTechnician] = useState("");
-  const [selectedClient, setSelectedClient] = useState("");
-  const [sameAsCompanyAddress, setSameAsCompanyAddress] = useState(false);
-  const [startDate, setStartDate] = useState("");
+  // console.log(task);
+  const taskCollectionRef = collection(db, "Tasks");
+  const { technicians } = useContext(DataContext);
+
+  const [formData, setFormData] = useState({
+    company: "",
+    address: "",
+    title: "",
+    email: "",
+    description: "",
+    startDate: Timestamp.fromDate(new Date()),
+  });
+
+  useEffect(() => {
+    // Populate the form with the technician's data when it's available
+    if (task) {
+      setFormData({
+        company: task.companyName,
+        address: task.address,
+        title: task.title,
+        email: task.email,
+        description: task.description,
+        startDate: task.startDate,
+      });
+    }
+  }, [task]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const startDateTimeStamp = Timestamp.fromDate(new Date(startDate));
-
-    const taskData = {
-      title,
-      address,
-      description,
-      //companyEmail:clients.find(company=>company.id==selectedClient).email,
-      // technician: doc(db, "Technicians", `${selectedTechnician}`),
-
-      company: clients.find((company) => company.id == selectedClient)
-        .companyName,
-      isArrived: false,
-      isVerified: false,
-      isCompleted: false,
-      startDate: startDateTimeStamp,
-      email: "ajanith101@gmail.com",
-    };
-    const jobsCollectionRef = collection(db, "Tasks");
-    try {
-      await addDoc(jobsCollectionRef, taskData);
-      console.log("Task created successfully!");
-      // You can also redirect the user or display a success message here
-    } catch (error) {
-      console.error("Error creating task:", error);
-      // Handle error, display error message, etc.
-    }
+    // Update the task's data in the database
+    await onUpdate(formData);
+    setShowFeedbackSuccess(true);
+    setTimeout(() => {
+      setShowFeedbackSuccess(false);
+      onClosing();
+    }, 2000);
   };
 
+  const onUpdate = async (data) => {
+    console.log(data);
+    // Update the document in Firestore
+    await updateDoc(doc(taskCollectionRef, task.id), data);
+  };
+  // const handleSubmit = async (e) => {
+
+  //   e.preventDefault();
+
+  //   // const startDateTimeStamp = Timestamp.fromDate(new Date(startDate));
+
+  //   const taskData = {
+  //     title,
+  //     address,
+  //     description,
+  //     //companyEmail:clients.find(company=>company.id==selectedClient).email,
+  //     // technician: doc(db, "Technicians", `${selectedTechnician}`),
+
+  //     company: clients.find((company) => company.id == selectedClient)
+  //       .companyName,
+  //     isArrived: false,
+  //     isVerified: false,
+  //     isCompleted: false,
+  //     startDate: startDate,
+  //     email: "ajanith101@gmail.com",
+  //   };
+  //   const jobsCollectionRef = collection(db, "Tasks");
+  //   try {
+  //     await addDoc(jobsCollectionRef, taskData);
+  //     console.log("Task Edited successfully!");
+  //     // You can also redirect the user or display a success message here
+  //   } catch (error) {
+  //     console.error("Error Editing task:", error);
+  //     // Handle error, display error message, etc.
+  //   }
+  //   onClosing();
+  // };
+
   return (
-    <div>
-      <h2>Create Task</h2>
+    <>
       <form onSubmit={handleSubmit} className={styles.card}>
         <div className={styles.topic_container}>
           <h2 className={styles.topic}>Edit Task Details</h2>
@@ -83,66 +120,122 @@ export const TaskEditForm = ({ task, onClosing }) => {
         >
           X
         </button>
-        <div>
-          <label htmlFor="client">Client:</label>
+        <div className={styles.client_name}>
+          <div className="icon">
+            <BsFillFileEarmarkPersonFill />
+          </div>
+          <div>
+            <label htmlFor="client">Client:</label>
+            <input
+              type="text"
+              name="clientName"
+              id=""
+              value={formData.company}
+            />
+          </div>
+        </div>
+        <div className={styles.client_name}>
+          <div className="icon">
+            <GoLocation />
+          </div>
+          <div>
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={formData.address}
+              onChange={(e) => handleChange(e, 1)}
+              required
+            />
+          </div>
+        </div>
+        <div className={styles.client_name}>
+          <div className="icon">
+            <MdTaskAlt />{" "}
+          </div>
 
-          <input type="text" name="" id="" value={client} />
-        </div>
-        <div>
-          <label htmlFor="address">Task Address</label>
-          <input
-            disabled={sameAsCompanyAddress}
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-
-              setSameAsCompanyAddress(false);
-            }}
-          >
-            X
-          </button>
-        </div>
-        <div>
-          <label htmlFor="title">Job Title:</label>
-          <textarea
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <div>
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-        </div>
-
-        <div>
-          <label htmlFor="date">Date:</label>
-          <input
-            type="date"
-            id="date"
-            value={startDate.split("T")[0]} // Extract the date from startDateTime
-            onChange={(e) => setStartDate(e.target.value)}
-            required
-          />
+          <div>
+            <label htmlFor="title">Job Title:</label>
+            <input
+              id="title"
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={(e) => handleChange(e, 2)}
+              required
+            ></input>
+          </div>
         </div>
 
-        <div></div>
-        <button type="submit">Create Task</button>
+        <div className={styles.client_name}>
+          <div className="icon">
+            <BsFileEarmarkPerson />{" "}
+          </div>
+
+          <div>
+            <label htmlFor="title">Technician:</label>
+            <select
+              id="client"
+              name="email"
+              value={formData.email}
+              onChange={(e) => handleChange(e, 3)}
+              required
+            >
+              <option value="">Select a Technician</option>
+              {technicians.map((technician) => (
+                <option key={technician.id} value={technician.email}>
+                  {technician.firstName} {technician.lastName}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className={styles.client_name}>
+          <div className="icon">
+            <TbListDetails />
+          </div>
+          <div>
+            <label htmlFor="description">Description:</label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={(e) => handleChange(e, 4)}
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <div className={styles.client_name}>
+          <div className="icon">
+            <BsCalendar2Date />
+          </div>
+          <div>
+            <label htmlFor="date">Date:</label>
+            <input
+              type="text"
+              id="date"
+              value={dayjs(formData.startDate.toDate()).format("YYYY MMMM DD")} // Extract the date from startDateTime
+            />
+          </div>
+        </div>
+
+        <div>
+          <button type="submit">Edit Task</button>
+        </div>
+        <div
+          className={classNames(
+            styles.feedbackContainer,
+            styles.feedbackWaiting,
+            showFeedbackSuccess && styles.show
+          )}
+        >
+          <MdPlaylistAddCheckCircle className={styles.feedbackIcon} />
+          <p>Task was Edited!</p>
+        </div>
       </form>
-    </div>
+    </>
   );
 };

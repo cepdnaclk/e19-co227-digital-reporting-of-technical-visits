@@ -1,16 +1,23 @@
 import React, { useContext, useState } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
-import { MdCreate } from "react-icons/md";
+import { BsSortAlphaDown, BsSortAlphaDownAlt, BsCheckAll } from "react-icons/bs";
+import { RiShieldCheckLine } from "react-icons/ri";
+import { MdCreate, MdDelete } from "react-icons/md";
 import styles from "../../Styles/Tasks/TasksTable.module.scss";
 import { DataContext } from "../../Context/dataContext";
 
-export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
+export const TasksTable = ({
+  tasks,
+  searchTerm,
+  searchColumn,
+  taskEdit,
+  taskVerify,
+}) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
   const [showDeleteError, setShowDeleteError] = useState(false);
-  const {technicians} = useContext(DataContext);
+  const { technicians } = useContext(DataContext);
 
   const handleSort = (field) => {
     if (field === sortBy) {
@@ -129,8 +136,8 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
               </button>
             </th>
             <th>Company Address</th>
-            <th>Verification Status</th>
             <th>Arrival Status</th>
+            <th>Verification Status</th>
             <th>Technician Name</th>
             <th>Date</th>
             <th>Edit</th>
@@ -145,11 +152,28 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
               <td>{task.address}</td>
               <td>{task.companyAddress || "No Company Address"}</td>
               <td>{task.isArrived ? <p>Arrived</p> : <p>Not Arrived</p>}</td>
-              <td>{task.isverified ? <p>Verified</p> : <p>Not Verified</p>}</td>
               <td>
-      {technicians.find((technician) => technician.email === task.email)?.firstName || "No Technician"}{' '}
-      {technicians.find((technician) => technician.email === task.email)?.lastName || ""}
-    </td>
+                {task.isVerified ? (
+                  <button className={styles.btn + " " + styles.verified}><BsCheckAll/>Verified</button>
+                ) : !task.isCompleted ? (
+                  <button className={styles.btn + " " + styles.not_verify}>Not Verified</button>
+                ) : (
+                  <button className={styles.btn + " " + styles.verify} onClick={() => {
+                    taskVerify(task);
+                  }}>
+                    <RiShieldCheckLine />
+                    Verify
+                  </button>
+                )}
+              </td>
+              <td>
+                {technicians.find(
+                  (technician) => technician.email === task.email
+                )?.firstName || "No Technician"}{" "}
+                {technicians.find(
+                  (technician) => technician.email === task.email
+                )?.lastName || ""}
+              </td>
               <td>
                 {task.startDate
                   ? task.startDate.toDate().toLocaleDateString()
@@ -173,6 +197,7 @@ export const TasksTable = ({ tasks, searchTerm, searchColumn, taskEdit, }) => {
                     handleDelete(task.id);
                   }}
                 >
+                  <MdDelete />
                   Delete
                 </button>
               </td>

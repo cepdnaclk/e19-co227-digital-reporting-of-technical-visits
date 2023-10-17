@@ -4,14 +4,13 @@ import { db } from "../../config/firebase";
 import styles from "../../Styles/Clients/ClientsTable.module.scss";
 import { BsSortAlphaDown, BsSortAlphaDownAlt } from "react-icons/bs";
 import classNames from "classnames";
-import { MdCreate } from "react-icons/md";
+import { MdCreate, MdDelete } from "react-icons/md";
 import { ClientEditForm } from "../../Components/Clients/ClientEditForm";
 
-export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
+export const ClientsTable = ({ clients, searchTerm, searchColumn, clientEdit }) => {
   const [sortBy, setSortBy] = useState("companyName");
   const [sortDirection, setSortDirection] = useState("asc");
   const [showDeleteError, setShowDeleteError] = useState(false);
-  const [selectedClient, setSelectedClient] = useState(null);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
 
   const handleSort = (field) => {
@@ -23,15 +22,6 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
     }
   };
 
-  const clientEdit = (client) => {
-    setSelectedClient(client);
-    setIsEditFormVisible(true);
-  };
-
-  const closeEditForm = () => {
-    setIsEditFormVisible(false);
-    setSelectedClient(null);
-  };
 
   const handleDelete = async (clientId) => {
     // delete logic
@@ -135,6 +125,7 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
                     handleDelete(client.id);
                   }}
                 >
+                  <MdDelete />
                   Delete
                 </button>
               </td>
@@ -142,9 +133,6 @@ export const ClientsTable = ({ clients, searchTerm, searchColumn }) => {
           ))}
         </tbody>
       </table>
-      {isEditFormVisible && selectedClient && (
-        <ClientEditForm client={selectedClient} onClosing={closeEditForm} />
-      )}
     </div>
   );
 };

@@ -1,0 +1,109 @@
+.notificationContainer {
+  position: absolute;
+  height: 3rem;
+  top: 4em;
+  right: 17rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  animation: fadeIn 0.5s ease-in-out;
+  padding: 0.4rem 0.4rem;
+}
+.notificationIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  svg {
+    color: #434343;
+    transition: color 0.3s ease-in-out;
+    scale: 1.1;
+  }
+
+  &:hover svg {
+    color: #911e0a; 
+    scale: 1.2;
+  }
+}
+
+.notificationCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(202, 2, 2, 0.916);
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.795);
+  border: 1px solid rgba(169, 167, 167, 0.61);
+  padding: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  color: #000;
+  backdrop-filter: blur(1.4px);
+  max-height: 55vh;
+  min-height: 20vh;
+  justify-content: flex-start;
+  
+}
+
+.notification_drop{
+  overflow-y: auto;
+}
+
+.notificationData {
+  margin: 0;
+  text-align : left;
+  padding: 3px;
+  padding-left: 1rem;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #e0e9f1;
+  }
+}
+
+.notificationDataEmpty {
+  margin: 0;
+  padding: 10px;
+  font-size: 12px;
+  color: #888888;
+}
+
+.clearNotification {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.5rem;
+  text-align:center;
+  padding: 1px;
+  font-size: 12px;
+  background-color: transparent; 
+  color: rgb(218, 34, 34);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #f8f8f8; 
+  }
+}
+
+.read {
+  background-color: #f9f9f9; 
+}

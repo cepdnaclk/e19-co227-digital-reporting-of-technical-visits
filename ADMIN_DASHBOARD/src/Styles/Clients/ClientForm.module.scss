@@ -110,7 +110,7 @@
     align-items: center;
   }
 
-  button[type="button"] {
+  button[type="mobile"] {
     background-color: #007bff;
     box-shadow: 0 3px 6px rgba(124, 169, 206, 0.5);
     color: #fff;
@@ -119,6 +119,30 @@
     padding: 0.5rem 1rem;
     font-size: 11px;
     margin-top: 0.3rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  button[type="Remove"] {
+    background-color: #ff5733;
+    box-shadow: 0 3px 4px rgba(250, 54, 54, 0.3);
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 0.2rem 0.5rem;
+    font-size: 10px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  button[type="fill"] {
+    background-color: transparent;
+    color: #edeeee;
+    border: none;
+    border-radius: 18px;
+    padding: 0 0.5rem;
+    font-size: 10px;
+    margin-top: 0.5rem;
     cursor: pointer;
     overflow: hidden;
   }
@@ -141,6 +165,112 @@
     &:hover {
       background-color: #1a8c38;
       box-shadow: 0 4px 7px rgba(82, 145, 85, 0.6);
+    }
+  }
+
+  .company_name {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .last_name {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .e_mail {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .address {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .phone_number {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    text-align: start;
+    align-items: center;
+    gap: 20px;
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  svg {
+    font-size: 1.2em;
+    margin: 0px;
+  }
+
+  .feedbackContainer {
+    visibility: hidden;
+    position: absolute;
+    top: -5;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 2em;
+    height: 100.3%;
+    width: 100%;
+    padding: 2em 1em;
+    text-align: center;
+    background-color: $bgcolor;
+    z-index: 9999;
+    display: flex;
+    transform: scaleX(0);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: hsl(165, 65%, 41%);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in;
+    transition: all 150ms ease-in;
+
+    .feedbackIcon {
+      height: 100px;
+      scale: 4;
+    }
+
+    &.show {
+      visibility: visible;
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    &.feedbackWaiting {
+      color: $waitingColor;
+    }
+    &.feedbackError {
+      color: rgb(169, 45, 64);
     }
   }
 }
