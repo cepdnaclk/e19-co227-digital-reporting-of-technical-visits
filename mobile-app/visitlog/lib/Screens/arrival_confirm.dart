@@ -241,7 +241,7 @@ class _ArrivalConfirmState extends State<ArrivalConfirm> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 13.0.h,
+                            height: 12.0.h,
                           ),
                           const Text(
                             "Get in to your Report Here:",
@@ -270,7 +270,7 @@ class _ArrivalConfirmState extends State<ArrivalConfirm> {
                             },
                             child: Container(
                               width: 180,
-                              height: 140,
+                              height: 152,
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
@@ -301,7 +301,7 @@ class _ArrivalConfirmState extends State<ArrivalConfirm> {
                                         style: TextStyle(
                                           color: Color.fromARGB(
                                               255, 248, 248, 248),
-                                          fontSize: 28,
+                                          fontSize: 27,
                                           fontWeight: FontWeight.w900,
                                         ),
                                         textAlign: TextAlign.center,
