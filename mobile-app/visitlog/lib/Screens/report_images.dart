@@ -53,6 +53,7 @@ class _ReportImagesState extends State<ReportImages> {
       true; // Track if the user selects the signature option
   final GlobalKey<SfSignaturePadState> _signaturePadKey = GlobalKey();
   Uint8List? _signatureImageBytes;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -280,6 +281,9 @@ class _ReportImagesState extends State<ReportImages> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
+                        setState(() {
+                          _isLoading = true;
+                        });
                         final signatureImage =
                             await _signaturePadKey.currentState?.toImage(
                           pixelRatio: 3.0,
@@ -301,10 +305,6 @@ class _ReportImagesState extends State<ReportImages> {
                             // Now you can upload _signatureImageBytes to Firebase Storage
                             await uploadSignatureImageToStorage(
                                 _signatureImageBytes!);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const TaskScreen()));
                           }
                         }
 
@@ -320,6 +320,13 @@ class _ReportImagesState extends State<ReportImages> {
                           'siteRepresentative': widget.representative,
                           'notes': widget.notes
                         }, SetOptions(merge: true));
+                        setState(() {
+                          _isLoading = false;
+                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TaskScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF082A63),
@@ -332,20 +339,41 @@ class _ReportImagesState extends State<ReportImages> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'SUBMIT',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(221, 255, 255, 255),
-                                  fontWeight: FontWeight.w900),
-                            ),
-                            SizedBox(width: 1.0.w),
-                            const Icon(
-                              Icons.arrow_forward,
-                              color: Color.fromARGB(221, 255, 255, 255),
-                            )
-                          ],
+                          children: _isLoading
+                              ? [
+                                  const SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ), //TODO: add progress indicator
+                                  ),
+                                  const SizedBox(
+                                    width: 15,
+                                  ),
+                                  const Text(
+                                    "Submitting",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.white),
+                                  )
+                                ]
+                              : [
+                                  const Text(
+                                    'SUBMIT',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color:
+                                            Color.fromARGB(221, 255, 255, 255),
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                  SizedBox(width: 1.0.w),
+                                  const Icon(
+                                    Icons.arrow_forward,
+                                    color: Color.fromARGB(221, 255, 255, 255),
+                                  )
+                                ],
                         ),
                       ),
                     ),
