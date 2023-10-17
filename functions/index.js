@@ -270,6 +270,16 @@ exports.taskCompletion = onDocumentUpdated("Tasks/{taskId}", async (event) => {
     currentDate.setMinutes(currentDate.getMinutes() + 30); // Add 30 minutes
     const formattedDate = currentDate.toLocaleString();
 
+    const firestore = getFirestore();
+    
+    notification={
+      'body':`Technician Arrived for the task: ${taskData.title}`,
+      'isRead':false
+    }
+    
+    const notificationCollectionRef = firestore.collection("Notifications")
+    notificationCollectionRef.add(notification);
+
     // Create an email transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
