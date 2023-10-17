@@ -279,7 +279,7 @@ class _TopPortion extends StatelessWidget {
           alignment: Alignment.center,
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 12.0,
+              left: 10.0,
               bottom: 18.0,
             ),
             child: ListTile(
@@ -293,8 +293,8 @@ class _TopPortion extends StatelessWidget {
                 subTopic,
                 style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 17),
+                    fontWeight: FontWeight.w800,
+                    fontSize: 16),
               ),
             ),
           ),
@@ -302,7 +302,7 @@ class _TopPortion extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: SizedBox(
-            width: 160,
+            width: 180,
             height: 35,
             child: Stack(
               fit: StackFit.expand,
@@ -329,7 +329,7 @@ class _TopPortion extends StatelessWidget {
                   ),
                   child: Text(
                     'Download Report ⍗',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ),
               ],
