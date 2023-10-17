@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import styles from "../Styles/Notification.module.scss";
+import { DataContext } from "../Context/dataContext";
+import { collection, updateDoc, doc, Timestamp } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 library.add(faBell);
 
 const Notification = () => {
+  const notificationsCollectionRef = collection(db,"Notifications");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [notifications, setNotifications] = useState([
-    { id: 1, body: "Notification 1", isRead: false },
-    { id: 2, body: "Notification 2", isRead: true },
-    { id: 3, body: "Notification 3", isRead: false },
-  ]);
-
+  // const [notifications, setNotifications] = useState([
+  //   { id: 1, body: "Notification 1", isRead: false },
+  //   { id: 2, body: "Notification 2", isRead: true },
+  //   { id: 3, body: "Notification 3", isRead: false },
+  // ]);
+  const {notifications} = useContext(DataContext);
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
@@ -25,17 +29,18 @@ const Notification = () => {
 
     console.log(`Clicked notification: ${JSON.stringify(clickedNotification)}`);
 
-    setNotifications((prevNotifications) =>
-      prevNotifications.map((notification) =>
-        notification.id === notificationId
-          ? { ...notification, isRead: true }
-          : notification
-      )
-    );
+      clickedNotification.isRead = true;
+      updateDoc(doc(notificationsCollectionRef,clickedNotification.id),clickedNotification);
   };
 
   const clearNotifications = () => {
-    setNotifications([]);
+    for (const notification of notifications){
+      
+      notification.isRead = true;
+      updateDoc(doc(notificationsCollectionRef,notification.id),notification);
+
+    }
+    
   };
 
   return (
@@ -53,6 +58,7 @@ const Notification = () => {
         <div className={styles.dropdown}>
           <div className={styles.notification_drop}>
             {notifications.map((notification, index) => (
+              
               <p
                 className={`${styles.notificationData} ${
                   notification.isRead ? styles.read : ""

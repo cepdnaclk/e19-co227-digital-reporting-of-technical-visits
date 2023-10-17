@@ -8,6 +8,7 @@ const DataContextProvider = ({ children }) => {
   const [technicians, setTechnicians] = useState([]);
   const [clients, setClients] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const [ notifications,setNotifications] = useState([]);
 
   useEffect(() => {
     // console.log("Warning: Data Fetching");
@@ -19,6 +20,23 @@ const DataContextProvider = ({ children }) => {
         updatedTechnicians.push({ ...doc.data(), id: doc.id });
       });
       setTechnicians(updatedTechnicians);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  useEffect(() => {
+    // console.log("Warning: Data Fetching");
+    const technicianCollectionRef = collection(db, "Notifications");
+
+    const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
+      const updatedNotifications = [];
+      snapshot.forEach((doc) => {
+        if (!doc.data().isRead)
+        updatedNotifications.push({ ...doc.data(), id: doc.id });
+      });
+      setNotifications(updatedNotifications);
     });
 
     return () => {
@@ -134,7 +152,7 @@ const DataContextProvider = ({ children }) => {
 //   }, []);
 
   return (
-    <DataContext.Provider value={{ technicians, clients, jobs }}>
+    <DataContext.Provider value={{ technicians, clients, jobs ,notifications}}>
       {children}
     </DataContext.Provider>
   );
