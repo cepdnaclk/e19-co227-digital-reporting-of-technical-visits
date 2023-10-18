@@ -17,6 +17,7 @@ const DataContextProvider = ({ children }) => {
     const unsubscribe = onSnapshot(technicianCollectionRef, (snapshot) => {
       const updatedTechnicians = [];
       snapshot.forEach((doc) => {
+        if(!doc.data().dis)
         updatedTechnicians.push({ ...doc.data(), id: doc.id });
       });
       setTechnicians(updatedTechnicians);
