@@ -13,7 +13,6 @@ import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as path;
 import 'package:visitlog/Utils/date_time.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class ReportImages extends StatefulWidget {
   ReportImages({

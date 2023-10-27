@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "visitlog00"
-  }
+  },
+  "targets": {
+    "visitlog00": {
+      "hosting": {
+        "mobile": [
+          "visitlog"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

@@ -8,7 +8,7 @@
 }
 .table_container_2 {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
   padding: 1em 0em;
   width: 100%;
@@ -28,12 +28,12 @@
 
     @media (width < 1600px) {
       scale: 0.9;
-      margin-top: -70px;
+      margin-top: -140px;
     }
 
     @media (width < 1200px) {
       scale: 0.8;
-      margin-top: -120px;
+      margin-top: -240px;
     }
 
     thead tr {
