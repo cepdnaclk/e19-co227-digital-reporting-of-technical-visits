@@ -7,6 +7,7 @@
   z-index: 10;
   animation: fadeIn 0.5s ease-in-out;
   padding: 0.4rem 0.4rem;
+  
 }
 .notificationIcon {
   cursor: pointer;
@@ -57,12 +58,13 @@
   max-height: 55vh;
   min-height: 20vh;
   justify-content: flex-start;
+  overflow-y: auto;
+  
+  
   
 }
 
-.notification_drop{
-  overflow-y: auto;
-}
+
 
 .notificationData {
   margin: 0;
@@ -72,6 +74,7 @@
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  
 
   &:hover {
     background-color: #e0e9f1;
