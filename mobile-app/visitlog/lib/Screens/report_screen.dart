@@ -11,7 +11,7 @@ import 'package:visitlog/services/auth_service.dart';
 import 'package:visitlog/utils.dart';
 
 class ReportScreen extends StatefulWidget {
-  ReportScreen(
+  const ReportScreen(
       {super.key,
       required this.topic,
       required this.subTopic,
@@ -27,6 +27,7 @@ class ReportScreen extends StatefulWidget {
   final String docId;
 
   @override
+  // ignore: library_private_types_in_public_api
   _ReportScreenState createState() => _ReportScreenState();
 }
 
@@ -34,12 +35,13 @@ class _ReportScreenState extends State<ReportScreen> {
   late String representative = '-';
   late String type = '-';
   late String notes = '-';
-  List<Uint8List> _images = [];
+  final List<Uint8List> _images = [];
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final _formkey = GlobalKey<FormState>();
   final TextEditingController _textController = TextEditingController();
   final List<Map<String, String>> items = TaskList().items;
+  // ignore: non_constant_identifier_names
   String? UserName = AuthService().getUserName();
   String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 
