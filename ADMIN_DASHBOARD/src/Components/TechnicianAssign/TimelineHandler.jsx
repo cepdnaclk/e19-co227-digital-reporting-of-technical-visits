@@ -10,6 +10,8 @@ const TimelineHandler = ({
   timeslotSelectionHandler,
   formHandler,
   dateHandler,
+  setTask,
+  setVerify
 }) => {
   console.log("Rerender");
   const [selectedTab, setSelectedTab] = useState("today");
@@ -239,6 +241,8 @@ const TimelineHandler = ({
           formHandler={formHandler}
           technicianSelectionHandler={technicianSelectionHandler}
           timeslotSelectionHandler={timeslotSelectionHandler}
+          setTask = {setTask}
+          setVerfiy = {setVerify}
         />
       </div>
     </div>

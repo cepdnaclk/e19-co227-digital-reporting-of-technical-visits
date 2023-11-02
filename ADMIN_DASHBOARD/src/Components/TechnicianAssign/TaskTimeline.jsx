@@ -10,6 +10,8 @@ const TaskTimeline = ({
   technicianSelectionHandler,
   timeslotSelectionHandler,
   formHandler,
+  setTask,
+  setVerfiy,
   
 }) => {
   // Calculate the number of time slots
@@ -26,6 +28,9 @@ const TaskTimeline = ({
   const [showTaskInfo, setShowTaskInfo] = useState(null);
 
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
+
+
+  const[showTaskVerifyForm,setShowTaskVerifyForm] = useState(false);
 
   const handleMouseEnter = (index, event) => {
     if (!event) return; // Check if event is undefined
@@ -91,6 +96,10 @@ const TaskTimeline = ({
                   : "rgba(200,40,50, 0.8)",
                   border: "none"
               }}
+
+              onClick={
+                () => handleCellClick(timeSlots[slotIndex], tech,task)
+              }
             >
               <div className="task-title">{task.title}</div>
             </td>
@@ -118,13 +127,22 @@ const TaskTimeline = ({
     );
   });
 
-  const handleCellClick = (timeSlot, technician) => {
-    technicianSelectionHandler(technician);
+  const handleCellClick = (timeSlot, technician,task) => {
+    if (task){
+      
+      console.log("Hi")
+      setTask(task);
+      setVerfiy(true);
+    }
+    else{
+      technicianSelectionHandler(technician);
     timeslotSelectionHandler(timeSlot);
     formHandler(true);
     // Call the onCellClick function and pass the timeSlot and technician as arguments
     console.log("Clicked on cell for time slot:", timeSlot);
     console.log("Technician:", technician.firstName);
+
+    }
 
     // Add your logic to assign a job to the technician for the clicked slot here
   };
