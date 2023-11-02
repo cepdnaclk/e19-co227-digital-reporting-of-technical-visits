@@ -8,6 +8,7 @@ import TimelineHandler from "../Components/TechnicianAssign/TimelineHandler";
 import TechnicianAssignForm from "../Components/TechnicianAssign/TechnicianAssignForm";
 import TaskLegend from "../Components/TechnicianAssign/TaskLegend";
 import Notification from "../Components/Notification";
+import { TaskVerifyForm } from "../Components/Tasks/TaskVerifyForm";
 
 export const TechnicianAssign = () => {
   // Sample data for tasks, start time, end time, slot duration, and technicians
@@ -16,6 +17,8 @@ export const TechnicianAssign = () => {
   const [selectedTechnician, setSelectedTechnician] = useState();
   const [selectedTimeslot, setSelectedTimeslot] = useState();
   const [selectedParentDate, setSelectedParentDate] = useState(new Date());
+  const [selectedTask,setSelectedTask] = useState();
+  const [showVerifyForm,setShowVerifyForm] = useState(false);
 
   const backgroundClick = useRef(null);
 
@@ -31,6 +34,11 @@ export const TechnicianAssign = () => {
     if (e.target === backgroundClick.current) {
       setShowAssignForm(false);
     }
+  };
+
+  const closeVerifyForm = () => {
+    setShowVerifyForm(false);
+    setSelectedTask(null);
   };
 
   // const tasks = [
@@ -197,6 +205,12 @@ export const TechnicianAssign = () => {
               />
             </div>
           )}
+
+    {showVerifyForm && (
+        <div className={styles.cardContainer} >
+          <TaskVerifyForm task={selectedTask} onClosing={closeVerifyForm} />
+        </div>
+      )}
       <div className={styles.container}>
         <Navigation />
         <UserCard />
@@ -219,6 +233,8 @@ export const TechnicianAssign = () => {
               technicianSelectionHandler={setSelectedTechnician}
               timeslotSelectionHandler={setSelectedTimeslot}
               dateHandler={setSelectedParentDate}
+              setTask = {setSelectedTask}
+              setVerify = {setShowVerifyForm}
             />
             {/* <TaskTimeline
               tasks={jobs}
