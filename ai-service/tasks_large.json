@@ -1,0 +1,702 @@
+[
+  {
+    "id": "TS001",
+    "description": "Fix the broken sprinkler system in the garden.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T063"
+  },
+  {
+    "id": "TS002",
+    "description": "Install new hand dryers in the public restrooms.",
+    "location": "San Jose",
+    "priority": "High",
+    "assigned_technician": "T001"
+  },
+  {
+    "id": "TS003",
+    "description": "Install new telephone lines in the customer service center.",
+    "location": "Phoenix",
+    "priority": "High",
+    "assigned_technician": "T095"
+  },
+  {
+    "id": "TS004",
+    "description": "Install new shelving units in the warehouse.",
+    "location": "San Diego",
+    "priority": "Low",
+    "assigned_technician": "T008"
+  },
+  {
+    "id": "TS005",
+    "description": "Install new hand dryers in the public restrooms.",
+    "location": "Los Angeles",
+    "priority": "Low",
+    "assigned_technician": "T046"
+  },
+  {
+    "id": "TS006",
+    "description": "Service the air conditioning system in the laboratory.",
+    "location": "Phoenix",
+    "priority": "High",
+    "assigned_technician": "T008"
+  },
+  {
+    "id": "TS007",
+    "description": "Install new backup batteries in the emergency lighting system.",
+    "location": "San Antonio",
+    "priority": "Medium",
+    "assigned_technician": "T019"
+  },
+  {
+    "id": "TS008",
+    "description": "Install a new thermostat in the maintenance office.",
+    "location": "San Diego",
+    "priority": "High",
+    "assigned_technician": "T070"
+  },
+  {
+    "id": "TS009",
+    "description": "Repair the malfunctioning coffee machine in the break room.",
+    "location": "San Antonio",
+    "priority": "Low",
+    "assigned_technician": "T093"
+  },
+  {
+    "id": "TS010",
+    "description": "Install new power strips in the computer lab.",
+    "location": "Dallas",
+    "priority": "Low",
+    "assigned_technician": "T062"
+  },
+  {
+    "id": "TS011",
+    "description": "Install new ergonomic chairs in the training room.",
+    "location": "San Antonio",
+    "priority": "High",
+    "assigned_technician": "T069"
+  },
+  {
+    "id": "TS012",
+    "description": "Install new lighting fixtures in the exhibition hall.",
+    "location": "Dallas",
+    "priority": "High",
+    "assigned_technician": "T035"
+  },
+  {
+    "id": "TS013",
+    "description": "Repair the damaged insulation in the warehouse.",
+    "location": "Philadelphia",
+    "priority": "Medium",
+    "assigned_technician": "T020"
+  },
+  {
+    "id": "TS014",
+    "description": "Inspect and service the fire alarm system.",
+    "location": "New York",
+    "priority": "High",
+    "assigned_technician": "T048"
+  },
+  {
+    "id": "TS015",
+    "description": "Install new protective barriers in the industrial area.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T076"
+  },
+  {
+    "id": "TS016",
+    "description": "Install new emergency exit signs in the building.",
+    "location": "San Diego",
+    "priority": "High",
+    "assigned_technician": "T016"
+  },
+  {
+    "id": "TS017",
+    "description": "Install new ceiling fans in the residential units.",
+    "location": "San Jose",
+    "priority": "High",
+    "assigned_technician": "T010"
+  },
+  {
+    "id": "TS018",
+    "description": "Install new backup batteries in the emergency lighting system.",
+    "location": "Chicago",
+    "priority": "Medium",
+    "assigned_technician": "T086"
+  },
+  {
+    "id": "TS019",
+    "description": "Fix the broken alarm system in the admin office.",
+    "location": "San Antonio",
+    "priority": "High",
+    "assigned_technician": "T008"
+  },
+  {
+    "id": "TS020",
+    "description": "Install new telephone lines in the customer service center.",
+    "location": "Phoenix",
+    "priority": "High",
+    "assigned_technician": "T046"
+  },
+  {
+    "id": "TS021",
+    "description": "Install new office cubicles in the open area.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T080"
+  },
+  {
+    "id": "TS022",
+    "description": "Fix the broken HVAC unit in the CEO's office.",
+    "location": "Dallas",
+    "priority": "Medium",
+    "assigned_technician": "T020"
+  },
+  {
+    "id": "TS023",
+    "description": "Fix the broken heating unit in the storage warehouse.",
+    "location": "Chicago",
+    "priority": "Medium",
+    "assigned_technician": "T026"
+  },
+  {
+    "id": "TS024",
+    "description": "Install new ergonomic chairs in the training room.",
+    "location": "San Jose",
+    "priority": "Medium",
+    "assigned_technician": "T020"
+  },
+  {
+    "id": "TS025",
+    "description": "Repair the malfunctioning thermostat in the conference room.",
+    "location": "Chicago",
+    "priority": "Medium",
+    "assigned_technician": "T017"
+  },
+  {
+    "id": "TS026",
+    "description": "Install new access control systems at the main gate.",
+    "location": "Philadelphia",
+    "priority": "High",
+    "assigned_technician": "T100"
+  },
+  {
+    "id": "TS027",
+    "description": "Install new flooring in the employee break room.",
+    "location": "Philadelphia",
+    "priority": "Low",
+    "assigned_technician": "T025"
+  },
+  {
+    "id": "TS028",
+    "description": "Fix the broken garage door in the maintenance facility.",
+    "location": "San Diego",
+    "priority": "Low",
+    "assigned_technician": "T012"
+  },
+  {
+    "id": "TS029",
+    "description": "Service the central vacuum system in the hotel.",
+    "location": "San Diego",
+    "priority": "High",
+    "assigned_technician": "T047"
+  },
+  {
+    "id": "TS030",
+    "description": "Install new ergonomic chairs in the training room.",
+    "location": "San Diego",
+    "priority": "Low",
+    "assigned_technician": "T089"
+  },
+  {
+    "id": "TS031",
+    "description": "Install new telephone lines in the customer service center.",
+    "location": "Philadelphia",
+    "priority": "High",
+    "assigned_technician": "T047"
+  },
+  {
+    "id": "TS032",
+    "description": "Service the water filtration system in the cafeteria.",
+    "location": "New York",
+    "priority": "Low",
+    "assigned_technician": "T068"
+  },
+  {
+    "id": "TS033",
+    "description": "Replace the damaged tiles in the restroom.",
+    "location": "Dallas",
+    "priority": "Medium",
+    "assigned_technician": "T009"
+  },
+  {
+    "id": "TS034",
+    "description": "Service the HVAC system on the rooftop.",
+    "location": "Chicago",
+    "priority": "Medium",
+    "assigned_technician": "T060"
+  },
+  {
+    "id": "TS035",
+    "description": "Service the automatic doors in the main entrance.",
+    "location": "Chicago",
+    "priority": "High",
+    "assigned_technician": "T043"
+  },
+  {
+    "id": "TS036",
+    "description": "Install new access control systems at the main gate.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T012"
+  },
+  {
+    "id": "TS037",
+    "description": "Service the HVAC system on the rooftop.",
+    "location": "Houston",
+    "priority": "High",
+    "assigned_technician": "T062"
+  },
+  {
+    "id": "TS038",
+    "description": "Fix the broken heating unit in the storage warehouse.",
+    "location": "San Jose",
+    "priority": "Medium",
+    "assigned_technician": "T039"
+  },
+  {
+    "id": "TS039",
+    "description": "Repair the air conditioning unit in the main office.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T057"
+  },
+  {
+    "id": "TS040",
+    "description": "Install new shelving units in the warehouse.",
+    "location": "San Antonio",
+    "priority": "Medium",
+    "assigned_technician": "T076"
+  },
+  {
+    "id": "TS041",
+    "description": "Install new telephone lines in the customer service center.",
+    "location": "Chicago",
+    "priority": "Low",
+    "assigned_technician": "T001"
+  },
+  {
+    "id": "TS042",
+    "description": "Install new ceiling fans in the residential units.",
+    "location": "Chicago",
+    "priority": "Low",
+    "assigned_technician": "T027"
+  },
+  {
+    "id": "TS043",
+    "description": "Paint the exterior walls of the main building.",
+    "location": "Houston",
+    "priority": "Low",
+    "assigned_technician": "T052"
+  },
+  {
+    "id": "TS044",
+    "description": "Install new handrails in the stairwell.",
+    "location": "Phoenix",
+    "priority": "High",
+    "assigned_technician": "T098"
+  },
+  {
+    "id": "TS045",
+    "description": "Fix the broken security gate in the parking lot.",
+    "location": "San Jose",
+    "priority": "Low",
+    "assigned_technician": "T071"
+  },
+  {
+    "id": "TS046",
+    "description": "Install new blinds in the finance department.",
+    "location": "San Jose",
+    "priority": "High",
+    "assigned_technician": "T057"
+  },
+  {
+    "id": "TS047",
+    "description": "Install new network cables in the IT department.",
+    "location": "Chicago",
+    "priority": "High",
+    "assigned_technician": "T010"
+  },
+  {
+    "id": "TS048",
+    "description": "Repair the faulty card readers in the office building.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T012"
+  },
+  {
+    "id": "TS049",
+    "description": "Install new signage in the visitor's parking area.",
+    "location": "San Diego",
+    "priority": "Medium",
+    "assigned_technician": "T074"
+  },
+  {
+    "id": "TS050",
+    "description": "Fix the broken security gate in the parking lot.",
+    "location": "Dallas",
+    "priority": "Low",
+    "assigned_technician": "T054"
+  },
+  {
+    "id": "TS051",
+    "description": "Replace the damaged tiles in the restroom.",
+    "location": "Phoenix",
+    "priority": "High",
+    "assigned_technician": "T023"
+  },
+  {
+    "id": "TS052",
+    "description": "Service the elevator control systems in the hotel.",
+    "location": "San Antonio",
+    "priority": "Low",
+    "assigned_technician": "T073"
+  },
+  {
+    "id": "TS053",
+    "description": "Service the power supply units in the server room.",
+    "location": "Los Angeles",
+    "priority": "Low",
+    "assigned_technician": "T081"
+  },
+  {
+    "id": "TS054",
+    "description": "Install new bike racks in the company parking lot.",
+    "location": "Dallas",
+    "priority": "Low",
+    "assigned_technician": "T015"
+  },
+  {
+    "id": "TS055",
+    "description": "Repair the broken door lock in the storage room.",
+    "location": "San Antonio",
+    "priority": "High",
+    "assigned_technician": "T034"
+  },
+  {
+    "id": "TS056",
+    "description": "Install new ergonomic chairs in the training room.",
+    "location": "Philadelphia",
+    "priority": "High",
+    "assigned_technician": "T047"
+  },
+  {
+    "id": "TS057",
+    "description": "Fix the broken water pump in the garden area.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T059"
+  },
+  {
+    "id": "TS058",
+    "description": "Install new carpet in the executive offices.",
+    "location": "San Jose",
+    "priority": "Low",
+    "assigned_technician": "T057"
+  },
+  {
+    "id": "TS059",
+    "description": "Repair the leaky faucet in the employee lounge.",
+    "location": "Dallas",
+    "priority": "High",
+    "assigned_technician": "T094"
+  },
+  {
+    "id": "TS060",
+    "description": "Install new ceiling fans in the residential units.",
+    "location": "San Diego",
+    "priority": "Medium",
+    "assigned_technician": "T049"
+  },
+  {
+    "id": "TS061",
+    "description": "Service the air conditioning system in the laboratory.",
+    "location": "Chicago",
+    "priority": "Medium",
+    "assigned_technician": "T016"
+  },
+  {
+    "id": "TS062",
+    "description": "Service the power supply units in the server room.",
+    "location": "Chicago",
+    "priority": "High",
+    "assigned_technician": "T027"
+  },
+  {
+    "id": "TS063",
+    "description": "Service the HVAC ducts in the admin office.",
+    "location": "San Antonio",
+    "priority": "Medium",
+    "assigned_technician": "T014"
+  },
+  {
+    "id": "TS064",
+    "description": "Fix the broken power outlet in the production area.",
+    "location": "San Jose",
+    "priority": "High",
+    "assigned_technician": "T095"
+  },
+  {
+    "id": "TS065",
+    "description": "Fix the broken heating unit in the storage warehouse.",
+    "location": "New York",
+    "priority": "Medium",
+    "assigned_technician": "T058"
+  },
+  {
+    "id": "TS066",
+    "description": "Service the backup generator in the utility room.",
+    "location": "San Antonio",
+    "priority": "Medium",
+    "assigned_technician": "T094"
+  },
+  {
+    "id": "TS067",
+    "description": "Install new bike racks in the company parking lot.",
+    "location": "New York",
+    "priority": "Low",
+    "assigned_technician": "T013"
+  },
+  {
+    "id": "TS068",
+    "description": "Install new power strips in the computer lab.",
+    "location": "Phoenix",
+    "priority": "Low",
+    "assigned_technician": "T012"
+  },
+  {
+    "id": "TS069",
+    "description": "Service the main boiler in the mechanical room.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T018"
+  },
+  {
+    "id": "TS070",
+    "description": "Repair the leaking roof on the warehouse.",
+    "location": "Houston",
+    "priority": "High",
+    "assigned_technician": "T007"
+  },
+  {
+    "id": "TS071",
+    "description": "Repair the faulty card readers in the office building.",
+    "location": "San Jose",
+    "priority": "Low",
+    "assigned_technician": "T093"
+  },
+  {
+    "id": "TS072",
+    "description": "Service the water filtration system in the cafeteria.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T029"
+  },
+  {
+    "id": "TS073",
+    "description": "Inspect and service the fire alarm system.",
+    "location": "San Jose",
+    "priority": "High",
+    "assigned_technician": "T086"
+  },
+  {
+    "id": "TS074",
+    "description": "Install new flooring in the employee break room.",
+    "location": "Dallas",
+    "priority": "Low",
+    "assigned_technician": "T065"
+  },
+  {
+    "id": "TS075",
+    "description": "Fix the broken sprinkler heads in the garden.",
+    "location": "New York",
+    "priority": "High",
+    "assigned_technician": "T097"
+  },
+  {
+    "id": "TS076",
+    "description": "Install new network switches in the data center.",
+    "location": "San Diego",
+    "priority": "Medium",
+    "assigned_technician": "T081"
+  },
+  {
+    "id": "TS077",
+    "description": "Fix the broken power outlet in the production area.",
+    "location": "New York",
+    "priority": "Low",
+    "assigned_technician": "T046"
+  },
+  {
+    "id": "TS078",
+    "description": "Repair the faulty light switches in the auditorium.",
+    "location": "Philadelphia",
+    "priority": "Medium",
+    "assigned_technician": "T070"
+  },
+  {
+    "id": "TS079",
+    "description": "Repair the faulty card readers in the office building.",
+    "location": "San Antonio",
+    "priority": "Medium",
+    "assigned_technician": "T090"
+  },
+  {
+    "id": "TS080",
+    "description": "Repair the air conditioning unit in the main office.",
+    "location": "Philadelphia",
+    "priority": "Low",
+    "assigned_technician": "T001"
+  },
+  {
+    "id": "TS081",
+    "description": "Service the central heating system in the admin offices.",
+    "location": "Houston",
+    "priority": "Low",
+    "assigned_technician": "T010"
+  },
+  {
+    "id": "TS082",
+    "description": "Fix the broken sprinkler heads in the garden.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T082"
+  },
+  {
+    "id": "TS083",
+    "description": "Repair the malfunctioning coffee machine in the break room.",
+    "location": "Chicago",
+    "priority": "High",
+    "assigned_technician": "T026"
+  },
+  {
+    "id": "TS084",
+    "description": "Service the backup generator in the utility room.",
+    "location": "Phoenix",
+    "priority": "Medium",
+    "assigned_technician": "T011"
+  },
+  {
+    "id": "TS085",
+    "description": "Install new energy-efficient windows in the office block.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T034"
+  },
+  {
+    "id": "TS086",
+    "description": "Repair the broken projector in the conference hall.",
+    "location": "Los Angeles",
+    "priority": "Medium",
+    "assigned_technician": "T084"
+  },
+  {
+    "id": "TS087",
+    "description": "Service the HVAC system on the rooftop.",
+    "location": "San Diego",
+    "priority": "Medium",
+    "assigned_technician": "T074"
+  },
+  {
+    "id": "TS088",
+    "description": "Repair the malfunctioning vending machine in the cafeteria.",
+    "location": "Phoenix",
+    "priority": "High",
+    "assigned_technician": "T091"
+  },
+  {
+    "id": "TS089",
+    "description": "Inspect and service the fire alarm system.",
+    "location": "Los Angeles",
+    "priority": "Low",
+    "assigned_technician": "T089"
+  },
+  {
+    "id": "TS090",
+    "description": "Inspect and service the fire alarm system.",
+    "location": "San Diego",
+    "priority": "Medium",
+    "assigned_technician": "T006"
+  },
+  {
+    "id": "TS091",
+    "description": "Service the HVAC system on the rooftop.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T015"
+  },
+  {
+    "id": "TS092",
+    "description": "Install new blinds in the finance department.",
+    "location": "Philadelphia",
+    "priority": "Medium",
+    "assigned_technician": "T061"
+  },
+  {
+    "id": "TS093",
+    "description": "Repair the damaged security camera in the loading dock.",
+    "location": "Phoenix",
+    "priority": "Medium",
+    "assigned_technician": "T039"
+  },
+  {
+    "id": "TS094",
+    "description": "Install new blinds in the finance department.",
+    "location": "Dallas",
+    "priority": "Low",
+    "assigned_technician": "T070"
+  },
+  {
+    "id": "TS095",
+    "description": "Repair the malfunctioning thermostat in the conference room.",
+    "location": "Dallas",
+    "priority": "High",
+    "assigned_technician": "T006"
+  },
+  {
+    "id": "TS096",
+    "description": "Fix the broken heating unit in the storage warehouse.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T084"
+  },
+  {
+    "id": "TS097",
+    "description": "Repair the malfunctioning elevator in the lobby.",
+    "location": "San Diego",
+    "priority": "Low",
+    "assigned_technician": "T055"
+  },
+  {
+    "id": "TS098",
+    "description": "Service the heating system in the dormitories.",
+    "location": "San Jose",
+    "priority": "Low",
+    "assigned_technician": "T086"
+  },
+  {
+    "id": "TS099",
+    "description": "Install new ergonomic chairs in the training room.",
+    "location": "Dallas",
+    "priority": "Medium",
+    "assigned_technician": "T002"
+  },
+  {
+    "id": "TS100",
+    "description": "Install new carpet in the executive offices.",
+    "location": "Los Angeles",
+    "priority": "High",
+    "assigned_technician": "T028"
+  }
+]

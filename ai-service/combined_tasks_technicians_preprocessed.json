@@ -1,0 +1,1602 @@
+[
+  {
+    "task_id":"TS001",
+    "task_description":"fix broken sprinkler system garden",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Charles Garcia",
+    "technician_capabilities":"specialist setup maintenance home brewing equipment ensure optimal brewing condition",
+    "technician_experience":6,
+    "technician_availability":"Busy",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.85,
+      "feedback_score":3.72
+    },
+    "technician_id":"T063"
+  },
+  {
+    "task_id":"TS002",
+    "task_description":"install new hand dryer public restroom",
+    "task_location":"San Jose",
+    "priority":"High",
+    "technician_name":"Kelly Yang",
+    "technician_capabilities":"expert diagnose repair hvac system advanced knowledge climate control solution",
+    "technician_experience":17,
+    "technician_availability":"On Leave",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.9,
+      "feedback_score":4.28
+    },
+    "technician_id":"T001"
+  },
+  {
+    "task_id":"TS003",
+    "task_description":"install new telephone line customer service center",
+    "task_location":"Phoenix",
+    "priority":"High",
+    "technician_name":"Matthew Hill",
+    "technician_capabilities":"skilled setup maintenance video conferencing system provide reliable solution remote communication",
+    "technician_experience":13,
+    "technician_availability":"Available",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.99,
+      "feedback_score":4.66
+    },
+    "technician_id":"T095"
+  },
+  {
+    "task_id":"TS004",
+    "task_description":"install new shelve unit warehouse",
+    "task_location":"San Diego",
+    "priority":"Low",
+    "technician_name":"Lucas Collins",
+    "technician_capabilities":"adept software installation configuration include troubleshoot software conflict ensure compatibility",
+    "technician_experience":12,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.57
+    },
+    "technician_id":"T008"
+  },
+  {
+    "task_id":"TS005",
+    "task_description":"install new hand dryer public restroom",
+    "task_location":"Los Angeles",
+    "priority":"Low",
+    "technician_name":"Eric Patel",
+    "technician_capabilities":"proficient setup maintenance home fitness equipment ensure safe effective use",
+    "technician_experience":20,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.76,
+      "feedback_score":4.62
+    },
+    "technician_id":"T046"
+  },
+  {
+    "task_id":"TS006",
+    "task_description":"service air conditioning system laboratory",
+    "task_location":"Phoenix",
+    "priority":"High",
+    "technician_name":"Lucas Collins",
+    "technician_capabilities":"adept software installation configuration include troubleshoot software conflict ensure compatibility",
+    "technician_experience":12,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.57
+    },
+    "technician_id":"T008"
+  },
+  {
+    "task_id":"TS007",
+    "task_description":"install new backup battery emergency lighting system",
+    "task_location":"San Antonio",
+    "priority":"Medium",
+    "technician_name":"Miguel Smith",
+    "technician_capabilities":"expert boiler repair maintenance strong background residential industrial heating system",
+    "technician_experience":2,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":3.92
+    },
+    "technician_id":"T019"
+  },
+  {
+    "task_id":"TS008",
+    "task_description":"install new thermostat maintenance office",
+    "task_location":"San Diego",
+    "priority":"High",
+    "technician_name":"Lucas Ortega",
+    "technician_capabilities":"specialist installation satellite tv system provide reliable high quality television service",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":1.0,
+      "feedback_score":4.69
+    },
+    "technician_id":"T070"
+  },
+  {
+    "task_id":"TS009",
+    "task_description":"repair malfunction coffee machine break room",
+    "task_location":"San Antonio",
+    "priority":"Low",
+    "technician_name":"Megan Hubbard",
+    "technician_capabilities":"adept repair maintain industrial refrigeration system ensure efficient cooling large scale operation",
+    "technician_experience":3,
+    "technician_availability":"On Leave",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.84,
+      "feedback_score":4.96
+    },
+    "technician_id":"T093"
+  },
+  {
+    "task_id":"TS010",
+    "task_description":"install new power strip computer lab",
+    "task_location":"Dallas",
+    "priority":"Low",
+    "technician_name":"Paul Wood",
+    "technician_capabilities":"expert bicycle repair maintenance include gear adjustment brake repair tire replacement",
+    "technician_experience":16,
+    "technician_availability":"Busy",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.9,
+      "feedback_score":4.93
+    },
+    "technician_id":"T062"
+  },
+  {
+    "task_id":"TS011",
+    "task_description":"install new ergonomic chair training room",
+    "task_location":"San Antonio",
+    "priority":"High",
+    "technician_name":"Dr. Denise Hughes",
+    "technician_capabilities":"expert repair maintenance sewing machine ensure smooth operation type sewing project",
+    "technician_experience":7,
+    "technician_availability":"Available",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.77,
+      "feedback_score":4.84
+    },
+    "technician_id":"T069"
+  },
+  {
+    "task_id":"TS012",
+    "task_description":"install new lighting fixture exhibition hall",
+    "task_location":"Dallas",
+    "priority":"High",
+    "technician_name":"Christine Morgan",
+    "technician_capabilities":"specialist water filtration system capable instal maintain residential commercial water purification solution",
+    "technician_experience":5,
+    "technician_availability":"Busy",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.91,
+      "feedback_score":4.23
+    },
+    "technician_id":"T035"
+  },
+  {
+    "task_id":"TS013",
+    "task_description":"repair damage insulation warehouse",
+    "task_location":"Philadelphia",
+    "priority":"Medium",
+    "technician_name":"Christopher Taylor",
+    "technician_capabilities":"specialist window installation capable handle standard custom window size style",
+    "technician_experience":10,
+    "technician_availability":"Busy",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.82,
+      "feedback_score":3.76
+    },
+    "technician_id":"T020"
+  },
+  {
+    "task_id":"TS014",
+    "task_description":"inspect service fire alarm system",
+    "task_location":"New York",
+    "priority":"High",
+    "technician_name":"Whitney Collins",
+    "technician_capabilities":"expert wind turbine maintenance capable perform routine inspection repair maximize efficiency",
+    "technician_experience":16,
+    "technician_availability":"On Leave",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.9,
+      "feedback_score":3.54
+    },
+    "technician_id":"T048"
+  },
+  {
+    "task_id":"TS015",
+    "task_description":"install new protective barrier industrial area",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Karen Butler",
+    "technician_capabilities":"expert setup maintenance outdoor kitchen include grill countertop refrigeration",
+    "technician_experience":3,
+    "technician_availability":"Busy",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":3.58
+    },
+    "technician_id":"T076"
+  },
+  {
+    "task_id":"TS016",
+    "task_description":"install new emergency exit sign building",
+    "task_location":"San Diego",
+    "priority":"High",
+    "technician_name":"Scott Ellis",
+    "technician_capabilities":"experience floor installation repair specialize hardwood laminate tile floor",
+    "technician_experience":1,
+    "technician_availability":"Available",
+    "technician_location":"Los Angeles",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":4.08
+    },
+    "technician_id":"T016"
+  },
+  {
+    "task_id":"TS017",
+    "task_description":"install new ceiling fan residential unit",
+    "task_location":"San Jose",
+    "priority":"High",
+    "technician_name":"Michelle Doyle",
+    "technician_capabilities":"expert datum cable network infrastructure experience large scale commercial installation",
+    "technician_experience":18,
+    "technician_availability":"On Leave",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.79
+    },
+    "technician_id":"T010"
+  },
+  {
+    "task_id":"TS018",
+    "task_description":"install new backup battery emergency lighting system",
+    "task_location":"Chicago",
+    "priority":"Medium",
+    "technician_name":"Henry Mcdaniel",
+    "technician_capabilities":"adept instal maintain building automation system include hvac lighting security control",
+    "technician_experience":18,
+    "technician_availability":"Busy",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.97,
+      "feedback_score":3.72
+    },
+    "technician_id":"T086"
+  },
+  {
+    "task_id":"TS019",
+    "task_description":"fix break alarm system admin office",
+    "task_location":"San Antonio",
+    "priority":"High",
+    "technician_name":"Lucas Collins",
+    "technician_capabilities":"adept software installation configuration include troubleshoot software conflict ensure compatibility",
+    "technician_experience":12,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.57
+    },
+    "technician_id":"T008"
+  },
+  {
+    "task_id":"TS020",
+    "task_description":"install new telephone line customer service center",
+    "task_location":"Phoenix",
+    "priority":"High",
+    "technician_name":"Eric Patel",
+    "technician_capabilities":"proficient setup maintenance home fitness equipment ensure safe effective use",
+    "technician_experience":20,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.76,
+      "feedback_score":4.62
+    },
+    "technician_id":"T046"
+  },
+  {
+    "task_id":"TS021",
+    "task_description":"install new office cubicle open area",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Katherine Crane",
+    "technician_capabilities":"certify installation maintenance commercial refrigeration system ensure reliable operation food storage",
+    "technician_experience":12,
+    "technician_availability":"On Leave",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.95,
+      "feedback_score":4.19
+    },
+    "technician_id":"T080"
+  },
+  {
+    "task_id":"TS022",
+    "task_description":"fix broken hvac unit ceo office",
+    "task_location":"Dallas",
+    "priority":"Medium",
+    "technician_name":"Christopher Taylor",
+    "technician_capabilities":"specialist window installation capable handle standard custom window size style",
+    "technician_experience":10,
+    "technician_availability":"Busy",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.82,
+      "feedback_score":3.76
+    },
+    "technician_id":"T020"
+  },
+  {
+    "task_id":"TS023",
+    "task_description":"fix break heating unit storage warehouse",
+    "task_location":"Chicago",
+    "priority":"Medium",
+    "technician_name":"Jessica Austin",
+    "technician_capabilities":"experience 3d printing setup maintenance focus optimize print quality machine performance",
+    "technician_experience":3,
+    "technician_availability":"On Leave",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.75,
+      "feedback_score":4.73
+    },
+    "technician_id":"T026"
+  },
+  {
+    "task_id":"TS024",
+    "task_description":"install new ergonomic chair training room",
+    "task_location":"San Jose",
+    "priority":"Medium",
+    "technician_name":"Christopher Taylor",
+    "technician_capabilities":"specialist window installation capable handle standard custom window size style",
+    "technician_experience":10,
+    "technician_availability":"Busy",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.82,
+      "feedback_score":3.76
+    },
+    "technician_id":"T020"
+  },
+  {
+    "task_id":"TS025",
+    "task_description":"repair malfunction thermostat conference room",
+    "task_location":"Chicago",
+    "priority":"Medium",
+    "technician_name":"James Graves",
+    "technician_capabilities":"adept instal maintain security system include cctv alarm access control system",
+    "technician_experience":7,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.78,
+      "feedback_score":4.3
+    },
+    "technician_id":"T017"
+  },
+  {
+    "task_id":"TS026",
+    "task_description":"install new access control system main gate",
+    "task_location":"Philadelphia",
+    "priority":"High",
+    "technician_name":"Joshua Jackson",
+    "technician_capabilities":"adept instal repair irrigation pump control optimize water distribution agricultural landscaping application",
+    "technician_experience":7,
+    "technician_availability":"Available",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.75,
+      "feedback_score":4.34
+    },
+    "technician_id":"T100"
+  },
+  {
+    "task_id":"TS027",
+    "task_description":"install new flooring employee break room",
+    "task_location":"Philadelphia",
+    "priority":"Low",
+    "technician_name":"Kristen Sawyer",
+    "technician_capabilities":"certify hvac system design installation specialize energy efficient solution residential commercial building",
+    "technician_experience":6,
+    "technician_availability":"Available",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":4.08
+    },
+    "technician_id":"T025"
+  },
+  {
+    "task_id":"TS028",
+    "task_description":"fix break garage door maintenance facility",
+    "task_location":"San Diego",
+    "priority":"Low",
+    "technician_name":"Daniel Martinez",
+    "technician_capabilities":"proficient repair home appliance focus refrigerator washing machine oven",
+    "technician_experience":19,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.79,
+      "feedback_score":3.83
+    },
+    "technician_id":"T012"
+  },
+  {
+    "task_id":"TS029",
+    "task_description":"service central vacuum system hotel",
+    "task_location":"San Diego",
+    "priority":"High",
+    "technician_name":"Karen Escobar",
+    "technician_capabilities":"skilled installation repair irrigation system optimize water use landscape garden",
+    "technician_experience":12,
+    "technician_availability":"Busy",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.71,
+      "feedback_score":3.76
+    },
+    "technician_id":"T047"
+  },
+  {
+    "task_id":"TS030",
+    "task_description":"install new ergonomic chair training room",
+    "task_location":"San Diego",
+    "priority":"Low",
+    "technician_name":"Charles Ramos",
+    "technician_capabilities":"skilled installation outdoor lighting system enhance safety aesthetic residential commercial property",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.74,
+      "feedback_score":4.29
+    },
+    "technician_id":"T089"
+  },
+  {
+    "task_id":"TS031",
+    "task_description":"install new telephone line customer service center",
+    "task_location":"Philadelphia",
+    "priority":"High",
+    "technician_name":"Karen Escobar",
+    "technician_capabilities":"skilled installation repair irrigation system optimize water use landscape garden",
+    "technician_experience":12,
+    "technician_availability":"Busy",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.71,
+      "feedback_score":3.76
+    },
+    "technician_id":"T047"
+  },
+  {
+    "task_id":"TS032",
+    "task_description":"service water filtration system cafeteria",
+    "task_location":"New York",
+    "priority":"Low",
+    "technician_name":"Gary Bullock",
+    "technician_capabilities":"proficient setup maintenance home office technology include computer printer network device",
+    "technician_experience":18,
+    "technician_availability":"Busy",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.77,
+      "feedback_score":4.06
+    },
+    "technician_id":"T068"
+  },
+  {
+    "task_id":"TS033",
+    "task_description":"replace damage tile restroom",
+    "task_location":"Dallas",
+    "priority":"Medium",
+    "technician_name":"Laura Frazier",
+    "technician_capabilities":"skilled structural engineering particularly design oversee residential construction project",
+    "technician_experience":19,
+    "technician_availability":"Busy",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.93,
+      "feedback_score":4.43
+    },
+    "technician_id":"T009"
+  },
+  {
+    "task_id":"TS034",
+    "task_description":"service hvac system rooftop",
+    "task_location":"Chicago",
+    "priority":"Medium",
+    "technician_name":"Ashley Rosales",
+    "technician_capabilities":"proficient setup maintenance aquarium include freshwater marine system",
+    "technician_experience":20,
+    "technician_availability":"Busy",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.79,
+      "feedback_score":3.74
+    },
+    "technician_id":"T060"
+  },
+  {
+    "task_id":"TS035",
+    "task_description":"service automatic door main entrance",
+    "task_location":"Chicago",
+    "priority":"High",
+    "technician_name":"Anne Ross",
+    "technician_capabilities":"experience home energy audit provide recommendation improve energy efficiency reduce utility cost",
+    "technician_experience":12,
+    "technician_availability":"On Leave",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.79,
+      "feedback_score":3.95
+    },
+    "technician_id":"T043"
+  },
+  {
+    "task_id":"TS036",
+    "task_description":"install new access control system main gate",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Daniel Martinez",
+    "technician_capabilities":"proficient repair home appliance focus refrigerator washing machine oven",
+    "technician_experience":19,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.79,
+      "feedback_score":3.83
+    },
+    "technician_id":"T012"
+  },
+  {
+    "task_id":"TS037",
+    "task_description":"service hvac system rooftop",
+    "task_location":"Houston",
+    "priority":"High",
+    "technician_name":"Paul Wood",
+    "technician_capabilities":"expert bicycle repair maintenance include gear adjustment brake repair tire replacement",
+    "technician_experience":16,
+    "technician_availability":"Busy",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.9,
+      "feedback_score":4.93
+    },
+    "technician_id":"T062"
+  },
+  {
+    "task_id":"TS038",
+    "task_description":"fix break heating unit storage warehouse",
+    "task_location":"San Jose",
+    "priority":"Medium",
+    "technician_name":"Sergio Green",
+    "technician_capabilities":"skilled greenhouse construction maintenance focus sustainable efficient plant growth environment",
+    "technician_experience":6,
+    "technician_availability":"On Leave",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":3.62
+    },
+    "technician_id":"T039"
+  },
+  {
+    "task_id":"TS039",
+    "task_description":"repair air conditioning unit main office",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Ebony Graham",
+    "technician_capabilities":"experience setup remote work environment include network configuration ergonomic office solution",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.86,
+      "feedback_score":4.54
+    },
+    "technician_id":"T057"
+  },
+  {
+    "task_id":"TS040",
+    "task_description":"install new shelve unit warehouse",
+    "task_location":"San Antonio",
+    "priority":"Medium",
+    "technician_name":"Karen Butler",
+    "technician_capabilities":"expert setup maintenance outdoor kitchen include grill countertop refrigeration",
+    "technician_experience":3,
+    "technician_availability":"Busy",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":3.58
+    },
+    "technician_id":"T076"
+  },
+  {
+    "task_id":"TS041",
+    "task_description":"install new telephone line customer service center",
+    "task_location":"Chicago",
+    "priority":"Low",
+    "technician_name":"Kelly Yang",
+    "technician_capabilities":"expert diagnose repair hvac system advanced knowledge climate control solution",
+    "technician_experience":17,
+    "technician_availability":"On Leave",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.9,
+      "feedback_score":4.28
+    },
+    "technician_id":"T001"
+  },
+  {
+    "task_id":"TS042",
+    "task_description":"install new ceiling fan residential unit",
+    "task_location":"Chicago",
+    "priority":"Low",
+    "technician_name":"Timothy Bowman",
+    "technician_capabilities":"proficient drone repair capable troubleshoot fix mechanical software issue model",
+    "technician_experience":10,
+    "technician_availability":"Busy",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.89,
+      "feedback_score":4.97
+    },
+    "technician_id":"T027"
+  },
+  {
+    "task_id":"TS043",
+    "task_description":"paint exterior wall main building",
+    "task_location":"Houston",
+    "priority":"Low",
+    "technician_name":"Sandra Cortez",
+    "technician_capabilities":"certify installation backup generator provide reliable power solution residential commercial property",
+    "technician_experience":9,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.75,
+      "feedback_score":3.84
+    },
+    "technician_id":"T052"
+  },
+  {
+    "task_id":"TS044",
+    "task_description":"install new handrail stairwell",
+    "task_location":"Phoenix",
+    "priority":"High",
+    "technician_name":"Katherine Riley",
+    "technician_capabilities":"specialist installation maintenance rooftop solar panel maximize energy production home business",
+    "technician_experience":20,
+    "technician_availability":"On Leave",
+    "technician_location":"San Antonio",
+    "performance":{
+      "success_rate":0.85,
+      "feedback_score":4.69
+    },
+    "technician_id":"T098"
+  },
+  {
+    "task_id":"TS045",
+    "task_description":"fix broken security gate parking lot",
+    "task_location":"San Jose",
+    "priority":"Low",
+    "technician_name":"Wayne Bailey",
+    "technician_capabilities":"experience maintenance aquaculture system include fish tank breeding setup",
+    "technician_experience":20,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.89,
+      "feedback_score":4.53
+    },
+    "technician_id":"T071"
+  },
+  {
+    "task_id":"TS046",
+    "task_description":"install new blind finance department",
+    "task_location":"San Jose",
+    "priority":"High",
+    "technician_name":"Ebony Graham",
+    "technician_capabilities":"experience setup remote work environment include network configuration ergonomic office solution",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.86,
+      "feedback_score":4.54
+    },
+    "technician_id":"T057"
+  },
+  {
+    "task_id":"TS047",
+    "task_description":"install new network cable department",
+    "task_location":"Chicago",
+    "priority":"High",
+    "technician_name":"Michelle Doyle",
+    "technician_capabilities":"expert datum cable network infrastructure experience large scale commercial installation",
+    "technician_experience":18,
+    "technician_availability":"On Leave",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.79
+    },
+    "technician_id":"T010"
+  },
+  {
+    "task_id":"TS048",
+    "task_description":"repair faulty card reader office building",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Daniel Martinez",
+    "technician_capabilities":"proficient repair home appliance focus refrigerator washing machine oven",
+    "technician_experience":19,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.79,
+      "feedback_score":3.83
+    },
+    "technician_id":"T012"
+  },
+  {
+    "task_id":"TS049",
+    "task_description":"install new signage visitor parking area",
+    "task_location":"San Diego",
+    "priority":"Medium",
+    "technician_name":"Felicia Dunn",
+    "technician_capabilities":"proficient installation repair intercom system residential commercial property",
+    "technician_experience":12,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.94,
+      "feedback_score":4.38
+    },
+    "technician_id":"T074"
+  },
+  {
+    "task_id":"TS050",
+    "task_description":"fix broken security gate parking lot",
+    "task_location":"Dallas",
+    "priority":"Low",
+    "technician_name":"Tiffany Townsend",
+    "technician_capabilities":"proficient installation home security fence gate enhance property security aesthetic",
+    "technician_experience":4,
+    "technician_availability":"Available",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.89,
+      "feedback_score":4.95
+    },
+    "technician_id":"T054"
+  },
+  {
+    "task_id":"TS051",
+    "task_description":"replace damage tile restroom",
+    "task_location":"Phoenix",
+    "priority":"High",
+    "technician_name":"Gary Bush",
+    "technician_capabilities":"expert fire alarm system installation maintenance ensure compliance safety standard",
+    "technician_experience":7,
+    "technician_availability":"Busy",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.94,
+      "feedback_score":4.06
+    },
+    "technician_id":"T023"
+  },
+  {
+    "task_id":"TS052",
+    "task_description":"service elevator control system hotel",
+    "task_location":"San Antonio",
+    "priority":"Low",
+    "technician_name":"Michelle Gomez",
+    "technician_capabilities":"knowledgeable setup repair greenhouse automation system include climate control irrigation",
+    "technician_experience":4,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.78,
+      "feedback_score":4.64
+    },
+    "technician_id":"T073"
+  },
+  {
+    "task_id":"TS053",
+    "task_description":"service power supply unit server room",
+    "task_location":"Los Angeles",
+    "priority":"Low",
+    "technician_name":"Lauren Hart",
+    "technician_capabilities":"skilled repair setup office furniture include ergonomic chair desk storage solution",
+    "technician_experience":19,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.91,
+      "feedback_score":3.7
+    },
+    "technician_id":"T081"
+  },
+  {
+    "task_id":"TS054",
+    "task_description":"install new bike rack company parking lot",
+    "task_location":"Dallas",
+    "priority":"Low",
+    "technician_name":"Joel Sampson",
+    "technician_capabilities":"skilled roofing repair installation include application roofing material technique",
+    "technician_experience":6,
+    "technician_availability":"Available",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.87,
+      "feedback_score":3.71
+    },
+    "technician_id":"T015"
+  },
+  {
+    "task_id":"TS055",
+    "task_description":"repair broken door lock storage room",
+    "task_location":"San Antonio",
+    "priority":"High",
+    "technician_name":"Mario Fowler",
+    "technician_capabilities":"certify renewable energy system expertise wind solar energy installation maintenance",
+    "technician_experience":4,
+    "technician_availability":"On Leave",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":3.86
+    },
+    "technician_id":"T034"
+  },
+  {
+    "task_id":"TS056",
+    "task_description":"install new ergonomic chair training room",
+    "task_location":"Philadelphia",
+    "priority":"High",
+    "technician_name":"Karen Escobar",
+    "technician_capabilities":"skilled installation repair irrigation system optimize water use landscape garden",
+    "technician_experience":12,
+    "technician_availability":"Busy",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.71,
+      "feedback_score":3.76
+    },
+    "technician_id":"T047"
+  },
+  {
+    "task_id":"TS057",
+    "task_description":"fix broken water pump garden area",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Amy Flores",
+    "technician_capabilities":"knowledgeable installation solar water heating system provide sustainable hot water solution",
+    "technician_experience":12,
+    "technician_availability":"Busy",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.92,
+      "feedback_score":3.86
+    },
+    "technician_id":"T059"
+  },
+  {
+    "task_id":"TS058",
+    "task_description":"install new carpet executive office",
+    "task_location":"San Jose",
+    "priority":"Low",
+    "technician_name":"Ebony Graham",
+    "technician_capabilities":"experience setup remote work environment include network configuration ergonomic office solution",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.86,
+      "feedback_score":4.54
+    },
+    "technician_id":"T057"
+  },
+  {
+    "task_id":"TS059",
+    "task_description":"repair leaky faucet employee lounge",
+    "task_location":"Dallas",
+    "priority":"High",
+    "technician_name":"David Ortiz",
+    "technician_capabilities":"certify installation energy efficient window door improve insulation reduce energy cost",
+    "technician_experience":7,
+    "technician_availability":"Busy",
+    "technician_location":"Los Angeles",
+    "performance":{
+      "success_rate":0.97,
+      "feedback_score":4.89
+    },
+    "technician_id":"T094"
+  },
+  {
+    "task_id":"TS060",
+    "task_description":"install new ceiling fan residential unit",
+    "task_location":"San Diego",
+    "priority":"Medium",
+    "technician_name":"Daniel Jacobs",
+    "technician_capabilities":"specialist pool spa maintenance include chemical balancing cleaning equipment repair",
+    "technician_experience":6,
+    "technician_availability":"Available",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.97,
+      "feedback_score":4.35
+    },
+    "technician_id":"T049"
+  },
+  {
+    "task_id":"TS061",
+    "task_description":"service air conditioning system laboratory",
+    "task_location":"Chicago",
+    "priority":"Medium",
+    "technician_name":"Scott Ellis",
+    "technician_capabilities":"experience floor installation repair specialize hardwood laminate tile floor",
+    "technician_experience":1,
+    "technician_availability":"Available",
+    "technician_location":"Los Angeles",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":4.08
+    },
+    "technician_id":"T016"
+  },
+  {
+    "task_id":"TS062",
+    "task_description":"service power supply unit server room",
+    "task_location":"Chicago",
+    "priority":"High",
+    "technician_name":"Timothy Bowman",
+    "technician_capabilities":"proficient drone repair capable troubleshoot fix mechanical software issue model",
+    "technician_experience":10,
+    "technician_availability":"Busy",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.89,
+      "feedback_score":4.97
+    },
+    "technician_id":"T027"
+  },
+  {
+    "task_id":"TS063",
+    "task_description":"service hvac duct admin office",
+    "task_location":"San Antonio",
+    "priority":"Medium",
+    "technician_name":"Felicia Hudson",
+    "technician_capabilities":"expert garden landscaping flair design maintain aesthetically pleasing functional outdoor space",
+    "technician_experience":6,
+    "technician_availability":"On Leave",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.96,
+      "feedback_score":4.64
+    },
+    "technician_id":"T014"
+  },
+  {
+    "task_id":"TS064",
+    "task_description":"fix broken power outlet production area",
+    "task_location":"San Jose",
+    "priority":"High",
+    "technician_name":"Matthew Hill",
+    "technician_capabilities":"skilled setup maintenance video conferencing system provide reliable solution remote communication",
+    "technician_experience":13,
+    "technician_availability":"Available",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.99,
+      "feedback_score":4.66
+    },
+    "technician_id":"T095"
+  },
+  {
+    "task_id":"TS065",
+    "task_description":"fix break heating unit storage warehouse",
+    "task_location":"New York",
+    "priority":"Medium",
+    "technician_name":"Stephanie Davis",
+    "technician_capabilities":"adept troubleshoot repair industrial machinery ensure minimal downtime efficient operation",
+    "technician_experience":12,
+    "technician_availability":"Busy",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.82,
+      "feedback_score":3.74
+    },
+    "technician_id":"T058"
+  },
+  {
+    "task_id":"TS066",
+    "task_description":"service backup generator utility room",
+    "task_location":"San Antonio",
+    "priority":"Medium",
+    "technician_name":"David Ortiz",
+    "technician_capabilities":"certify installation energy efficient window door improve insulation reduce energy cost",
+    "technician_experience":7,
+    "technician_availability":"Busy",
+    "technician_location":"Los Angeles",
+    "performance":{
+      "success_rate":0.97,
+      "feedback_score":4.89
+    },
+    "technician_id":"T094"
+  },
+  {
+    "task_id":"TS067",
+    "task_description":"install new bike rack company parking lot",
+    "task_location":"New York",
+    "priority":"Low",
+    "technician_name":"Jody Robertson",
+    "technician_capabilities":"specialist painting decorate know high quality finish attention detail residential space",
+    "technician_experience":18,
+    "technician_availability":"On Leave",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.92,
+      "feedback_score":3.82
+    },
+    "technician_id":"T013"
+  },
+  {
+    "task_id":"TS068",
+    "task_description":"install new power strip computer lab",
+    "task_location":"Phoenix",
+    "priority":"Low",
+    "technician_name":"Daniel Martinez",
+    "technician_capabilities":"proficient repair home appliance focus refrigerator washing machine oven",
+    "technician_experience":19,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.79,
+      "feedback_score":3.83
+    },
+    "technician_id":"T012"
+  },
+  {
+    "task_id":"TS069",
+    "task_description":"service main boiler mechanical room",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Natalie Webster",
+    "technician_capabilities":"certify solar panel installation experience residential commercial solar energy solution",
+    "technician_experience":10,
+    "technician_availability":"Busy",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.85,
+      "feedback_score":3.73
+    },
+    "technician_id":"T018"
+  },
+  {
+    "task_id":"TS070",
+    "task_description":"repair leak roof warehouse",
+    "task_location":"Houston",
+    "priority":"High",
+    "technician_name":"Gabriel Evans",
+    "technician_capabilities":"knowledgeable machine maintenance particularly industrial environment focus predictive maintenance technique",
+    "technician_experience":18,
+    "technician_availability":"On Leave",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.71,
+      "feedback_score":3.72
+    },
+    "technician_id":"T007"
+  },
+  {
+    "task_id":"TS071",
+    "task_description":"repair faulty card reader office building",
+    "task_location":"San Jose",
+    "priority":"Low",
+    "technician_name":"Megan Hubbard",
+    "technician_capabilities":"adept repair maintain industrial refrigeration system ensure efficient cooling large scale operation",
+    "technician_experience":3,
+    "technician_availability":"On Leave",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.84,
+      "feedback_score":4.96
+    },
+    "technician_id":"T093"
+  },
+  {
+    "task_id":"TS072",
+    "task_description":"service water filtration system cafeteria",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Kevin Henderson",
+    "technician_capabilities":"adept manage large scale infrastructure project include network upgrade datum center expansion",
+    "technician_experience":9,
+    "technician_availability":"Available",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.85,
+      "feedback_score":4.66
+    },
+    "technician_id":"T029"
+  },
+  {
+    "task_id":"TS073",
+    "task_description":"inspect service fire alarm system",
+    "task_location":"San Jose",
+    "priority":"High",
+    "technician_name":"Henry Mcdaniel",
+    "technician_capabilities":"adept instal maintain building automation system include hvac lighting security control",
+    "technician_experience":18,
+    "technician_availability":"Busy",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.97,
+      "feedback_score":3.72
+    },
+    "technician_id":"T086"
+  },
+  {
+    "task_id":"TS074",
+    "task_description":"install new flooring employee break room",
+    "task_location":"Dallas",
+    "priority":"Low",
+    "technician_name":"Christopher Haynes",
+    "technician_capabilities":"adept instal repair garage door include automatic opener security feature",
+    "technician_experience":15,
+    "technician_availability":"Available",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.82,
+      "feedback_score":3.78
+    },
+    "technician_id":"T065"
+  },
+  {
+    "task_id":"TS075",
+    "task_description":"fix broken sprinkler head garden",
+    "task_location":"New York",
+    "priority":"High",
+    "technician_name":"Rachel Brown",
+    "technician_capabilities":"expert configure maintain home entertainment system include streaming device surround sound setup",
+    "technician_experience":13,
+    "technician_availability":"Available",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.99,
+      "feedback_score":4.18
+    },
+    "technician_id":"T097"
+  },
+  {
+    "task_id":"TS076",
+    "task_description":"install new network switch datum center",
+    "task_location":"San Diego",
+    "priority":"Medium",
+    "technician_name":"Lauren Hart",
+    "technician_capabilities":"skilled repair setup office furniture include ergonomic chair desk storage solution",
+    "technician_experience":19,
+    "technician_availability":"Available",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.91,
+      "feedback_score":3.7
+    },
+    "technician_id":"T081"
+  },
+  {
+    "task_id":"TS077",
+    "task_description":"fix broken power outlet production area",
+    "task_location":"New York",
+    "priority":"Low",
+    "technician_name":"Eric Patel",
+    "technician_capabilities":"proficient setup maintenance home fitness equipment ensure safe effective use",
+    "technician_experience":20,
+    "technician_availability":"On Leave",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.76,
+      "feedback_score":4.62
+    },
+    "technician_id":"T046"
+  },
+  {
+    "task_id":"TS078",
+    "task_description":"repair faulty light switch auditorium",
+    "task_location":"Philadelphia",
+    "priority":"Medium",
+    "technician_name":"Lucas Ortega",
+    "technician_capabilities":"specialist installation satellite tv system provide reliable high quality television service",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":1.0,
+      "feedback_score":4.69
+    },
+    "technician_id":"T070"
+  },
+  {
+    "task_id":"TS079",
+    "task_description":"repair faulty card reader office building",
+    "task_location":"San Antonio",
+    "priority":"Medium",
+    "technician_name":"Michael Leon",
+    "technician_capabilities":"expert repair installation commercial ventilation system ensure optimal air quality comfort",
+    "technician_experience":18,
+    "technician_availability":"Busy",
+    "technician_location":"San Antonio",
+    "performance":{
+      "success_rate":0.92,
+      "feedback_score":3.95
+    },
+    "technician_id":"T090"
+  },
+  {
+    "task_id":"TS080",
+    "task_description":"repair air conditioning unit main office",
+    "task_location":"Philadelphia",
+    "priority":"Low",
+    "technician_name":"Kelly Yang",
+    "technician_capabilities":"expert diagnose repair hvac system advanced knowledge climate control solution",
+    "technician_experience":17,
+    "technician_availability":"On Leave",
+    "technician_location":"Chicago",
+    "performance":{
+      "success_rate":0.9,
+      "feedback_score":4.28
+    },
+    "technician_id":"T001"
+  },
+  {
+    "task_id":"TS081",
+    "task_description":"service central heating system admin office",
+    "task_location":"Houston",
+    "priority":"Low",
+    "technician_name":"Michelle Doyle",
+    "technician_capabilities":"expert datum cable network infrastructure experience large scale commercial installation",
+    "technician_experience":18,
+    "technician_availability":"On Leave",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.79
+    },
+    "technician_id":"T010"
+  },
+  {
+    "task_id":"TS082",
+    "task_description":"fix broken sprinkler head garden",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Shawn Harris",
+    "technician_capabilities":"proficient configure maintain home lighting automation system include smart switch dimmer",
+    "technician_experience":4,
+    "technician_availability":"Available",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.88,
+      "feedback_score":4.73
+    },
+    "technician_id":"T082"
+  },
+  {
+    "task_id":"TS083",
+    "task_description":"repair malfunction coffee machine break room",
+    "task_location":"Chicago",
+    "priority":"High",
+    "technician_name":"Jessica Austin",
+    "technician_capabilities":"experience 3d printing setup maintenance focus optimize print quality machine performance",
+    "technician_experience":3,
+    "technician_availability":"On Leave",
+    "technician_location":"Philadelphia",
+    "performance":{
+      "success_rate":0.75,
+      "feedback_score":4.73
+    },
+    "technician_id":"T026"
+  },
+  {
+    "task_id":"TS084",
+    "task_description":"service backup generator utility room",
+    "task_location":"Phoenix",
+    "priority":"Medium",
+    "technician_name":"Heather Perez",
+    "technician_capabilities":"experience telecommunication include installation maintenance telephony system internet connection",
+    "technician_experience":20,
+    "technician_availability":"Busy",
+    "technician_location":"Dallas",
+    "performance":{
+      "success_rate":0.8,
+      "feedback_score":4.07
+    },
+    "technician_id":"T011"
+  },
+  {
+    "task_id":"TS085",
+    "task_description":"install new energy efficient window office block",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Mario Fowler",
+    "technician_capabilities":"certify renewable energy system expertise wind solar energy installation maintenance",
+    "technician_experience":4,
+    "technician_availability":"On Leave",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":3.86
+    },
+    "technician_id":"T034"
+  },
+  {
+    "task_id":"TS086",
+    "task_description":"repair broken projector conference hall",
+    "task_location":"Los Angeles",
+    "priority":"Medium",
+    "technician_name":"Michael Barnes",
+    "technician_capabilities":"specialist configure repair smart home device include voice assistant smart lock",
+    "technician_experience":14,
+    "technician_availability":"On Leave",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.87,
+      "feedback_score":4.31
+    },
+    "technician_id":"T084"
+  },
+  {
+    "task_id":"TS087",
+    "task_description":"service hvac system rooftop",
+    "task_location":"San Diego",
+    "priority":"Medium",
+    "technician_name":"Felicia Dunn",
+    "technician_capabilities":"proficient installation repair intercom system residential commercial property",
+    "technician_experience":12,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.94,
+      "feedback_score":4.38
+    },
+    "technician_id":"T074"
+  },
+  {
+    "task_id":"TS088",
+    "task_description":"repair malfunctioning vend machine cafeteria",
+    "task_location":"Phoenix",
+    "priority":"High",
+    "technician_name":"Brenda Cox",
+    "technician_capabilities":"specialist configure maintain computer server include hardware upgrade software installation",
+    "technician_experience":2,
+    "technician_availability":"On Leave",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.98,
+      "feedback_score":4.21
+    },
+    "technician_id":"T091"
+  },
+  {
+    "task_id":"TS089",
+    "task_description":"inspect service fire alarm system",
+    "task_location":"Los Angeles",
+    "priority":"Low",
+    "technician_name":"Charles Ramos",
+    "technician_capabilities":"skilled installation outdoor lighting system enhance safety aesthetic residential commercial property",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"New York",
+    "performance":{
+      "success_rate":0.74,
+      "feedback_score":4.29
+    },
+    "technician_id":"T089"
+  },
+  {
+    "task_id":"TS090",
+    "task_description":"inspect service fire alarm system",
+    "task_location":"San Diego",
+    "priority":"Medium",
+    "technician_name":"Maria Rivas",
+    "technician_capabilities":"specialist automotive repair capable handle engine diagnostic electrical issue routine maintenance",
+    "technician_experience":11,
+    "technician_availability":"On Leave",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":3.5
+    },
+    "technician_id":"T006"
+  },
+  {
+    "task_id":"TS091",
+    "task_description":"service hvac system rooftop",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Joel Sampson",
+    "technician_capabilities":"skilled roofing repair installation include application roofing material technique",
+    "technician_experience":6,
+    "technician_availability":"Available",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.87,
+      "feedback_score":3.71
+    },
+    "technician_id":"T015"
+  },
+  {
+    "task_id":"TS092",
+    "task_description":"install new blind finance department",
+    "task_location":"Philadelphia",
+    "priority":"Medium",
+    "technician_name":"Jonathan Cummings",
+    "technician_capabilities":"skilled installation window treatment blind curtain shutter",
+    "technician_experience":19,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.76,
+      "feedback_score":3.96
+    },
+    "technician_id":"T061"
+  },
+  {
+    "task_id":"TS093",
+    "task_description":"repair damage security camera loading dock",
+    "task_location":"Phoenix",
+    "priority":"Medium",
+    "technician_name":"Sergio Green",
+    "technician_capabilities":"skilled greenhouse construction maintenance focus sustainable efficient plant growth environment",
+    "technician_experience":6,
+    "technician_availability":"On Leave",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":3.62
+    },
+    "technician_id":"T039"
+  },
+  {
+    "task_id":"TS094",
+    "task_description":"install new blind finance department",
+    "task_location":"Dallas",
+    "priority":"Low",
+    "technician_name":"Lucas Ortega",
+    "technician_capabilities":"specialist installation satellite tv system provide reliable high quality television service",
+    "technician_experience":10,
+    "technician_availability":"Available",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":1.0,
+      "feedback_score":4.69
+    },
+    "technician_id":"T070"
+  },
+  {
+    "task_id":"TS095",
+    "task_description":"repair malfunction thermostat conference room",
+    "task_location":"Dallas",
+    "priority":"High",
+    "technician_name":"Maria Rivas",
+    "technician_capabilities":"specialist automotive repair capable handle engine diagnostic electrical issue routine maintenance",
+    "technician_experience":11,
+    "technician_availability":"On Leave",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":3.5
+    },
+    "technician_id":"T006"
+  },
+  {
+    "task_id":"TS096",
+    "task_description":"fix break heating unit storage warehouse",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Michael Barnes",
+    "technician_capabilities":"specialist configure repair smart home device include voice assistant smart lock",
+    "technician_experience":14,
+    "technician_availability":"On Leave",
+    "technician_location":"Houston",
+    "performance":{
+      "success_rate":0.87,
+      "feedback_score":4.31
+    },
+    "technician_id":"T084"
+  },
+  {
+    "task_id":"TS097",
+    "task_description":"repair malfunction elevator lobby",
+    "task_location":"San Diego",
+    "priority":"Low",
+    "technician_name":"Kaitlyn White",
+    "technician_capabilities":"expert instal maintain commercial kitchen equipment include oven grill refrigeration unit",
+    "technician_experience":5,
+    "technician_availability":"On Leave",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.81,
+      "feedback_score":4.57
+    },
+    "technician_id":"T055"
+  },
+  {
+    "task_id":"TS098",
+    "task_description":"service heating system dormitory",
+    "task_location":"San Jose",
+    "priority":"Low",
+    "technician_name":"Henry Mcdaniel",
+    "technician_capabilities":"adept instal maintain building automation system include hvac lighting security control",
+    "technician_experience":18,
+    "technician_availability":"Busy",
+    "technician_location":"Phoenix",
+    "performance":{
+      "success_rate":0.97,
+      "feedback_score":3.72
+    },
+    "technician_id":"T086"
+  },
+  {
+    "task_id":"TS099",
+    "task_description":"install new ergonomic chair training room",
+    "task_location":"Dallas",
+    "priority":"Medium",
+    "technician_name":"Brian Hanson",
+    "technician_capabilities":"skilled instal maintain complex plumbing system include emergency repair new installation",
+    "technician_experience":18,
+    "technician_availability":"Busy",
+    "technician_location":"San Jose",
+    "performance":{
+      "success_rate":0.8,
+      "feedback_score":4.43
+    },
+    "technician_id":"T002"
+  },
+  {
+    "task_id":"TS100",
+    "task_description":"install new carpet executive office",
+    "task_location":"Los Angeles",
+    "priority":"High",
+    "technician_name":"Jordan Fletcher",
+    "technician_capabilities":"specialist electronic circuit design include prototype testing troubleshoot electronic system",
+    "technician_experience":5,
+    "technician_availability":"Busy",
+    "technician_location":"San Diego",
+    "performance":{
+      "success_rate":0.99,
+      "feedback_score":4.76
+    },
+    "technician_id":"T028"
+  }
+]
