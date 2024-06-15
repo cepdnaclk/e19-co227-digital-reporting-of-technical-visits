@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "T001",
+    "name": "Kelly Yang",
+    "capabilities": "Expert in diagnosing and repairing HVAC systems with advanced knowledge in climate control solutions.",
+    "experience": 17,
+    "availability": "On Leave",
+    "location": "Chicago",
+    "performance": {
+      "success_rate": 0.9,
+      "feedback_score": 4.28
+    }
+  },
+  {
+    "id": "T002",
+    "name": "Brian Hanson",
+    "capabilities": "Skilled in installing and maintaining complex plumbing systems, including emergency repairs and new installations.",
+    "experience": 18,
+    "availability": "Busy",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.8,
+      "feedback_score": 4.43
+    }
+  },
+  {
+    "id": "T003",
+    "name": "Annette Monroe",
+    "capabilities": "Certified electrician with extensive experience in residential and commercial electrical systems, including troubleshooting and upgrades.",
+    "experience": 10,
+    "availability": "Available",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.83,
+      "feedback_score": 4.96
+    }
+  },
+  {
+    "id": "T004",
+    "name": "Melanie Jones",
+    "capabilities": "Proficient in repairing and setting up computer hardware, specializing in network configurations and system optimization.",
+    "experience": 9,
+    "availability": "Available",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.9,
+      "feedback_score": 3.66
+    }
+  },
+  {
+    "id": "T005",
+    "name": "Kristen Ballard",
+    "capabilities": "Experienced carpenter focusing on home renovations, custom cabinetry, and detailed finish work.",
+    "experience": 9,
+    "availability": "Busy",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.77,
+      "feedback_score": 3.85
+    }
+  },
+  {
+    "id": "T006",
+    "name": "Maria Rivas",
+    "capabilities": "Specialist in automotive repair, capable of handling engine diagnostics, electrical issues, and routine maintenance.",
+    "experience": 11,
+    "availability": "On Leave",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 3.5
+    }
+  },
+  {
+    "id": "T007",
+    "name": "Gabriel Evans",
+    "capabilities": "Knowledgeable in machine maintenance, particularly in industrial environments, with a focus on predictive maintenance techniques.",
+    "experience": 18,
+    "availability": "On Leave",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.71,
+      "feedback_score": 3.72
+    }
+  },
+  {
+    "id": "T008",
+    "name": "Lucas Collins",
+    "capabilities": "Adept at software installation and configuration, including troubleshooting software conflicts and ensuring compatibility.",
+    "experience": 12,
+    "availability": "Available",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 4.57
+    }
+  },
+  {
+    "id": "T009",
+    "name": "Laura Frazier",
+    "capabilities": "Skilled in structural engineering, particularly in designing and overseeing residential construction projects.",
+    "experience": 19,
+    "availability": "Busy",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.93,
+      "feedback_score": 4.43
+    }
+  },
+  {
+    "id": "T010",
+    "name": "Michelle Doyle",
+    "capabilities": "Expert in data cabling and network infrastructure, experienced in large-scale commercial installations.",
+    "experience": 18,
+    "availability": "On Leave",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 4.79
+    }
+  },
+  {
+    "id": "T011",
+    "name": "Heather Perez",
+    "capabilities": "Experienced in telecommunications, including the installation and maintenance of telephony systems and internet connections.",
+    "experience": 20,
+    "availability": "Busy",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.8,
+      "feedback_score": 4.07
+    }
+  },
+  {
+    "id": "T012",
+    "name": "Daniel Martinez",
+    "capabilities": "Proficient in repairing home appliances, with a focus on refrigerators, washing machines, and ovens.",
+    "experience": 19,
+    "availability": "On Leave",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.79,
+      "feedback_score": 3.83
+    }
+  },
+  {
+    "id": "T013",
+    "name": "Jody Robertson",
+    "capabilities": "Specialist in painting and decorating, known for high-quality finishes and attention to detail in residential spaces.",
+    "experience": 18,
+    "availability": "On Leave",
+    "location": "Chicago",
+    "performance": {
+      "success_rate": 0.92,
+      "feedback_score": 3.82
+    }
+  },
+  {
+    "id": "T014",
+    "name": "Felicia Hudson",
+    "capabilities": "Expert in garden landscaping, with a flair for designing and maintaining aesthetically pleasing and functional outdoor spaces.",
+    "experience": 6,
+    "availability": "On Leave",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.96,
+      "feedback_score": 4.64
+    }
+  },
+  {
+    "id": "T015",
+    "name": "Joel Sampson",
+    "capabilities": "Skilled in roofing repairs and installations, including the application of various roofing materials and techniques.",
+    "experience": 6,
+    "availability": "Available",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.87,
+      "feedback_score": 3.71
+    }
+  },
+  {
+    "id": "T016",
+    "name": "Scott Ellis",
+    "capabilities": "Experienced in flooring installation and repair, specializing in hardwood, laminate, and tile floors.",
+    "experience": 1,
+    "availability": "Available",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 4.08
+    }
+  },
+  {
+    "id": "T017",
+    "name": "James Graves",
+    "capabilities": "Adept at installing and maintaining security systems, including CCTV, alarms, and access control systems.",
+    "experience": 7,
+    "availability": "Available",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.78,
+      "feedback_score": 4.3
+    }
+  },
+  {
+    "id": "T018",
+    "name": "Natalie Webster",
+    "capabilities": "Certified in solar panel installation, with experience in both residential and commercial solar energy solutions.",
+    "experience": 10,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 3.73
+    }
+  },
+  {
+    "id": "T019",
+    "name": "Miguel Smith",
+    "capabilities": "Expert in boiler repairs and maintenance, with a strong background in both residential and industrial heating systems.",
+    "experience": 2,
+    "availability": "On Leave",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 3.92
+    }
+  },
+  {
+    "id": "T020",
+    "name": "Christopher Taylor",
+    "capabilities": "Specialist in window installation, capable of handling standard and custom window sizes and styles.",
+    "experience": 10,
+    "availability": "Busy",
+    "location": "Chicago",
+    "performance": {
+      "success_rate": 0.82,
+      "feedback_score": 3.76
+    }
+  },
+  {
+    "id": "T021",
+    "name": "Eddie Long",
+    "capabilities": "Experienced in door installation, including security doors, sliding doors, and interior doors.",
+    "experience": 7,
+    "availability": "Available",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.79,
+      "feedback_score": 4.45
+    }
+  },
+  {
+    "id": "T022",
+    "name": "Mark Mata",
+    "capabilities": "Proficient welder with expertise in various welding techniques and materials.",
+    "experience": 7,
+    "availability": "Available",
+    "location": "San Antonio",
+    "performance": {
+      "success_rate": 0.82,
+      "feedback_score": 3.96
+    }
+  },
+  {
+    "id": "T023",
+    "name": "Gary Bush",
+    "capabilities": "Expert in fire alarm systems installation and maintenance, ensuring compliance with safety standards.",
+    "experience": 7,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.94,
+      "feedback_score": 4.06
+    }
+  },
+  {
+    "id": "T024",
+    "name": "Brooke Jimenez",
+    "capabilities": "Skilled in home automation systems, including smart lighting, thermostats, and security integrations.",
+    "experience": 13,
+    "availability": "Busy",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.92,
+      "feedback_score": 3.64
+    }
+  },
+  {
+    "id": "T025",
+    "name": "Kristen Sawyer",
+    "capabilities": "Certified in HVAC system design and installation, specializing in energy-efficient solutions for residential and commercial buildings.",
+    "experience": 6,
+    "availability": "Available",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 4.08
+    }
+  },
+  {
+    "id": "T026",
+    "name": "Jessica Austin",
+    "capabilities": "Experienced in 3D printing setup and maintenance, with a focus on optimizing print quality and machine performance.",
+    "experience": 3,
+    "availability": "On Leave",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.75,
+      "feedback_score": 4.73
+    }
+  },
+  {
+    "id": "T027",
+    "name": "Timothy Bowman",
+    "capabilities": "Proficient in drone repairs, capable of troubleshooting and fixing mechanical and software issues in various models.",
+    "experience": 10,
+    "availability": "Busy",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.89,
+      "feedback_score": 4.97
+    }
+  },
+  {
+    "id": "T028",
+    "name": "Jordan Fletcher",
+    "capabilities": "Specialist in electronic circuit design, including prototyping, testing, and troubleshooting electronic systems.",
+    "experience": 5,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.99,
+      "feedback_score": 4.76
+    }
+  },
+  {
+    "id": "T029",
+    "name": "Kevin Henderson",
+    "capabilities": "Adept at managing large-scale IT infrastructure projects, including network upgrades and data center expansions.",
+    "experience": 9,
+    "availability": "Available",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 4.66
+    }
+  },
+  {
+    "id": "T030",
+    "name": "Alexander Brewer",
+    "capabilities": "Knowledgeable in fiber optic cable installations, with a focus on high-speed internet and communication systems.",
+    "experience": 11,
+    "availability": "Busy",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.74,
+      "feedback_score": 3.7
+    }
+  },
+  {
+    "id": "T031",
+    "name": "Melissa Walters",
+    "capabilities": "Experienced in lighting design and installation, creating effective and aesthetic lighting solutions for various environments.",
+    "experience": 19,
+    "availability": "Busy",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 3.8
+    }
+  },
+  {
+    "id": "T032",
+    "name": "Bryan Hawkins",
+    "capabilities": "Expert in elevator maintenance and repair, ensuring safe and efficient operation of passenger and freight elevators.",
+    "experience": 19,
+    "availability": "Available",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.8,
+      "feedback_score": 4.02
+    }
+  },
+  {
+    "id": "T033",
+    "name": "Shannon Howe",
+    "capabilities": "Skilled in locksmith services, including lock installations, repairs, and emergency access solutions.",
+    "experience": 6,
+    "availability": "Busy",
+    "location": "San Antonio",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 3.84
+    }
+  },
+  {
+    "id": "T034",
+    "name": "Mario Fowler",
+    "capabilities": "Certified in renewable energy systems, with expertise in wind and solar energy installations and maintenance.",
+    "experience": 4,
+    "availability": "On Leave",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 3.86
+    }
+  },
+  {
+    "id": "T035",
+    "name": "Christine Morgan",
+    "capabilities": "Specialist in water filtration systems, capable of installing and maintaining residential and commercial water purification solutions.",
+    "experience": 5,
+    "availability": "Busy",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.91,
+      "feedback_score": 4.23
+    }
+  },
+  {
+    "id": "T036",
+    "name": "Trevor Arias",
+    "capabilities": "Adept at programming industrial automation systems, including PLCs and robotics.",
+    "experience": 13,
+    "availability": "Available",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.78,
+      "feedback_score": 4.96
+    }
+  },
+  {
+    "id": "T037",
+    "name": "John Sheppard",
+    "capabilities": "Experienced in HVAC system diagnostics, able to quickly identify and resolve system inefficiencies and faults.",
+    "experience": 19,
+    "availability": "Available",
+    "location": "San Antonio",
+    "performance": {
+      "success_rate": 0.71,
+      "feedback_score": 3.56
+    }
+  },
+  {
+    "id": "T038",
+    "name": "Annette Kaiser",
+    "capabilities": "Proficient in the installation of audio-visual equipment, including home theaters, conference rooms, and public address systems.",
+    "experience": 9,
+    "availability": "Busy",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.76,
+      "feedback_score": 4.72
+    }
+  },
+  {
+    "id": "T039",
+    "name": "Sergio Green",
+    "capabilities": "Skilled in greenhouse construction and maintenance, focusing on sustainable and efficient plant growth environments.",
+    "experience": 6,
+    "availability": "On Leave",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 3.62
+    }
+  },
+  {
+    "id": "T040",
+    "name": "Ryan Daniels",
+    "capabilities": "Expert in pest control solutions, with experience in residential and commercial pest management strategies.",
+    "experience": 6,
+    "availability": "Busy",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 4.49
+    }
+  },
+  {
+    "id": "T041",
+    "name": "Ryan Williams",
+    "capabilities": "Certified in the installation and maintenance of geothermal heating and cooling systems.",
+    "experience": 19,
+    "availability": "Available",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.75,
+      "feedback_score": 3.92
+    }
+  },
+  {
+    "id": "T042",
+    "name": "Scott Gibson",
+    "capabilities": "Specialist in marine electrical systems, with a focus on boat wiring and marine electronics installations.",
+    "experience": 3,
+    "availability": "Busy",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.77,
+      "feedback_score": 4.83
+    }
+  },
+  {
+    "id": "T043",
+    "name": "Anne Ross",
+    "capabilities": "Experienced in home energy audits, providing recommendations for improving energy efficiency and reducing utility costs.",
+    "experience": 12,
+    "availability": "On Leave",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.79,
+      "feedback_score": 3.95
+    }
+  },
+  {
+    "id": "T044",
+    "name": "Anthony Price",
+    "capabilities": "Adept at customizing automotive interiors, including upholstery, sound systems, and electronic accessories.",
+    "experience": 9,
+    "availability": "On Leave",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.98,
+      "feedback_score": 3.67
+    }
+  },
+  {
+    "id": "T045",
+    "name": "Samantha Williams",
+    "capabilities": "Knowledgeable in the installation of water conservation systems, such as rainwater harvesting and greywater recycling.",
+    "experience": 15,
+    "availability": "Available",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.95,
+      "feedback_score": 4.62
+    }
+  },
+  {
+    "id": "T046",
+    "name": "Eric Patel",
+    "capabilities": "Proficient in the setup and maintenance of home fitness equipment, ensuring safe and effective use.",
+    "experience": 20,
+    "availability": "On Leave",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.76,
+      "feedback_score": 4.62
+    }
+  },
+  {
+    "id": "T047",
+    "name": "Karen Escobar",
+    "capabilities": "Skilled in the installation and repair of irrigation systems, optimizing water use for landscapes and gardens.",
+    "experience": 12,
+    "availability": "Busy",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.71,
+      "feedback_score": 3.76
+    }
+  },
+  {
+    "id": "T048",
+    "name": "Whitney Collins",
+    "capabilities": "Expert in wind turbine maintenance, capable of performing routine inspections and repairs to maximize efficiency.",
+    "experience": 16,
+    "availability": "On Leave",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.9,
+      "feedback_score": 3.54
+    }
+  },
+  {
+    "id": "T049",
+    "name": "Daniel Jacobs",
+    "capabilities": "Specialist in pool and spa maintenance, including chemical balancing, cleaning, and equipment repairs.",
+    "experience": 6,
+    "availability": "Available",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.97,
+      "feedback_score": 4.35
+    }
+  },
+  {
+    "id": "T050",
+    "name": "Ashley Novak",
+    "capabilities": "Experienced in concrete work, including foundations, driveways, and decorative concrete applications.",
+    "experience": 13,
+    "availability": "Busy",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.7,
+      "feedback_score": 3.89
+    }
+  },
+  {
+    "id": "T051",
+    "name": "Joshua Hopkins",
+    "capabilities": "Adept at furniture assembly and repairs, specializing in both modern and antique pieces.",
+    "experience": 16,
+    "availability": "Busy",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.76,
+      "feedback_score": 3.55
+    }
+  },
+  {
+    "id": "T052",
+    "name": "Sandra Cortez",
+    "capabilities": "Certified in the installation of backup generators, providing reliable power solutions for residential and commercial properties.",
+    "experience": 9,
+    "availability": "Available",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.75,
+      "feedback_score": 3.84
+    }
+  },
+  {
+    "id": "T053",
+    "name": "Michael Hess",
+    "capabilities": "Skilled in the repair and maintenance of refrigeration systems, including walk-in coolers and freezers.",
+    "experience": 11,
+    "availability": "On Leave",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.86,
+      "feedback_score": 3.74
+    }
+  },
+  {
+    "id": "T054",
+    "name": "Tiffany Townsend",
+    "capabilities": "Proficient in the installation of home security fences and gates, enhancing property security and aesthetics.",
+    "experience": 4,
+    "availability": "Available",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.89,
+      "feedback_score": 4.95
+    }
+  },
+  {
+    "id": "T055",
+    "name": "Kaitlyn White",
+    "capabilities": "Expert in installing and maintaining commercial kitchen equipment, including ovens, grills, and refrigeration units.",
+    "experience": 5,
+    "availability": "On Leave",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.81,
+      "feedback_score": 4.57
+    }
+  },
+  {
+    "id": "T056",
+    "name": "Jennifer Anderson MD",
+    "capabilities": "Specialist in the installation and maintenance of audio surveillance systems for security applications.",
+    "experience": 11,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.93,
+      "feedback_score": 3.97
+    }
+  },
+  {
+    "id": "T057",
+    "name": "Ebony Graham",
+    "capabilities": "Experienced in the setup of remote work environments, including network configurations and ergonomic office solutions.",
+    "experience": 10,
+    "availability": "Available",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.86,
+      "feedback_score": 4.54
+    }
+  },
+  {
+    "id": "T058",
+    "name": "Stephanie Davis",
+    "capabilities": "Adept at troubleshooting and repairing industrial machinery, ensuring minimal downtime and efficient operation.",
+    "experience": 12,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.82,
+      "feedback_score": 3.74
+    }
+  },
+  {
+    "id": "T059",
+    "name": "Amy Flores",
+    "capabilities": "Knowledgeable in the installation of solar water heating systems, providing sustainable hot water solutions.",
+    "experience": 12,
+    "availability": "Busy",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.92,
+      "feedback_score": 3.86
+    }
+  },
+  {
+    "id": "T060",
+    "name": "Ashley Rosales",
+    "capabilities": "Proficient in the setup and maintenance of aquariums, including freshwater and marine systems.",
+    "experience": 20,
+    "availability": "Busy",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.79,
+      "feedback_score": 3.74
+    }
+  },
+  {
+    "id": "T061",
+    "name": "Jonathan Cummings",
+    "capabilities": "Skilled in the installation of window treatments, such as blinds, curtains, and shutters.",
+    "experience": 19,
+    "availability": "Available",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.76,
+      "feedback_score": 3.96
+    }
+  },
+  {
+    "id": "T062",
+    "name": "Paul Wood",
+    "capabilities": "Expert in bicycle repair and maintenance, including gear adjustments, brake repairs, and tire replacements.",
+    "experience": 16,
+    "availability": "Busy",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.9,
+      "feedback_score": 4.93
+    }
+  },
+  {
+    "id": "T063",
+    "name": "Charles Garcia",
+    "capabilities": "Specialist in the setup and maintenance of home brewing equipment, ensuring optimal brewing conditions.",
+    "experience": 6,
+    "availability": "Busy",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 3.72
+    }
+  },
+  {
+    "id": "T064",
+    "name": "Katrina Williams",
+    "capabilities": "Experienced in the installation of skylights, enhancing natural light and ventilation in buildings.",
+    "experience": 10,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 4.78
+    }
+  },
+  {
+    "id": "T065",
+    "name": "Christopher Haynes",
+    "capabilities": "Adept at installing and repairing garage doors, including automatic openers and security features.",
+    "experience": 15,
+    "availability": "Available",
+    "location": "Chicago",
+    "performance": {
+      "success_rate": 0.82,
+      "feedback_score": 3.78
+    }
+  },
+  {
+    "id": "T066",
+    "name": "Dr. Sharon Lindsey DDS",
+    "capabilities": "Certified in welding and metal fabrication, capable of creating custom metal structures and components.",
+    "experience": 20,
+    "availability": "Available",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.96,
+      "feedback_score": 4.34
+    }
+  },
+  {
+    "id": "T067",
+    "name": "Jack Dominguez",
+    "capabilities": "Skilled in the installation of EV (Electric Vehicle) charging stations for residential and commercial use.",
+    "experience": 4,
+    "availability": "On Leave",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.83,
+      "feedback_score": 4.46
+    }
+  },
+  {
+    "id": "T068",
+    "name": "Gary Bullock",
+    "capabilities": "Proficient in the setup and maintenance of home office technology, including computers, printers, and network devices.",
+    "experience": 18,
+    "availability": "Busy",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.77,
+      "feedback_score": 4.06
+    }
+  },
+  {
+    "id": "T069",
+    "name": "Dr. Denise Hughes",
+    "capabilities": "Expert in the repair and maintenance of sewing machines, ensuring smooth operation for various types of sewing projects.",
+    "experience": 7,
+    "availability": "Available",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.77,
+      "feedback_score": 4.84
+    }
+  },
+  {
+    "id": "T070",
+    "name": "Lucas Ortega",
+    "capabilities": "Specialist in the installation of satellite TV systems, providing reliable and high-quality television service.",
+    "experience": 10,
+    "availability": "Available",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 1.0,
+      "feedback_score": 4.69
+    }
+  },
+  {
+    "id": "T071",
+    "name": "Wayne Bailey",
+    "capabilities": "Experienced in the maintenance of aquaculture systems, including fish tanks and breeding setups.",
+    "experience": 20,
+    "availability": "Available",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.89,
+      "feedback_score": 4.53
+    }
+  },
+  {
+    "id": "T072",
+    "name": "Eric Riddle",
+    "capabilities": "Adept at configuring and maintaining home networks, ensuring reliable internet connectivity and device integration.",
+    "experience": 20,
+    "availability": "Available",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.8,
+      "feedback_score": 3.66
+    }
+  },
+  {
+    "id": "T073",
+    "name": "Michelle Gomez",
+    "capabilities": "Knowledgeable in the setup and repair of greenhouse automation systems, including climate control and irrigation.",
+    "experience": 4,
+    "availability": "On Leave",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.78,
+      "feedback_score": 4.64
+    }
+  },
+  {
+    "id": "T074",
+    "name": "Felicia Dunn",
+    "capabilities": "Proficient in the installation and repair of intercom systems for residential and commercial properties.",
+    "experience": 12,
+    "availability": "Available",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.94,
+      "feedback_score": 4.38
+    }
+  },
+  {
+    "id": "T075",
+    "name": "Emily Choi",
+    "capabilities": "Skilled in the repair and maintenance of woodworking machinery, including saws, planers, and lathes.",
+    "experience": 1,
+    "availability": "On Leave",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.7,
+      "feedback_score": 3.99
+    }
+  },
+  {
+    "id": "T076",
+    "name": "Karen Butler",
+    "capabilities": "Expert in the setup and maintenance of outdoor kitchens, including grills, countertops, and refrigeration.",
+    "experience": 3,
+    "availability": "Busy",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 3.58
+    }
+  },
+  {
+    "id": "T077",
+    "name": "Joshua Carey",
+    "capabilities": "Specialist in configuring and maintaining home theaters, optimizing audio-visual performance and user experience.",
+    "experience": 4,
+    "availability": "On Leave",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 4.16
+    }
+  },
+  {
+    "id": "T078",
+    "name": "Gerald Wolfe",
+    "capabilities": "Experienced in the installation of radiant heating systems, providing efficient and even heating for floors and walls.",
+    "experience": 3,
+    "availability": "Busy",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.97,
+      "feedback_score": 4.84
+    }
+  },
+  {
+    "id": "T079",
+    "name": "Candace Smith",
+    "capabilities": "Adept at repairing and maintaining lawn care equipment, including mowers, trimmers, and blowers.",
+    "experience": 16,
+    "availability": "Busy",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.82,
+      "feedback_score": 3.73
+    }
+  },
+  {
+    "id": "T080",
+    "name": "Katherine Crane",
+    "capabilities": "Certified in the installation and maintenance of commercial refrigeration systems, ensuring reliable operation for food storage.",
+    "experience": 12,
+    "availability": "On Leave",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.95,
+      "feedback_score": 4.19
+    }
+  },
+  {
+    "id": "T081",
+    "name": "Lauren Hart",
+    "capabilities": "Skilled in the repair and setup of office furniture, including ergonomic chairs, desks, and storage solutions.",
+    "experience": 19,
+    "availability": "Available",
+    "location": "San Diego",
+    "performance": {
+      "success_rate": 0.91,
+      "feedback_score": 3.7
+    }
+  },
+  {
+    "id": "T082",
+    "name": "Shawn Harris",
+    "capabilities": "Proficient in configuring and maintaining home lighting automation systems, including smart switches and dimmers.",
+    "experience": 4,
+    "availability": "Available",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.88,
+      "feedback_score": 4.73
+    }
+  },
+  {
+    "id": "T083",
+    "name": "Roberto Ramirez",
+    "capabilities": "Expert in the installation of indoor and outdoor tile, creating durable and aesthetic flooring and wall solutions.",
+    "experience": 3,
+    "availability": "On Leave",
+    "location": "Philadelphia",
+    "performance": {
+      "success_rate": 0.78,
+      "feedback_score": 4.56
+    }
+  },
+  {
+    "id": "T084",
+    "name": "Michael Barnes",
+    "capabilities": "Specialist in configuring and repairing smart home devices, including voice assistants and smart locks.",
+    "experience": 14,
+    "availability": "On Leave",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.87,
+      "feedback_score": 4.31
+    }
+  },
+  {
+    "id": "T085",
+    "name": "Sean Davidson",
+    "capabilities": "Experienced in the installation and maintenance of water softeners, providing solutions for hard water problems.",
+    "experience": 11,
+    "availability": "On Leave",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.76,
+      "feedback_score": 3.71
+    }
+  },
+  {
+    "id": "T086",
+    "name": "Henry Mcdaniel",
+    "capabilities": "Adept at installing and maintaining building automation systems, including HVAC, lighting, and security controls.",
+    "experience": 18,
+    "availability": "Busy",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.97,
+      "feedback_score": 3.72
+    }
+  },
+  {
+    "id": "T087",
+    "name": "Jennifer Galloway",
+    "capabilities": "Knowledgeable in the setup and maintenance of solar-powered irrigation systems, optimizing water use in agriculture.",
+    "experience": 8,
+    "availability": "On Leave",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.96,
+      "feedback_score": 4.25
+    }
+  },
+  {
+    "id": "T088",
+    "name": "Bradley Morgan",
+    "capabilities": "Proficient in the repair and maintenance of small engines, including lawnmowers, chainsaws, and generators.",
+    "experience": 12,
+    "availability": "Busy",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.72,
+      "feedback_score": 4.51
+    }
+  },
+  {
+    "id": "T089",
+    "name": "Charles Ramos",
+    "capabilities": "Skilled in the installation of outdoor lighting systems, enhancing safety and aesthetics for residential and commercial properties.",
+    "experience": 10,
+    "availability": "Available",
+    "location": "New York",
+    "performance": {
+      "success_rate": 0.74,
+      "feedback_score": 4.29
+    }
+  },
+  {
+    "id": "T090",
+    "name": "Michael Leon",
+    "capabilities": "Expert in the repair and installation of commercial ventilation systems, ensuring optimal air quality and comfort.",
+    "experience": 18,
+    "availability": "Busy",
+    "location": "San Antonio",
+    "performance": {
+      "success_rate": 0.92,
+      "feedback_score": 3.95
+    }
+  },
+  {
+    "id": "T091",
+    "name": "Brenda Cox",
+    "capabilities": "Specialist in configuring and maintaining computer servers, including hardware upgrades and software installations.",
+    "experience": 2,
+    "availability": "On Leave",
+    "location": "Houston",
+    "performance": {
+      "success_rate": 0.98,
+      "feedback_score": 4.21
+    }
+  },
+  {
+    "id": "T092",
+    "name": "Mark Brooks",
+    "capabilities": "Experienced in the installation of underground utilities, including water, gas, and electrical lines.",
+    "experience": 7,
+    "availability": "On Leave",
+    "location": "Chicago",
+    "performance": {
+      "success_rate": 0.97,
+      "feedback_score": 4.88
+    }
+  },
+  {
+    "id": "T093",
+    "name": "Megan Hubbard",
+    "capabilities": "Adept at repairing and maintaining industrial refrigeration systems, ensuring efficient cooling for large-scale operations.",
+    "experience": 3,
+    "availability": "On Leave",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.84,
+      "feedback_score": 4.96
+    }
+  },
+  {
+    "id": "T094",
+    "name": "David Ortiz",
+    "capabilities": "Certified in the installation of energy-efficient windows and doors, improving insulation and reducing energy costs.",
+    "experience": 7,
+    "availability": "Busy",
+    "location": "Los Angeles",
+    "performance": {
+      "success_rate": 0.97,
+      "feedback_score": 4.89
+    }
+  },
+  {
+    "id": "T095",
+    "name": "Matthew Hill",
+    "capabilities": "Skilled in the setup and maintenance of video conferencing systems, providing reliable solutions for remote communication.",
+    "experience": 13,
+    "availability": "Available",
+    "location": "Dallas",
+    "performance": {
+      "success_rate": 0.99,
+      "feedback_score": 4.66
+    }
+  },
+  {
+    "id": "T096",
+    "name": "Kathy Kelly",
+    "capabilities": "Proficient in the repair and installation of residential water heaters, including tankless and solar options.",
+    "experience": 7,
+    "availability": "Available",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 3.7
+    }
+  },
+  {
+    "id": "T097",
+    "name": "Rachel Brown",
+    "capabilities": "Expert in configuring and maintaining home entertainment systems, including streaming devices and surround sound setups.",
+    "experience": 13,
+    "availability": "Available",
+    "location": "Phoenix",
+    "performance": {
+      "success_rate": 0.99,
+      "feedback_score": 4.18
+    }
+  },
+  {
+    "id": "T098",
+    "name": "Katherine Riley",
+    "capabilities": "Specialist in the installation and maintenance of rooftop solar panels, maximizing energy production for homes and businesses.",
+    "experience": 20,
+    "availability": "On Leave",
+    "location": "San Antonio",
+    "performance": {
+      "success_rate": 0.85,
+      "feedback_score": 4.69
+    }
+  },
+  {
+    "id": "T099",
+    "name": "Jennifer Stafford",
+    "capabilities": "Experienced in the repair and maintenance of HVAC ductwork, ensuring proper airflow and system efficiency.",
+    "experience": 10,
+    "availability": "Busy",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.94,
+      "feedback_score": 4.9
+    }
+  },
+  {
+    "id": "T100",
+    "name": "Joshua Jackson",
+    "capabilities": "Adept at installing and repairing irrigation pumps and controls, optimizing water distribution for agricultural and landscaping applications.",
+    "experience": 7,
+    "availability": "Available",
+    "location": "San Jose",
+    "performance": {
+      "success_rate": 0.75,
+      "feedback_score": 4.34
+    }
+  }
+]

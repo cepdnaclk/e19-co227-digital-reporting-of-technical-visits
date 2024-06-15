@@ -1,0 +1,21 @@
+[
+    {
+      "id": "T001",
+      "name": "Alice Smith",
+      "capabilities": "Expert in HVAC systems, certified for refrigeration and air conditioning repairs.",
+      "experience": 5,
+      "availability": "Available",
+      "location": "New York",
+      "performance": {"success_rate": 0.9, "feedback_score": 4.8}
+    },
+    {
+      "id": "T002",
+      "name": "Bob Johnson",
+      "capabilities": "Skilled in plumbing, water system repairs, certified for industrial pipe fitting.",
+      "experience": 3,
+      "availability": "Busy",
+      "location": "Los Angeles",
+      "performance": {"success_rate": 0.85, "feedback_score": 4.6}
+    }
+  ]
+  

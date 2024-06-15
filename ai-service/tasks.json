@@ -1,0 +1,19 @@
+[
+    {
+      "id": "TS001",
+      "description": "Repair the air conditioning unit in the main office.",
+      "location": "New York",
+      "priority": "High",
+      "required_skills": "HVAC repair, refrigeration",
+      "assigned_technician": "T001"
+    },
+    {
+      "id": "TS002",
+      "description": "Fix the leaking water pipe in the basement.",
+      "location": "Los Angeles",
+      "priority": "Medium",
+      "required_skills": "Plumbing, pipe fitting",
+      "assigned_technician": "T002"
+    }
+  ]
+  
